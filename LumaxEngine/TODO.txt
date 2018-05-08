@@ -1,0 +1,27 @@
+
+// Top priority
+
+1. [ ] Implement ZBuffer enable / disable in DX11 rendering context
+2. [ ] Implement cleanUp function for OpenGL Model2D (delete GL buffers)
+3. [ ] Implement cleanUpGeometries in OopenGL RendererGL class (delete GL buffers)
+4. [ ] Implement cleanUpGeometries in DirectX 11 RendererDX111 class (delete DX11 buffers)
+5. [ ] Make getWidth() and getHeight() functions in main.hpp
+
+6. [ ] Implement getHeadPointer() in matrices another way! Recreating a float* matrix is not efficient..
+7. [ ] Make the level loader respect a specific order for drawing objects: latest added objects should be drawn last
+8. [ ] Make Models 2D and 3D not virtual classes! Adds slowness to engine, use #ifdef to check which model to use
+9. [ ] Make the renderers functions not virtual! Causes slowness we need not.
+
+// Less important
+
+1. [ ] Add Resizing option to Window.hpp interface
+2. [ ] Add better way to specify clear buffer color
+3. [ ] Add way to check inputs without DirectInput in Win32 window class
+4. [ ] Add texture description for 1. texture creation and 2. texture uniforms
+5. [ ] Remove all this->... assignments to initialization lists of constructors
+6. [ ] Make sure the ar variable in initializeGeometries of Renderers (GL and DX11) are using defined WIDTH and HEIGHT constants.
+
+// Features
+
+1. [ ] Ability to change screen coordinates: NDC(-1.0 to 1.0) or pixels(0 to size) or shifted NDC (0.0 to 1.0)
+2. [ ] Transforms for points / lines / sprites

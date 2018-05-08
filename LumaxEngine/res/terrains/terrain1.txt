@@ -1,0 +1,6 @@
+filename: res/heightmaps/heightmap2.bmp
+height: 257
+width: 257
+scale: 12
+calcNormals: 1;
+calcTangents: 0;
