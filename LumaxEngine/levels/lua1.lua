@@ -74,17 +74,27 @@ line1 = { physics = { type = "Line", start = {-10,1,-10}, end_ = {-11,2,-11}}, m
 --addModel3D(line1)
 
 -- Moving / Dynamic objects
-sin = {
-	type = "sin",
-	amplitude = 1.0,
-	frequency = 0.5
-}
 
-aabb2 = {
+obb2 = {
 	physics = { type = "OBB", position = {0,0,10}, u1 = {1,0,0}, u2 = {0,1,0}, extents = {1,1,1} },
 	material = material1, shader = shader3Dtexture, rendergroup = "OBB",
 	movement = { translation = {0,0,"cos"}, rotation = {0.01,0.01,0} }
 }
-addModel3D(aabb2);
+addModel3D(obb2);
+
+
+--Dynamic Level
+default = {
+	material = material1,
+	shader = shader3Dcolor
+}
+updateDefaultVariables(default)
+
+aabb3 = {
+	physics = { type = "AABB", position = {0,0,-20}, extents = {1,1,1}},
+	movement = { translation = {0,0,0}, scale = {1,1,1}}, rendergroup = "AABB",
+	material = material1, shader = shader3Dcolor
+}
+addModel3D(aabb3)
 
 print("Done loading lua level.")

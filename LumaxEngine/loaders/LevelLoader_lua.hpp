@@ -45,7 +45,22 @@ public:
 	// Init physics loaders
 	static void initLoaders();
 private:
+	// Default variables
+	static Transform3D* defaultTransform;
+	static Movement3D* defaultMovement;
+	static PhysicsPrimitive* defaultPhysics;
+	static Material* defaultMaterial;
+	static Shader* defaultShader;
+	static FullModel3D* defaultFullMesh;
+	static std::string defaultRendergroup;
+
+	static std::string updateMaterial;
+	static std::string updateShader;
+	static std::string updateTransform;
+	static std::string updateMovement;
+
 	static void loadLevelParameters(luabridge::LuaRef r);
+	static void updateDefaultVariables(luabridge::LuaRef r);
 
 	static TextureGL* loadTexture2D(luabridge::LuaRef r);
 
@@ -87,6 +102,8 @@ private:
 	static bool loadIntVector(luabridge::LuaRef r, std::vector<int>& vector);
 
 	static MovComponent* loadMovComponent(luabridge::LuaRef r);
+	static void loadMovFunction(const std::string& str, float& amplitude, float& frequency);
+
 	static Vec3 loadVector3D(luabridge::LuaRef r);
 	static Vec2 loadVector2D(luabridge::LuaRef r);
 };

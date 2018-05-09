@@ -251,6 +251,7 @@
     <Text Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="levels\level_test.lua" />
     <None Include="levels\lua1.lua" />
     <None Include="levels\level_squirtle.lmx" />
     <None Include="levels\level_test.lmx" />

@@ -359,5 +359,6 @@
     <None Include="shaders\GLSL\physics\shader3DOBB.vs" />
     <None Include="shaders\GLSL\physics\shader3DOBB.fs" />
     <None Include="levels\lua1.lua" />
+    <None Include="levels\level_test.lua" />
   </ItemGroup>
 </Project>

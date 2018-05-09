@@ -4,12 +4,28 @@
 #include "TextureLoader.hpp"
 #include "ModelLoader.hpp"
 
-ResourceManager* LuaLevelLoader::resManager;
-Level*			 LuaLevelLoader::level;
+#include "../utils/StringUtils.hpp"
 
-lua_State*       LuaLevelLoader::state;
+ResourceManager*  LuaLevelLoader::resManager;
+Level*			  LuaLevelLoader::level;
 
-PrimitiveLoaders LuaLevelLoader::primitiveLoaders;
+lua_State*        LuaLevelLoader::state;
+
+PrimitiveLoaders  LuaLevelLoader::primitiveLoaders;
+
+// Default variables
+Transform3D*	  LuaLevelLoader::defaultTransform = nullptr;
+Movement3D*		  LuaLevelLoader::defaultMovement = nullptr;
+PhysicsPrimitive* LuaLevelLoader::defaultPhysics = nullptr;
+Material*		  LuaLevelLoader::defaultMaterial = nullptr;
+Shader*		      LuaLevelLoader::defaultShader = nullptr;
+FullModel3D*      LuaLevelLoader::defaultFullMesh = nullptr;
+std::string		  LuaLevelLoader::defaultRendergroup = "";
+
+std::string		  LuaLevelLoader::updateMaterial = "pointer";
+std::string		  LuaLevelLoader::updateShader = "pointer";
+std::string		  LuaLevelLoader::updateTransform = "pointer";
+std::string		  LuaLevelLoader::updateMovement = "pointer";
 
 void print(const std::string& str) {
 	std::cout << str << std::endl;
@@ -20,7 +36,39 @@ void LuaLevelLoader::loadLevelParameters(luabridge::LuaRef r) {
 		assert(false);
 	std::cout << "Loading level global parameters" << std::endl;
 
-	level->setClearColor(loadVector3D(getLuaRef(r, "clearColor"), Vec3(0, 0, 1)));
+	//level->setClearColor(loadVector3D(getLuaRef(r, "clearColor"), Vec3(0, 0, 1)));
+}
+
+void LuaLevelLoader::updateDefaultVariables(luabridge::LuaRef r) {
+	if (r.isNil())
+		assert(false);
+	std::cout << "Updating level default variables" << std::endl;
+
+	// Load default variables if provided
+	if (!r["material"].isNil())
+		defaultMaterial = loadMaterial(r["material"]);
+	if (!r["shader"].isNil())
+		defaultShader = loadShader(r["shader"]);
+	if (!r["transform"].isNil())
+		defaultTransform = loadTransform3D(r["transform"]);
+	if (!r["movement"].isNil())
+		defaultMovement = loadMovement3D(r["movement"]);
+	if (!r["physics"].isNil())
+		defaultPhysics = loadPhysics(r["physics"]);
+	if (!r["fullmesh"].isNil())
+		defaultFullMesh = loadFullMesh3D(r["fullmesh"]);
+	if (!r["rendergroup"].isNil())
+		defaultRendergroup = r["rendergroup"].cast<std::string>();
+
+	// Load assignment methods
+	if (!r["updateMaterial"].isNil())
+		updateMaterial = r["updateMaterial"].cast<std::string>();
+	if (!r["updateShader"].isNil())
+		updateShader = r["updateShader"].cast<std::string>();
+	if (!r["updateTransform"].isNil())
+		updateTransform = r["updateTransform"].cast<std::string>();
+	if (!r["updateMovement"].isNil())
+		updateMovement = r["updateMovement"].cast<std::string>();
 }
 
 Model3DGL* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
@@ -88,14 +136,29 @@ TextureGL* LuaLevelLoader::loadTexture2D(luabridge::LuaRef r) {
 }
 
 Material* LuaLevelLoader::loadMaterial(luabridge::LuaRef r) {
-	Vec3 color = loadVector3D(getLuaRef(r, "color"), Vec3(1, 0, 0));
+	std::vector<Vec3> colors;
+
+	if (!r["color"].isNil())
+		colors.push_back(loadVector3D(r["color"]));
+	else if (!r["baseColor"].isNil())
+		colors.push_back(loadVector3D(r["baseColor"]));
+	if (!r["hitColor"].isNil())
+		colors.push_back(loadVector3D(r["hitColor"]));
+
+	if (!colors.size())
+		colors.push_back(Vec3(0, 0, 0));
 
 	TextureGL* texture = nullptr;
 	luabridge::LuaRef _texture = getLuaRef(r, "texture");
 	if(!_texture.isNil())
 		texture = loadTexture2D(_texture);
 
-	return new Material(texture, color, 1.0f);
+	Material* material;
+	if (texture)
+		material = new Material(texture);
+	else
+		material = new Material(&colors[0], colors.size());
+	return material;
 }
 
 Shader* LuaLevelLoader::loadShader(luabridge::LuaRef r) {
@@ -118,7 +181,13 @@ PhysicsPrimitive* LuaLevelLoader::loadSphere(luabridge::LuaRef r) {
 PhysicsPrimitive* LuaLevelLoader::loadPlane(luabridge::LuaRef r) {
 	Vec3 position = loadVector3D(getLuaRef(r, "position"), Vec3(0, 0, 0));
 	Vec3 normal = loadVector3D(getLuaRef(r, "normal"), Vec3(0, 0, -1));
-	return new Plane(position, normal);
+	if (dot(normal, normal) != 1.0)
+		normal.normalize();
+	Plane* plane = new Plane(position, normal);
+	plane->rotationMatrix = Mat4().initIdentity();  //TODO: Get rid of this?
+	plane->tangent = Vec3(1, 0, 0);
+	plane->renderingScale = 1.0;
+	return plane;
 }
 
 PhysicsPrimitive* LuaLevelLoader::loadOBB(luabridge::LuaRef r) {
@@ -182,13 +251,13 @@ Movement3D* LuaLevelLoader::loadMovement3D(luabridge::LuaRef r) {
 void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 	std::cout << "Loading Model3D from Lua level script" << std::endl;
 
-	FullModel3D* fullMesh = nullptr;
-	Material* material = nullptr;
-	Shader* shader = nullptr;
-	PhysicsPrimitive* physics = nullptr;
-	Transform3D* transform = nullptr;
-	std::string rendergroup = "";
-	Movement3D* movement = nullptr;
+	FullModel3D* fullMesh = defaultFullMesh;
+	Material* material = defaultMaterial;
+	Shader* shader = defaultShader;
+	PhysicsPrimitive* physics = defaultPhysics;
+	Transform3D* transform = defaultTransform;
+	std::string rendergroup = defaultRendergroup;
+	Movement3D* movement = defaultMovement;
 
 	// Load physics
 	luabridge::LuaRef _physics = r["physics"];
@@ -238,6 +307,16 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 	if (!_movement.isNil())
 		movement = loadMovement3D(_movement);
 
+	// Make copies of elements if necessary
+	if (updateMaterial == "copy")
+		material = new Material(*material);
+	if (updateShader == "copy")
+		shader = new ShaderGL(*((ShaderGL*)shader));
+	if (updateTransform == "copy")
+		transform = new Transform3D(*transform);
+	if (updateMovement == "copy")
+		movement = new Movement3D(*movement);
+
 	Mesh3D* model = new Mesh3D(fullMesh, material, shader, transform, physics);
 	
 	// Load movement
@@ -245,9 +324,7 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 		movement->mesh = model, level->addMovement3D(movement);
 
 	// Add Model to level
-	if (rendergroup == "")
-		level->addMesh3D(model);
-	else if (rendergroup == "AABB")
+	if (rendergroup == "AABB")
 		level->addAABB(model);
 	else if (rendergroup == "Sphere")
 		level->addSphere(model);
@@ -259,6 +336,8 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 		level->addRay(model);
 	else if (rendergroup == "Line")
 		level->addLine(model);
+	else
+		level->addMesh3D(model);
 }
 
 Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* resManager) {
@@ -290,7 +369,8 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 	luabridge::getGlobalNamespace(state).
 		addFunction("print", print).
 		addFunction("addModel3D", loadModel3D).
-		addFunction("loadLevelParameters", loadLevelParameters);
+		addFunction("loadLevelParameters", loadLevelParameters).
+		addFunction("updateDefaultVariables", updateDefaultVariables);
 
 	// Open and execute lua script
 	if (luaL_loadfile(state, filename.c_str())) {
@@ -366,18 +446,14 @@ bool LuaLevelLoader::loadIntVector(luabridge::LuaRef r, std::vector<int>& vector
 MovComponent* LuaLevelLoader::loadMovComponent(luabridge::LuaRef r) {
 	MovComponent* component = new MovComponent();
 	for (int i = 0; i < 3; ++i) {
-		std::cout << "mov : " << i << std::endl;
 		std::string str = r[i + 1].cast<std::string>();
-		std::cout << str << std::endl;
-		if (str == "sin") {
+		if (str.length() >= 3 && str.substr(0, 3) == "sin") {
 			component->functions[i] = MovFunctions::fsin;
-			component->amplitudes[i] = 1.0;
-			component->frequencies[i] = 1.0;
+			loadMovFunction(str, component->amplitudes[i], component->frequencies[i]);
 		}
-		else if (str == "cos") {
+		else if (str.length() >= 3 && str.substr(0, 3) == "cos") {
 			component->functions[i] = MovFunctions::fcos;
-			component->amplitudes[i] = 1.0;
-			component->frequencies[i] = 1.0;
+			loadMovFunction(str, component->amplitudes[i], component->frequencies[i]);
 		}
 		else {
 			// Float value
@@ -385,6 +461,20 @@ MovComponent* LuaLevelLoader::loadMovComponent(luabridge::LuaRef r) {
 		}
 	}
 	return component;
+}
+
+void LuaLevelLoader::loadMovFunction(const std::string& str, float& amplitude, float& frequency) {
+	std::vector<std::string> args = Utils::splitByRegex(str, '<');
+	if (args.size() == 1) {
+		amplitude = 1.0, frequency = 1.0;
+		return;
+	}
+	args = Utils::splitByRegex(args[1], ',');
+	std::string amplitude_ = args[0];
+	std::cout << amplitude_ << std::endl;
+	std::string frequency_ = args[1].substr(0, args[1].length() - 1);
+	amplitude = std::stof(amplitude_);
+	frequency = std::stof(frequency_);
 }
 
 Vec3 LuaLevelLoader::loadVector3D(luabridge::LuaRef r) {

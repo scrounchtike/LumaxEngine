@@ -118,7 +118,7 @@ int main(int argc, char* argv[]) {
 	
 	// Init Level
 	//level = LevelLoader::loadLevel("level_test.lmx", resManager);
-	level = LuaLevelLoader::loadLevel("levels/lua1.lua", resManager);
+	level = LuaLevelLoader::loadLevel("levels/level_test.lua", resManager);
 
 	Time::initTimer();
 	run();
