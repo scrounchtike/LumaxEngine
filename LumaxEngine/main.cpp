@@ -157,7 +157,13 @@ void run() {
 			std::cout << "FPS TIMER: " << fps << " updates: " << updates << "   frame took " << msPerFrame << std::endl;
 			fpsTimeCounter -= 1000, fps = 0, updates = 0;
 		}
+
+		input();
+		update();
+		render();
+		++fps, ++updates;
 		
+		/*
 		//bool shouldRender = false;
 		//while (updateTimer >= frameTime) {
 			input();
@@ -175,6 +181,7 @@ void run() {
 		//else {
 			// sleep(1.0) // TODO: Sleep 1 ms
 		//}
+		*/
 	}
 }
 

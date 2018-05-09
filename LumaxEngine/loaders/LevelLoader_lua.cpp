@@ -171,11 +171,11 @@ Transform3D* LuaLevelLoader::loadTransform3D(luabridge::LuaRef r) {
 Movement3D* LuaLevelLoader::loadMovement3D(luabridge::LuaRef r) {
 	Movement3D* movement = new Movement3D(nullptr);
 	if (!r["translation"].isNil())
-		movement->t = new MovComponent(), movement->t->value = loadVector3D(r["translation"]);
+		 movement->t = loadMovComponent(r["translation"]);
 	if (!r["rotation"].isNil())
-		movement->r = new MovComponent(), movement->r->value = loadVector3D(r["rotation"]);
+		movement->r = loadMovComponent(r["rotation"]);
 	if (!r["scale"].isNil())
-		movement->s = new MovComponent(), movement->s->value = loadVector3D(r["scale"]);
+		movement->s = loadMovComponent(r["scale"]);
 	return movement;
 }
 
@@ -366,7 +366,9 @@ bool LuaLevelLoader::loadIntVector(luabridge::LuaRef r, std::vector<int>& vector
 MovComponent* LuaLevelLoader::loadMovComponent(luabridge::LuaRef r) {
 	MovComponent* component = new MovComponent();
 	for (int i = 0; i < 3; ++i) {
+		std::cout << "mov : " << i << std::endl;
 		std::string str = r[i + 1].cast<std::string>();
+		std::cout << str << std::endl;
 		if (str == "sin") {
 			component->functions[i] = MovFunctions::fsin;
 			component->amplitudes[i] = 1.0;

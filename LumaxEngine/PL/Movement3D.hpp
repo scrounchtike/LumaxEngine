@@ -14,7 +14,7 @@ namespace MovFunctions {
 		return 0;
 	}
 	static float fsin(float A, float f, float theta) {
-		return A * sin(2 * PI * f * theta);
+		return A * sin(2.0 * PI * f * theta);
 	}
 	static float fcos(float A, float f, float theta) {
 		return A * cos(2 * PI * f * theta);
@@ -29,17 +29,14 @@ struct MovComponent {
 	Vec3 amplitudes;
 	Vec3 frequencies;
 	std::function<float(float,float,float)> functions[3];
-	std::function<float(float, float, float)> func;
 
 	MovComponent() : value(Vec3()) {
 		functions[0] = functions[1] = functions[2] = MovFunctions::none;
 	}
 
 	void update(float temp) {
-		float a = 1.0;
-		float f = 1.0;
 		for (int i = 0; i < 3; ++i)
-			value[i] += functions[i](a, f, temp);
+			value[i] = functions[i](amplitudes[i], frequencies[i], temp);
 	}
 };
 

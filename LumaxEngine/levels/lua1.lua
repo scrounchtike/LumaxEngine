@@ -74,10 +74,16 @@ line1 = { physics = { type = "Line", start = {-10,1,-10}, end_ = {-11,2,-11}}, m
 --addModel3D(line1)
 
 -- Moving / Dynamic objects
+sin = {
+	type = "sin",
+	amplitude = 1.0,
+	frequency = 0.5
+}
+
 aabb2 = {
 	physics = { type = "OBB", position = {0,0,10}, u1 = {1,0,0}, u2 = {0,1,0}, extents = {1,1,1} },
 	material = material1, shader = shader3Dtexture, rendergroup = "OBB",
-	movement = { translation = {0,0,sin}, rotation = {0.01,0.01,0} }
+	movement = { translation = {0,0,"cos"}, rotation = {0.01,0.01,0} }
 }
 addModel3D(aabb2);
 
