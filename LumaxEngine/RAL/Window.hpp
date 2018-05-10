@@ -26,7 +26,7 @@ public:
 
 	virtual unsigned int getWidth() { return width; }
 	virtual unsigned int getHeight() { return height; }
-	virtual std::string& getTitlte() { return title; }
+	virtual std::string& getTitle() { return title; }
 
 	// Input abstraction
 	virtual bool wasKeyPressed(int key) = 0;
@@ -44,11 +44,14 @@ public:
 	virtual bool cleanUpDirectX11() = 0;
 	
 	RenderingContext* getRenderingContext() { return renderContext; }
+
+	virtual ~Window() { };
 protected:
 	Window(const std::string& title, unsigned int width, unsigned int height)
 		: title(title), width(width), height(height) { }
-	unsigned int width, height;
+
 	std::string title;
+	unsigned int width, height;
 
 	RenderingContext* renderContext;
 };

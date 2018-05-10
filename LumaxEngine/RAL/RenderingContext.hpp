@@ -21,6 +21,8 @@ public:
 	virtual void setViewport(unsigned int width, unsigned int height) = 0;
 
 	virtual void swapBuffers() = 0;
+
+	virtual ~RenderingContext() { }// Virtual destructor. Thanks Scott
 private:
 };
 

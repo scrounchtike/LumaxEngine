@@ -14,7 +14,7 @@ Transform3D::~Transform3D() {
 	delete matrix;
 }
 
-DynamicTransform3D::DynamicTransform3D(Vec3 position, Vec3 rotation, Vec3 scale) : translation(translation), rotation(rotation), scale(scale) {
+DynamicTransform3D::DynamicTransform3D(Vec3 position, Vec3 rotation, Vec3 scale) : translation(position), rotation(rotation), scale(scale) {
 	*matrix = Mat4().initTranslation(position) * Mat4().initRotationDegrees(rotation) * Mat4().initScale(scale);
 }
 

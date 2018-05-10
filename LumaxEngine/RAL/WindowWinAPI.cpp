@@ -1,6 +1,8 @@
 
 #include "WindowWinAPI.hpp"
 
+#ifdef _USE_DIRECTX11
+
 // Static variables
 bool WindowWinAPI::exitRequested = false;
 
@@ -246,3 +248,5 @@ LRESULT CALLBACK WindowWinAPI::windowProc(HWND hwnd, UINT umsg, WPARAM wparam, L
 
 	return 1;
 }
+
+#endif

@@ -18,10 +18,6 @@ typedef TextureDX11 Texture;
 
 class Material {
 public:
-	int numColors = 1;
-	int colorIndex = 0;
-	float blend;
-
 	Material(const Vec3& color);
 	Material(Vec3* colors, int numColors);
 
@@ -43,6 +39,11 @@ public:
 private:
 	Texture* texture = nullptr;
 	Vec3* colors;
+public:
+	int numColors = 1;
+	int colorIndex = 0;
+	float blend;
+private:
 	bool isColored = false;
 };
 

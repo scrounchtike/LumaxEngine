@@ -12,7 +12,7 @@ Camera::Camera(Vec3 position, Vec3 forward, Vec3 up, float fov, float zNear, flo
 }
 
 Camera::~Camera() {
-
+	
 }
 
 void Camera::initialize() {
@@ -31,10 +31,10 @@ void Camera::initialize() {
 #endif
 	viewMatrix = cameraMatrix * Mat4().initTranslation(-position);
 #ifdef _USE_OPENGL
-	projectionMatrix = Mat4().initProjection(70.0f, 0.1f, 1000.0f);
+	projectionMatrix = Mat4().initProjection(fov, zNear, zFar);
 #elif defined _USE_DIRECTX11
 	float ar = getStaticWindowHeight() / getStaticWindowWidth();
-	projectionMatrix = Mat4().initProjectionDX11(35.0f, ar, 0.1f, 1000.0f);
+	projectionMatrix = Mat4().initProjectionDX11(fov, ar, zNear, zFar);
 #endif
 }
 

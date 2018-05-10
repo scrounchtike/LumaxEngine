@@ -34,7 +34,7 @@ void RenderingContextGL::clearBuffers() {
 void RenderingContextGL::setClearColor(float color[4]) {
 	glClearColor(color[0], color[1], color[2], color[3]);
 }
-
+b
 void RenderingContextGL::enableZBuffer() {
 	glEnable(GL_DEPTH_TEST);
 }

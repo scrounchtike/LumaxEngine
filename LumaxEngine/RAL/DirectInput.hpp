@@ -1,13 +1,12 @@
 
 #include "BuildDesc.hpp"
 
-#if !defined(DIRECT_INPUT_HPP)
+#ifdef _USE_DIRECTX11
+
+#ifndef DIRECT_INPUT_HPP
 #define DIRECT_INPUT_HPP
 
 #define DIRECTINPUT_VERSION 0x0800
-
-#define NUM_KEYS 256
-#define NUM_BUTTONS 8
 
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
@@ -51,4 +50,5 @@ private:
 	int mouseX, mouseY;
 };
 
+#endif
 #endif

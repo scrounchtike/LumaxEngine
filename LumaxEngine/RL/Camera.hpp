@@ -28,11 +28,6 @@ private:
 	// Mouse locking
 	bool mouseLocked = false;
 
-	// View variables
-	float fov;
-	float zNear;
-	float zFar;
-
 	// Movement variables
 	float movSpeed = 0.05f;
 	float sensitivity = 0.003f;
@@ -43,6 +38,11 @@ private:
 	Vec3 forward;
 	Vec3 up;
 	Vec3 right;
+
+	// View variables
+	float fov;
+	float zNear;
+	float zFar;
 
 	Mat4 cameraMatrix;
 	Mat4 viewMatrix;

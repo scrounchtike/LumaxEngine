@@ -11,7 +11,7 @@
 class RenderingContextGL : public RenderingContext {
 public:
 	RenderingContextGL(ContextDescription description);
-	~RenderingContextGL();
+	virtual ~RenderingContextGL();
 
 	virtual void clearColorBuffer(float color[4]);
 	virtual void clearDepthBuffer(float depthValue = 1.0);

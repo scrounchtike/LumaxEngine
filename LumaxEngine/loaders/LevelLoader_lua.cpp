@@ -7,25 +7,25 @@
 #include "../utils/StringUtils.hpp"
 
 ResourceManager*  LuaLevelLoader::resManager;
-Level*			  LuaLevelLoader::level;
+Level*			      LuaLevelLoader::level;
 
 lua_State*        LuaLevelLoader::state;
 
 PrimitiveLoaders  LuaLevelLoader::primitiveLoaders;
 
 // Default variables
-Transform3D*	  LuaLevelLoader::defaultTransform = nullptr;
-Movement3D*		  LuaLevelLoader::defaultMovement = nullptr;
+Transform3D*	    LuaLevelLoader::defaultTransform = nullptr;
+Movement3D*		    LuaLevelLoader::defaultMovement = nullptr;
 PhysicsPrimitive* LuaLevelLoader::defaultPhysics = nullptr;
-Material*		  LuaLevelLoader::defaultMaterial = nullptr;
-Shader*		      LuaLevelLoader::defaultShader = nullptr;
+Material*		      LuaLevelLoader::defaultMaterial = nullptr;
+Shader*		        LuaLevelLoader::defaultShader = nullptr;
 FullModel3D*      LuaLevelLoader::defaultFullMesh = nullptr;
-std::string		  LuaLevelLoader::defaultRendergroup = "";
+std::string		    LuaLevelLoader::defaultRendergroup = "";
 
-std::string		  LuaLevelLoader::updateMaterial = "pointer";
-std::string		  LuaLevelLoader::updateShader = "pointer";
-std::string		  LuaLevelLoader::updateTransform = "pointer";
-std::string		  LuaLevelLoader::updateMovement = "pointer";
+std::string		    LuaLevelLoader::updateMaterial = "pointer";
+std::string		    LuaLevelLoader::updateShader = "pointer";
+std::string		    LuaLevelLoader::updateTransform = "pointer";
+std::string		    LuaLevelLoader::updateMovement = "pointer";
 
 void print(const std::string& str) {
 	std::cout << str << std::endl;
@@ -411,21 +411,21 @@ luabridge::LuaRef LuaLevelLoader::checkLuaRef(luabridge::LuaRef r, const std::st
 	return _param;
 }
 
-Vec3 LuaLevelLoader::loadVector3D(luabridge::LuaRef r, const Vec3& default) {
+Vec3 LuaLevelLoader::loadVector3D(luabridge::LuaRef r, const Vec3& def) {
 	if (r.isNil())
-		return default;
+		return def;
 	return loadVector3D(r);
 }
 
-Vec2 LuaLevelLoader::loadVector2D(luabridge::LuaRef r, const Vec2& default) {
+Vec2 LuaLevelLoader::loadVector2D(luabridge::LuaRef r, const Vec2& def) {
 	if (r.isNil())
-		return default;
+		return def;
 	return loadVector2D(r);
 }
 
-float LuaLevelLoader::loadFloat(luabridge::LuaRef r, float default) {
+float LuaLevelLoader::loadFloat(luabridge::LuaRef r, float def) {
 	if (r.isNil())
-		return default;
+		return def;
 	return r.cast<float>();
 }
 
@@ -434,6 +434,7 @@ bool LuaLevelLoader::loadFloatVector(luabridge::LuaRef r, std::vector<float>& ve
 		return false;
 	for (int i = 0; i < r.length(); ++i)
 		vector.push_back(r[1 + i].cast<float>());
+	return true;
 }
 
 bool LuaLevelLoader::loadIntVector(luabridge::LuaRef r, std::vector<int>& vector) {
@@ -441,6 +442,7 @@ bool LuaLevelLoader::loadIntVector(luabridge::LuaRef r, std::vector<int>& vector
 		return false;
 	for (int i = 0; i < r.length(); ++i)
 		vector.push_back(r[1 + i].cast<int>());
+	return true;
 }
 
 MovComponent* LuaLevelLoader::loadMovComponent(luabridge::LuaRef r) {

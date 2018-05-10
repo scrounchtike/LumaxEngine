@@ -17,7 +17,7 @@
 class WindowGLFW : public Window {
 public:
 	WindowGLFW(int style, const std::string& title, unsigned int width, unsigned int height);
-	~WindowGLFW();
+	virtual ~WindowGLFW();
 
 	bool shouldClose();
 	void clear();

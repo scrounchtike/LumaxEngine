@@ -20,7 +20,7 @@ struct DepthStencilState {
 class RenderingContextDX11 : public RenderingContext {
 public:
 	RenderingContextDX11(ContextDescription description, HWND hwnd);
-	~RenderingContextDX11();
+	virtual ~RenderingContextDX11();
 
 	virtual void clearColorBuffer(float color[4]);
 	virtual void clearDepthBuffer(float depthValue = 1.0);

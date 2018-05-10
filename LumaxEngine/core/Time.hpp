@@ -2,6 +2,10 @@
 #ifndef TIME_HPP
 #define TIME_HPP
 
+#include "../RAL/buildDesc.hpp"
+
+#ifdef _WINDOWS
+
 #include "../math/types.hpp"
 #include <windows.h>
 
@@ -23,4 +27,5 @@ namespace Time {
 	}
 }
 
+#endif
 #endif

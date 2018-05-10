@@ -1,6 +1,6 @@
 
 #ifndef PRIMITIVE_COLLISION_HPP
-#define PRIMTIVE_COLLISION_HPP
+#define PRIMITIVE_COLLISION_HPP
 
 #include "PhysicsPrimitives.hpp"
 

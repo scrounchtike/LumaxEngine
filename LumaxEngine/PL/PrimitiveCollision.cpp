@@ -1,5 +1,6 @@
 
 #include "PrimitiveCollision.hpp"
+#include <cfloat> // for FLT_MAX and FLT_MIN
 
 #include <algorithm>
 
@@ -7,9 +8,9 @@ bool PrimitiveCollision::AABB_intersects(const PhysicsPrimitive* pp1, const Phys
 	AABB* aabb1 = (AABB*)pp1;
 	AABB* aabb2 = (AABB*)pp2;
 
-	if (abs(aabb1->position.x - aabb2->position.x) > (aabb1->extents.x + aabb2->extents.x)) return false;
-	if (abs(aabb1->position.y - aabb2->position.y) > (aabb1->extents.y + aabb2->extents.y)) return false;
-	if (abs(aabb1->position.z - aabb2->position.z) > (aabb1->extents.z + aabb2->extents.z)) return false;
+	if (std::abs(aabb1->position.x - aabb2->position.x) > (aabb1->extents.x + aabb2->extents.x)) return false;
+	if (std::abs(aabb1->position.y - aabb2->position.y) > (aabb1->extents.y + aabb2->extents.y)) return false;
+	if (std::abs(aabb1->position.z - aabb2->position.z) > (aabb1->extents.z + aabb2->extents.z)) return false;
 	return true;
 }
 
@@ -26,8 +27,8 @@ bool PrimitiveCollision::AABB_intersects_Plane(const PhysicsPrimitive* pp1, cons
 	Plane* plane = (Plane*)pp2;
 
 	float dist = dot(plane->normal, aabb->position) + plane->D;
-	float r = aabb->extents[0] * abs(plane->normal[0]) + aabb->extents[1] * abs(plane->normal[1]) + aabb->extents[2] * abs(plane->normal[2]);
-	return abs(dist) <= r;
+	float r = aabb->extents[0] * std::abs(plane->normal[0]) + aabb->extents[1] * std::abs(plane->normal[1]) + aabb->extents[2] * std::abs(plane->normal[2]);
+	return std::abs(dist) <= r;
 }
 
 bool PrimitiveCollision::AABB_intersects_OBB(const PhysicsPrimitive* pp1, const PhysicsPrimitive* pp2) {
@@ -48,7 +49,7 @@ bool PrimitiveCollision::AABB_intersects_Ray(const PhysicsPrimitive* pp1, const 
 	float tmax = FLT_MAX;
 
 	for (int i = 0; i < 3; ++i) {
-		if (abs(ray->direction[i]) < EPSILON) {
+		if (std::abs(ray->direction[i]) < EPSILON) {
 			if (ray->position[i] < aabb->position[i] - aabb->extents[i] 
 				|| ray->position[i] > aabb->position[i] + aabb->extents[i]) 
 				return false;
@@ -79,7 +80,7 @@ bool PrimitiveCollision::AABB_intersects_Line(const PhysicsPrimitive* pp1, const
 	direction /= tmax;
 
 	for (int i = 0; i < 3; ++i) {
-		if (abs(direction[i]) < EPSILON) {
+		if (std::abs(direction[i]) < EPSILON) {
 			if (line->start[i] < aabb->position[i] - aabb->extents[i]
 				|| line->start[i] > aabb->position[i] + aabb->extents[i])
 				return false;
@@ -120,7 +121,7 @@ bool PrimitiveCollision::Sphere_intersects_Plane(const PhysicsPrimitive* pp1, co
 	Plane* plane = (Plane*)pp2;
 
 	float dist = dot(sphere->position, plane->normal) + plane->D;
-	return abs(dist) <= sphere->radius;
+	return std::abs(dist) <= sphere->radius;
 }
 
 bool PrimitiveCollision::Sphere_intersects_OBB(const PhysicsPrimitive* pp1, const PhysicsPrimitive* pp2) {
@@ -226,65 +227,65 @@ bool PrimitiveCollision::OBB_intersects(const PhysicsPrimitive* pp1, const Physi
 	float epsilon = 0.000001f;
 	for (int i = 0; i < 3; ++i)
 		for (int j = 0; j < 3; ++j)
-			AbsR.set(i, j, abs(R.get(i, j)) + epsilon);
+			AbsR.set(i, j, std::abs(R.get(i, j)) + epsilon);
 
 	// Test axes A0, A2, A3
 	Vector3 be_a = AbsR * obb2->e;
 	for (int i = 0; i < 3; ++i)
-		if (obb1->e[i] + be_a[i] < abs(t[i])) return false;
+		if (obb1->e[i] + be_a[i] < std::abs(t[i])) return false;
 
 	// Test axes B0, B1, B2
 	Vector3 ae_b = AbsR * obb1->e;
 	Vector3 t_b = AbsR * t;
 	for (int i = 0; i < 3; ++i)
-		if (ae_b[i] + obb2->e[i] < abs(t_b[i])) return false;
+		if (ae_b[i] + obb2->e[i] < std::abs(t_b[i])) return false;
 
 	float ra, rb;
 
 	// Test axis A0 x B0
 	ra = obb1->e[1] * AbsR.get(2, 0) + obb1->e[2] * AbsR.get(1, 0);
 	rb = obb2->e[1] * AbsR.get(0, 2) + obb2->e[2] * AbsR.get(0, 1);
-	if (ra + rb < abs(t[2] * AbsR.get(1, 0) - t[1] * AbsR.get(2, 0))) return false;
+	if (ra + rb < std::abs(t[2] * AbsR.get(1, 0) - t[1] * AbsR.get(2, 0))) return false;
 
 	// Test axis A0 x B1
 	ra = obb1->e[1] * AbsR.get(2, 1) + obb1->e[2] * AbsR.get(1, 1);
 	rb = obb2->e[0] * AbsR.get(0, 2) + obb2->e[2] * AbsR.get(0, 0);
-	if (ra + rb < abs(t[2] * AbsR.get(1,1) - t[1] * AbsR.get(2,1))) return false;
+	if (ra + rb < std::abs(t[2] * AbsR.get(1,1) - t[1] * AbsR.get(2,1))) return false;
 
 	// Test axis A0 * B2
 	ra = obb1->e[1] * AbsR.get(2, 2) + obb1->e[2] * AbsR.get(1, 2);
 	rb = obb2->e[0] * AbsR.get(0, 1) + obb2->e[1] * AbsR.get(0, 0);
-	if (ra + rb < abs(t[2] * AbsR.get(1, 2) - t[1] * AbsR.get(2, 2))) return false;
+	if (ra + rb < std::abs(t[2] * AbsR.get(1, 2) - t[1] * AbsR.get(2, 2))) return false;
 
 	// Test axis A1 x B0
 	ra = obb1->e[0] * AbsR.get(2, 0) + obb1->e[2] * AbsR.get(0, 0);
 	rb = obb2->e[1] * AbsR.get(1, 2) + obb2->e[2] * AbsR.get(1, 1);
-	if (ra + rb < abs(t[0] * AbsR.get(2, 0) - t[2] * AbsR.get(0, 0))) return false;
+	if (ra + rb < std::abs(t[0] * AbsR.get(2, 0) - t[2] * AbsR.get(0, 0))) return false;
 
 	// Test axis A1 x B1
 	ra = obb1->e[0] * AbsR.get(2, 1) + obb1->e[2] * AbsR.get(0, 1);
 	rb = obb2->e[0] * AbsR.get(1, 2) + obb2->e[2] * AbsR.get(1, 0);
-	if (ra + rb < abs(t[0] * AbsR.get(2, 1) - t[2] * AbsR.get(0, 1))) return false;
+	if (ra + rb < std::abs(t[0] * AbsR.get(2, 1) - t[2] * AbsR.get(0, 1))) return false;
 
 	// Test axis A1 x B2
 	ra = obb1->e[0] * AbsR.get(2, 2) + obb1->e[2] * AbsR.get(0, 2);
 	rb = obb2->e[0] * AbsR.get(1, 1) + obb2->e[1] * AbsR.get(1, 0);
-	if (ra + rb < abs(t[0] * AbsR.get(2, 2) - t[2] * AbsR.get(0, 2))) return false;
+	if (ra + rb < std::abs(t[0] * AbsR.get(2, 2) - t[2] * AbsR.get(0, 2))) return false;
 
 	// Test axis A2 x B0
 	ra = obb1->e[0] * AbsR.get(1, 0) + obb1->e[1] * AbsR.get(0, 0);
 	rb = obb2->e[1] * AbsR.get(2, 2) + obb2->e[2] * AbsR.get(2, 1);
-	if (ra + rb < abs(t[1] * AbsR.get(0, 0) - t[0] * AbsR.get(1, 0))) return false;
+	if (ra + rb < std::abs(t[1] * AbsR.get(0, 0) - t[0] * AbsR.get(1, 0))) return false;
 
 	// Test axis A2 x B1
 	ra = obb1->e[0] * AbsR.get(1, 1) + obb1->e[1] * AbsR.get(0, 1);
 	rb = obb2->e[0] * AbsR.get(2, 2) + obb2->e[2] * AbsR.get(2, 0);
-	if (ra + rb < abs(t[1] * AbsR.get(0, 1) - t[0] * AbsR.get(1, 1))) return false;
+	if (ra + rb < std::abs(t[1] * AbsR.get(0, 1) - t[0] * AbsR.get(1, 1))) return false;
 
 	// Test axis A2 x B2
 	ra = obb1->e[0] * AbsR.get(1, 2) + obb1->e[1] * AbsR.get(0, 2);
 	rb = obb2->e[0] * AbsR.get(2, 1) + obb2->e[1] * AbsR.get(2, 0);
-	if (ra + rb < abs(t[1] * AbsR.get(0, 2) - t[0] * AbsR.get(1, 2))) return false;
+	if (ra + rb < std::abs(t[1] * AbsR.get(0, 2) - t[0] * AbsR.get(1, 2))) return false;
 	
 	return true;
 }

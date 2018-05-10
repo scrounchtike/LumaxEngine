@@ -1,6 +1,8 @@
 
 #include "DirectInput.hpp"
 
+#ifdef _USE_DIRECTX11
+
 #include <cassert>
 #include <string>
 
@@ -203,3 +205,5 @@ void DirectInput::processInput() {
 	for (int i = 0; i < 4; ++i)
 		justPressedMouse[i] = mouseState.rgbButtons[i] & previousMouseState[i];
 }
+
+#endif

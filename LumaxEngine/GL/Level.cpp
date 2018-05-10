@@ -10,7 +10,7 @@ Level::Level(RendererGL* renderer, Camera* camera)
 }
 #elif defined _USE_DIRECTX11
 Level::Level(RendererDX11* renderer, Camera* camera)
-	: renderer(renderer), camera(camera) 
+	: renderer(renderer), camera(camera)
 {
 }
 #endif

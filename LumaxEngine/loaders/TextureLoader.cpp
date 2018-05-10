@@ -1,6 +1,9 @@
 
 #include "TextureLoader.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "../utils/stb_image.h"
+
 #include "../math/types.hpp"
 
 TextureGL* TextureLoader::loadTextureSTB(const std::string& filename) {

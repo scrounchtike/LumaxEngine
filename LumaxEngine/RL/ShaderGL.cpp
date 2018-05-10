@@ -135,7 +135,7 @@ std::string ShaderGL::loadShader(const std::string& filename) {
 }
 
 void ShaderGL::checkError(GLuint object, GLenum pname, TYPE type) {
-	GLint success;
+	GLint success = 1;
 	if (type == SHADER_TYPE)
 		glGetShaderiv(object, pname, &success);
 	else if (type == PROGRAM_TYPE)
@@ -143,7 +143,7 @@ void ShaderGL::checkError(GLuint object, GLenum pname, TYPE type) {
 	if (!success) {
 		std::cerr << "An error occured with shader generation" << std::endl;
 		GLchar errorBuf[512];
-		GLint length;
+		GLint length = 0;
 		if (type == SHADER_TYPE)
 			glGetShaderInfoLog(object, 512, &length, errorBuf);
 		else if (type == PROGRAM_TYPE)

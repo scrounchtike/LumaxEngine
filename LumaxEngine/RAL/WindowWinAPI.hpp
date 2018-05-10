@@ -3,6 +3,9 @@
 #define WINDOW_WIN_API_HPP
 
 #include "Window.hpp"
+
+#ifdef _USE_DIRECTX11
+
 #include "DirectInput.hpp"
 
 #ifdef _USE_DIRECTX11
@@ -18,7 +21,7 @@
 class WindowWinAPI : public Window {
 public:
 	WindowWinAPI(int style, const std::string& title, unsigned int width, unsigned int height);
-	~WindowWinAPI();
+	virtual ~WindowWinAPI();
 
 	bool shouldClose();
 	void clear();
@@ -65,4 +68,5 @@ private:
 	static LRESULT CALLBACK windowProc(HWND, UINT umsg, WPARAM wparam, LPARAM lparam);
 };
 
+#endif
 #endif

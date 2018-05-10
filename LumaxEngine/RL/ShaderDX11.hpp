@@ -12,7 +12,7 @@
 class ShaderDX11 : public Shader {
 public:
 	ShaderDX11(ShaderInformation info);
-	~ShaderDX11();
+	virtual ~ShaderDX11();
 
 	virtual void bind() const;
 

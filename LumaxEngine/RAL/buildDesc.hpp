@@ -11,10 +11,14 @@
 #define _UNIX
 #endif
 
+#define _UNIX
+
 /// System independent dependencies
 
 // Assimp
+#ifdef _WINDOWS
 #pragma comment(lib, "assimp-vc140-mt.lib")
+#endif
 
 /// Build description
 

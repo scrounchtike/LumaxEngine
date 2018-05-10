@@ -25,6 +25,8 @@ struct ShaderInformation {
 
 class Shader {
 public:
+	virtual ~Shader() { }
+	
 	virtual void bind() const = 0;
 
 	virtual void addUniform(const std::string& uniformName) = 0;

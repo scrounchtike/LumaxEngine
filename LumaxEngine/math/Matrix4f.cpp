@@ -33,7 +33,8 @@ Matrix4f& Matrix4f::initRotation(float x, float y, float z) {
 	Matrix4f rotX = Matrix4f().initRotationX(x);
 	Matrix4f rotY = Matrix4f().initRotationY(y);
 	Matrix4f rotZ = Matrix4f().initRotationZ(z);
-	return rotZ * rotY * rotX;
+	*this = rotZ * rotY * rotX;
+	return *this;
 }
 
 Matrix4f& Matrix4f::initRotation(Vec3 rotation) {
@@ -44,7 +45,8 @@ Matrix4f& Matrix4f::initRotationDegrees(float x, float y, float z) {
 	Matrix4f rotX = Matrix4f().initRotationX(x * PI / 180.0f);
 	Matrix4f rotY = Matrix4f().initRotationY(y * PI / 180.0f);
 	Matrix4f rotZ = Matrix4f().initRotationZ(z * PI / 180.0f);
-	return rotZ * rotY * rotX;
+	*this = rotZ * rotY * rotX;
+	return *this;
 }
 
 Matrix4f& Matrix4f::initRotationDegrees(Vec3 rotation) {
@@ -106,7 +108,6 @@ Matrix4f& Matrix4f::initRotationTargetNormal(const Vec3& n0, const Vec3& nt) {
 	*/
 
 	Vec3 v = cross(n0, nt);
-	float s = sqrt(dot(v, v));
 	float c = dot(n0, nt);
 	float theta = acos(c) / 2.0;
 
@@ -208,13 +209,13 @@ Matrix4f& Matrix4f::initOrthographic(float width, float height, float zNear, flo
 }
 
 Matrix4f& Matrix4f::initPerspectiveHemicube(float zNear, float zFar) {
-	float zRange = zFar - zNear;
-	float a = (zFar + zNear) / zRange;
-	float b = (2.0*zNear*zFar) / zRange;
+	//float zRange = zFar - zNear;
+	//float a = (zFar + zNear) / zRange;
+	//float b = (2.0*zNear*zFar) / zRange;
 	m[0][0] = 1;    m[0][1] = 0;    m[0][2] = 0;    m[0][3] = 0;
 	m[1][0] = 0;    m[1][1] = 1;    m[1][2] = 0;    m[1][3] = 0;
 	m[2][0] = 0;    m[2][1] = 0;    m[2][2] = 1;    m[2][3] = 3;
-	m[3][0] = 0;    m[3][1] = 0;    m[3][2] = 1;   m[3][3] = 0;
+	m[3][0] = 0;    m[3][1] = 0;    m[3][2] = 1;    m[3][3] = 0;
 	return *this;
 }
 

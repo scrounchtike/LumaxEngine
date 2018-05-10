@@ -1,5 +1,5 @@
 
-#ifndef LEVEL_LAODER_LUA_HPP
+#ifndef LEVEL_LOADER_LUA_HPP
 #define LEVEL_LOADER_LUA_HPP
 
 #include <string>
@@ -14,7 +14,10 @@ extern "C" {
 #include "lualib.h"
 }
 
+#ifdef _WINDOWS
 #pragma comment(lib, "lua51.lib")
+#endif
+
 #include "LuaBridge.h"
 
 #include "../GL/Level.hpp"
@@ -95,9 +98,9 @@ private:
 	static luabridge::LuaRef checkLuaRef(luabridge::LuaRef r, const std::string& param);
 	static luabridge::LuaRef checkLuaRef(luabridge::LuaRef r, const std::string& param, const std::string& errorMsg);
 
-	static Vec3 loadVector3D(luabridge::LuaRef r, const Vec3& default);
-	static Vec2 loadVector2D(luabridge::LuaRef r, const Vec2& default);
-	static float loadFloat(luabridge::LuaRef, float default);
+	static Vec3 loadVector3D(luabridge::LuaRef r, const Vec3& def);
+	static Vec2 loadVector2D(luabridge::LuaRef r, const Vec2& def);
+	static float loadFloat(luabridge::LuaRef, float def);
 	static bool loadFloatVector(luabridge::LuaRef r, std::vector<float>& vector);
 	static bool loadIntVector(luabridge::LuaRef r, std::vector<int>& vector);
 

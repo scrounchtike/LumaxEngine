@@ -2,11 +2,10 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
-#include <windows.h>
-
 #include "RAL/buildDesc.hpp"
 
 #ifdef _USE_DIRECTX11
+#include <windows.h>
 #include "RAL/RenderingContextDX11.hpp"
 #elif defined _USE_OPENGL
 #include "RAL/RenderingContextGL.hpp"

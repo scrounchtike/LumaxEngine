@@ -15,7 +15,7 @@
 class ShaderGL : public Shader {
 public:
 	ShaderGL(ShaderInformation info);
-	~ShaderGL();
+	virtual ~ShaderGL();
 
 	virtual void bind() const;
 

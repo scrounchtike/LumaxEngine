@@ -61,7 +61,7 @@ struct AABB : public PhysicsPrimitive {
 	Vec3 position;
 	Vec3 extents;
 	AABB(const Vec3& position, const Vec3& extents) 
-		: position(position), extents(extents), PhysicsPrimitive(cid) {
+		: PhysicsPrimitive(cid), position(position), extents(extents) {
 	}
 	static void initCases();
 	static const unsigned int cid;
@@ -77,7 +77,7 @@ struct Sphere : public PhysicsPrimitive {
 	Vec3 position;
 	float radius;
 	Sphere(const Vec3& position, float radius)
-		: position(position), radius(radius), PhysicsPrimitive(cid) {
+		: PhysicsPrimitive(cid), position(position), radius(radius) {
 	}
 	static void initCases();
 	static const unsigned int cid;
@@ -99,12 +99,12 @@ struct Plane : public PhysicsPrimitive {
 	float D;
 	Mat4 rotationMatrix;
 	Plane(Vec3 normal, float d) 
-		: normal(normal), D(d), PhysicsPrimitive(cid) 
+		: PhysicsPrimitive(cid), normal(normal), D(d) 
 	{
 		// TODO: Calculate position from D and N
 	}
 	Plane(Vec3 position, Vec3 normal)
-		: normal(normal), position(position), PhysicsPrimitive(cid) {
+		: PhysicsPrimitive(cid), normal(normal), position(position) {
 		D = -dot(position, normal);
 	}
 	static void initCases();
@@ -123,7 +123,7 @@ struct OBB : public PhysicsPrimitive {
 	Vec3 initial_u[3];
 	Vec3 e;
 	OBB(const Vec3& position, const Vec3 u[3], const Vec3& e)
-		: position(position), e(e), PhysicsPrimitive(cid) 
+		: PhysicsPrimitive(cid), position(position), e(e)
 	{
 		this->initial_u[0] = this->u[0] = u[0];
 		this->initial_u[1] = this->u[1] = u[1];
@@ -150,14 +150,14 @@ struct Ray : public PhysicsPrimitive {
 	bool acceptNegativeHits;
 
 	Ray(const Vec3& position, const Vec3& direction, bool acceptNegativeHits = false)
-		: position(position), direction(direction), acceptNegativeHits(acceptNegativeHits), PhysicsPrimitive(cid) { }
+		: PhysicsPrimitive(cid), position(position), direction(direction), acceptNegativeHits(acceptNegativeHits) { }
 
 	static void initCases();
 	static const unsigned int cid;
 
-	virtual void addTranslation(const Vec3& translation) { position += translation; }
-	virtual void addRotation(const Vec3& rotation) { }
-	virtual void addScale(const Vec3& scale) { assert(false); }
+	virtual void addTranslation(const Vec3 translation) { position += translation; }
+	virtual void addRotation(const Vec3 rotation) { }
+	virtual void addScale(const Vec3 scale) { assert(false); }
 
 	virtual void renderAxes(const RendererGL* renderer);
 };
@@ -167,14 +167,14 @@ struct Line : public PhysicsPrimitive {
 	Vec3 end;
 
 	Line(const Vec3& start, const Vec3& end)
-		: start(start), end(end), PhysicsPrimitive(cid) { }
+		: PhysicsPrimitive(cid), start(start), end(end) { }
 
 	static void initCases();
 	static const unsigned int cid;
 
-	virtual void addTranslation(const Vec3& translation) { start += translation; end += translation; }
-	virtual void addRotation(const Vec3& rotation) { }
-	virtual void addScale(const Vec3& scale) { }
+	virtual void addTranslation(const Vec3 translation) { start += translation; end += translation; }
+	virtual void addRotation(const Vec3 rotation) { }
+	virtual void addScale(const Vec3 scale) { }
 
 	virtual void renderAxes(const RendererGL* renderer);
 };

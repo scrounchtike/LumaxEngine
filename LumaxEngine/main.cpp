@@ -5,8 +5,6 @@
 #include "RAL/Window.hpp"
 
 #include "GL/Level.hpp"
-#include "loaders/LevelLoader.hpp"
-
 #include "loaders/LevelLoader_lua.hpp"
 
 #ifdef _USE_WINAPI
@@ -37,7 +35,7 @@ const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
 // Window
-static Window* window;
+Window* window;
 Window* getStaticWindow() {
 	return window;
 }
@@ -62,13 +60,13 @@ RenderingContextGL* getStaticRenderingContextGL() {
 #endif
 
 // Resource Manager
-static ResourceManager* resManager;
+ResourceManager* resManager;
 ResourceManager* getStaticResourceManager() {
 	return resManager;
 }
 
 // Level
-static Level* level;
+Level* level;
 
 void run();
 
@@ -117,10 +115,11 @@ int main(int argc, char* argv[]) {
 	LuaLevelLoader::initLoaders();
 	
 	// Init Level
-	//level = LevelLoader::loadLevel("level_test.lmx", resManager);
 	level = LuaLevelLoader::loadLevel("levels/level_test.lua", resManager);
-
+	
+#ifdef _WINDOWS
 	Time::initTimer();
+#endif
 	run();
 
 	// Clean up
@@ -138,13 +137,17 @@ int main(int argc, char* argv[]) {
 void run() {
 	uint32 fps = 0;
 	uint32 updates = 0;
+
+#ifdef _WINDOWS
 	float64 lastTime = Time::getTime();
 	std::cout << lastTime << std::endl;
 	float64 fpsTimeCounter = 0.0;
 	float64 updateTimer = 1.0;
 	float32 frameTime = 1000.0f / 60.0f; // (in milliseconds)
+#endif
 
 	while (!window->shouldClose()) {
+#ifdef _WINDOWS
 		float64 currentTime = Time::getTime();
 		float64 deltaTime = 10000 * (currentTime - lastTime);
 		lastTime = currentTime;
@@ -157,6 +160,7 @@ void run() {
 			std::cout << "FPS TIMER: " << fps << " updates: " << updates << "   frame took " << msPerFrame << std::endl;
 			fpsTimeCounter -= 1000, fps = 0, updates = 0;
 		}
+#endif
 
 		input();
 		update();

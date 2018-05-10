@@ -126,14 +126,14 @@ private:
 	std::map<std::string, Mesh3D*> mapRays;
 	std::map<std::string, Mesh3D*> mapLines;
 
-	// Cameras
-	Camera* camera;
-
 #ifdef _USE_OPENGL
 	RendererGL* renderer;
 #elif defined _USE_DIRECTX11
 	RendererDX11* renderer;
 #endif
+
+	// Cameras
+	Camera* camera;
 };
 
 #endif
