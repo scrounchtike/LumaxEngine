@@ -8,7 +8,9 @@
 #include "OpenGL/gl3.h"
 #endif
 
+#ifdef _UNIX
 #define GLFW_INCLUDE_GLCOREARB
+#endif
 #include <GLFW/glfw3.h>
 
 #ifdef _WINDOWS

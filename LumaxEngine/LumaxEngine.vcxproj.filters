@@ -57,9 +57,6 @@
     <ClCompile Include="RL\Model2DGL.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="loaders\LevelLoader.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="RL\RendererGL.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>

@@ -11,8 +11,6 @@
 #define _UNIX
 #endif
 
-#define _UNIX
-
 /// System independent dependencies
 
 // Assimp

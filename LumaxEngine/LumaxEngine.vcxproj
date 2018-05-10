@@ -147,7 +147,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GL\Level.cpp" />
-    <ClCompile Include="loaders\LevelLoader.cpp" />
     <ClCompile Include="loaders\LevelLoader_lua.cpp" />
     <ClCompile Include="loaders\ModelLoader.cpp" />
     <ClCompile Include="loaders\OBJLoader.cpp" />
