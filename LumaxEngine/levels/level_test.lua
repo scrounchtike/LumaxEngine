@@ -2,6 +2,9 @@
 shader3Dcolor = {
 	file = "GLSL/3D/shader3Dcolor"
 }
+shader3Dlight = {
+	 file = "GLSL/3D/shader3Dlight"
+}
 
 texture1 = {
 	file = "res/textures/test.png"
@@ -10,6 +13,9 @@ texture1 = {
 material1 = {
 	baseColor = {1,0,0},
 	hitColor = {0,1,0}
+}
+material_texture = {
+	 texture = texture1
 }
 
 default = {
@@ -61,5 +67,45 @@ for i = 0,1 do
 	addModel3D(obb_contact)
 	obb_contact.physics.position[3] = obb_contact.physics.position[3] + 10;
 end
+
+-- Lighted models
+lighted_cube = {
+	 fullmesh = { file = "res/models/cube.obj"},
+	 material = material_texture,
+	 shader = shader3Dlight,
+	 transform = {translation = {2,0,6}},
+	 rendergroup = "lighted"
+}
+addModel3D(lighted_cube)
+
+-- Lights
+directional1 = {
+	 direction = {1,1,-1},
+	 color = {0.5,1,0.2},
+	 intensity = 1.0
+}
+addDirectionalLight(directional1)
+
+pointlight1 = {
+	 position = {0.5,1.5,4.5},
+	 color = {0,0.95,0.65},
+	 attenuation = { constant = 0.005, linear = 0.1, exponent = 0.01 }
+}
+addPointLight(pointlight1)
+
+spotlight1 = {
+	 pointlight = { position = {2.5,1.1,7.5}, color = {0.7,0.3,1}},
+	 direction = {0,0,1},
+	 cutoff = 0.8
+}
+addSpotLight(spotlight1)
+
+cube_spot = {
+	 fullmesh = { file = "res/models/cube.obj" },
+	 shader = shader3Dcolor,
+	 material = material1,
+	 transform = { translation = spotlight1.pointlight.position, scale = { 0.02,0.02,0.02 }}
+}
+addModel3D(cube_spot)
 
 print("Done loading lua level")

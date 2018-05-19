@@ -7,7 +7,20 @@
 #if defined _WIN32 || defined _WIN64
 #define _WINDOWS
 #endif
-#ifdef __unix
+#if defined __FreeBSD__ || defined __OpenBSD__ || defined __NetBSD__ || defined __bsdi__
+#define _BSD
+#endif
+#if defined __gnu_linux__ || defined __linux__ || defined linux || defined __linux
+#define _LINUX
+#endif
+#if defined macintosh || defined Macintosh || defined __APPLE__
+#define _MACOSX
+#endif
+#if defined sun || defined __sun
+#define _SOLARIS
+#endif
+
+#if defined unix || defined __unix__ || defined __unix || defined _BSD || defined _LINUX || defined _MACOSX || defined _SOLARIS
 #define _UNIX
 #endif
 
