@@ -11,6 +11,9 @@
 
 class Model3DGL {
 public:
+	bool isTextured, isIndexed, hasNormals, hasTangents;
+	unsigned int numVertices, numIndices;
+	
 	Model3DGL(const float* vertices, int numVertices);
 	Model3DGL(const float* vertices, int numVertices, const float* texCoords);
 	Model3DGL(const float* vertices, int numVertices, const float* texCoords, const float* normals);
@@ -48,9 +51,6 @@ private:
 	void initialize(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals, const float* tangents);
 
 	void cleanUp();
-
-	bool isTextured, isIndexed, hasNormals, hasTangents;
-	unsigned int numVertices, numIndices;
 	GLuint vboID;
 	GLuint vbotID;
 	GLuint vbonID;

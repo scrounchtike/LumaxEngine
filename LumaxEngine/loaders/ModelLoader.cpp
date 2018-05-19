@@ -1,6 +1,7 @@
 
 #include "ModelLoader.hpp"
 
+#include <iostream>
 #include "../RAL/Log.hpp"
 
 std::vector<Model3D*> ModelLoader::models;
@@ -45,9 +46,9 @@ Model3DDX11* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
 	std::vector<float> normals;
 	normals.resize(mesh->mNumVertices * 3);
 
-	bool hasNormals, hasTexCoords, hasIndices;
+	bool hasNormals, hasTexCoords, hasIndices = true;
 	hasTexCoords = mesh->HasTextureCoords(0);
-	hasNormals = false;
+	hasNormals = mesh->HasNormals();
 
 	for (int i = 0; i < mesh->mNumVertices; ++i) {
 		vertices[i * 3 + 0] = mesh->mVertices[i].x;
@@ -69,10 +70,41 @@ Model3DDX11* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
 		indices[i * 3 + 1] = mesh->mFaces[i].mIndices[1];
 		indices[i * 3 + 2] = mesh->mFaces[i].mIndices[0];
 	}
+
 #ifdef _USE_OPENGL
-	Model3DGL* model = new Model3DGL(vertices, indices, texCoords);
+	Model3DGL* model;
+	if(hasIndices){
+		if(hasNormals)
+			model = new Model3DGL(vertices, indices, texCoords, normals);
+		else if(hasTexCoords)
+			model = new Model3DGL(vertices, indices, texCoords);
+		else
+			model = new Model3DGL(vertices, indices);
+	}else{
+		if(hasNormals)
+			model = new Model3DGL(vertices, texCoords, normals);
+		else if(hasTexCoords)
+			model = new Model3DGL(vertices, texCoords);
+		else
+			model = new Model3DGL(vertices);
+	}
 #elif defined _USE_DIRECTX11
-	Model3DDX11* model = new Model3DDX11(vertices, indices);
+	Model3DDX11* model;
+	if(hasIndices){
+		if(hasNormals)
+			model = new Model3DDX11(vertices, indices, texCoords, normals);
+		else if(hasTexCoords)
+			model = new Model3DDX11(vertices, indices, texCoords);
+		else
+			model = new Model3DGL(vertices, indices);
+	}else{
+		if(hasNormals)
+			model = new Model3DDX11(vertices, texCoords, normals);
+		else if(hasTexCoords)
+			model = newModel3DDX11(vertices, texCoords);
+		else
+			model = new Model3DDX11(vertices);
+	}
 #endif
 	return model;
 }

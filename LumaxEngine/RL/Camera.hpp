@@ -15,6 +15,8 @@ public:
 
 	void update();
 
+	const Vec3& getPosition() const { return position; }
+
 	const Mat4& getViewMatrix() const { return viewMatrix; }
 	const Mat4& getProjectionMatrix() const { return projectionMatrix; }
 private:

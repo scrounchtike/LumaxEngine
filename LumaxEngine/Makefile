@@ -1,7 +1,7 @@
 
-SOURCES = $(wildcard *.cpp GL/*.cpp PL/*.cpp RAL/*.cpp RL/*.cpp RML/*.cpp core/*.cpp levels/*.cpp loaders/*.cpp utils/*.cpp math/*.cpp)
+SOURCES = $(wildcard *.cpp GL/*.cpp PL/*.cpp RAL/*.cpp RL/*.cpp RL/lights/*.cpp RML/*.cpp core/*.cpp levels/*.cpp loaders/*.cpp utils/*.cpp math/*.cpp)
 
-HEADERS = $(wildcart *.hpp *.h GL/*.hpp PL/*.hpp RAL/*.hpp RL/*.hpp RML/*.hpp core/*.hpp levels/*.hpp loaders/*.hpp math/*.hpp utils/*.hpp utils/*.h)
+HEADERS = $(wildcart *.hpp *.h GL/*.hpp PL/*.hpp RAL/*.hpp RL/*.hpp RL/lights/*.hpp RML/*.hpp core/*.hpp levels/*.hpp loaders/*.hpp math/*.hpp utils/*.hpp utils/*.h)
 
 all: clean make
 

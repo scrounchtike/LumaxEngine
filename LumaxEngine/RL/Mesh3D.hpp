@@ -113,17 +113,7 @@ public:
 	void bindForRender(const Camera* camera) const;
 	void renderBuffersOnly() const;
 	void unbindForRender() const;
-
-	Transform3D* getTransform() const {
-		return transform;
-	}
-	PhysicsPrimitive* getPhysics() const {
-		return physics;
-	}
-	Material* getMaterial() const {
-		return material;
-	}
-private:
+	
 	FullModel3D* fullModel;
 	Material* material;
 	Shader* shader;

@@ -83,7 +83,18 @@ private:
 	static Model3DGL* loadMesh3D(luabridge::LuaRef r);
 	static FullModel3D* loadFullMesh3D(luabridge::LuaRef r);
 
-	static void loadModel3D(luabridge::LuaRef r);
+	static Mesh3D* loadModel3D(luabridge::LuaRef r, std::string& rendergroup);
+
+	static Attenuation* loadLightAttenuation(luabridge::LuaRef r);
+	static DirectionalLight* loadDirectionalLight(luabridge::LuaRef r);
+	static PointLight* loadPointLight(luabridge::LuaRef r);
+	static SpotLight* loadSpotLight(luabridge::LuaRef r);
+
+	// Lua interface methods (Have to be void for some reason?)
+	static void addModel3D(luabridge::LuaRef r);
+	static void addDirectionalLight(luabridge::LuaRef r);
+	static void addPointLight(luabridge::LuaRef r);
+	static void addSpotLight(luabridge::LuaRef r);
 
 	static ResourceManager* resManager;
 	static Level* level;

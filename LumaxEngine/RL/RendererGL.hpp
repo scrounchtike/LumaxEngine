@@ -12,6 +12,8 @@
 
 #include "../PL/PhysicsPrimitives.hpp"
 
+struct LightingDescription;
+
 class RendererGL {
 public:
 	RendererGL(Camera* camera);
@@ -26,6 +28,7 @@ public:
 
 	void renderMesh2D(const Mesh2D& mesh2D) const;
 	void renderMesh3D(const Mesh3D& mesh3D) const;
+	void renderLightedMesh3D(const Mesh3D& mesh3D) const;
 
 	void renderAABB(const Mesh3D& aabb) const;
 	void renderSphere(const Mesh3D& sphere) const;
@@ -43,6 +46,7 @@ public:
 
 	void renderMeshes2D(const std::vector<Mesh2D*>& meshes2D) const;
 	void renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const;
+	void renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const;
 
 	void renderAABBs(const std::vector<Mesh3D*>& aabbs) const;
 	void renderSpheres(const std::vector<Mesh3D*>& spheres) const;
@@ -108,6 +112,8 @@ private:
 	ShaderGL* shaderSphere3D;
 	ShaderGL* shaderPlane3D;
 	ShaderGL* shaderOBB3D;
+
+	ShaderGL* shader3Dlight;
 
 	Camera* camera;
 };

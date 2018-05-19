@@ -22,6 +22,12 @@
 #include "../PL/PhysicsPrimitives.hpp"
 #include "../PL/Movement3D.hpp"
 
+struct LightingDescription {
+	std::vector<DirectionalLight*> directionalLights;
+	std::vector<PointLight*> pointLights;
+	std::vector<SpotLight*> spotLights;
+};
+
 class Level {
 public:
 #ifdef _USE_OPENGL
@@ -43,6 +49,7 @@ public:
 
 	Mesh2D* addMesh2D(Mesh2D* mesh2D);
 	Mesh3D* addMesh3D(Mesh3D* mesh3D);
+	Mesh3D* addLightedMesh3D(Mesh3D* mesh3D);
 
 	Mesh3D* addAABB(Mesh3D* aabb);
 	Mesh3D* addSphere(Mesh3D* sphere);
@@ -60,6 +67,7 @@ public:
 
 	Mesh2D* addNamedMesh2D(const std::string& name, Mesh2D* mesh2D);
 	Mesh3D* addNamedMesh3D(const std::string& name, Mesh3D* mesh3D);
+	// Mesh3D* addNamedLightedMesh3D(const std::string& name, Mesh3D* mesh3D); // temp ?
 
 	Mesh3D* addNamedAABB(const std::string& name, Mesh3D* aabb);
 	Mesh3D* addNamedSphere(const std::string& name, Mesh3D* sphere);
@@ -70,6 +78,10 @@ public:
 
 	DirectionalLight* addDirectionalLight(DirectionalLight* light);
 	DirectionalLight* addNamedDirectionalLight(const std::string& name, DirectionalLight* light);
+	PointLight* addPointLight(PointLight* light);
+	PointLight* addNamedPointLight(const std::string& name, PointLight* light);
+	SpotLight* addSpotLight(SpotLight* light);
+	SpotLight* addNamedSpotLight(const std::string& name, SpotLight* light);
 
 	Movement3D* addMovement3D(Movement3D* movement);
 
@@ -89,8 +101,9 @@ private:
 
 	std::vector<Mesh2D*> meshes2D;
 	std::vector<Mesh3D*> meshes3D;
-
-	std::vector<DirectionalLight*> directionalLights;
+	std::vector<Mesh3D*> lightedMeshes3D;
+	
+	LightingDescription lights;
 
 	// All primitives in a single container for physics
 	std::vector<Mesh3D*> physicsPrimitives;
@@ -116,8 +129,11 @@ private:
 
 	std::map<std::string, Mesh2D*> mapMeshes2D;
 	std::map<std::string, Mesh3D*> mapMeshes3D;
+	std::map<std::string, Mesh3D*> mapLightedMeshes3D;
 
 	std::map<std::string, DirectionalLight*> mapDirectionalLights;
+	std::map<std::string, PointLight*> mapPointLights;
+	std::map<std::string, SpotLight*> mapSpotLights;
 
 	std::map<std::string, Mesh3D*> mapAABBs;
 	std::map<std::string, Mesh3D*> mapSpheres;

@@ -61,7 +61,14 @@ Mesh2D* Level::addMesh2D(Mesh2D* mesh2D) {
 
 Mesh3D* Level::addMesh3D(Mesh3D* mesh3D) {
 	meshes3D.push_back(mesh3D);
-	if (mesh3D->getPhysics())
+	if (mesh3D->physics)
+		physicsPrimitives.push_back(mesh3D);
+	return mesh3D;
+}
+
+Mesh3D* Level::addLightedMesh3D(Mesh3D* mesh3D){
+	lightedMeshes3D.push_back(mesh3D);
+	if(mesh3D->physics)
 		physicsPrimitives.push_back(mesh3D);
 	return mesh3D;
 }
@@ -147,7 +154,7 @@ Mesh2D* Level::addNamedMesh2D(const std::string& name, Mesh2D* mesh2D) {
 Mesh3D* Level::addNamedMesh3D(const std::string& name, Mesh3D* mesh3D) {
 	meshes3D.push_back(mesh3D);
 	mapMeshes3D.insert(std::pair<std::string, Mesh3D*>(name, mesh3D));
-	if (mesh3D->getPhysics())
+	if (mesh3D->physics)
 		physicsPrimitives.push_back(mesh3D);
 	return mesh3D;
 }
@@ -197,13 +204,35 @@ Mesh3D* Level::addNamedLine(const std::string& name, Mesh3D* line) {
 // Lights
 
 DirectionalLight* Level::addDirectionalLight(DirectionalLight* light) {
-	directionalLights.push_back(light);
+	lights.directionalLights.push_back(light);
 	return light;
 }
 
 DirectionalLight* Level::addNamedDirectionalLight(const std::string& name, DirectionalLight* light) {
-	directionalLights.push_back(light);
+	lights.directionalLights.push_back(light);
 	mapDirectionalLights.insert(std::pair<std::string, DirectionalLight*>(name, light));
+	return light;
+}
+
+PointLight* Level::addPointLight(PointLight* light){
+	lights.pointLights.push_back(light);
+	return light;
+}
+
+PointLight* Level::addNamedPointLight(const std::string &name, PointLight *light){
+	lights.pointLights.push_back(light);
+	mapPointLights.insert(std::pair<std::string, PointLight*>(name, light));
+	return light;
+}
+
+SpotLight* Level::addSpotLight(SpotLight* light){
+	lights.spotLights.push_back(light);
+	return light;
+}
+
+SpotLight* Level::addNamedSpotLight(const std::string& name, SpotLight* light){
+	lights.spotLights.push_back(light);
+	mapSpotLights.insert(std::pair<std::string, SpotLight*>(name, light));
 	return light;
 }
 
@@ -219,19 +248,19 @@ void Level::update() {
 
 	// Physics update!
 	for (int i = 0; i < physicsPrimitives.size(); ++i) {
-		physicsPrimitives[i]->getMaterial()->colorIndex = 0;
+		physicsPrimitives[i]->material->colorIndex = 0;
 	}
 	// Perform Collision Detection in O^2
 	for (int i = 0; i < physicsPrimitives.size(); ++i) {
-		PhysicsPrimitive* pFirst = physicsPrimitives[i]->getPhysics();
+		PhysicsPrimitive* pFirst = physicsPrimitives[i]->physics;
 		assert(pFirst);
 		for (int j = i + 1; j < physicsPrimitives.size(); ++j) {
-			PhysicsPrimitive* pSecond = physicsPrimitives[j]->getPhysics();
+			PhysicsPrimitive* pSecond = physicsPrimitives[j]->physics;
 			assert(pSecond);
 			bool collided = pFirst->collidesWith(pSecond);
 			if (collided) {
-				physicsPrimitives[i]->getMaterial()->colorIndex = 1;
-				physicsPrimitives[j]->getMaterial()->colorIndex = 1;
+				physicsPrimitives[i]->material->colorIndex = 1;
+				physicsPrimitives[j]->material->colorIndex = 1;
 			}
 		}
 	}
@@ -295,6 +324,9 @@ void Level::render() const {
 	// Meshes 3D
 	renderer->renderMeshes3D(meshes3D);
 
+	// Render lighted meshes
+	renderer->renderLightedMeshes3D(lightedMeshes3D, lights);
+
 	// Physics Primitives
 	renderer->renderAABBs(aabbs);
 	renderer->renderSpheres(spheres);
@@ -305,9 +337,9 @@ void Level::render() const {
 	renderer->renderLines(lines);
 
 	for (Mesh3D* obb : obbs)
-		obb->getPhysics()->renderAxes(renderer);
+		obb->physics->renderAxes(renderer);
 	for (Mesh3D* plane : planes)
-		plane->getPhysics()->renderAxes(renderer);
+		plane->physics->renderAxes(renderer);
 	for (Mesh3D* aabb : aabbs)
-		aabb->getPhysics()->renderAxes(renderer);
+		aabb->physics->renderAxes(renderer);
 }

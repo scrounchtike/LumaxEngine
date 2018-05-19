@@ -3,6 +3,7 @@
 
 #include "../RAL/Log.hpp"
 #include "../main.hpp"
+#include "../GL/Level.hpp"
 
 #ifdef _USE_OPENGL
 
@@ -105,6 +106,10 @@ void RendererGL::renderMesh2D(const Mesh2D& mesh2D) const {
 
 void RendererGL::renderMesh3D(const Mesh3D& mesh3D) const {
 	mesh3D.render(camera);
+}
+
+void RendererGL::renderLightedMesh3D(const Mesh3D& mesh3D) const {
+	// TODO: Do lighted 3D rendering
 }
 
 void RendererGL::renderAABB(const Mesh3D& aabb) const {
@@ -235,7 +240,91 @@ void RendererGL::renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const {
 	if (!meshes3D.size())
 		return;
 	for (Mesh3D* mesh : meshes3D) {
-		mesh->render(camera);
+		mesh->shader->bind();
+		//material uniforms
+		mesh->material->setShaderUniforms((ShaderGL*)mesh->shader);
+		// Uniforms
+		static Mat4 identity = Mat4().initIdentity();
+		mesh->shader->setUniformMatrix("projection", camera->getProjectionMatrix());
+		mesh->shader->setUniformMatrix("view", camera->getViewMatrix());
+		if (mesh->transform) {
+			mesh->shader->setUniformMatrix("transform", *mesh->transform->getTransformation());
+		}else
+			mesh->shader->setUniformMatrix("transform", identity);
+
+		mesh->fullModel->render();
+	}
+}
+
+void RendererGL::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const{
+	assert(camera);
+	if(!meshes3D.size())
+		return;
+	for(Mesh3D* mesh : meshes3D){
+		mesh->shader->bind();
+		// material uniforms
+		mesh->material->setShaderUniforms((ShaderGL*)mesh->shader);
+		// Camera uniforms
+		static Mat4 identity = Mat4().initIdentity();
+		mesh->shader->setUniformMatrix("projection", camera->getProjectionMatrix());
+		mesh->shader->setUniformMatrix("view", camera->getViewMatrix());
+		mesh->shader->setUniform3f("cameraPos", camera->getPosition());
+		// LIGHTING uniforms
+		/*
+		// TEMP Test directional light
+		mesh->shader->setUniform3f("dLight.direction", Vec3(1,1,-1).normalize());
+		mesh->shader->setUniform3f("dLight.color", Vec3(1,0,1));
+		mesh->shader->setUniform1f("dLight.intensity", 1.0f);
+		mesh->shader->setUniform3f("cameraPos", camera->getPosition());
+		*/
+		// TEMP Point light uniform test
+		//mesh->shader->setUniform3f("pLight.position", Vec3(0.5,1.5,4.5));
+		//mesh->shader->setUniform3f("pLight.color", Vec3(1,1,0));
+		//mesh->shader->setUniform1f("pLight.intensity", 1.0f);
+		//mesh->shader->setUniform1f("pLight.constant", 1.0f);
+		//mesh->shader->setUniform1f("pLight.linear", 0.1f);
+		//mesh->shader->setUniform1f("pLight.exponent", 0.01f);
+
+		assert(lights.directionalLights.size() <= 4);
+		int index = 0;
+		for(DirectionalLight* light : lights.directionalLights){
+			mesh->shader->setUniform3f("dlights[" + std::to_string(index) + "].direction", light->direction);
+			mesh->shader->setUniform3f("dlights[" + std::to_string(index) + "].color", light->color);
+			mesh->shader->setUniform1f("dlights[" + std::to_string(index) + "].intensity", light->intensity);
+			++index;
+		}
+
+		assert(lights.pointLights.size() <= 4);
+		index = 0;
+		for(PointLight* light : lights.pointLights){
+			mesh->shader->setUniform3f("plights[" + std::to_string(index) + "].position", light->position);
+			mesh->shader->setUniform3f("plights[" + std::to_string(index) + "].color", light->color);
+			mesh->shader->setUniform1f("plights[" + std::to_string(index) + "].constant", light->attenuation.constant);
+			mesh->shader->setUniform1f("plights[" + std::to_string(index) + "].linear", light->attenuation.linear);
+			mesh->shader->setUniform1f("plights[" + std::to_string(index) + "].exponent", light->attenuation.exponent);
+			++index;
+		}
+
+		assert(lights.spotLights.size() <= 4);
+		index = 0;
+		for(SpotLight* light : lights.spotLights){
+			mesh->shader->setUniform3f("slights[" + std::to_string(index) + "].pointlight.position", light->pointlight.position);
+			mesh->shader->setUniform3f("slights[" + std::to_string(index) + "].pointlight.color", light->pointlight.color);
+			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].pointlight.constant", light->pointlight.attenuation.constant);
+			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].pointlight.linear", light->pointlight.attenuation.linear);
+			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].pointlight.exponent", light->pointlight.attenuation.exponent);
+			mesh->shader->setUniform3f("slights[" + std::to_string(index) + "].direction", light->direction);
+			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].cutoff", light->cutoff);
+		}
+		
+		// TRANSFORM uniform
+		if (mesh->transform) {
+			mesh->shader->setUniformMatrix("transform", *mesh->transform->getTransformation());
+		}else
+			mesh->shader->setUniformMatrix("transform", identity);
+
+		// Render call for geometry
+		mesh->fullModel->render();
 	}
 }
 
@@ -247,10 +336,10 @@ void RendererGL::renderAABBs(const std::vector<Mesh3D*>& aabbs) const {
 	glBindVertexArray(vaoIDcube3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : aabbs) {
-		AABB* aabb = (AABB*)mesh->getPhysics();
+		AABB* aabb = (AABB*)mesh->physics;
 		shaderAABB3D->setUniform3f("position", aabb->position);
 		shaderAABB3D->setUniform3f("extents", aabb->extents);
-		mesh->getMaterial()->setShaderUniforms(shaderAABB3D);
+		mesh->material->setShaderUniforms(shaderAABB3D);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -267,10 +356,10 @@ void RendererGL::renderSpheres(const std::vector<Mesh3D*>& spheres) const {
 	glBindVertexArray(vaoIDsphere3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : spheres) {
-		Sphere* sphere = (Sphere*)mesh->getPhysics();
+		Sphere* sphere = (Sphere*)mesh->physics;
 		shaderSphere3D->setUniform3f("position", sphere->position);
 		shaderSphere3D->setUniform1f("radius", sphere->radius);
-		mesh->getMaterial()->setShaderUniforms(shaderSphere3D);
+		mesh->material->setShaderUniforms(shaderSphere3D);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDsphere3D);
 		glDrawElements(GL_TRIANGLES, numIndicesSphere, GL_UNSIGNED_INT, 0);
@@ -287,7 +376,7 @@ void RendererGL::renderPlanes(const std::vector<Mesh3D*>& planes) const {
 	glBindVertexArray(vaoIDplane3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : planes) {
-		if (mesh->getMaterial()->getTexture()) {
+		if (mesh->material->getTexture()) {
 			glEnableVertexAttribArray(1);
 			shaderPlane3D->setUniform1f("isTextured", 1.0);
 		}
@@ -295,7 +384,7 @@ void RendererGL::renderPlanes(const std::vector<Mesh3D*>& planes) const {
 			shaderPlane3D->setUniform1f("isTextured", 0.0);
 		}
 
-		Plane* plane = (Plane*)mesh->getPhysics();
+		Plane* plane = (Plane*)mesh->physics;
 		// Calculate rotation matrix
 		Vec3 u = Vec3(0, 0, 1);
 		if (u.equals(plane->normal))
@@ -310,11 +399,11 @@ void RendererGL::renderPlanes(const std::vector<Mesh3D*>& planes) const {
 		shaderPlane3D->setUniformMatrix("rotation", rotation);
 		shaderPlane3D->setUniform3f("position", plane->position);
 		shaderPlane3D->setUniform1f("scale", plane->renderingScale);
-		mesh->getMaterial()->setShaderUniforms(shaderPlane3D);
+		mesh->material->setShaderUniforms(shaderPlane3D);
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 
-		if (mesh->getMaterial()->getTexture())
+		if (mesh->material->getTexture())
 			glDisableVertexAttribArray(1);
 	}
 	glDisableVertexAttribArray(0);
@@ -329,7 +418,7 @@ void RendererGL::renderOBBs(const std::vector<Mesh3D*>& obbs) const {
 	glBindVertexArray(vaoIDcube3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : obbs) {
-		OBB* obb = (OBB*)mesh->getPhysics();
+		OBB* obb = (OBB*)mesh->physics;
 		Vec3 u2 = cross(obb->u[0], obb->u[1]);
 		Mat4 translation = Mat4().initTranslation(obb->position);
 		Mat4 rotation = Mat4().initSpecialRotation2(obb->u[0], obb->u[1], u2);
@@ -337,7 +426,7 @@ void RendererGL::renderOBBs(const std::vector<Mesh3D*>& obbs) const {
 		Mat4 transform = translation.mul(rotation.mul(scale));
 		shaderOBB3D->setUniformMatrix("transform", transform);
 
-		mesh->getMaterial()->setShaderUniforms(shaderOBB3D);
+		mesh->material->setShaderUniforms(shaderOBB3D);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -354,11 +443,11 @@ void RendererGL::renderRays(const std::vector<Mesh3D*>& rays) const {
 	glBindVertexArray(vaoIDline3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : rays) {
-		Ray* ray = (Ray*)mesh->getPhysics();
+		Ray* ray = (Ray*)mesh->physics;
 		shaderLine3D->setUniform3f("start", ray->position);
 		shaderLine3D->setUniform3f("end", ray->position + ray->direction * 10000.0f);
 
-		mesh->getMaterial()->setShaderUniforms(shaderLine3D);
+		mesh->material->setShaderUniforms(shaderLine3D);
 
 		glDrawArrays(GL_LINES, 0, 2);
 	}
@@ -374,11 +463,11 @@ void RendererGL::renderLines(const std::vector<Mesh3D*>& lines) const {
 	glBindVertexArray(vaoIDline3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : lines) {
-		Line* ray = (Line*)mesh->getPhysics();
+		Line* ray = (Line*)mesh->physics;
 		shaderLine3D->setUniform3f("start", ray->start);
 		shaderLine3D->setUniform3f("end", ray->end);
 
-		mesh->getMaterial()->setShaderUniforms(shaderLine3D);
+		mesh->material->setShaderUniforms(shaderLine3D);
 
 		glDrawArrays(GL_LINES, 0, 2);
 	}

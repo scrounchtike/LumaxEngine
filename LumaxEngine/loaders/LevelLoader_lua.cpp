@@ -3,6 +3,7 @@
 
 #include "TextureLoader.hpp"
 #include "ModelLoader.hpp"
+#include "../RL/lights.hpp"
 
 #include "../utils/StringUtils.hpp"
 
@@ -248,7 +249,7 @@ Movement3D* LuaLevelLoader::loadMovement3D(luabridge::LuaRef r) {
 	return movement;
 }
 
-void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
+Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergroup) {
 	std::cout << "Loading Model3D from Lua level script" << std::endl;
 
 	FullModel3D* fullMesh = defaultFullMesh;
@@ -256,7 +257,9 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 	Shader* shader = defaultShader;
 	PhysicsPrimitive* physics = defaultPhysics;
 	Transform3D* transform = defaultTransform;
-	std::string rendergroup = defaultRendergroup;
+
+	// Aux variables
+	rendergroup = defaultRendergroup;
 	Movement3D* movement = defaultMovement;
 
 	// Load physics
@@ -280,6 +283,10 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 			}
 		}else
 			fullMesh = loadFullMesh3D(_fullMesh);
+	}
+	if(fullMesh){
+		bool hasNormals = fullMesh->models[0]->hasNormals;
+		std::cout << "Model has normals = " << hasNormals << std::endl;
 	}
 
 	// Load Material
@@ -319,11 +326,77 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 
 	Mesh3D* model = new Mesh3D(fullMesh, material, shader, transform, physics);
 	
-	// Load movement
+	// Link movement with model3D
 	if (movement)
 		movement->mesh = model, level->addMovement3D(movement);
 
-	// Add Model to level
+	return model;
+}
+
+Attenuation* LuaLevelLoader::loadLightAttenuation(luabridge::LuaRef r){
+	float constant = 1.0;
+	float linear = 0.1;
+	float exponent = 0.01;
+
+	// No attenuation was provided
+	if(r.isNil())
+		return new Attenuation(constant, linear, exponent);
+	
+	if(!r["constant"].isNil())
+		constant = r["constant"].cast<float>();
+	if(!r["linear"].isNil())
+		linear = r["linear"].cast<float>();
+	if(!r["exponent"].isNil())
+		exponent = r["exponent"].cast<float>();
+
+	return new Attenuation(constant, linear, exponent);
+}
+
+DirectionalLight* LuaLevelLoader::loadDirectionalLight(luabridge::LuaRef r){
+	Vec3 direction = Vec3(0,0,-1);
+	Vec3 color = Vec3(1,1,1);
+	float intensity = 1.0f;
+
+	if(!r["direction"].isNil())
+		direction = loadVector3D(r["direction"]).normalize();
+	if(!r["color"].isNil())
+		color = loadVector3D(r["color"]);
+	if(!r["intensity"].isNil())
+		intensity = r["intensity"].cast<float>();
+
+	DirectionalLight* light = new DirectionalLight(direction, color, intensity);
+	return light;
+}
+
+PointLight* LuaLevelLoader::loadPointLight(luabridge::LuaRef r){
+	Vec3 position = Vec3(0,0,0);
+	Vec3 color = Vec3(1,1,0);
+	Attenuation* attenuation = loadLightAttenuation(r["attenuation"]);
+
+	if(!r["position"].isNil())
+		position = loadVector3D(r["position"]);
+	if(!r["color"].isNil())
+		color = loadVector3D(r["color"]);
+
+	PointLight* light = new PointLight(position, color, *attenuation);
+	return light;
+}
+
+SpotLight* LuaLevelLoader::loadSpotLight(luabridge::LuaRef r){
+	PointLight* pointlight = nullptr;
+	if(!r["pointlight"].isNil())
+		pointlight = loadPointLight(r["pointlight"]);
+	Vec3 direction = loadVector3D(r["direction"], Vec3(0,0,-1)).normalize();
+	float cutoff = loadFloat(r["cutoff"], 0.5f);
+	
+	SpotLight* light = new SpotLight(*pointlight, direction, cutoff);
+	return light;
+}
+
+void LuaLevelLoader::addModel3D(luabridge::LuaRef r){
+	std::string rendergroup;
+	Mesh3D* model = loadModel3D(r, rendergroup);
+	
 	if (rendergroup == "AABB")
 		level->addAABB(model);
 	else if (rendergroup == "Sphere")
@@ -336,8 +409,22 @@ void LuaLevelLoader::loadModel3D(luabridge::LuaRef r) {
 		level->addRay(model);
 	else if (rendergroup == "Line")
 		level->addLine(model);
+	else if(rendergroup == "lighted")
+		level->addLightedMesh3D(model);
 	else
 		level->addMesh3D(model);
+}
+
+void LuaLevelLoader::addDirectionalLight(luabridge::LuaRef r){
+	level->addDirectionalLight(loadDirectionalLight(r));
+}
+
+void LuaLevelLoader::addPointLight(luabridge::LuaRef r){
+	level->addPointLight(loadPointLight(r));
+}
+
+void LuaLevelLoader::addSpotLight(luabridge::LuaRef r){
+	level->addSpotLight(loadSpotLight(r));
 }
 
 Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* resManager) {
@@ -368,9 +455,12 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 	// Add necessary C++ functions for lua
 	luabridge::getGlobalNamespace(state).
 		addFunction("print", print).
-		addFunction("addModel3D", loadModel3D).
+		addFunction("addModel3D", addModel3D).
 		addFunction("loadLevelParameters", loadLevelParameters).
-		addFunction("updateDefaultVariables", updateDefaultVariables);
+		addFunction("updateDefaultVariables", updateDefaultVariables).
+		addFunction("addDirectionalLight", addDirectionalLight).
+		addFunction("addPointLight", addPointLight).
+		addFunction("addSpotLight", addSpotLight);
 
 	// Open and execute lua script
 	if (luaL_loadfile(state, filename.c_str())) {

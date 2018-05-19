@@ -1,6 +1,9 @@
 
 // Top priority
 
+1. [ ] Clock / Profiler for performance monitoring and FPS counting
+2. [ ] Move mesh3D render calls into the Renderer class for better control/optimization
+
 1. [ ] Implement ZBuffer enable / disable in DX11 rendering context
 2. [ ] Implement cleanUp function for OpenGL Model2D (delete GL buffers)
 3. [ ] Implement cleanUpGeometries in OopenGL RendererGL class (delete GL buffers)
