@@ -7,7 +7,7 @@
 bool WindowWinAPI::exitRequested = false;
 
 WindowWinAPI::WindowWinAPI(int style, const std::string& title, unsigned int width, unsigned int height)
-	: Window(title, width, height)
+	: title(title), width(width), height(height)
 {
 	bool success = initialize(style);
 	assert(success);
@@ -35,7 +35,9 @@ void WindowWinAPI::input() {
 	}
 
 	// Direct Input
+#ifdef _USE_DIRECTINPUT
 	directInput->frame();
+#endif
 }
 
 void WindowWinAPI::update() {
@@ -48,22 +50,38 @@ void WindowWinAPI::update() {
 }
 
 bool WindowWinAPI::wasKeyPressed(int key) {
+#ifdef _USE_DIRECTINPUT
 	return directInput->wasKeyPressed(key);
+#else
+	return false;
+#endif
 }
 
 bool WindowWinAPI::wasKeyJustPressed(int key) {
+#ifdef _USE_DIRECTINPUT
 	return directInput->wasKeyJustPressed(key);
+#else
+	return false;
+#endif
 }
 
 bool WindowWinAPI::wasButtonPressed(int button) {
+#ifdef _USE_DIRECTINPUT
 	return directInput->wasButtonPressed(button);
+#else
+	return false;
+#endif
 }
 
 bool WindowWinAPI::wasButtonJustPressed(int button) {
+#ifdef _USE_DIRECTINPUT
 	return directInput->wasButtonJustPressed(button);
+#else
+	return false;
+#endif
 }
 
-void WindowWinAPI::getMousePosition(int& posX, int& posY) {
+void WindowWinAPI::getCursorPosition(int& posX, int& posY) {
 	POINT pt;
 	GetCursorPos(&pt);
 	ScreenToClient(hwnd, &pt);
@@ -125,14 +143,18 @@ bool WindowWinAPI::initialize(int nCmdShow) {
 	ShowCursor(true);
 
 	// Direct Input initialization
+#ifdef _USE_DIRECTINPUT
 	directInput = new DirectInput(hInstance, hwnd, width, height);
+#endif
 
 	return true;
 }
 
 bool WindowWinAPI::cleanUp() {
 	// DirectInput cleanUp
+#ifdef _USE_DIRECTINPUT
 	delete directInput;
+#endif
 
 	ShowCursor(true);
 	ShowCursor(true);
@@ -212,7 +234,6 @@ bool WindowWinAPI::initDirectX11() {
 	ContextDescription stateDesc;
 	renderContext = new RenderingContextDX11(stateDesc, hwnd);
 #endif
-
 	return true;
 }
 

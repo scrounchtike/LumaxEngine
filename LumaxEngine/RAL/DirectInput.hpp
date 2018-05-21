@@ -1,10 +1,10 @@
 
-#include "BuildDesc.hpp"
-
-#ifdef _USE_DIRECTX11
-
 #ifndef DIRECT_INPUT_HPP
 #define DIRECT_INPUT_HPP
+
+#include "BuildDesc.hpp"
+
+#ifdef _USE_DIRECTINPUT
 
 #define DIRECTINPUT_VERSION 0x0800
 
@@ -12,6 +12,9 @@
 #pragma comment(lib, "dxguid.lib")
 
 #include <dinput.h>
+
+#define NUM_KEYS 256
+#define NUM_BUTTONS 8
 
 class DirectInput {
 public:

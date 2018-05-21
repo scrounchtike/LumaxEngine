@@ -4,17 +4,8 @@
 
 #include "../math.hpp"
 
-#include "TextureGL.hpp"
-#include "ShaderGL.hpp"
-
-#include "ShaderDX11.hpp"
-#include "TextureDX11.hpp"
-
-#ifdef _USE_OPENGL
-typedef TextureGL Texture;
-#elif defined _USE_DIRECTX11
-typedef TextureDX11 Texture;
-#endif
+#include "Texture.hpp"
+#include "Shader.hpp"
 
 class Material {
 public:
@@ -32,9 +23,9 @@ public:
 	}
 
 #ifdef _USE_OPENGL
-	void setShaderUniforms(ShaderGL* shader);
+	void setShaderUniforms(Shader* shader);
 #elif defined _USE_DIRECTX11
-	void setShaderUniforms(ShaderDX11* shader);
+	void setShaderUniforms(Shader* shader);
 #endif
 private:
 	Texture* texture = nullptr;

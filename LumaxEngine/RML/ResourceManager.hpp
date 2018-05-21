@@ -7,12 +7,7 @@
 #include <map>
 
 #include "../RAL/Log.hpp"
-
-#ifdef _USE_DIRECTX11
-#include "../RL/ShaderDX11.hpp"
-#elif defined _USE_OPENGL
-#include "../RL/ShaderGL.hpp"
-#endif
+#include "../RL/Shader.hpp"
 
 class ResourceManager {
 public:

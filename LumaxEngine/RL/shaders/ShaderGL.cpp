@@ -1,13 +1,14 @@
 
 #include "ShaderGL.hpp"
+#include "../Shader.hpp"
 
 #ifdef _USE_OPENGL
 
 #include <fstream>
 
-#include "../RAL/Log.hpp"
+#include "../../RAL/Log.hpp"
 
-ShaderGL::ShaderGL(ShaderInformation info) {
+ShaderGL::ShaderGL(const ShaderInformation& info) {
 	bool success = initialize(info);
 	assert(success);
 }
@@ -19,6 +20,10 @@ ShaderGL::~ShaderGL() {
 
 void ShaderGL::bind() const {
 	glUseProgram(program);
+}
+
+void ShaderGL::prepareUniforms() const {
+	// NOP. Used for DX11 interface compatibility
 }
 
 void ShaderGL::addUniform(const std::string& uniformName) {
@@ -38,28 +43,12 @@ void ShaderGL::setUniform2f(const std::string &uniformName, float x, float y) {
 	glUniform2f(uniforms[uniformName], x, y);
 }
 
-void ShaderGL::setUniform2f(const std::string &uniformName, const Vec2 &value) {
-	glUniform2f(uniforms[uniformName], value.x, value.y);
-}
-
 void ShaderGL::setUniform3f(const std::string &uniformName, float x, float y, float z) {
 	glUniform3f(uniforms[uniformName], x, y, z);
 }
 
-void ShaderGL::setUniform3f(const std::string &uniformName, const Vec3 &value) {
-	glUniform3f(uniforms[uniformName], value.x, value.y, value.z);
-}
-
 void ShaderGL::setUniform4f(const std::string &uniformName, float x, float y, float z, float w) {
 	glUniform4f(uniforms[uniformName], x, y, z, w);
-}
-
-void ShaderGL::setUniform4f(const std::string &uniformName, const Vec4 &value) {
-	glUniform4f(uniforms[uniformName], value.x, value.y, value.z, value.w);
-}
-
-void ShaderGL::setUniform4f(const std::string &uniformName, const Quaternion &value) {
-	glUniform4f(uniforms[uniformName], value.x, value.y, value.z, value.w);
 }
 
 void ShaderGL::setUniformMatrix(const std::string &uniformName, const float *matrix, unsigned int size) {
@@ -69,15 +58,15 @@ void ShaderGL::setUniformMatrix(const std::string &uniformName, const float *mat
 		glUniformMatrix3fv(uniforms[uniformName], 1, GL_TRUE, matrix);
 }
 
-void ShaderGL::setUniformMatrix(const std::string &uniformName, const Mat4 &matrix) {
-	glUniformMatrix4fv(uniforms[uniformName], 1, GL_TRUE, matrix.getHeadPointer());
-}
-
-void ShaderGL::setUniformMatrix(const std::string& uniformName, const Mat3& matrix) {
+void ShaderGL::setUniformMatrix3f(const std::string& uniformName, const Mat3& matrix) {
 	glUniformMatrix3fv(uniforms[uniformName], 1, GL_TRUE, matrix.getHeadPointer());
 }
 
-bool ShaderGL::initialize(ShaderInformation info) {
+void ShaderGL::setUniformMatrix4f(const std::string &uniformName, const Mat4 &matrix) {
+	glUniformMatrix4fv(uniforms[uniformName], 1, GL_TRUE, matrix.getHeadPointer());
+}
+
+bool ShaderGL::initialize(const ShaderInformation& info) {
 	vertexShader = createShader(info.shaderPath + ".vs", GL_VERTEX_SHADER);
 	fragmentShader = createShader(info.shaderPath + ".fs", GL_FRAGMENT_SHADER);
 

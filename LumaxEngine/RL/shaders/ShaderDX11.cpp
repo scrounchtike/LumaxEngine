@@ -1,15 +1,16 @@
 
 #include "ShaderDX11.hpp"
+#include "../Shader.hpp"
 
 #ifdef _USE_DIRECTX11
 
 #include <fstream>
 
-#include "../RAL/UsingDX11.hpp"
-#include "../RAL/Log.hpp"
-#include "../main.hpp"
+#include "../../RAL/UsingDX11.hpp"
+#include "../../RAL/Log.hpp"
+#include "../../main.hpp"
 
-ShaderDX11::ShaderDX11(ShaderInformation info) {
+ShaderDX11::ShaderDX11(const ShaderInformation& info) {
 	this->dx11 = getStaticRenderingContextDX11();
 
 	initialize(info);
@@ -20,6 +21,10 @@ ShaderDX11::~ShaderDX11() {
 }
 
 void ShaderDX11::bind() const {
+	
+}
+
+void ShaderDX11::prepareUniforms() const {
 	dx11->getDeviceContext()->IASetInputLayout(inputLayout);
 	dx11->getDeviceContext()->VSSetShader(vertexShader, NULL, 0);
 	dx11->getDeviceContext()->PSSetShader(pixelShader, NULL, 0);
@@ -34,17 +39,22 @@ void ShaderDX11::bind() const {
 	}
 
 	struct UniformBuffer {
-		Vec2 position;
-		Vec2 padding1;
+		Mat4 projection;
+		Mat4 view;
+		Mat4 transform;
 		Vec3 color;
-		float padding2;
+		float padding;
 	};
 	UniformBuffer buffer;
-	buffer.position = Vec2(-0.5f, -0.5f);
+	buffer.projection = Mat4().initProjectionDX11(35.0f, 800.0f/600.0f, 0.1f, 1000.0f);
+	buffer.view = Mat4().initIdentity();
+	buffer.transform = Mat4().initIdentity();
 	buffer.color = Vec3(1, 0, 1);
+	buffer.padding = 1.0;
 
 	float* dataPtr = (float*)mappedResource.pData;
-	memcpy(dataPtr, uniformTempBuffer, sizeUniforms * sizeof(float));
+	//memcpy(dataPtr, uniformTempBuffer, sizeUniforms * sizeof(float));
+	memcpy(dataPtr, &buffer, sizeof(UniformBuffer));
 
 	dx11->getDeviceContext()->Unmap(uniformBuffer, 0);
 
@@ -72,24 +82,11 @@ void ShaderDX11::setUniform2f(const std::string& uniformName, float x, float y) 
 	*ptr++ = y;
 }
 
-void ShaderDX11::setUniform2f(const std::string& uniformName, const Vec2& value) {
-	float* ptr = findUniform(uniformName);
-	*ptr++ = value.x;
-	*ptr++ = value.y;
-}
-
 void ShaderDX11::setUniform3f(const std::string& uniformName, float x, float y, float z) {
 	float* ptr = findUniform(uniformName);
 	*ptr++ = x;
 	*ptr++ = y;
 	*ptr++ = z;
-}
-
-void ShaderDX11::setUniform3f(const std::string& uniformName, const Vec3& value) {
-	float* ptr = findUniform(uniformName);
-	*ptr++ = value.x;
-	*ptr++ = value.y;
-	*ptr++ = value.z;
 }
 
 void ShaderDX11::setUniform4f(const std::string& uniformName, float x, float y, float z, float w) {
@@ -100,38 +97,22 @@ void ShaderDX11::setUniform4f(const std::string& uniformName, float x, float y, 
 	*ptr++ = w;
 }
 
-void ShaderDX11::setUniform4f(const std::string& uniformName, const Vec4& value) {
-	float* ptr = findUniform(uniformName);
-	*ptr++ = value.x;
-	*ptr++ = value.y;
-	*ptr++ = value.z;
-	*ptr++ = value.w;
-}
-
-void ShaderDX11::setUniform4f(const std::string& uniformName, const Quaternion& value) {
-	float* ptr = findUniform(uniformName);
-	*ptr++ = value.x;
-	*ptr++ = value.y;
-	*ptr++ = value.z;
-	*ptr++ = value.w;
-}
-
 void ShaderDX11::setUniformMatrix(const std::string& uniformName, const float* matrix, unsigned int size) {
 	float* ptr = findUniform(uniformName);
 	memcpy(ptr, matrix, size * sizeof(float));
 }
 
-void ShaderDX11::setUniformMatrix(const std::string& uniformName, const Mat4& matrix) {
+void ShaderDX11::setUniformMatrix4f(const std::string& uniformName, const Mat4& matrix) {
 	float* ptr = findUniform(uniformName);
 	memcpy(ptr, matrix.getHeadPointer(), 16 * sizeof(float));
 }
 
-void ShaderDX11::setUniformMatrix(const std::string& uniformName, const Mat3& matrix) {
+void ShaderDX11::setUniformMatrix3f(const std::string& uniformName, const Mat3& matrix) {
 	float* ptr = findUniform(uniformName);
 	memcpy(ptr, matrix.getHeadPointer(), 9 * sizeof(float));
 }
 
-bool ShaderDX11::initialize(ShaderInformation info) {
+bool ShaderDX11::initialize(const ShaderInformation& info) {
 	std::string vertexPath = info.shaderPath + ".vs";
 	std::string pixelPath = info.shaderPath + ".ps";
 

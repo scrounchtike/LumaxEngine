@@ -3,17 +3,10 @@
 
 #include "../RAL/Log.hpp"
 
-#ifdef _USE_OPENGL
-Level::Level(RendererGL* renderer, Camera* camera) 
+Level::Level(Renderer* renderer, Camera* camera) 
 	: renderer(renderer), camera(camera) 
 {
 }
-#elif defined _USE_DIRECTX11
-Level::Level(RendererDX11* renderer, Camera* camera)
-	: renderer(renderer), camera(camera)
-{
-}
-#endif
 
 Level::~Level() {
 
@@ -333,13 +326,13 @@ void Level::render() const {
 	renderer->renderPlanes(planes);
 	renderer->renderOBBs(obbs);
 
-	renderer->renderRays(rays);
+	//renderer->renderRays(rays);
 	renderer->renderLines(lines);
 
-	for (Mesh3D* obb : obbs)
-		obb->physics->renderAxes(renderer);
-	for (Mesh3D* plane : planes)
-		plane->physics->renderAxes(renderer);
-	for (Mesh3D* aabb : aabbs)
-		aabb->physics->renderAxes(renderer);
+	//for (Mesh3D* obb : obbs)
+	//	obb->physics->renderAxes(renderer);
+	//for (Mesh3D* plane : planes)
+	//	plane->physics->renderAxes(renderer);
+	//for (Mesh3D* aabb : aabbs)
+	//	aabb->physics->renderAxes(renderer);
 }

@@ -19,13 +19,17 @@ void Mesh2D::render() const {
 	static Mat4 identityDX11 = Mat4().initIdentity();
 	if (transform) {
 		// We have a transform matrix
-		shader->setUniformMatrix("transform", *transform->getTransformation());
+#ifdef _USE_OPENGL
+		shader->setUniformMatrix3f("transform", *transform->getTransformation());
+#elif defined _USE_DIRECTX11
+		shader->setUniformMatrix4f("transform", *transform->getTransformation());
+#endif
 	}
 	else {
 #ifdef _USE_OPENGL
-		shader->setUniformMatrix("transform", identityGL);
+		shader->setUniformMatrix3f("transform", identityGL);
 #elif defined _USE_DIRECTX11
-		shader->setUniformMatrix("transform", identityDX11);
+		shader->setUniformMatrix4f("transform", identityDX11);
 #endif
 	}
 	shader->bind();
@@ -42,10 +46,18 @@ void Mesh2D::bindForRender() const {
 void Mesh2D::renderBuffersOnly() const {
 	if (transform) {
 		// Send the transform matrix
-		shader->setUniformMatrix("transform", *transform->getTransformation());
+#ifdef _USE_OPENGL
+		shader->setUniformMatrix3f("transform", *transform->getTransformation());
+#elif defined _USE_DIRECTX11
+		shader->setUniformMatrix4f("transform", *transform->getTransformation());
+#endif
 	}
 	else {
-		shader->setUniformMatrix("transform", Mat3().initIdentity());
+#ifdef _USE_OPENGL
+		shader->setUniformMatrix3f("transform", Mat3().initIdentity());
+#elif defined _USE_DIRECTX11
+		shader->setUniformMatrix4f("transform", Mat4().initIdentity());
+#endif
 	}
 	model2D->renderBuffersOnly();
 }

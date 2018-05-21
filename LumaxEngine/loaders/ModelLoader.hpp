@@ -10,14 +10,7 @@
 #include <string>
 #include <vector>
 
-#include "../RL/Model3DGL.hpp"
-#include "../RL/Model3DDX11.hpp"
-
-#ifdef _USE_OPENGL
-	typedef Model3DGL Model3D;
-#elif defined _USE_DIRECTX11
-	typedef Model3DDX11 Model3D;
-#endif
+#include "../RL/Model3D.hpp"
 
 class ModelLoader {
 public:

@@ -2,20 +2,27 @@
 #ifndef RENDERER_GL_HPP
 #define RENDERER_GL_HPP
 
-#include "Renderer.hpp"
+#include "../../RAL/buildDesc.hpp"
 
 #ifdef _USE_OPENGL
 
-#include "ShaderGL.hpp"
-#include "../RAL/UsingOpenGL.hpp"
-#include "Camera.hpp"
+#include "../Shader.hpp"
+#include "../../RAL/UsingOpenGL.hpp"
+#include "../Camera.hpp"
+#include "../Mesh2D.hpp"
+#include "../Mesh3D.hpp"
 
-#include "../PL/PhysicsPrimitives.hpp"
+#include "../RenderPrimitives.hpp"
+#include "../../PL/PhysicsPrimitives.hpp"
+
+class Renderer;
 
 struct LightingDescription;
 
 class RendererGL {
 public:
+	friend class Renderer;
+
 	RendererGL(Camera* camera);
 	~RendererGL();
 
@@ -101,19 +108,19 @@ private:
 	GLuint vbotIDplane3D;
 
 	// Shaders
-	ShaderGL* shaderPoint2D;
-	ShaderGL* shaderLine2D;
-	ShaderGL* shaderSprite2D;
-	ShaderGL* shaderPoint3D;
-	ShaderGL* shaderLine3D;
-	ShaderGL* shaderSprite3D;
+	Shader* shaderPoint2D;
+	Shader* shaderLine2D;
+	Shader* shaderSprite2D;
+	Shader* shaderPoint3D;
+	Shader* shaderLine3D;
+	Shader* shaderSprite3D;
 
-	ShaderGL* shaderAABB3D;
-	ShaderGL* shaderSphere3D;
-	ShaderGL* shaderPlane3D;
-	ShaderGL* shaderOBB3D;
+	Shader* shaderAABB;
+	Shader* shaderSphere;
+	Shader* shaderPlane;
+	Shader* shaderOBB;
 
-	ShaderGL* shader3Dlight;
+	Shader* shader3Dlight;
 
 	Camera* camera;
 };

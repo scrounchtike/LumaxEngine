@@ -6,6 +6,8 @@
 
 #include "../math/types.hpp"
 
+#ifdef _USE_OPENGL
+
 TextureGL* TextureLoader::loadTextureSTB(const std::string& filename) {
 	int32 width, height, numComponents;
 	uint8* data = stbi_load(filename.c_str(), &width, &height, &numComponents, 3);
@@ -26,3 +28,6 @@ TextureGL* TextureLoader::loadTextureSTB(const std::string& filename) {
 	TextureGL* texture = new TextureGL(texID);
 	return texture;
 }
+
+#elif defined _USE_DIRECTX11
+#endif

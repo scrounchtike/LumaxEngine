@@ -21,16 +21,16 @@ Material::Material(Texture* texture, const Vec3& color, float blend)
 }
 
 #ifdef _USE_OPENGL
-void Material::setShaderUniforms(ShaderGL* shader) {
+void Material::setShaderUniforms(Shader* shader) {
 	if (isColored)
 		shader->setUniform3f("color", colors[colorIndex]);
 	if (texture) {
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, texture->getTexture());
+		texture->bind();
 	}
 }
 #elif defined _USE_DIRECTX11
-void Material::setShaderUniforms(ShaderDX11* shader) {
+void Material::setShaderUniforms(Shader* shader) {
 	if (isColored)
 		shader->setUniform3f("color", colors[colorIndex]);
 	if (texture) {

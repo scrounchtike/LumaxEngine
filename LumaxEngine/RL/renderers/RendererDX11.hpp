@@ -2,17 +2,26 @@
 #ifndef RENDERER_DX11_HPP
 #define RENDERER_DX11_HPP
 
-#include "Renderer.hpp"
+#include "../../RAL/buildDesc.hpp"
 
 #ifdef _USE_DIRECTX11
 
-#include "ShaderDX11.hpp"
-#include "Camera.hpp"
-#include "../RAL/UsingDX11.hpp"
-#include "../main.hpp"
+#include "../Shader.hpp"
+#include "../Camera.hpp"
+#include "../../RAL/UsingDX11.hpp"
+#include "../../main.hpp"
+
+#include "../RenderPrimitives.hpp"
+#include "../../PL/PhysicsPrimitives.hpp"
+#include "../Mesh2D.hpp"
+#include "../Mesh3D.hpp"
+
+struct LightingDescription;
 
 class RendererDX11 {
 public:
+	friend class Renderer;
+
 	RendererDX11(Camera* camera);
 	~RendererDX11();
 
@@ -25,6 +34,14 @@ public:
 	
 	void renderMesh2D(const Mesh2D& mesh2D) const;
 	void renderMesh3D(const Mesh3D& mesh3D) const;
+	void renderLightedMesh3D(const Mesh3D& mesh3D, const LightingDescription& lights) const;
+
+	void renderAABB(const Mesh3D& aabb) const;
+	void renderSphere(const Mesh3D& sphere) const;
+	void renderPlane(const Mesh3D& plane) const;
+	void renderOBB(const Mesh3D& obb) const;
+	void renderRay(const Mesh3D& ray) const;
+	void renderLine(const Mesh3D& line) const;
 
 	void renderPoints2D(const std::vector<Point2D*>& points2D) const;
 	void renderLines2D(const std::vector<Line2D*>& lines2D) const;
@@ -35,6 +52,14 @@ public:
 
 	void renderMeshes2D(const std::vector<Mesh2D*>& meshes2D) const;
 	void renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const;
+	void renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const;
+
+	void renderAABBs(const std::vector<Mesh3D*>& aabbs) const;
+	void renderSpheres(const std::vector<Mesh3D*>& spheres) const;
+	void renderPlanes(const std::vector<Mesh3D*>& planes) const;
+	void renderOBBs(const std::vector<Mesh3D*>& obbs) const;
+	void renderRays(const std::vector<Mesh3D*>& rays) const;
+	void renderLines(const std::vector<Mesh3D*>& lines) const;
 
 	void setCamera(Camera* camera) { this->camera = camera; }
 	Camera* getCamera() { return camera; }
@@ -61,15 +86,20 @@ private:
 	ID3D11Buffer* texCoordIDsprite3D;
 
 	// Shaders
-	ShaderDX11* shaderPoint2D;
-	ShaderDX11* shaderLine2D;
-	ShaderDX11* shaderSprite2D;
+	Shader* shaderPoint2D;
+	Shader* shaderLine2D;
+	Shader* shaderSprite2D;
+	Shader* shaderPoint3D;
+	Shader* shaderLine3D;
+	Shader* shaderSprite3D;
 
-	ShaderDX11* shaderPoint3D;
-	ShaderDX11* shaderLine3D;
-	ShaderDX11* shaderSprite3D;
+	Shader* shaderAABB;
+	Shader* shaderSphere;
+	Shader* shaderPlane;
+	Shader* shaderOBB;
 
-	// Camera
+	Shader* shader3Dlight;
+
 	Camera* camera;
 };
 

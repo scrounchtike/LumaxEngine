@@ -32,11 +32,7 @@ void ModelLoader::processNode(aiNode* node, const aiScene* scene) {
 	}
 }
 
-#ifdef _USE_OPENGL
-Model3DGL* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
-#elif defined _USE_DIRECTX11
-Model3DDX11* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
-#endif
+Model3D* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
 	std::vector<float> vertices;
 	vertices.resize(mesh->mNumVertices * 3);
 	std::vector<int> indices;
@@ -71,40 +67,21 @@ Model3DDX11* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
 		indices[i * 3 + 2] = mesh->mFaces[i].mIndices[0];
 	}
 
-#ifdef _USE_OPENGL
-	Model3DGL* model;
+	Model3D* model;
 	if(hasIndices){
 		if(hasNormals)
-			model = new Model3DGL(vertices, indices, texCoords, normals);
+			model = new Model3D(vertices, indices, texCoords, normals);
 		else if(hasTexCoords)
-			model = new Model3DGL(vertices, indices, texCoords);
+			model = new Model3D(vertices, indices, texCoords);
 		else
-			model = new Model3DGL(vertices, indices);
+			model = new Model3D(vertices, indices);
 	}else{
 		if(hasNormals)
-			model = new Model3DGL(vertices, texCoords, normals);
+			model = new Model3D(vertices, texCoords, normals);
 		else if(hasTexCoords)
-			model = new Model3DGL(vertices, texCoords);
+			model = new Model3D(vertices, texCoords);
 		else
-			model = new Model3DGL(vertices);
+			model = new Model3D(vertices);
 	}
-#elif defined _USE_DIRECTX11
-	Model3DDX11* model;
-	if(hasIndices){
-		if(hasNormals)
-			model = new Model3DDX11(vertices, indices, texCoords, normals);
-		else if(hasTexCoords)
-			model = new Model3DDX11(vertices, indices, texCoords);
-		else
-			model = new Model3DGL(vertices, indices);
-	}else{
-		if(hasNormals)
-			model = new Model3DDX11(vertices, texCoords, normals);
-		else if(hasTexCoords)
-			model = newModel3DDX11(vertices, texCoords);
-		else
-			model = new Model3DDX11(vertices);
-	}
-#endif
 	return model;
 }

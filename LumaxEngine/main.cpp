@@ -7,28 +7,13 @@
 #include "GL/Level.hpp"
 #include "loaders/LevelLoader_lua.hpp"
 
-#ifdef _USE_WINAPI
-#include "RAL/WindowWinAPI.hpp"
-#elif defined _USE_GLFW
-#include "RAL/WindowGLFW.hpp"
-#endif
-
-#ifdef _USE_DIRECTX11
-#include "RL/RendererDX11.hpp"
-#elif defined _USE_OPENGL
-#include "RL/RendererGL.hpp"
-#endif
+#include "RAL/Window.hpp"
+#include "RL/Renderer.hpp"
 
 #include "core/Time.hpp"
 
-// TEMP
-#include "RL/ShaderDX11.hpp"
-#include "RL/Model2DDX11.hpp"
-
-#include "RL/ShaderGL.hpp"
-#include "RL/Model2DGL.hpp"
-
 #include "loaders/ShaderLoader.hpp"
+#include "RML/ResourceManager.hpp"
 
 const std::string TITLE = "Lumax Game Engine";
 const unsigned int WIDTH = 800;
@@ -94,11 +79,7 @@ int main(int argc, char* argv[]) {
 #endif
 
 	// Create Window
-#ifdef _USE_GLFW
-	window = new WindowGLFW(0, TITLE, WIDTH, HEIGHT);
-#elif defined _USE_WINAPI
-	window = new WindowWinAPI(0, TITLE, WIDTH, HEIGHT);
-#endif
+	window = new Window(0, TITLE, WIDTH, HEIGHT);
 
 	// Initlialize Rendering Context
 #ifdef _USE_DIRECTX11
@@ -115,7 +96,7 @@ int main(int argc, char* argv[]) {
 	LuaLevelLoader::initLoaders();
 	
 	// Init Level
-	level = LuaLevelLoader::loadLevel("levels/level_test.lua", resManager);
+	level = LuaLevelLoader::loadLevel("levels/level_test2.lua", resManager);
 	
 #ifdef _WINDOWS
 	Time::initTimer();

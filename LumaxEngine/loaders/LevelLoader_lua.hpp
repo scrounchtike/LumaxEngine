@@ -25,11 +25,10 @@ extern "C" {
 
 #include "../RL/Mesh3D.hpp"
 #include "../RL/Mesh2D.hpp"
-#include "../RL/Model2DGL.hpp"
-#include "../RL/Model3DGL.hpp"
 
+#include "../RL/Model3D.hpp"
 #include "../RL/Shader.hpp"
-#include "../RL/TextureGL.hpp"
+#include "../RL/Texture.hpp"
 #include "../RL/Material.hpp"
 
 #include "../PL/PhysicsPrimitives.hpp"
@@ -65,7 +64,7 @@ private:
 	static void loadLevelParameters(luabridge::LuaRef r);
 	static void updateDefaultVariables(luabridge::LuaRef r);
 
-	static TextureGL* loadTexture2D(luabridge::LuaRef r);
+	static Texture* loadTexture2D(luabridge::LuaRef r);
 
 	static PhysicsPrimitive* loadAABB(luabridge::LuaRef r);
 	static PhysicsPrimitive* loadSphere(luabridge::LuaRef r);
@@ -80,7 +79,7 @@ private:
 	static Transform3D* loadTransform3D(luabridge::LuaRef r);
 	static Movement3D* loadMovement3D(luabridge::LuaRef r);
 
-	static Model3DGL* loadMesh3D(luabridge::LuaRef r);
+	static Model3D* loadMesh3D(luabridge::LuaRef r);
 	static FullModel3D* loadFullMesh3D(luabridge::LuaRef r);
 
 	static Mesh3D* loadModel3D(luabridge::LuaRef r, std::string& rendergroup);

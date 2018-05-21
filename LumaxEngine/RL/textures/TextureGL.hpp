@@ -5,10 +5,8 @@
 #include <string>
 #include <cassert>
 
-#include "Texture.hpp"
-#include "../RAL/UsingOpenGL.hpp"
-
-#include "../RAL/buildDesc.hpp"
+#include "../../RAL/UsingOpenGL.hpp"
+#include "../../RAL/buildDesc.hpp"
 
 #ifdef _USE_OPENGL
 

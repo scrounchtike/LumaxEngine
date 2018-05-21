@@ -4,69 +4,15 @@
 
 #include "Material.hpp"
 #include "Shader.hpp"
-#include "Model3DGL.hpp"
-#include "Model3DDX11.hpp"
+#include "Model3D.hpp"
 #include "../math/Transform3D.hpp"
 #include "Camera.hpp"
-#include "ShaderDX11.hpp"
 #include "../PL/PhysicsPrimitives.hpp"
-
-struct FullModel3D {
-#ifdef _USE_OPENGL
-	typedef Model3DGL Model3D;
-#elif defined _USE_DIRECTX11
-	typedef Model3DDX11 Model3D;
-#endif
-	FullModel3D() { }
-	FullModel3D(const std::vector<Model3D*> models) : models(models) { }
-	std::vector<Model3D*> models;
-
-	void update() {
-		for (Model3D* model : models)
-			model->update();
-	}
-
-	void addRotation(Vec3 rotation) {
-
-	}
-
-	void addScale(Vec3 scale) {
-
-	}
-
-	void render() const {
-		for (Model3D* model : models)
-			model->render();
-	}
-
-	void bindForRender() const {
-		for (Model3D* model : models)
-			model->bindForRender();
-	}
-
-	void renderBuffersOnly() const {
-		for (Model3D* model : models)
-			model->renderBuffersOnly();
-	}
-
-	void unbindForRender() const {
-		for (Model3D* model : models)
-			model->unbindForRender();
-	}
-};
-
-struct FullMesh3D {
-	FullModel3D model;
-	// Add textures and possibly transforms
-};
+#include "FullModel3D.hpp"
 
 class Mesh3D {
 public:
-#ifdef _USE_OPENGL
-	Mesh3D(Model3DGL* model, Material* material, Shader* shader, Transform3D* transform = nullptr, PhysicsPrimitive* physics = nullptr);
-#elif defined _USE_DIRECTX11
-	Mesh3D(Model3DDX11* model, Material* material, Shader* shader, Transform3D* transform = nullptr, PhysicsPrimitive* physics = nullptr);
-#endif
+	Mesh3D(Model3D* model, Material* material, Shader* shader, Transform3D* transform = nullptr, PhysicsPrimitive* physics = nullptr);
 	Mesh3D(FullModel3D* models, Material* material, Shader* shader, Transform3D* transform = nullptr, PhysicsPrimitive* physics = nullptr);
 
 	~Mesh3D();

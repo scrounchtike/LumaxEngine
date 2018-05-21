@@ -9,14 +9,12 @@
 #include <functional>
 #include <cassert>
 
-class RendererGL;
-
 class PhysicsPrimitive {
 public:
 	virtual void addTranslation(Vec3 translation) { };
 	virtual void addRotation(Vec3 rotation) { };
 	virtual void addScale(Vec3 scale) { };
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 
 	bool collidesWith(PhysicsPrimitive* other) {
 		auto handler = collisionHandlers.find(getKey(tid, other->tid));
@@ -70,7 +68,7 @@ struct AABB : public PhysicsPrimitive {
 	//virtual void addRotation(Vec3 rotation) { assert(false); }
 	virtual void addScale(Vec3 scale) { extents = extents.mul(scale); }
 
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 };
 
 struct Sphere : public PhysicsPrimitive {
@@ -86,7 +84,7 @@ struct Sphere : public PhysicsPrimitive {
 	virtual void addRotation(Vec3 rotation) {  } // Rotation not supported for now
 	virtual void addScale(Vec3 scale) { radius = scale.x * radius; }
 
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 };
 
 struct Plane : public PhysicsPrimitive {
@@ -114,7 +112,7 @@ struct Plane : public PhysicsPrimitive {
 	virtual void addRotation(Vec3 rotation) { assert(false); }
 	virtual void addScale(Vec3 scale) { assert(false); }
 
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 };
 
 struct OBB : public PhysicsPrimitive {
@@ -141,7 +139,7 @@ struct OBB : public PhysicsPrimitive {
 	}
 	virtual void addScale(Vec3 scale) { e = e.mul(scale); }
 
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 };
 
 struct Ray : public PhysicsPrimitive {
@@ -159,7 +157,7 @@ struct Ray : public PhysicsPrimitive {
 	virtual void addRotation(const Vec3 rotation) { }
 	virtual void addScale(const Vec3 scale) { assert(false); }
 
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 };
 
 struct Line : public PhysicsPrimitive {
@@ -176,7 +174,7 @@ struct Line : public PhysicsPrimitive {
 	virtual void addRotation(const Vec3 rotation) { }
 	virtual void addScale(const Vec3 scale) { }
 
-	virtual void renderAxes(const RendererGL* renderer);
+	//virtual void renderAxes(const RendererGL* renderer);
 };
 
 #endif

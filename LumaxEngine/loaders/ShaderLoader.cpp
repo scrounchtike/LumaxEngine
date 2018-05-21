@@ -7,7 +7,7 @@
 
 #ifdef _USE_DIRECTX11
 
-ShaderDX11* ShaderLoader::loadShaderDX11(const std::string& filename) {
+Shader* ShaderLoader::loadShaderDX11(const std::string& filename) {
 	ShaderInformation info;
 
 	// Begin with vertex shader
@@ -79,7 +79,7 @@ ShaderDX11* ShaderLoader::loadShaderDX11(const std::string& filename) {
 
 	Log::println("Done loading shader information");
 
-	return new ShaderDX11(info);
+	return new Shader(info);
 }
 
 int ShaderLoader::getSize(const std::string& type) {
@@ -101,14 +101,14 @@ int ShaderLoader::getSize(const std::string& type) {
 
 std::vector<StructGLSL> ShaderLoader::structsGLSL;
 
-ShaderGL* ShaderLoader::loadShaderGL(const std::string& filename) {
+Shader* ShaderLoader::loadShaderGL(const std::string& filename) {
 	ShaderInformation info;
 	info.shaderPath = filename;
 
 	loadShaderFile(filename + ".vs", info);
 	loadShaderFile(filename + ".fs", info);
 	
-	return new ShaderGL(info);
+	return new Shader(info);
 
 	// Load vertex shader first
 	std::ifstream file;
@@ -310,7 +310,7 @@ ShaderGL* ShaderLoader::loadShaderGL(const std::string& filename) {
 	}
 	file.close();
 
-	return new ShaderGL(info);
+	return new Shader(info);
 }
 
 void ShaderLoader::loadShaderFile(const std::string& filename, ShaderInformation& info){

@@ -7,6 +7,13 @@
 
 #include "../RAL/Window.hpp"
 #include "../math.hpp"
+#include "../RAL/buildDesc.hpp"
+
+#ifdef _USE_OPENGL
+class ShaderGL;
+#elif defined _USE_DIRECTX11
+class ShaderDX11;
+#endif
 
 struct ShaderInformation {
 	std::string shaderPath;
@@ -25,27 +32,36 @@ struct ShaderInformation {
 
 class Shader {
 public:
-	virtual ~Shader() { }
+	Shader() {}
+	Shader(const ShaderInformation& info);
+	~Shader();
+
+	Shader(const Shader& lhs) { shader = lhs.shader; }
 	
-	virtual void bind() const = 0;
+	void bind() const;
+	void prepareUniforms() const;
 
-	virtual void addUniform(const std::string& uniformName) = 0;
+	void addUniform(const std::string& uniformName);
 
-	virtual void setUniform1i(const std::string& uniformName, int value) = 0;
-	virtual void setUniform1f(const std::string& uniformName, float x) = 0;
-	virtual void setUniform2f(const std::string& uniformName, float x, float y) = 0;
-	virtual void setUniform2f(const std::string& uniformName, const Vec2& value) = 0;
-	virtual void setUniform3f(const std::string& uniformName, float x, float y, float z) = 0;
-	virtual void setUniform3f(const std::string& uniformName, const Vec3& value) = 0;
-	virtual void setUniform4f(const std::string& uniformName, float x, float y, float z, float w) = 0;
-	virtual void setUniform4f(const std::string& uniformName, const Vec4& value) = 0;
- 	virtual void setUniform4f(const std::string& uniformName, const Quaternion& value) = 0;
-	virtual void setUniformMatrix(const std::string& uniformName, const float* matrix, unsigned int size) = 0;
-	virtual void setUniformMatrix(const std::string& uniformName, const Mat4& matrix) = 0;
-	virtual void setUniformMatrix(const std::string& uniformName, const Mat3& matrix) = 0;
+	void setUniform1i(const std::string& uniformName, int value);
+	void setUniform1f(const std::string& uniformName, float x);
+	void setUniform2f(const std::string& uniformName, float x, float y);
+	void setUniform2f(const std::string& uniformName, const Vec2& value);
+	void setUniform3f(const std::string& uniformName, float x, float y, float z);
+	void setUniform3f(const std::string& uniformName, const Vec3& value);
+	void setUniform4f(const std::string& uniformName, float x, float y, float z, float w);
+	void setUniform4f(const std::string& uniformName, const Vec4& value);
+ 	void setUniform4f(const std::string& uniformName, const Quaternion& value);
+	void setUniformMatrix(const std::string& uniformName, const float* matrix, unsigned int size);
+	void setUniformMatrix3f(const std::string& uniformName, const Mat3& matrix);
+	void setUniformMatrix4f(const std::string& uniformName, const Mat4& matrix);
 private:
-	virtual bool initialize(ShaderInformation info) = 0;
-	virtual bool cleanUp() = 0;
+	// Graphics API dependent shader implementation
+#ifdef _USE_OPENGL
+	ShaderGL* shader;
+#elif defined _USE_DIRECTX11
+	ShaderDX11* shader;
+#endif
 };
 
 #endif

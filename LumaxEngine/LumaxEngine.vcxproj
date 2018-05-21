@@ -99,7 +99,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\Assimp\lib;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x86\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files (x86)\boost\boost_1_65_1\libs;C:\Program Files (x86)\boost\boost_1_65_1\lib32-msvc-14.1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -126,7 +126,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\Assimp\lib;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\bin\Release\Win32;C:\Program Files (x86)\zlib\zlib-1.2.11\lib\x86\ZlibDllRelease;C:\Program Files (x86)\libpng\lib;C:\Program Files (x86)\boost\boost_1_65_1\libs;C:\Program Files (x86)\boost\boost_1_65_1\lib32-msvc-14.1;C:\Program Files (x86)\OpenGLWrappers\glfw-3.2.1\lib-vc2015;C:\Program Files (x86)\OpenGLWrappers\glew32-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -159,28 +159,36 @@
     <ClCompile Include="math\Transform3D.cpp" />
     <ClCompile Include="PL\PhysicsPrimitives.cpp" />
     <ClCompile Include="PL\PrimitiveCollision.cpp" />
+    <ClCompile Include="RAL\cpuid.cpp" />
     <ClCompile Include="RAL\DirectInput.cpp" />
     <ClCompile Include="RAL\Log.cpp" />
     <ClCompile Include="RAL\RenderingContextDX11.cpp" />
     <ClCompile Include="RAL\RenderingContextGL.cpp" />
-    <ClCompile Include="RAL\WindowGLFW.cpp" />
-    <ClCompile Include="RAL\WindowWinAPI.cpp" />
+    <ClCompile Include="RAL\Window.cpp" />
+    <ClCompile Include="RAL\windows\WindowGLFW.cpp" />
+    <ClCompile Include="RAL\windows\WindowWinAPI.cpp" />
     <ClCompile Include="RL\Camera.cpp" />
     <ClCompile Include="RL\lights\DirectionalLight.cpp" />
+    <ClCompile Include="RL\lights\SpotLight.cpp" />
     <ClCompile Include="RL\Material.cpp" />
     <ClCompile Include="RL\Mesh2D.cpp" />
     <ClCompile Include="RL\Mesh3D.cpp" />
-    <ClCompile Include="RL\Model2DDX11.cpp" />
-    <ClCompile Include="RL\Model2DGL.cpp" />
-    <ClCompile Include="RL\Model3DDX11.cpp" />
-    <ClCompile Include="RL\Model3DGL.cpp" />
+    <ClCompile Include="RL\Model2D.cpp" />
+    <ClCompile Include="RL\models2D\Model2DDX11.cpp" />
+    <ClCompile Include="RL\models2D\Model2DGL.cpp" />
+    <ClCompile Include="RL\Model3D.cpp" />
+    <ClCompile Include="RL\models3D\Model3DDX11.cpp" />
+    <ClCompile Include="RL\models3D\Model3DGL.cpp" />
     <ClCompile Include="RL\lights\PointLight.cpp" />
-    <ClCompile Include="RL\RendererDX11.cpp" />
-    <ClCompile Include="RL\RendererGL.cpp" />
-    <ClCompile Include="RL\ShaderDX11.cpp" />
-    <ClCompile Include="RL\ShaderGL.cpp" />
-    <ClCompile Include="RL\TextureDX11.cpp" />
-    <ClCompile Include="RL\TextureGL.cpp" />
+    <ClCompile Include="RL\Renderer.cpp" />
+    <ClCompile Include="RL\renderers\RendererDX11.cpp" />
+    <ClCompile Include="RL\renderers\RendererGL.cpp" />
+    <ClCompile Include="RL\Shader.cpp" />
+    <ClCompile Include="RL\shaders\ShaderDX11.cpp" />
+    <ClCompile Include="RL\shaders\ShaderGL.cpp" />
+    <ClCompile Include="RL\Texture.cpp" />
+    <ClCompile Include="RL\textures\TextureDX11.cpp" />
+    <ClCompile Include="RL\textures\TextureGL.cpp" />
     <ClCompile Include="RML\ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +215,7 @@
     <ClInclude Include="PL\PrimitiveCollision.hpp" />
     <ClInclude Include="RAL\buildDesc.hpp" />
     <ClInclude Include="RAL\ContextDescription.hpp" />
+    <ClInclude Include="RAL\cpuid.hpp" />
     <ClInclude Include="RAL\DirectInput.hpp" />
     <ClInclude Include="RAL\Keys.hpp" />
     <ClInclude Include="RAL\Log.hpp" />
@@ -216,32 +225,34 @@
     <ClInclude Include="RAL\UsingDX11.hpp" />
     <ClInclude Include="RAL\UsingOpenGL.hpp" />
     <ClInclude Include="RAL\Window.hpp" />
-    <ClInclude Include="RAL\WindowGLFW.hpp" />
-    <ClInclude Include="RAL\WindowWinAPI.hpp" />
+    <ClInclude Include="RAL\windows\WindowGLFW.hpp" />
+    <ClInclude Include="RAL\windows\WindowWinAPI.hpp" />
     <ClInclude Include="main.hpp" />
     <ClInclude Include="RL\Camera.hpp" />
+    <ClInclude Include="RL\FullModel3D.hpp" />
     <ClInclude Include="RL\lights\DirectionalLight.hpp" />
     <ClInclude Include="RL\lights.hpp" />
+    <ClInclude Include="RL\lights\SpotLight.hpp" />
     <ClInclude Include="RL\Material.hpp" />
     <ClInclude Include="RL\Mesh2D.hpp" />
     <ClInclude Include="RL\Mesh3D.hpp" />
     <ClInclude Include="RL\Model2D.hpp" />
-    <ClInclude Include="RL\Model2DDX11.hpp" />
-    <ClInclude Include="RL\Model2DGL.hpp" />
+    <ClInclude Include="RL\models2D\Model2DDX11.hpp" />
+    <ClInclude Include="RL\models2D\Model2DGL.hpp" />
     <ClInclude Include="RL\Model3D.hpp" />
-    <ClInclude Include="RL\Model3DDX11.hpp" />
-    <ClInclude Include="RL\Model3DGL.hpp" />
+    <ClInclude Include="RL\models3D\Model3DDX11.hpp" />
+    <ClInclude Include="RL\models3D\Model3DGL.hpp" />
     <ClInclude Include="RL\lights\PointLight.hpp" />
     <ClInclude Include="RL\Renderer.hpp" />
-    <ClInclude Include="RL\RendererDX11.hpp" />
-    <ClInclude Include="RL\RendererGL.hpp" />
+    <ClInclude Include="RL\renderers\RendererDX11.hpp" />
+    <ClInclude Include="RL\renderers\RendererGL.hpp" />
     <ClInclude Include="RL\RenderPrimitives.hpp" />
     <ClInclude Include="RL\Shader.hpp" />
-    <ClInclude Include="RL\ShaderDX11.hpp" />
-    <ClInclude Include="RL\ShaderGL.hpp" />
+    <ClInclude Include="RL\shaders\ShaderDX11.hpp" />
+    <ClInclude Include="RL\shaders\ShaderGL.hpp" />
     <ClInclude Include="RL\Texture.hpp" />
-    <ClInclude Include="RL\TextureDX11.hpp" />
-    <ClInclude Include="RL\TextureGL.hpp" />
+    <ClInclude Include="RL\textures\TextureDX11.hpp" />
+    <ClInclude Include="RL\textures\TextureGL.hpp" />
     <ClInclude Include="RML\ResourceManager.hpp" />
     <ClInclude Include="utils\stb_image.h" />
     <ClInclude Include="utils\StringUtils.hpp" />
@@ -251,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="levels\level_test.lua" />
+    <None Include="levels\level_test2.lua" />
     <None Include="levels\lua1.lua" />
     <None Include="levels\level_squirtle.lmx" />
     <None Include="levels\level_test.lmx" />

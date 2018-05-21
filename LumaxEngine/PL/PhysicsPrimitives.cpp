@@ -3,7 +3,7 @@
 
 #include "PrimitiveCollision.hpp"
 
-#include "../RL/RendererGL.hpp"
+#include "../RL/Renderer.hpp"
 
 std::unordered_map<PhysicsPrimitive::keyID, PhysicsPrimitive::CollisionHandler> PhysicsPrimitive::collisionHandlers;
 
@@ -24,9 +24,11 @@ void PhysicsPrimitive::initialize() {
 	Line::initCases();
 }
 
+/*
 void PhysicsPrimitive::renderAxes(const RendererGL* renderer) {
 	// no op
 }
+*/
 
 void AABB::initCases() {
 	addCollisionHandler(cid, cid, (CollisionHandler)PrimitiveCollision::AABB_intersects);
@@ -37,12 +39,14 @@ void AABB::initCases() {
 	addCollisionHandler(cid, Line::cid, (CollisionHandler)PrimitiveCollision::AABB_intersects_Line);
 }
 
+/*
 void AABB::renderAxes(const RendererGL* renderer) {
 	static Vec3 u[3] = { Vec3(1,0,0), Vec3(0,1,0), Vec3(0,0,1) };
 	renderer->renderLine3D(Line3D(position, position + u[0], Vec3(1, 0, 0)));
 	renderer->renderLine3D(Line3D(position, position + u[1], Vec3(0, 1, 0)));
 	renderer->renderLine3D(Line3D(position, position + u[2], Vec3(1, 0, 1)));
 }
+*/
 
 void Sphere::initCases() {
 	addCollisionHandler(cid, cid, (CollisionHandler)PrimitiveCollision::Sphere_intersects);
@@ -52,9 +56,11 @@ void Sphere::initCases() {
 	addCollisionHandler(cid, Line::cid, (CollisionHandler)PrimitiveCollision::Sphere_intersects_Line);
 }
 
+/*
 void Sphere::renderAxes(const RendererGL* renderer) {
 	// no op
 }
+*/
 
 void Plane::initCases() {
 	addCollisionHandler(cid, cid, (CollisionHandler)PrimitiveCollision::Plane_intersects);
@@ -63,12 +69,14 @@ void Plane::initCases() {
 	addCollisionHandler(cid, Line::cid, (CollisionHandler)PrimitiveCollision::Plane_intersects_Line);
 }
 
+/*
 void Plane::renderAxes(const RendererGL* renderer) {
 	renderer->renderLine3D(Line3D(position, position + normal, Vec3(1, 0, 0)));
 	renderer->renderLine3D(Line3D(position, position + tangent, Vec3(0, 1, 0)));
 	Vec3 u = cross(tangent, normal);
 	renderer->renderLine3D(Line3D(position, position + u, Vec3(1, 0, 1)));
 }
+*/
 
 void OBB::initCases() {
 	addCollisionHandler(cid, cid, (CollisionHandler)PrimitiveCollision::OBB_intersects);
@@ -76,11 +84,13 @@ void OBB::initCases() {
 	addCollisionHandler(cid, Line::cid, (CollisionHandler)PrimitiveCollision::OBB_intersects_Line);
 }
 
+/*
 void OBB::renderAxes(const RendererGL* renderer) {
 	renderer->renderLine3D(Line3D(position, position + u[0], Vec3(1, 0, 0)));
 	renderer->renderLine3D(Line3D(position, position + u[1], Vec3(0, 1, 0)));
 	renderer->renderLine3D(Line3D(position, position + u[2], Vec3(1, 0, 1)));
 }
+*/
 
 void Ray::initCases() {
 	// No ray-ray intersection test - Usefulness and accuracy doubtful
@@ -89,15 +99,19 @@ void Ray::initCases() {
 	addCollisionHandler(cid, Line::cid, (CollisionHandler)PrimitiveCollision::no_intersection);
 }
 
+/*
 void Ray::renderAxes(const RendererGL* renderer) {
 	// no op
 }
+*/
 
 void Line::initCases() {
 	// No line-line intersection test
 	addCollisionHandler(cid, cid, (CollisionHandler)PrimitiveCollision::no_intersection);
 }
 
+/*
 void Line::renderAxes(const RendererGL* renderer) {
 	// no op
 }
+*/

@@ -29,7 +29,8 @@ std::string		    LuaLevelLoader::updateTransform = "pointer";
 std::string		    LuaLevelLoader::updateMovement = "pointer";
 
 void print(const std::string& str) {
-	std::cout << str << std::endl;
+	//std::cout << str << std::endl;
+	Log::println(str);
 }
 
 void LuaLevelLoader::loadLevelParameters(luabridge::LuaRef r) {
@@ -72,7 +73,7 @@ void LuaLevelLoader::updateDefaultVariables(luabridge::LuaRef r) {
 		updateMovement = r["updateMovement"].cast<std::string>();
 }
 
-Model3DGL* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
+Model3D* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
 	luabridge::LuaRef _file = r["file"];
 	// Assuming there is only one mesh in the file
 	// If not, call loadFullMesh already!
@@ -92,28 +93,28 @@ Model3DGL* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
 	bool hasNormals = loadFloatVector(getLuaRef(r, "normals"), normals);
 	bool hasTangents = loadFloatVector(getLuaRef(r, "tangents"), tangents);
 
-	Model3DGL* mesh = nullptr;
+	Model3D* mesh = nullptr;
 	if (!isIndexed) {
 		// Not indexed
 		if (hasTangents)
-			mesh = new Model3DGL(vertices, texCoords, normals, tangents);
+			mesh = new Model3D(vertices, texCoords, normals, tangents);
 		else if (hasNormals)
-			mesh = new Model3DGL(vertices, texCoords, normals);
+			mesh = new Model3D(vertices, texCoords, normals);
 		else if (hasTexCoords)
-			mesh = new Model3DGL(vertices, texCoords);
+			mesh = new Model3D(vertices, texCoords);
 		else
-			mesh = new Model3DGL(vertices);
+			mesh = new Model3D(vertices);
 	}
 	else {
 		// Indexed
 		if (hasTangents)
-			mesh = new Model3DGL(vertices, indices, texCoords, normals, tangents);
+			mesh = new Model3D(vertices, indices, texCoords, normals, tangents);
 		else if (hasNormals)
-			mesh = new Model3DGL(vertices, indices, texCoords, normals);
+			mesh = new Model3D(vertices, indices, texCoords, normals);
 		else if (hasTexCoords)
-			mesh = new Model3DGL(vertices, indices, texCoords);
+			mesh = new Model3D(vertices, indices, texCoords);
 		else
-			mesh = new Model3DGL(vertices, indices);
+			mesh = new Model3D(vertices, indices);
 	}
 
 	return mesh;
@@ -124,15 +125,15 @@ FullModel3D* LuaLevelLoader::loadFullMesh3D(luabridge::LuaRef r) {
 	if (!_file.isNil())
 		return new FullModel3D(ModelLoader::loadModel(_file.cast<std::string>()));
 
-	std::vector<Model3DGL*> meshes;
+	std::vector<Model3D*> meshes;
 	for (int i = 0; i < r.length(); ++i)
 		meshes.push_back(loadMesh3D(r[i + 1]));
 
 	return new FullModel3D(meshes);
 }
 
-TextureGL* LuaLevelLoader::loadTexture2D(luabridge::LuaRef r) {
-	TextureGL* texture = TextureLoader::loadTextureSTB(checkLuaRef(r, "file").cast<std::string>());
+Texture* LuaLevelLoader::loadTexture2D(luabridge::LuaRef r) {
+	Texture* texture = new Texture(checkLuaRef(r, "file").cast<std::string>());
 	return texture;
 }
 
@@ -149,7 +150,7 @@ Material* LuaLevelLoader::loadMaterial(luabridge::LuaRef r) {
 	if (!colors.size())
 		colors.push_back(Vec3(0, 0, 0));
 
-	TextureGL* texture = nullptr;
+	Texture* texture = nullptr;
 	luabridge::LuaRef _texture = getLuaRef(r, "texture");
 	if(!_texture.isNil())
 		texture = loadTexture2D(_texture);
@@ -285,7 +286,7 @@ Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergrou
 			fullMesh = loadFullMesh3D(_fullMesh);
 	}
 	if(fullMesh){
-		bool hasNormals = fullMesh->models[0]->hasNormals;
+		bool hasNormals = fullMesh->models[0]->hasNormals();
 		std::cout << "Model has normals = " << hasNormals << std::endl;
 	}
 
@@ -318,7 +319,7 @@ Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergrou
 	if (updateMaterial == "copy")
 		material = new Material(*material);
 	if (updateShader == "copy")
-		shader = new ShaderGL(*((ShaderGL*)shader));
+		shader = new Shader(*shader); // NOT gonna work since Shader = ptr to Shader impl. (pImpl)
 	if (updateTransform == "copy")
 		transform = new Transform3D(*transform);
 	if (updateMovement == "copy")
@@ -435,13 +436,7 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 	Camera* camera = new Camera();
 
 	// Create the renderer
-#ifdef _USE_DIRECTX11
-	RendererDX11* renderer;
-	renderer = new RendererDX11(camera);
-#elif defined _USE_OPENGL
-	RendererGL* renderer;
-	renderer = new RendererGL(camera);
-#endif
+	Renderer* renderer = new Renderer(camera);
 
 	// Create the level
 	Level* newLevel = new Level(renderer, camera);

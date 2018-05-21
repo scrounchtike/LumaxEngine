@@ -19,6 +19,8 @@ void cpuid::print_cpu_report(){
 // Assembly code from Anrieff's libcpuid project
 // at https://github.com/anrieff/libcpuid
 void cpuid_desc::execute_cpuid(uint32* regs){
+	// NOTE: Will not work 
+	/*
 	__asm __volatile(
 		"	mov	%0,	%%rdi\n"
 
@@ -45,6 +47,7 @@ void cpuid_desc::execute_cpuid(uint32* regs){
 		:"m"(regs)
 		:"memory", "eax", "rdi"
 	);
+	*/
 }
 
 void cpuid_desc::get_raw_data(){

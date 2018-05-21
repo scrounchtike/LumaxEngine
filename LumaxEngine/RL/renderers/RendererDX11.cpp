@@ -4,7 +4,7 @@
 #ifdef _USE_DIRECTX11
 
 #include <cassert>
-#include "../loaders/ShaderLoader.hpp"
+#include "../../loaders/ShaderLoader.hpp"
 
 RendererDX11::RendererDX11(Camera* camera) : camera(camera) {
 	// Get Rendering Context
@@ -70,8 +70,8 @@ void RendererDX11::renderSprite2D(const Sprite2D& sprite) const {
 }
 
 void RendererDX11::renderPoint3D(const Point3D& point) const {
-	shaderPoint3D->setUniformMatrix("view", camera->getViewMatrix());
-	shaderPoint3D->setUniformMatrix("projection", camera->getProjectionMatrix());
+	shaderPoint3D->setUniformMatrix4f("view", camera->getViewMatrix());
+	shaderPoint3D->setUniformMatrix4f("projection", camera->getProjectionMatrix());
 	shaderPoint3D->setUniform3f("position", point.position);
 	shaderPoint3D->setUniform3f("color", point.color);
 	shaderPoint3D->bind();
@@ -99,6 +99,34 @@ void RendererDX11::renderMesh2D(const Mesh2D& mesh2D) const {
 }
 
 void RendererDX11::renderMesh3D(const Mesh3D& mesh3D) const {
+	mesh3D.render(camera);
+}
+
+void RendererDX11::renderLightedMesh3D(const Mesh3D& mesh3D, const LightingDescription& lights) const {
+
+}
+
+void RendererDX11::renderAABB(const Mesh3D& aabb) const {
+
+}
+
+void RendererDX11::renderSphere(const Mesh3D& sphere) const {
+
+}
+
+void RendererDX11::renderPlane(const Mesh3D& plane) const {
+
+}
+
+void RendererDX11::renderOBB(const Mesh3D& obb) const {
+
+}
+
+void RendererDX11::renderRay(const Mesh3D& ray) const {
+
+}
+
+void RendererDX11::renderLine(const Mesh3D& line) const {
 
 }
 
@@ -157,8 +185,8 @@ void RendererDX11::renderSprites2D(const std::vector<Sprite2D*>& sprites2D) cons
 }
 
 void RendererDX11::renderPoints3D(const std::vector<Point3D*>& points3D) const {
-	shaderPoint3D->setUniformMatrix("view", camera->getViewMatrix());
-	shaderPoint3D->setUniformMatrix("projection", camera->getProjectionMatrix());
+	shaderPoint3D->setUniformMatrix4f("view", camera->getViewMatrix());
+	shaderPoint3D->setUniformMatrix4f("projection", camera->getProjectionMatrix());
 	for (Point3D* point : points3D) {
 		shaderPoint3D->setUniform3f("position", point->position);
 		shaderPoint3D->setUniform3f("color", point->color);
@@ -190,8 +218,47 @@ void RendererDX11::renderMeshes2D(const std::vector<Mesh2D*>& meshes2D) const {
 }
 
 void RendererDX11::renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const {
-	for (Mesh3D* mesh : meshes3D)
-		mesh->render(camera);
+	assert(camera);
+	for (Mesh3D* mesh : meshes3D) {
+		mesh->shader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->shader->setUniformMatrix4f("view", camera->getViewMatrix());
+		if (mesh->transform)
+			mesh->shader->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
+		else
+			mesh->shader->setUniformMatrix4f("transform", Mat4().initIdentity());
+		mesh->material->setShaderUniforms(mesh->shader);
+		mesh->shader->prepareUniforms();
+
+		mesh->fullModel->render();
+	}
+}
+
+void RendererDX11::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const {
+
+}
+
+void RendererDX11::renderAABBs(const std::vector<Mesh3D*>& aabbs) const {
+
+}
+
+void RendererDX11::renderSpheres(const std::vector<Mesh3D*>& spheres) const {
+
+}
+
+void RendererDX11::renderPlanes(const std::vector<Mesh3D*>& planes) const {
+
+}
+
+void RendererDX11::renderOBBs(const std::vector<Mesh3D*>& obbs) const {
+
+}
+
+void RendererDX11::renderRays(const std::vector<Mesh3D*>& rays) const {
+
+}
+
+void RendererDX11::renderLines(const std::vector<Mesh3D*>& lines) const {
+
 }
 
 bool RendererDX11::initializeGeometries() {

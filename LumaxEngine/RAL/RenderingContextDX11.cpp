@@ -420,7 +420,7 @@ bool RenderingContextDX11::createViewport() {
 bool RenderingContextDX11::cleanUp() {
 	if (deviceContext) {
 		deviceContext->Release();
-		delete deviceContext;
+		//delete deviceContext;
 		deviceContext = 0;
 	}
 	if (device) {

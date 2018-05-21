@@ -1,14 +1,14 @@
 
 #include "RendererGL.hpp"
 
-#include "../RAL/Log.hpp"
-#include "../main.hpp"
-#include "../GL/Level.hpp"
+#include "../../RAL/Log.hpp"
+#include "../../main.hpp"
+#include "../../GL/Level.hpp"
 
 #ifdef _USE_OPENGL
 
 #include <cassert>
-#include "../loaders/ShaderLoader.hpp"
+#include "../../loaders/ShaderLoader.hpp"
 
 RendererGL::RendererGL(Camera* camera) : camera(camera) {
 	bool success = initializeGeometries();
@@ -27,10 +27,6 @@ RendererGL::~RendererGL() {
 */
 
 void RendererGL::renderPoint2D(const Point2D& point) const {
-	shaderPoint2D->bind();
-	shaderPoint2D->setUniform2f("position", point.position);
-	shaderPoint2D->setUniform3f("color", point.color);
-
 	glBindVertexArray(vaoIDpoint2D);
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -39,11 +35,6 @@ void RendererGL::renderPoint2D(const Point2D& point) const {
 }
 
 void RendererGL::renderLine2D(const Line2D& line) const {
-	shaderLine2D->bind();
-	shaderLine2D->setUniform2f("A", line.A);
-	shaderLine2D->setUniform2f("B", line.B);
-	shaderLine2D->setUniform3f("color", line.color);
-
 	glBindVertexArray(vaoIDline2D);
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_LINES, 0, 2);
@@ -52,11 +43,6 @@ void RendererGL::renderLine2D(const Line2D& line) const {
 }
 
 void RendererGL::renderSprite2D(const Sprite2D& sprite) const {
-	shaderSprite2D->bind();
-	shaderSprite2D->setUniform2f("position", sprite.position);
-	shaderSprite2D->setUniform2f("extents", sprite.extents);
-	shaderSprite2D->setUniform3f("color", sprite.color);
-
 	glBindVertexArray(vaoIDsprite2D);
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -65,13 +51,6 @@ void RendererGL::renderSprite2D(const Sprite2D& sprite) const {
 }
 
 void RendererGL::renderPoint3D(const Point3D& point) const {
-	assert(camera);
-	shaderPoint3D->bind();
-	shaderPoint3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderPoint3D->setUniformMatrix("view", camera->getViewMatrix());
-	shaderPoint3D->setUniform3f("position", point.position);
-	shaderPoint3D->setUniform3f("color", point.color);
-
 	glBindVertexArray(vaoIDpoint3D);
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDpoint3D);
@@ -81,14 +60,6 @@ void RendererGL::renderPoint3D(const Point3D& point) const {
 }
 
 void RendererGL::renderLine3D(const Line3D& line) const {
-	assert(camera);
-	shaderLine3D->bind();
-	shaderLine3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderLine3D->setUniformMatrix("view", camera->getViewMatrix());
-	shaderLine3D->setUniform3f("start", line.start);
-	shaderLine3D->setUniform3f("end", line.end);
-	shaderLine3D->setUniform3f("color", line.color);
-
 	glBindVertexArray(vaoIDline3D);
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_LINES, 0, 2);
@@ -113,27 +84,58 @@ void RendererGL::renderLightedMesh3D(const Mesh3D& mesh3D) const {
 }
 
 void RendererGL::renderAABB(const Mesh3D& aabb) const {
-	assert(false);
+	glBindVertexArray(vaoIDcube3D);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
 }
 
 void RendererGL::renderSphere(const Mesh3D& sphere) const {
-	assert(false);
+	glBindVertexArray(vaoIDsphere3D);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDsphere3D);
+	glDrawElements(GL_TRIANGLES, numIndicesSphere, GL_UNSIGNED_INT, 0);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
 }
 
 void RendererGL::renderPlane(const Mesh3D& plane) const {
-	assert(false);
+	glBindVertexArray(vaoIDplane3D);
+	glEnableVertexAttribArray(0);
+	if (plane.material->getTexture())
+		glEnableVertexAttribArray(1);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	if (plane.material->getTexture())
+		glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
 }
 
 void RendererGL::renderOBB(const Mesh3D& obb) const {
-	assert(false);
+	glBindVertexArray(vaoIDcube3D);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
 }
 
 void RendererGL::renderRay(const Mesh3D& ray) const {
-	assert(false);
+	glBindVertexArray(vaoIDline3D);
+	glEnableVertexAttribArray(0);
+	glDrawArrays(GL_LINES, 0, 2);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
 }
 
 void RendererGL::renderLine(const Mesh3D& line) const {
-	assert(false);
+	glBindVertexArray(vaoIDline3D);
+	glEnableVertexAttribArray(0);
+	glDrawArrays(GL_LINES, 0, 2);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
 }
 
 /* 
@@ -185,8 +187,8 @@ void RendererGL::renderPoints3D(const std::vector<Point3D*>& points) const {
 	assert(camera);
 	//glDisable(GL_CULL_FACE);
 	shaderPoint3D->bind();
-	shaderPoint3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderPoint3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderPoint3D->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderPoint3D->setUniformMatrix4f("view", camera->getViewMatrix());
 	glBindVertexArray(vaoIDpoint3D);
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDpoint3D);
@@ -202,8 +204,8 @@ void RendererGL::renderPoints3D(const std::vector<Point3D*>& points) const {
 void RendererGL::renderLines3D(const std::vector<Line3D*>& lines) const {
 	assert(camera);
 	shaderLine3D->bind();
-	shaderLine3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderLine3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderLine3D->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderLine3D->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDline3D);
 	glEnableVertexAttribArray(0);
@@ -242,15 +244,15 @@ void RendererGL::renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const {
 	for (Mesh3D* mesh : meshes3D) {
 		mesh->shader->bind();
 		//material uniforms
-		mesh->material->setShaderUniforms((ShaderGL*)mesh->shader);
+		mesh->material->setShaderUniforms(mesh->shader);
 		// Uniforms
 		static Mat4 identity = Mat4().initIdentity();
-		mesh->shader->setUniformMatrix("projection", camera->getProjectionMatrix());
-		mesh->shader->setUniformMatrix("view", camera->getViewMatrix());
+		mesh->shader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->shader->setUniformMatrix4f("view", camera->getViewMatrix());
 		if (mesh->transform) {
-			mesh->shader->setUniformMatrix("transform", *mesh->transform->getTransformation());
+			mesh->shader->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
 		}else
-			mesh->shader->setUniformMatrix("transform", identity);
+			mesh->shader->setUniformMatrix4f("transform", identity);
 
 		mesh->fullModel->render();
 	}
@@ -263,11 +265,11 @@ void RendererGL::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, con
 	for(Mesh3D* mesh : meshes3D){
 		mesh->shader->bind();
 		// material uniforms
-		mesh->material->setShaderUniforms((ShaderGL*)mesh->shader);
+		mesh->material->setShaderUniforms(mesh->shader);
 		// Camera uniforms
 		static Mat4 identity = Mat4().initIdentity();
-		mesh->shader->setUniformMatrix("projection", camera->getProjectionMatrix());
-		mesh->shader->setUniformMatrix("view", camera->getViewMatrix());
+		mesh->shader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->shader->setUniformMatrix4f("view", camera->getViewMatrix());
 		mesh->shader->setUniform3f("cameraPos", camera->getPosition());
 		// LIGHTING uniforms
 		/*
@@ -319,9 +321,9 @@ void RendererGL::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, con
 		
 		// TRANSFORM uniform
 		if (mesh->transform) {
-			mesh->shader->setUniformMatrix("transform", *mesh->transform->getTransformation());
+			mesh->shader->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
 		}else
-			mesh->shader->setUniformMatrix("transform", identity);
+			mesh->shader->setUniformMatrix4f("transform", identity);
 
 		// Render call for geometry
 		mesh->fullModel->render();
@@ -329,17 +331,17 @@ void RendererGL::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, con
 }
 
 void RendererGL::renderAABBs(const std::vector<Mesh3D*>& aabbs) const {
-	shaderAABB3D->bind();
-	shaderAABB3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderAABB3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderAABB->bind();
+	shaderAABB->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderAABB->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDcube3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : aabbs) {
 		AABB* aabb = (AABB*)mesh->physics;
-		shaderAABB3D->setUniform3f("position", aabb->position);
-		shaderAABB3D->setUniform3f("extents", aabb->extents);
-		mesh->material->setShaderUniforms(shaderAABB3D);
+		shaderAABB->setUniform3f("position", aabb->position);
+		shaderAABB->setUniform3f("extents", aabb->extents);
+		mesh->material->setShaderUniforms(shaderAABB);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -349,17 +351,17 @@ void RendererGL::renderAABBs(const std::vector<Mesh3D*>& aabbs) const {
 }
 
 void RendererGL::renderSpheres(const std::vector<Mesh3D*>& spheres) const {
-	shaderSphere3D->bind();
-	shaderSphere3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderSphere3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderSphere->bind();
+	shaderSphere->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderSphere->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDsphere3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : spheres) {
 		Sphere* sphere = (Sphere*)mesh->physics;
-		shaderSphere3D->setUniform3f("position", sphere->position);
-		shaderSphere3D->setUniform1f("radius", sphere->radius);
-		mesh->material->setShaderUniforms(shaderSphere3D);
+		shaderSphere->setUniform3f("position", sphere->position);
+		shaderSphere->setUniform1f("radius", sphere->radius);
+		mesh->material->setShaderUniforms(shaderSphere);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDsphere3D);
 		glDrawElements(GL_TRIANGLES, numIndicesSphere, GL_UNSIGNED_INT, 0);
@@ -369,19 +371,19 @@ void RendererGL::renderSpheres(const std::vector<Mesh3D*>& spheres) const {
 }
 
 void RendererGL::renderPlanes(const std::vector<Mesh3D*>& planes) const {
-	shaderPlane3D->bind();
-	shaderPlane3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderPlane3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderPlane->bind();
+	shaderPlane->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderPlane->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDplane3D);
 	glEnableVertexAttribArray(0);
 	for (Mesh3D* mesh : planes) {
 		if (mesh->material->getTexture()) {
 			glEnableVertexAttribArray(1);
-			shaderPlane3D->setUniform1f("isTextured", 1.0);
+			shaderPlane->setUniform1f("isTextured", 1.0);
 		}
 		else {
-			shaderPlane3D->setUniform1f("isTextured", 0.0);
+			shaderPlane->setUniform1f("isTextured", 0.0);
 		}
 
 		Plane* plane = (Plane*)mesh->physics;
@@ -396,10 +398,10 @@ void RendererGL::renderPlanes(const std::vector<Mesh3D*>& planes) const {
 		Vec3 bitangent = -cross(plane->tangent, plane->normal);
 		Mat4 rotation = Mat4().initSpecialRotation2(plane->tangent, bitangent, plane->normal);
 		//
-		shaderPlane3D->setUniformMatrix("rotation", rotation);
-		shaderPlane3D->setUniform3f("position", plane->position);
-		shaderPlane3D->setUniform1f("scale", plane->renderingScale);
-		mesh->material->setShaderUniforms(shaderPlane3D);
+		shaderPlane->setUniformMatrix4f("rotation", rotation);
+		shaderPlane->setUniform3f("position", plane->position);
+		shaderPlane->setUniform1f("scale", plane->renderingScale);
+		mesh->material->setShaderUniforms(shaderPlane);
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 
@@ -411,9 +413,9 @@ void RendererGL::renderPlanes(const std::vector<Mesh3D*>& planes) const {
 }
 
 void RendererGL::renderOBBs(const std::vector<Mesh3D*>& obbs) const {
-	shaderOBB3D->bind();
-	shaderOBB3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderOBB3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderOBB->bind();
+	shaderOBB->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderOBB->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDcube3D);
 	glEnableVertexAttribArray(0);
@@ -424,9 +426,9 @@ void RendererGL::renderOBBs(const std::vector<Mesh3D*>& obbs) const {
 		Mat4 rotation = Mat4().initSpecialRotation2(obb->u[0], obb->u[1], u2);
 		Mat4 scale = Mat4().initScale(obb->e);
 		Mat4 transform = translation.mul(rotation.mul(scale));
-		shaderOBB3D->setUniformMatrix("transform", transform);
+		shaderOBB->setUniformMatrix4f("transform", transform);
 
-		mesh->material->setShaderUniforms(shaderOBB3D);
+		mesh->material->setShaderUniforms(shaderOBB);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -437,8 +439,8 @@ void RendererGL::renderOBBs(const std::vector<Mesh3D*>& obbs) const {
 
 void RendererGL::renderRays(const std::vector<Mesh3D*>& rays) const {
 	shaderLine3D->bind();
-	shaderLine3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderLine3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderLine3D->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderLine3D->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDline3D);
 	glEnableVertexAttribArray(0);
@@ -457,8 +459,8 @@ void RendererGL::renderRays(const std::vector<Mesh3D*>& rays) const {
 
 void RendererGL::renderLines(const std::vector<Mesh3D*>& lines) const {
 	shaderLine3D->bind();
-	shaderLine3D->setUniformMatrix("projection", camera->getProjectionMatrix());
-	shaderLine3D->setUniformMatrix("view", camera->getViewMatrix());
+	shaderLine3D->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderLine3D->setUniformMatrix4f("view", camera->getViewMatrix());
 
 	glBindVertexArray(vaoIDline3D);
 	glEnableVertexAttribArray(0);
@@ -733,10 +735,10 @@ bool RendererGL::initializeShaders() {
 	shaderLine3D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader3Dline");
 	//shaderSprite3D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader3Dsprite");
 
-	shaderAABB3D = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3DAABB");
-	shaderSphere3D = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3Dsphere");
-	shaderPlane3D = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3Dplane");
-	shaderOBB3D = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3DOBB");
+	shaderAABB = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3DAABB");
+	shaderSphere = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3Dsphere");
+	shaderPlane = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3Dplane");
+	shaderOBB = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3DOBB");
 
 	return true;
 }

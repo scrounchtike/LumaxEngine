@@ -1,9 +1,9 @@
 
 #include "WindowGLFW.hpp"
 
-#include "Log.hpp"
+#include "../Log.hpp"
 
-#ifdef _USE_OPENGL
+#ifdef _USE_GLFW
 
 double WindowGLFW::Input::cursorX, WindowGLFW::Input::cursorY;
 char WindowGLFW::Input::keys[NUM_KEYS];
@@ -12,7 +12,7 @@ char WindowGLFW::Input::buttons[NUM_BUTTONS];
 char WindowGLFW::Input::buttons_once[NUM_BUTTONS];
 
 WindowGLFW::WindowGLFW(int style, const std::string& title, unsigned int width, unsigned int height)
-	: Window(title, width, height)
+	: title(title), width(width), height(height)
 {
 	initialize(style);
 }
@@ -83,7 +83,7 @@ void WindowGLFW::setCursorPosition(int posX, int posY) {
 	Input::cursorY = posY;
 }
 
-void WindowGLFW::getMousePosition(int& posX, int& posY) {
+void WindowGLFW::getCursorPosition(int& posX, int& posY) {
 	double cursorX, cursorY;
 	glfwGetCursorPos(window, &cursorX, &cursorY);
 	posX = (int)cursorX;
@@ -137,8 +137,10 @@ bool WindowGLFW::cleanUp() {
 }
 
 bool WindowGLFW::initOpenGL() {
+#ifdef _USE_OPENGL
 	ContextDescription stateDesc;
 	renderContext = new RenderingContextGL(stateDesc);
+#endif
 	return true;
 }
 
@@ -154,14 +156,6 @@ bool WindowGLFW::initDirectX11() {
 }
 
 bool WindowGLFW::cleanUpDirectX11() {
-	return true;
-}
-
-bool WindowGLFW::initGLEW() {
-	return true;
-}
-
-bool WindowGLFW::cleanUpGLEW() {
 	return true;
 }
 

@@ -7,17 +7,12 @@
 #include <string>
 #include <fstream>
 
-#include "../RL/Model3DGL.hpp"
-#include "../RL/Model3DDX11.hpp"
+#include "../RL/Model3D.hpp"
 #include "../utils/StringUtils.hpp"
 
 class OBJLoader {
 public:
-#ifdef _USE_OPENGL
-	static Model3DGL* loadFileOBJ(const std::string& filename);
-#elif defined _USE_DIRECTX11
-	static Model3DDX11* loadFileOBJ(const std::string& filename);
-#endif
+	static Model3D* loadFileOBJ(const std::string& filename);
 };
 
 #endif

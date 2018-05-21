@@ -1,7 +1,7 @@
 
 #include "TextureGL.hpp"
 
-#include "../Utils/stb_image.h"
+#include "../../Utils/stb_image.h"
 
 #ifdef _USE_OPENGL
 

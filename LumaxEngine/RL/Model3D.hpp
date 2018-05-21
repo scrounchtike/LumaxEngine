@@ -2,25 +2,58 @@
 #ifndef MODEL_3D_HPP
 #define MODEL_3D_HPP
 
+#include <vector>
+
+#include "../RAL/buildDesc.hpp"
+
+#ifdef _USE_OPENGL
+class Model3DGL;
+#elif defined _USE_DIRECTX11
+class Model3DDX11;
+#endif
+
 class Model3D {
 public:
-	virtual void update() = 0;
-	virtual void render() const = 0;
+	Model3D(const float* vertices, int numVertices);
+	Model3D(const float* vertices, int numVertices, const float* texCoords);
+	Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals);
+	Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals, const float* tangents);
+	Model3D(const float* vertices, int numVertices, const int* indices, int numIndices);
+	Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords);
+	Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals);
+	Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals, const float* tangents);
 
-	virtual void bindForRender() const = 0;
-	virtual void renderBuffersOnly() const = 0;
-	virtual void unbindForRender() const = 0;
+	Model3D(const std::vector<float>& vertices);
+	Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords);
+	Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals);
+	Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& tangents);
+	Model3D(const std::vector<float>& vertices, const std::vector<int>& indices);
+	Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords);
+	Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords, const std::vector<float>& normals);
+	Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& tangents);
+
+	~Model3D();
+
+	bool isIndexed() const;
+	bool isTextured() const;
+	bool hasNormals() const;
+	bool hasTangents() const;
+	unsigned int getNumVertices() const;
+	unsigned int getNumIndices() const;
+
+	void update();
+	void render() const;
+
+	void bindForRender() const;
+	void renderBuffersOnly() const;
+	void unbindForRender() const;
 private:
-	virtual void initialize(float* vertices, int numVertices) = 0;
-	virtual void initialize(float* vertices, int numVertices, float* texCoords) = 0;
-	virtual void initialize(float* vertices, int numVertices, float* texCoords, float* normals) = 0;
-	virtual void initialize(float* vertices, int numVertices, float* texCoords, float* normals, float* tangents) = 0;
-	virtual void initialize(float* vertices, int numVertices, int* indices, int numIndices) = 0;
-	virtual void initialize(float* vertices, int numVertices, int indices, int numIndices, float* texCoords) = 0;
-	virtual void initialize(float* vertices, int numVertices, int indices, int numIndices, float* texCoords, float* normals) = 0;
-	virtual void initialize(float* vertices, int numVertices, int indices, int numIndices, float* texCoords, float* normals, float* tangents) = 0;
-
-	virtual void cleanUp();
+	// Model3D API specific implementation
+#ifdef _USE_OPENGL
+	Model3DGL* model;
+#elif defined _USE_DIRECTX11
+	Model3DDX11* model;
+#endif
 };
 
 #endif

@@ -2,8 +2,7 @@
 #include "Camera.hpp"
 #include "../main.hpp"
 
-#include "../RAL/WindowGLFW.hpp"
-#include "../RAL/WindowWinAPI.hpp"
+#include "../RAL/Window.hpp"
 
 Camera::Camera(Vec3 position, Vec3 forward, Vec3 up, float fov, float zNear, float zFar) 
 	: position(position), forward(forward.normalize()), up(up.normalize()), fov(fov), zNear(zNear), zFar(zFar)
@@ -42,11 +41,7 @@ void Camera::update() {
 	Vec3 deltaPos(0, 0, 0);
 	bool mouseMovement = false;
 
-#ifdef _USE_GLFW
-	WindowGLFW* w = (WindowGLFW*)getStaticWindow();
-#elif defined _USE_WINAPI
-	WindowWinAPI* w = (WindowWinAPI*)getStaticWindow();
-#endif
+	Window* w = getStaticWindow();
 	if (w->wasKeyPressed(LMX_KEY_W))
 		deltaPos += walk *  movSpeed;
 	else if (w->wasKeyPressed(LMX_KEY_S))
@@ -76,7 +71,7 @@ void Camera::update() {
 	if (mouseLocked) {
 		// Mouse movement detection
 		int mouseX, mouseY;
-		w->getMousePosition(mouseX, mouseY);
+		w->getCursorPosition(mouseX, mouseY);
 		float deltaX = mouseX - getStaticWindowWidth() / 2.0;
 		float deltaY = mouseY - getStaticWindowHeight() / 2.0;
 

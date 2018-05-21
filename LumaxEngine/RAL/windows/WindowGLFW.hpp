@@ -2,22 +2,30 @@
 #ifndef WINDOW_GLFW_HPP
 #define WINDOW_GLFW_HPP
 
-#include "Window.hpp"
+#include "../buildDesc.hpp"
+#include <string>
 
-#ifdef _USE_OPENGL
+#ifdef _USE_GLFW
 
 #ifdef _USE_DIRECTX11
-#include "UsingDX11.hpp"
-#include "RenderingContextDX11.hpp"
+#include "../UsingDX11.hpp"
+#include "../RenderingContextDX11.hpp"
 #elif defined _USE_OPENGL
-#include "UsingOpenGL.hpp"
-#include "RenderingContextGL.hpp"
+#include "../UsingOpenGL.hpp"
+#include "../RenderingContextGL.hpp"
 #endif
 
-class WindowGLFW : public Window {
+// TEMP
+#define NUM_KEYS 512
+#define NUM_BUTTONS 16
+
+class WindowGLFW {
 public:
+	std::string title;
+	unsigned int width, height;
+
 	WindowGLFW(int style, const std::string& title, unsigned int width, unsigned int height);
-	virtual ~WindowGLFW();
+	~WindowGLFW();
 
 	bool shouldClose();
 	void clear();
@@ -35,7 +43,7 @@ public:
 	bool wasButtonPressed(int button);
 	bool wasButtonJustPressed(int button);
 
-	void getMousePosition(int& posX, int& posY);
+	void getCursorPosition(int& posX, int& posY);
 
 	// Rendering Context
 	bool initOpenGL();
@@ -44,9 +52,10 @@ public:
 	bool initDirectX11();
 	bool cleanUpDirectX11();
 
-	bool initGLEW();
-	bool cleanUpGLEW();
+	RenderingContext* getRenderingContext() { return renderContext; }
 private:
+	RenderingContext* renderContext;
+
 	bool initialize(int style);
 	bool cleanUp();
 

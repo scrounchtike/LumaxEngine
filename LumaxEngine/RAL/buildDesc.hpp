@@ -33,11 +33,11 @@
 
 /// Build description
 
-//#define _USE_WINAPI
-#define _USE_GLFW
+#define _USE_WINAPI
+//#define _USE_GLFW
 
-//#define _USE_DIRECTX11
-#define _USE_OPENGL
+#define _USE_DIRECTX11
+//#define _USE_OPENGL
 
 // Input definitions
 #ifdef _USE_WINAPI

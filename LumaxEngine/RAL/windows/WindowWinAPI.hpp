@@ -2,26 +2,30 @@
 #ifndef WINDOW_WIN_API_HPP
 #define WINDOW_WIN_API_HPP
 
-#include "Window.hpp"
+#include "../buildDesc.hpp"
+#include <string>
+
+#ifdef _USE_WINAPI
+
+#include "../DirectInput.hpp"
 
 #ifdef _USE_DIRECTX11
-
-#include "DirectInput.hpp"
-
-#ifdef _USE_DIRECTX11
-#include "UsingDX11.hpp"
-#include "RenderingContextDX11.hpp"
+#include "../UsingDX11.hpp"
+#include "../RenderingContextDX11.hpp"
 #elif defined _USE_OPENGL
-#include "UsingOpenGL.hpp"
-#include "RenderingContextGL.hpp"
+#include "../UsingOpenGL.hpp"
+#include "../RenderingContextGL.hpp"
 #endif
 
 #include <windows.h>
 
-class WindowWinAPI : public Window {
+class WindowWinAPI {
 public:
+	std::string title;
+	unsigned int width, height;
+
 	WindowWinAPI(int style, const std::string& title, unsigned int width, unsigned int height);
-	virtual ~WindowWinAPI();
+	~WindowWinAPI();
 
 	bool shouldClose();
 	void clear();
@@ -39,7 +43,7 @@ public:
 	bool wasButtonPressed(int button);
 	bool wasButtonJustPressed(int button);
 
-	void getMousePosition(int& posX, int& posY);
+	void getCursorPosition(int& posX, int& posY);
 
 	// Rendering Context
 	bool initOpenGL();
@@ -47,7 +51,11 @@ public:
 
 	bool initDirectX11();
 	bool cleanUpDirectX11();
+
+	RenderingContext* getRenderingContext() { return renderContext; }
 private:
+	RenderingContext* renderContext;
+
 	bool initialize(int nCmdShow);
 	bool cleanUp();
 
@@ -55,7 +63,9 @@ private:
 	static bool exitRequested;
 
 	// DirectInput
+#ifdef _USE_DIRECTINPUT
 	DirectInput* directInput;
+#endif
 
 	// Window handles
 	HWND hwnd;

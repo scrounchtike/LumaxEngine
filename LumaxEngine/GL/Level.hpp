@@ -8,11 +8,7 @@
 #include "../RAL/buildDesc.hpp"
 #include "../RL/RenderPrimitives.hpp"
 
-#ifdef _USE_OPENGL
-#include "../RL/RendererGL.hpp"
-#elif defined _USE_DIRECTX11
-#include "../RL/RendererDX11.hpp"
-#endif
+#include "../RL/Renderer.hpp"
 
 #include "../RL/Camera.hpp"
 
@@ -30,11 +26,7 @@ struct LightingDescription {
 
 class Level {
 public:
-#ifdef _USE_OPENGL
-	Level(RendererGL* renderer, Camera* camera);
-#elif defined _USE_DIRECTX11
-	Level(RendererDX11* renderer, Camera* camera);
-#endif
+	Level(Renderer* renderer, Camera* camera);
 	~Level();
 
 	// Global state functions
@@ -142,11 +134,7 @@ private:
 	std::map<std::string, Mesh3D*> mapRays;
 	std::map<std::string, Mesh3D*> mapLines;
 
-#ifdef _USE_OPENGL
-	RendererGL* renderer;
-#elif defined _USE_DIRECTX11
-	RendererDX11* renderer;
-#endif
+	Renderer* renderer;
 
 	// Cameras
 	Camera* camera;

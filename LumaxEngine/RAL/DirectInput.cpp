@@ -1,7 +1,7 @@
 
 #include "DirectInput.hpp"
 
-#ifdef _USE_DIRECTX11
+#ifdef _USE_DIRECTINPUT
 
 #include <cassert>
 #include <string>
@@ -25,15 +25,18 @@ bool DirectInput::wasKeyPressed(int key) {
 }
 
 bool DirectInput::wasKeyJustPressed(int key) {
-	return (justPressedKeyboardState[key] & PRESSING_KEY);
+	//return (justPressedKeyboardState[key] & PRESSING_KEY);
+	return false;
 }
 
 bool DirectInput::wasButtonPressed(int button) {
-	return (mouseState.rgbButtons[button]);
+	//return (mouseState.rgbButtons[button]);
+	return false;
 }
 
 bool DirectInput::wasButtonJustPressed(int button) {
-	return (justPressedMouse[button]);
+	//return (justPressedMouse[button]);
+	return false;
 }
 
 bool DirectInput::frame() {
@@ -160,13 +163,15 @@ bool DirectInput::cleanUp() {
 bool DirectInput::readKeyboard() {
 	HRESULT result;
 
-	result = keyboard->GetDeviceState(256, (LPVOID)&keyboardState);
+	result = keyboard->GetDeviceState(NUM_KEYS, (LPVOID)&keyboardState); // Has to be 256 keys, no more.
 	if (FAILED(result)) {
 		// Check if keybaord lost focus
 		if (result == DIERR_INPUTLOST || result == DIERR_NOTACQUIRED)
 			keyboard->Acquire();
-		else
+		else {
+			assert(false);
 			return false;
+		}
 	}
 
 	return true;

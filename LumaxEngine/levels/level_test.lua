@@ -7,7 +7,7 @@ shader3Dlight = {
 }
 
 texture1 = {
-	file = "res/textures/test.png"
+	file = "res/textures/gold.png"
 }
 
 material1 = {
