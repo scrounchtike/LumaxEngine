@@ -1,134 +1,196 @@
 
 #include "RenderingContextGL.hpp"
 
-#include "Log.hpp"
-
-RenderingContextGL::RenderingContextGL(ContextDescription desc) : description(desc) {
-	bool success = initialize();
-	assert(success);
-}
-
-RenderingContextGL::~RenderingContextGL() {
-	bool success = cleanUp();
-	assert(success);
-}
-
-void RenderingContextGL::clearColorBuffer(float color[4]) {
+void RenderingContextGL::setClearColor(float color[4]){
 	glClearColor(color[0], color[1], color[2], color[3]);
+}
+
+void RenderingContextGL::clearBuffers(){
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}
+
+void RenderingContextGL::clearColor(){
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void RenderingContextGL::clearDepthBuffer(float depthValue) {
+void RenderingContextGL::clearDepth(){
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
-void RenderingContextGL::clearBuffers(float color[4], float depthValue) {
-	glClearColor(color[0], color[1], color[2], color[3]);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+void RenderingContextGL::clearStencil(){
+	glClear(GL_STENCIL_BUFFER_BIT);
 }
 
-void RenderingContextGL::clearBuffers() {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void RenderingContextGL::setClearColor(float color[4]) {
-	glClearColor(color[0], color[1], color[2], color[3]);
-}
-
-void RenderingContextGL::enableZBuffer() {
-	glEnable(GL_DEPTH_TEST);
-}
-
-void RenderingContextGL::disableZBuffer() {
-	glDisable(GL_DEPTH_TEST);
-}
-
-void RenderingContextGL::enableTransparency() {
-	glEnable(GL_BLEND);
-}
-
-void RenderingContextGL::disableTransparency() {
-	glDisable(GL_BLEND);
-}
-
-void RenderingContextGL::swapBuffers() {
-	// DO NOT CALL
-	// Call the one in GLFW window rather
-	Log::println("ERROR: Tried to call swapbuffers in OpenGL context. The Window is responsible for that (GLFW)");
-	assert(false);
-}
-
-void RenderingContextGL::setViewport(unsigned int width, unsigned int height) {
-	glViewport(0, 0, width, height);
-}
-
-bool RenderingContextGL::initialize() {
-	glClearColor(0, 0, 1, 0);
-
-	// Initialization of GLEW
-#ifdef _WINDOWS
-	if (glewInit()) {
-		Log::println("Error: Abort. Could not initialize GLEW");
-		assert(false);
-		return false;
-	}
-#endif
-
-	// Depth testing
-	if (description.depthBuffer.depthEnable)
-		glEnable(GL_DEPTH_TEST);
-	else
-		glDisable(GL_DEPTH_TEST);
-	// Depth function
-	if (description.depthBuffer.depthFunc)
-		glDepthFunc(description.depthBuffer.depthFunc);
-
-	// Stencil testing
-	if (description.stencilBuffer.stencilEnable)
-		glEnable(GL_STENCIL_TEST);
-	else
-		glDisable(GL_STENCIL_TEST);
-	// Stencil Function
-	if (description.stencilBuffer.stencilFunc)
-		glStencilFunc(description.stencilBuffer.stencilFunc, 0, 0xFFFFFFFF);
-	// Stencil operations
-	glStencilOp(description.stencilBuffer.stencilFailOp == 0 ? GL_KEEP : description.stencilBuffer.stencilFailOp,
-				GL_KEEP,
-				description.stencilBuffer.stencilDepthFailOp == 0 ? GL_KEEP : description.stencilBuffer.stencilDepthFailOp);
-
-	// Culling test
-	if (description.renderBuffer.faceCullEnable)
+void RenderingContextGL::setFaceCulling(bool culling){
+	if(culling)
 		glEnable(GL_CULL_FACE);
 	else
 		glDisable(GL_CULL_FACE);
-	// Cull face
-	glCullFace(description.renderBuffer.faceCullMode == 0 ? GL_BACK : description.renderBuffer.faceCullMode);
-	// Cull mode
-	glFrontFace(GL_CW);
-	if (description.renderBuffer.frontFaceCCW)
-		glFrontFace(GL_CCW);
+}
 
-	// Fill Mode
-	glPolygonMode(GL_FRONT_AND_BACK, description.renderBuffer.fillMode == 0 ? GL_FILL : description.renderBuffer.fillMode);
+void RenderingContextGL::setCullFace(int cullFace){
+	glCullFace(cullFace);
+}
 
-	// Scissor test
-	if (description.renderBuffer.scissorEnable)
+void RenderingContextGL::setFrontFace(int frontFace){
+	glFrontFace(frontFace);
+}
+
+void RenderingContextGL::setDepth(bool depth){
+	glDepthMask(depth);
+}
+
+void RenderingContextGL::setDepthTest(bool depthTest){
+	if(depthTest)
+		glEnable(GL_DEPTH_TEST);
+	else
+		glDisable(GL_DEPTH_TEST);
+}
+
+void RenderingContextGL::setDepthFunc(int depthFunc){
+	glDepthFunc(depthFunc);
+}
+
+void RenderingContextGL::setStencil(bool stencil){
+	if(stencil)
+		glEnable(GL_STENCIL_TEST);
+	else
+		glDisable(GL_STENCIL_TEST);
+}
+
+void RenderingContextGL::setStencilFailOp(int op){
+	stencilFailOp = op;
+	stencilFrontUpdate = 1;
+}
+
+void RenderingContextGL::setStencilDepthFailOp(int op){
+	stencilDepthFailOp = op;
+	stencilFrontUpdate = 1;
+}
+
+void RenderingContextGL::setStencilPassOp(int op){
+	stencilPassOp = op;
+	stencilFrontUpdate = 1;
+}
+
+void RenderingContextGL::setStencilFunc(int func){
+	glStencilFuncSeparate(GL_FRONT, func, 0, 0xFFFFFFFF);
+}
+
+void RenderingContextGL::setStencilBackFailOp(int op){
+	stencilBackFailOp = op;
+	stencilBackUpdate = 1;
+}
+
+void RenderingContextGL::setStencilBackDepthFailOp(int op){
+	stencilBackDepthFailOp = op;
+	stencilBackUpdate = 1;
+}
+
+void RenderingContextGL::setStencilBackPassOp(int op){
+	stencilBackPassOp = op;
+	stencilBackUpdate = 1;
+}
+
+void RenderingContextGL::setStencilBackFunc(int func){
+	glStencilFuncSeparate(GL_BACK, func, 0, 0xFFFFFFFF);
+}
+
+void RenderingContextGL::setScissor(bool scissor){
+	if(scissor)
 		glEnable(GL_SCISSOR_TEST);
 	else
 		glDisable(GL_SCISSOR_TEST);
+}
 
-	// Blending
-	if (description.blendMode.blendEnable)
+void RenderingContextGL::setBlending(bool blending){
+	if(blending)
 		glEnable(GL_BLEND);
 	else
 		glDisable(GL_BLEND);
-	// Blend function
-	glBlendFunc(description.blendMode.srcBlend == 0 ? GL_SRC_ALPHA : description.blendMode.srcBlend,
-				description.blendMode.blendFunc == 0 ? GL_ONE_MINUS_SRC_ALPHA : description.blendMode.blendFunc);
-
-	return true;
 }
 
-bool RenderingContextGL::cleanUp() {
-	return true;
+void RenderingContextGL::setBlendSrcOp(int op){
+	blendSrcOp = op;
+	blendUpdate = 1;
+}
+
+void RenderingContextGL::setBlendDstOp(int op){
+	blendDstop = op;
+	blendUpdate = 1;
+}
+
+void RenderingContextGL::setViewport(unsigned width, unsigned height){
+	glViewport(0, 0, width, height);
+}
+
+void RenderingContextGL::setFillMode(int fillmode){
+	glPolygonMode(GL_FRONT_AND_BACK, fillmode);
+}
+
+void RenderingContextGL::update(){
+	if(stencilFrontUpdate)
+		glStencilOpSeparate(GL_FRONT, stencilFailOp, stencilDepthFailOp, stencilPassOp);
+	if(stencilBackUpdate)
+		glStencilOpSeparate(GL_BACK, stencilBackFailOp, stencilBackDepthFailOp, stencilBackPassOp);
+	if(blendUpdate)
+		glBlendFunc(blendSrcOp, blendDstOp);
+	
+	// Clear flags
+	stencilFrontUpdate = 0;
+	stencilBackUpdate = 0;
+	blendUpdate = 0;
+}
+
+void RenderingContextGL::initialize(RenderingState& state){
+	// Clear color
+	setClearColor(state.color);
+
+	// Culling
+	setFaceCulling(state.cullingEnabled);
+	setCullFace(state.cullFace);
+	setFrontFace(state.frontFace);
+
+	// Depth
+	setDepth(state.depthEnabled);
+	setDepthTest(state.depthTest);
+	setDepthFunc(state.depthFunc);
+
+	// Stencil
+	setStencil(state.stencilEnabled);
+	// Front face
+	setStencilFailOp(state.stencilFailOp);
+	stencilFailOp = state.stencilFailOp;
+	setStencilDepthFailOp(state.stencilDepthFailOp);
+	stencilDepthFailOp = state.stencilDepthFailOp;
+	setStencilPassOp(state.stencilPassOp);
+	stencilPassOp = state.stencilPassOp;
+	setStencilFunc(state.stencilFunc);
+	// Back face
+	setStencilBackFailOp(state.stencilBackFailOp);
+	stencilBackFailOp = state.stencilBackFailOp;
+	setStencilBackDepthFailOp(state.stencilBackDepthFailOp);
+	stencilBackDepthFailOp = state.stencilBackDepthFailOp;
+	setStencilBackPassOp(state.stencilBackPassOp);
+	stencilBackPassOp = state.stencilBackPassOp;
+	setStencilBackFunc(state.stencilBackFunc);
+
+	// Scissoring
+	setScissor(state.scissorEnabled);
+
+	// Blending
+	setBlending(state.blendingEnabled);
+	setBlendSrcOp(state.blendSrcOp);
+	blendSrcOp = state.blendSrcOp;
+	setBlendDstOp(state.blendDstOp);
+	blendDstOp = state.blendDstOp;
+
+	// Viewport
+	setViewport(state.width, state.height);
+
+	// Fill Mode
+	setFillMode(state.fillMode);
+
+	// Last GL calls
+	update();
 }

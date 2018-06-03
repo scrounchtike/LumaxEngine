@@ -20,43 +20,13 @@ DirectInput::~DirectInput() {
 	assert(success);
 }
 
-bool DirectInput::wasKeyPressed(int key) {
-	return (keyboardState[key] & PRESSING_KEY);
-}
-
-bool DirectInput::wasKeyJustPressed(int key) {
-	//return (justPressedKeyboardState[key] & PRESSING_KEY);
-	return false;
-}
-
-bool DirectInput::wasButtonPressed(int button) {
-	//return (mouseState.rgbButtons[button]);
-	return false;
-}
-
-bool DirectInput::wasButtonJustPressed(int button) {
-	//return (justPressedMouse[button]);
-	return false;
-}
-
-bool DirectInput::frame() {
+bool DirectInput::input() {
 	bool result;
-
-	// Store previous key states for processing
-	for (int i = 0; i < NUM_KEYS; ++i)
-		previousKeyboardState[i] = keyboardState[i];
-	// Store previous mouse state
-	for (int i = 0; i < 4; ++i)
-		previousMouseState[i] = mouseState.rgbButtons[i];
-
 	result = readKeyboard();
-	if (!result)
-		return false;
-
+	assert(result);
 	result = readMouse();
-	if (!result)
-		return false;
-
+	assert(result);
+	
 	processInput();
 
 	return true;
@@ -163,7 +133,7 @@ bool DirectInput::cleanUp() {
 bool DirectInput::readKeyboard() {
 	HRESULT result;
 
-	result = keyboard->GetDeviceState(NUM_KEYS, (LPVOID)&keyboardState); // Has to be 256 keys, no more.
+	result = keyboard->GetDeviceState(NUM_KEYS, (LPVOID)&Input::keyboard); // Has to be 256 keys, no more.
 	if (FAILED(result)) {
 		// Check if keybaord lost focus
 		if (result == DIERR_INPUTLOST || result == DIERR_NOTACQUIRED)
@@ -181,7 +151,7 @@ bool DirectInput::readKeyboard() {
 bool DirectInput::readMouse() {
 	HRESULT result;
 
-	result = mouse->GetDeviceState(sizeof(DIMOUSESTATE), (LPVOID)&mouseState);
+	result = mouse->GetDeviceState(sizeof(DIMOUSESTATE), (LPVOID)&Input::mouse);
 	if (FAILED(result)) {
 		// Check if mouse lost focus
 		if (result == DIERR_INPUTLOST || result == DIERR_NOTACQUIRED)
@@ -195,20 +165,14 @@ bool DirectInput::readMouse() {
 
 void DirectInput::processInput() {
 	// Update mouse position based on change
-	mouseX += mouseState.lX;
-	mouseY += mouseState.lY;
+	Input::mouseX += mouseState.lX;
+	Input::mouseY += mouseState.lY;
 
 	// Clamp mouse location within the window
-	if (mouseX < 0) mouseX = 0;
-	if (mouseY < 0) mouseY = 0;
-	if (mouseX > width) mouseX = width;
-	if (mouseY > height) mouseY = height;
-
-	// Update just pressed keyboard keys
-	for (int i = 0; i < NUM_KEYS; ++i)
-		justPressedKeyboardState[i] = keyboardState[i] & previousKeyboardState[i];
-	for (int i = 0; i < 4; ++i)
-		justPressedMouse[i] = mouseState.rgbButtons[i] & previousMouseState[i];
+	if (Input::mouseX < 0) Input::mouseX = 0;
+	if (Input::mouseY < 0) Input::mouseY = 0;
+	if (Input::mouseX > width) Input::mouseX = width;
+	if (Input::mouseY > height) Input::mouseY = height;
 }
 
 #endif

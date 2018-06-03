@@ -4,6 +4,8 @@
 
 #include "../RAL/Window.hpp"
 
+#include "../GL/Player.hpp"
+
 Camera::Camera(Vec3 position, Vec3 forward, Vec3 up, float fov, float zNear, float zFar) 
 	: position(position), forward(forward.normalize()), up(up.normalize()), fov(fov), zNear(zNear), zFar(zFar)
 {
@@ -38,32 +40,16 @@ void Camera::initialize() {
 }
 
 void Camera::update() {
-	Vec3 deltaPos(0, 0, 0);
-	bool mouseMovement = false;
-
 	Window* w = getStaticWindow();
-	if (w->wasKeyPressed(LMX_KEY_W))
-		deltaPos += walk *  movSpeed;
-	else if (w->wasKeyPressed(LMX_KEY_S))
-		deltaPos -= walk *  movSpeed;
-	if (w->wasKeyPressed(LMX_KEY_A))
-		deltaPos -= right * movSpeed;
-	else if (w->wasKeyPressed(LMX_KEY_D))
-		deltaPos += right * movSpeed;
-	if (w->wasKeyPressed(LMX_KEY_SPACE))
-		deltaPos += yAxis * movSpeed;
-	else if (w->wasKeyPressed(LMX_KEY_LSHIFT))
-		deltaPos -= yAxis * movSpeed;
-
-	position += deltaPos;
-
+	bool mouseMovement = false;
+	
 	// Mouse locking mechanism
-	if (!mouseLocked && w->wasButtonJustPressed(0)) {
+	if (!mouseLocked && Input::mouseDownOnce(0)) {
 		mouseLocked = true;
 		w->setCursorPosition(getStaticWindowWidth() / 2, getStaticWindowHeight() / 2);
 		w->showCursor(false);
 	}
-	if (mouseLocked && w->wasKeyJustPressed(LMX_KEY_ESCAPE)) {
+	if (mouseLocked && Input::keyDownOnce(LMX_KEY_ESCAPE)) {
 		mouseLocked = false;
 		w->setCursorPosition(getStaticWindowWidth() / 2, getStaticWindowHeight() / 2);
 		w->showCursor(true);
@@ -71,7 +57,7 @@ void Camera::update() {
 	if (mouseLocked) {
 		// Mouse movement detection
 		int mouseX, mouseY;
-		w->getCursorPosition(mouseX, mouseY);
+		Input::getMousePosition(mouseX, mouseY);
 		float deltaX = mouseX - getStaticWindowWidth() / 2.0;
 		float deltaY = mouseY - getStaticWindowHeight() / 2.0;
 
@@ -98,8 +84,7 @@ void Camera::update() {
 	}
 
 	// Update View Matrix
-	if (!deltaPos.isNull() || mouseMovement)
-		viewMatrix = cameraMatrix * Mat4().initTranslation(-position);
+	viewMatrix = cameraMatrix * Mat4().initTranslation(-position);
 }
 
 void Camera::rotateX(float angle) {

@@ -8,6 +8,7 @@
 #endif
 
 #ifdef _USE_GLFW
+
 #define LMX_KEY_A GLFW_KEY_A
 #define LMX_KEY_B GLFW_KEY_B
 #define LMX_KEY_C GLFW_KEY_C
@@ -83,7 +84,9 @@
 #define LMX_KEY_LALT GLFW_KEY_LEFT_ALT
 #define LMX_KEY_RALT GLFW_KEY_RIGHT_ALT
 #define LMX_KEY_ALT (GLFW_KEY_LEFT_ALT | GLFW_KEY_RIGHT_ALT)
+
 #elif defined _USE_DIRECTINPUT
+
 #define LMX_KEY_A DIK_A
 #define LMX_KEY_B DIK_B
 #define LMX_KEY_C DIK_C
@@ -159,4 +162,5 @@
 #define LMX_KEY_LALT DIK_LMENU
 #define LMX_KEY_RALT DIK_RMENU
 #define LMX_KEY_ALT (DIK_LMENU | DIK_RMENU)
+
 #endif

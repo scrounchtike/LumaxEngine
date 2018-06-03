@@ -10,7 +10,7 @@
 
 #include "../RL/Renderer.hpp"
 
-#include "../RL/Camera.hpp"
+#include "Player.hpp"
 
 // Lights
 #include "../RL/lights.hpp"
@@ -25,8 +25,9 @@ struct LightingDescription {
 };
 
 class Level {
+	friend class LuaLevelLoader;
 public:
-	Level(Renderer* renderer, Camera* camera);
+	Level(Renderer* renderer, Player* player);
 	~Level();
 
 	// Global state functions
@@ -40,8 +41,10 @@ public:
 	Sprite3D* addSprite3D(Sprite3D* sprite3D);
 
 	Mesh2D* addMesh2D(Mesh2D* mesh2D);
-	Mesh3D* addMesh3D(Mesh3D* mesh3D);
+	Mesh3D* addMesh3D(Mesh3D* mesh3D, bool dynamic);
 	Mesh3D* addLightedMesh3D(Mesh3D* mesh3D);
+	Mesh3D* addDeferredLightedMesh3D(Mesh3D* mesh3D);
+	Mesh3D* addAnimatedMesh3D(Mesh3D* mesh3D);
 
 	Mesh3D* addAABB(Mesh3D* aabb);
 	Mesh3D* addSphere(Mesh3D* sphere);
@@ -58,7 +61,7 @@ public:
 	Sprite3D* addNamedSprite3D(const std::string& name, Sprite3D* sprite3D);
 
 	Mesh2D* addNamedMesh2D(const std::string& name, Mesh2D* mesh2D);
-	Mesh3D* addNamedMesh3D(const std::string& name, Mesh3D* mesh3D);
+	Mesh3D* addNamedMesh3D(const std::string& name, Mesh3D* mesh3D, bool dynamic);
 	// Mesh3D* addNamedLightedMesh3D(const std::string& name, Mesh3D* mesh3D); // temp ?
 
 	Mesh3D* addNamedAABB(const std::string& name, Mesh3D* aabb);
@@ -74,6 +77,10 @@ public:
 	PointLight* addNamedPointLight(const std::string& name, PointLight* light);
 	SpotLight* addSpotLight(SpotLight* light);
 	SpotLight* addNamedSpotLight(const std::string& name, SpotLight* light);
+
+	DirectionalLight* addDeferredDirectionalLight(DirectionalLight* light);
+	PointLight* addDeferredPointLight(PointLight* light);
+	SpotLight* addDeferredSpotLight(SpotLight* light);
 
 	Movement3D* addMovement3D(Movement3D* movement);
 
@@ -92,10 +99,17 @@ private:
 	std::vector<Sprite3D*> sprites3D;
 
 	std::vector<Mesh2D*> meshes2D;
-	std::vector<Mesh3D*> meshes3D;
+	
+	std::vector<Mesh3D*> dynamicMeshes3D;
+	std::vector<Mesh3D*> staticMeshes3D;
+	
 	std::vector<Mesh3D*> lightedMeshes3D;
+	std::vector<Mesh3D*> deferredLightedMeshes3D;
+
+	std::vector<Mesh3D*> animatedMeshes3D;
 	
 	LightingDescription lights;
+	LightingDescription deferredLights;
 
 	// All primitives in a single container for physics
 	std::vector<Mesh3D*> physicsPrimitives;
@@ -136,8 +150,8 @@ private:
 
 	Renderer* renderer;
 
-	// Cameras
-	Camera* camera;
+	// Player
+	Player* player;
 };
 
 #endif

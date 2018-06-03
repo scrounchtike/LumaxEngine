@@ -1,6 +1,8 @@
 
 #include "Model3DGL.hpp"
 
+#include <cassert>
+
 #ifdef _USE_OPENGL
 
 Model3DGL::Model3DGL(const float* vertices, int numVertices) 
@@ -83,6 +85,16 @@ Model3DGL::Model3DGL(const float* vertices, int numVertices, const int* indices,
 	unbindBuffers();
 }
 
+void Model3DGL::addAnimationWeights(const float *boneIDs, const float *weights, unsigned int numWeights){
+	isAnimated = true;
+	assert(numWeights / 4 == numVertices); // 4 weights per vertex
+	
+	glBindVertexArray(vaoID);
+	createVBOB(&vbobID, boneIDs, numWeights, 3, 4);
+	createVBOW(&vbowID, weights, numWeights, 4, 4);
+	unbindBuffers();
+}
+
 Model3DGL::~Model3DGL() {
 	cleanUp();
 }
@@ -101,6 +113,10 @@ void Model3DGL::render() const {
 		glEnableVertexAttribArray(2);
 	if(hasTangents)
 		glEnableVertexAttribArray(3);
+	if(isAnimated){
+		glEnableVertexAttribArray(3);
+		glEnableVertexAttribArray(4);
+	}
 
 	// Render call
 	if (isIndexed) {
@@ -117,6 +133,10 @@ void Model3DGL::render() const {
 		glDisableVertexAttribArray(2);
 	if(hasTangents)
 		glDisableVertexAttribArray(3);
+	if(isAnimated){
+		glDisableVertexAttribArray(3);
+		glDisableVertexAttribArray(4);
+	}
 
 	glBindVertexArray(0);
 }
@@ -131,6 +151,10 @@ void Model3DGL::bindForRender() const {
 		glEnableVertexAttribArray(2);
 	if (hasTangents)
 		glEnableVertexAttribArray(3);
+	if(isAnimated){
+		glEnableVertexAttribArray(3);
+		glEnableVertexAttribArray(4);
+	}
 
 	if(isIndexed)
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
@@ -154,6 +178,10 @@ void Model3DGL::unbindForRender() const {
 		glDisableVertexAttribArray(2);
 	if (hasTangents)
 		glDisableVertexAttribArray(3);
+	if(isAnimated){
+		glDisableVertexAttribArray(3);
+		glDisableVertexAttribArray(4);
+	}
 
 	glBindVertexArray(0);
 }
@@ -199,6 +227,20 @@ void Model3DGL::createIBO(GLuint* iboID, const int* indices, int numIndices) {
 	glGenBuffers(1, iboID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *iboID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*numIndices, indices, GL_STATIC_DRAW);
+}
+
+void Model3DGL::createVBOB(GLuint* vbobID, const float* boneIDs, int numWeights, int index, int size){
+	glGenBuffers(1, vbobID);
+	glBindBuffer(GL_ARRAY_BUFFER, *vbobID);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numWeights, boneIDs, GL_STATIC_DRAW);
+	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+}
+
+void Model3DGL::createVBOW(GLuint* vbowID, const float* weights, int numWeights, int index, int size){
+	glGenBuffers(1, vbowID);
+	glBindBuffer(GL_ARRAY_BUFFER, *vbowID);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numWeights, weights, GL_STATIC_DRAW);
+	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
 }
 
 void Model3DGL::unbindBuffers() {

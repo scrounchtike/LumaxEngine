@@ -15,6 +15,8 @@
 #include "../RenderPrimitives.hpp"
 #include "../../PL/PhysicsPrimitives.hpp"
 
+#include "../GBuffer.hpp"
+
 class Renderer;
 
 struct LightingDescription;
@@ -54,6 +56,17 @@ public:
 	void renderMeshes2D(const std::vector<Mesh2D*>& meshes2D) const;
 	void renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const;
 	void renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const;
+	void renderDeferredLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const;
+	void renderLightBox(Vec3 position, float radius) const;
+
+	void renderAnimatedMeshes3D(const std::vector<Mesh3D*>& meshes3D) const;
+
+	// v0.2 interface methods
+	void renderMeshes3DForward(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights, Animation* animation) const;
+	void setLightUniformsForward(Shader* shader, const LightingDescription& lights);
+	void renderMeshes3DDeferred(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights, Animation* animation) const;
+
+	void setAnimationUniforms(Shader* shader, Animation* animation, Skeleton* skeleton);
 
 	void renderAABBs(const std::vector<Mesh3D*>& aabbs) const;
 	void renderSpheres(const std::vector<Mesh3D*>& spheres) const;
@@ -67,9 +80,11 @@ public:
 private:
 	bool initializeGeometries();
 	bool initializeShaders();
+	bool initializeFramebuffers();
 
 	bool cleanUpGeometries();
 	bool cleanUpShaders();
+	bool cleanUpFramebuffers();
 
 	// Geometries
 	GLuint vaoIDpoint2D;
@@ -121,8 +136,11 @@ private:
 	Shader* shaderOBB;
 
 	Shader* shader3Dlight;
+	Shader* deferredShader;
 
 	Camera* camera;
+
+	GBuffer* gBuffer;
 };
 
 #endif

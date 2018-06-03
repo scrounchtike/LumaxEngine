@@ -80,9 +80,10 @@ private:
 	static Movement3D* loadMovement3D(luabridge::LuaRef r);
 
 	static Model3D* loadMesh3D(luabridge::LuaRef r);
-	static FullModel3D* loadFullMesh3D(luabridge::LuaRef r);
+	static Model3D* loadAnimatedMesh3D(luabridge::LuaRef r);
+	static FullModel3D* loadFullMesh3D(luabridge::LuaRef r, bool animated);
 
-	static Mesh3D* loadModel3D(luabridge::LuaRef r, std::string& rendergroup);
+	static Mesh3D* loadModel3D(luabridge::LuaRef r, std::string& rendergroup, bool animated);
 
 	static Attenuation* loadLightAttenuation(luabridge::LuaRef r);
 	static DirectionalLight* loadDirectionalLight(luabridge::LuaRef r);
@@ -94,9 +95,23 @@ private:
 	static void addDirectionalLight(luabridge::LuaRef r);
 	static void addPointLight(luabridge::LuaRef r);
 	static void addSpotLight(luabridge::LuaRef r);
+	static void addDeferredDirectionalLight(luabridge::LuaRef r);
+	static void addDeferredPointLight(luabridge::LuaRef r);
+	static void addDeferredSpotLight(luabridge::LuaRef r);
+	static void registerPlayer(luabridge::LuaRef r);
 
+	// v0.2 interface methods
+	static Mesh3D* loadStaticModel3D(luabridge::LuaRef r);
+	static Mesh3D* loadDynamicModel3D(luabridge::LuaRef r);
+	
+	static void addStaticModel3D(luabridge::LuaRef r);
+	static void addDynamicModel3D(luabridge::LuaRef r);
+
+	static void addAnimatedModel3D(luabridge::LuaRef r);
+	
 	static ResourceManager* resManager;
 	static Level* level;
+	static bool initControls;
 
 	static PrimitiveLoaders primitiveLoaders;
 
@@ -119,6 +134,10 @@ private:
 
 	static Vec3 loadVector3D(luabridge::LuaRef r);
 	static Vec2 loadVector2D(luabridge::LuaRef r);
+
+	static void registerControl(luabridge::LuaRef r, unsigned control, float weight);
+	static void initKeyMap();
+	static std::map<std::string, unsigned> keys;
 };
 
 #endif

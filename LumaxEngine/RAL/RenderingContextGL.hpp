@@ -2,37 +2,54 @@
 #ifndef RENDERING_CONTEXT_GL_HPP
 #define RENDERING_CONTEXT_GL_HPP
 
-#include "RenderingContext.hpp"
+#include "RenderingState.hpp"
 
-#include <cassert>
-
-#include "UsingOpenGL.hpp"
-
-class RenderingContextGL : public RenderingContext {
+class RenderingContextGL {
 public:
-	RenderingContextGL(ContextDescription description);
-	virtual ~RenderingContextGL();
+	void setClearColor(float color[4]);
+	void clearBuffers();
+	void clearColor();
+	void clearDepth();
+	void clearStencil();
+	
+	void setFaceCulling(bool);
+	void setCullFace(int);
+	void setFrontFace(int);
 
-	virtual void clearColorBuffer(float color[4]);
-	virtual void clearDepthBuffer(float depthValue = 1.0);
-	virtual void clearBuffers(float color[4], float dephtValue = 1.0);
-	virtual void clearBuffers();
-	virtual void setClearColor(float color[4]);
+	void setDepth(bool);
+	void setDepthTest(bool);
+	void setDepthFunc(int);
 
-	virtual void enableZBuffer();
-	virtual void disableZBuffer();
+	void setStencil(bool);
+	void setStencilFailOp(int);
+	void setStencilDepthFailOp(int);
+	void setStencilPassOp(int);
+	void setStencilFunc(int);
+	void setStencilBackFailOp(int);
+	void setStencilBackDepthFailOp(int);
+	void setStencilBackPassOp(int);
+	void setStencilBackFunc(int);
 
-	virtual void enableTransparency();
-	virtual void disableTransparency();
+	void setScissor(bool);
 
-	virtual void setViewport(unsigned int width, unsigned int height);
+	void setBlending(bool);
+	void setBlendSrcOp(int);
+	void setBlendDstOp(int);
 
-	virtual void swapBuffers();
-private:
-	ContextDescription description;
+	void setViewport(unsigned width, unsigned height);
 
-	bool initialize();
-	bool cleanUp();
+	void setFillMode(int);
+
+	void update();
+	void initialize(RenderingState&);
+
+	// Flags and caching
+	int stencilFrontUpdate = 0, stencilBackUpdate = 0;
+	int stencilFailOp, stencilDepthFailOp, stencilPassOp;
+	int stencilBackFailOp, stencilBackDepthFailOp, stencilBackPassOp;
+
+	int blendUpdate = 0;
+	int blendSrcOp, blendDstOp;
 };
 
 #endif

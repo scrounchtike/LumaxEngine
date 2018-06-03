@@ -1,15 +1,10 @@
 
 #include "WindowGLFW.hpp"
 
+#include <iostream>
 #include "../Log.hpp"
 
 #ifdef _USE_GLFW
-
-double WindowGLFW::Input::cursorX, WindowGLFW::Input::cursorY;
-char WindowGLFW::Input::keys[NUM_KEYS];
-char WindowGLFW::Input::keys_once[NUM_KEYS];
-char WindowGLFW::Input::buttons[NUM_BUTTONS];
-char WindowGLFW::Input::buttons_once[NUM_BUTTONS];
 
 WindowGLFW::WindowGLFW(int style, const std::string& title, unsigned int width, unsigned int height)
 	: title(title), width(width), height(height)
@@ -26,24 +21,12 @@ bool WindowGLFW::shouldClose() {
 }
 
 void WindowGLFW::clear() {
-	float color[4] = { 0, 0, 1, 1 };
+	float color[4] = { 0, 0, 0, 0 };
 	renderContext->clearBuffers(color);
 }
 
 void WindowGLFW::input() {
-	int previous_keys[NUM_KEYS];
-	for (int i = 0; i < NUM_KEYS; ++i)
-		previous_keys[i] = Input::keys[i];
-	int previous_buttons[NUM_BUTTONS];
-	for (int i = 0; i < NUM_BUTTONS; ++i)
-		previous_buttons[i] = Input::buttons[i];
-
 	glfwPollEvents();
-
-	for (int i = 0; i < NUM_KEYS; ++i)
-		Input::keys_once[i] = !previous_keys[i] && Input::keys[i];
-	for (int i = 0; i < NUM_BUTTONS; ++i)
-		Input::buttons_once[i] = !previous_buttons[i] && Input::buttons[i];
 }
 
 void WindowGLFW::update() {
@@ -61,33 +44,10 @@ void WindowGLFW::showCursor(bool show) {
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
-bool WindowGLFW::wasKeyPressed(int key) {
-	return Input::keys[key];
-}
-
-bool WindowGLFW::wasKeyJustPressed(int key) {
-	return Input::keys_once[key];
-}
-
-bool WindowGLFW::wasButtonPressed(int button) {
-	return Input::buttons[button];
-}
-
-bool WindowGLFW::wasButtonJustPressed(int button) {
-	return Input::buttons_once[button];
-}
-
 void WindowGLFW::setCursorPosition(int posX, int posY) {
 	glfwSetCursorPos(window, posX, posY);
-	Input::cursorX = posX;
-	Input::cursorY = posY;
-}
-
-void WindowGLFW::getCursorPosition(int& posX, int& posY) {
-	double cursorX, cursorY;
-	glfwGetCursorPos(window, &cursorX, &cursorY);
-	posX = (int)cursorX;
-	posY = (int)cursorY;
+	Input::mouseX = posX;
+	Input::mouseY = posY;
 }
 
 bool WindowGLFW::initialize(int style) {
@@ -122,9 +82,9 @@ bool WindowGLFW::initialize(int style) {
 	// Making the context current
 	glfwMakeContextCurrent(window);
 	// Vsync
-	glfwSwapInterval(1); // FPS stays at 57-59 with it...
+	glfwSwapInterval(1); // FPS locks at 57-59 with it...
 
-	// Have been bugs where if this is not included weird stuff happens.  .. really? ..
+	// Have been bugs where if this is not included weird stuff happens.
 	glfwPollEvents();
 
 	return true;
@@ -136,41 +96,38 @@ bool WindowGLFW::cleanUp() {
 	return true;
 }
 
-bool WindowGLFW::initOpenGL() {
-#ifdef _USE_OPENGL
-	ContextDescription stateDesc;
-	renderContext = new RenderingContextGL(stateDesc);
-#endif
+bool WindowGLFW::initOpenGL(const RenderingState& state) {
+	lmx::initialize(state);
 	return true;
 }
 
 bool WindowGLFW::cleanUpOpenGL() {
-	delete renderContext;
-	renderContext = 0;
-
+	lmx::cleanUp();
 	return true;
 }
 
-bool WindowGLFW::initDirectX11() {
-	return true;
+bool WindowGLFW::initDirectX11(const RenderingState& state) {
+	Log::println("Error: Cannot instantiate DX11 context in GLFW window");
+	assert(false);
 }
 
 bool WindowGLFW::cleanUpDirectX11() {
-	return true;
+	Log::println("Error: Cannot destroy non-existent DX11 context in GLFW window");
+	assert(false);
 }
 
 // Callbacks
 void WindowGLFW::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-	WindowGLFW::Input::keys[key] = (action == GLFW_PRESS);
+	Input::keyboard[key] = (action == GLFW_PRESS);
 }
 
 void WindowGLFW::mouse_callback(GLFWwindow* window, double xpos, double ypos) {
-	WindowGLFW::Input::cursorX = xpos;
-	WindowGLFW::Input::cursorY = ypos;
+	Input::mouseX = xpos;
+	Input::mouseY = ypos;
 }
 
 void WindowGLFW::button_callback(GLFWwindow* window, int button, int action, int mods) {
-	WindowGLFW::Input::buttons[button] = (action == GLFW_PRESS);
+	Input::mouse[button] = (action == GLFW_PRESS);
 }
 
 #endif

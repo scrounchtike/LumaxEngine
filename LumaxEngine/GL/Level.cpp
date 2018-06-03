@@ -3,8 +3,8 @@
 
 #include "../RAL/Log.hpp"
 
-Level::Level(Renderer* renderer, Camera* camera) 
-	: renderer(renderer), camera(camera) 
+Level::Level(Renderer* renderer, Player* player) 
+	: renderer(renderer), player(player)
 {
 }
 
@@ -52,8 +52,11 @@ Mesh2D* Level::addMesh2D(Mesh2D* mesh2D) {
 	return mesh2D;
 }
 
-Mesh3D* Level::addMesh3D(Mesh3D* mesh3D) {
-	meshes3D.push_back(mesh3D);
+Mesh3D* Level::addMesh3D(Mesh3D* mesh3D, bool dynamic) {
+	if(dynamic)
+		dynamicMeshes3D.push_back(mesh3D);
+	else
+		staticMeshes3D.push_back(mesh3D);
 	if (mesh3D->physics)
 		physicsPrimitives.push_back(mesh3D);
 	return mesh3D;
@@ -61,6 +64,20 @@ Mesh3D* Level::addMesh3D(Mesh3D* mesh3D) {
 
 Mesh3D* Level::addLightedMesh3D(Mesh3D* mesh3D){
 	lightedMeshes3D.push_back(mesh3D);
+	if(mesh3D->physics)
+		physicsPrimitives.push_back(mesh3D);
+	return mesh3D;
+}
+
+Mesh3D* Level::addDeferredLightedMesh3D(Mesh3D *mesh3D){
+	deferredLightedMeshes3D.push_back(mesh3D);
+	if(mesh3D->physics)
+		physicsPrimitives.push_back(mesh3D);
+	return mesh3D;
+}
+
+Mesh3D* Level::addAnimatedMesh3D(Mesh3D *mesh3D){
+	animatedMeshes3D.push_back(mesh3D);
 	if(mesh3D->physics)
 		physicsPrimitives.push_back(mesh3D);
 	return mesh3D;
@@ -144,8 +161,11 @@ Mesh2D* Level::addNamedMesh2D(const std::string& name, Mesh2D* mesh2D) {
 	return mesh2D;
 }
 
-Mesh3D* Level::addNamedMesh3D(const std::string& name, Mesh3D* mesh3D) {
-	meshes3D.push_back(mesh3D);
+Mesh3D* Level::addNamedMesh3D(const std::string& name, Mesh3D* mesh3D, bool dynamic) {
+	if(dynamic)
+		dynamicMeshes3D.push_back(mesh3D);
+	else
+		staticMeshes3D.push_back(mesh3D);
 	mapMeshes3D.insert(std::pair<std::string, Mesh3D*>(name, mesh3D));
 	if (mesh3D->physics)
 		physicsPrimitives.push_back(mesh3D);
@@ -229,17 +249,48 @@ SpotLight* Level::addNamedSpotLight(const std::string& name, SpotLight* light){
 	return light;
 }
 
+DirectionalLight* Level::addDeferredDirectionalLight(DirectionalLight *light){
+	deferredLights.directionalLights.push_back(light);
+	return light;
+}
+
+PointLight* Level::addDeferredPointLight(PointLight* light){
+	deferredLights.pointLights.push_back(light);
+	return light;
+}
+
+SpotLight* Level::addDeferredSpotLight(SpotLight *light){
+	deferredLights.spotLights.push_back(light);
+	return light;
+}
+
 Movement3D* Level::addMovement3D(Movement3D* movement) {
 	movements3D.push_back(movement);
 	return movement;
 }
 
 void Level::update() {
-	camera->update();
+	player->input();
+	player->update();
 
 	updateLevelTest();
 
+	// Physics collision tests
+	for(int i = 0; i < dynamicMeshes3D.size(); ++i){
+		Mesh3D* dynamicMesh = dynamicMeshes3D[i];
+		for(int j = 0; j < staticMeshes3D.size(); ++j){
+			Mesh3D* staticMesh = staticMeshes3D[j];
+			ContactManifold manifold;
+			dynamicMesh->physics->dynamicCollidesWithStatic(staticMesh, manifold);
+			if(manifold.isIntersecting){
+				// Resolve interpenetration
+				dynamicMesh->addTranslation(manifold.normal * manifold.penetration);
+			}
+		}
+	}
+
 	// Physics update!
+	/*
 	for (int i = 0; i < physicsPrimitives.size(); ++i) {
 		physicsPrimitives[i]->material->colorIndex = 0;
 	}
@@ -257,6 +308,7 @@ void Level::update() {
 			}
 		}
 	}
+	*/
 }
 
 void Level::updateLevelTest() {
@@ -293,17 +345,8 @@ void Level::updateLevelTest() {
 
 
 void Level::render() const {
-	// Points 2D
-	renderer->renderPoints2D(points2D);
-
-	// Lines 2D
-	renderer->renderLines2D(lines2D);
-
-	// Sprites 2D
-	renderer->renderSprites2D(sprites2D);
-
-	// Meshes 2D
-	renderer->renderMeshes2D(meshes2D);
+	// Render deferred lighted meshes
+	renderer->renderDeferredLightedMeshes3D(deferredLightedMeshes3D, deferredLights);
 
 	// Points 3D
 	renderer->renderPoints3D(points3D);
@@ -315,10 +358,14 @@ void Level::render() const {
 	renderer->renderSprites3D(sprites3D);
 
 	// Meshes 3D
-	renderer->renderMeshes3D(meshes3D);
+	renderer->renderMeshes3D(staticMeshes3D);
+	renderer->renderMeshes3D(dynamicMeshes3D);
 
 	// Render lighted meshes
 	renderer->renderLightedMeshes3D(lightedMeshes3D, lights);
+
+	// Render animated meshes
+	renderer->renderAnimatedMeshes3D(animatedMeshes3D);
 
 	// Physics Primitives
 	renderer->renderAABBs(aabbs);
@@ -335,4 +382,16 @@ void Level::render() const {
 	//	plane->physics->renderAxes(renderer);
 	//for (Mesh3D* aabb : aabbs)
 	//	aabb->physics->renderAxes(renderer);
+
+	// Points 2D
+	renderer->renderPoints2D(points2D);
+
+	// Lines 2D
+	renderer->renderLines2D(lines2D);
+
+	// Sprites 2D
+	renderer->renderSprites2D(sprites2D);
+
+	// Meshes 2D
+	renderer->renderMeshes2D(meshes2D);
 }

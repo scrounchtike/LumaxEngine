@@ -1,14 +1,15 @@
 
-#include "LevelLoader_lua.hpp"
+#include "LuaLevelloader.hpp"
+#include "../main.hpp"
 
-#include "TextureLoader.hpp"
-#include "ModelLoader.hpp"
 #include "../RL/lights.hpp"
 
 #include "../utils/StringUtils.hpp"
 
 ResourceManager*  LuaLevelLoader::resManager;
 Level*			      LuaLevelLoader::level;
+bool              LuaLevelLoader::initControls = false;
+std::map<std::string, unsigned> LuaLevelLoader::keys;
 
 lua_State*        LuaLevelLoader::state;
 
@@ -58,7 +59,7 @@ void LuaLevelLoader::updateDefaultVariables(luabridge::LuaRef r) {
 	if (!r["physics"].isNil())
 		defaultPhysics = loadPhysics(r["physics"]);
 	if (!r["fullmesh"].isNil())
-		defaultFullMesh = loadFullMesh3D(r["fullmesh"]);
+		defaultFullMesh = loadFullMesh3D(r["fullmesh"], false);
 	if (!r["rendergroup"].isNil())
 		defaultRendergroup = r["rendergroup"].cast<std::string>();
 
@@ -78,7 +79,7 @@ Model3D* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
 	// Assuming there is only one mesh in the file
 	// If not, call loadFullMesh already!
 	if (!_file.isNil())
-		return ModelLoader::loadModel(_file.cast<std::string>())[0];
+		return resManager->getModel3D(_file.cast<std::string>());
 
 	std::vector<float> vertices;
 	std::vector<int> indices;
@@ -120,20 +121,34 @@ Model3D* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
 	return mesh;
 }
 
-FullModel3D* LuaLevelLoader::loadFullMesh3D(luabridge::LuaRef r) {
+Model3D* LuaLevelLoader::loadAnimatedMesh3D(luabridge::LuaRef r){
+	luabridge::LuaRef _file = r["file"];
+	if(_file.isNil()){
+		Log::println("Error: Animated meshes can only be loaded from files and through Assimp");
+		assert(false);
+	}
+
+	return resManager->getAnimatedModel3D(_file.cast<std::string>());
+}
+
+FullModel3D* LuaLevelLoader::loadFullMesh3D(luabridge::LuaRef r, bool animated) {
 	luabridge::LuaRef _file = r["file"];
 	if (!_file.isNil())
-		return new FullModel3D(ModelLoader::loadModel(_file.cast<std::string>()));
-
+		return getStaticResourceManager()->getFullModel3D(_file.cast<std::string>());
+	
 	std::vector<Model3D*> meshes;
-	for (int i = 0; i < r.length(); ++i)
-		meshes.push_back(loadMesh3D(r[i + 1]));
+	for (int i = 0; i < r.length(); ++i) {
+		if(animated)
+			meshes.push_back(loadAnimatedMesh3D(r[i + 1]));
+		else
+			meshes.push_back(loadMesh3D(r[i + 1]));
+	}
 
 	return new FullModel3D(meshes);
 }
 
 Texture* LuaLevelLoader::loadTexture2D(luabridge::LuaRef r) {
-	Texture* texture = new Texture(checkLuaRef(r, "file").cast<std::string>());
+	Texture* texture = getStaticResourceManager()->getTexture(checkLuaRef(r, "file").cast<std::string>());
 	return texture;
 }
 
@@ -165,7 +180,7 @@ Material* LuaLevelLoader::loadMaterial(luabridge::LuaRef r) {
 
 Shader* LuaLevelLoader::loadShader(luabridge::LuaRef r) {
 	std::string filename = checkLuaRef(r, "file", "ERROR: Failed to load shader from lua level script. No shader file provided: ").cast<std::string>();
-	return resManager->loadShader(filename);
+	return getStaticResourceManager()->getShader(filename);
 }
 
 PhysicsPrimitive* LuaLevelLoader::loadAABB(luabridge::LuaRef r) {
@@ -250,12 +265,14 @@ Movement3D* LuaLevelLoader::loadMovement3D(luabridge::LuaRef r) {
 	return movement;
 }
 
-Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergroup) {
+Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergroup, bool animated) {
 	std::cout << "Loading Model3D from Lua level script" << std::endl;
 
 	FullModel3D* fullMesh = defaultFullMesh;
 	Material* material = defaultMaterial;
-	Shader* shader = defaultShader;
+	//Shader* shader = defaultShader;
+	std::vector<Shader*> shaders;
+	shaders.push_back(defaultShader);
 	PhysicsPrimitive* physics = defaultPhysics;
 	Transform3D* transform = defaultTransform;
 
@@ -283,12 +300,12 @@ Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergrou
 				assert(false);
 			}
 		}else
-			fullMesh = loadFullMesh3D(_fullMesh);
+			fullMesh = loadFullMesh3D(_fullMesh, animated);
 	}
-	if(fullMesh){
-		bool hasNormals = fullMesh->models[0]->hasNormals();
-		std::cout << "Model has normals = " << hasNormals << std::endl;
-	}
+	//if(fullMesh){
+	//	bool hasNormals = fullMesh->models[0]->hasNormals();
+	//	std::cout << "Model has normals = " << hasNormals << std::endl;
+	//}
 
 	// Load Material
 	luabridge::LuaRef _material = r["material"];
@@ -298,7 +315,14 @@ Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergrou
 	// Load Shader
 	luabridge::LuaRef _shader = r["shader"];
 	if (!_shader.isNil())
-		shader = loadShader(_shader);
+		shaders[0] = loadShader(_shader);
+
+	luabridge::LuaRef _shaders = r["shaders"];
+	if(!_shaders.isNil()){
+		for(int i = 0; i < _shaders.length(); ++i){
+			shaders[i] = loadShader(_shaders[i+1]);
+		}
+	}
 
 	// Load transform
 	luabridge::LuaRef _transform = r["transform"];
@@ -318,14 +342,16 @@ Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergrou
 	// Make copies of elements if necessary
 	if (updateMaterial == "copy")
 		material = new Material(*material);
-	if (updateShader == "copy")
-		shader = new Shader(*shader); // NOT gonna work since Shader = ptr to Shader impl. (pImpl)
+	//if (updateShader == "copy")
+	// TODO: Update copy for shaders
 	if (updateTransform == "copy")
 		transform = new Transform3D(*transform);
 	if (updateMovement == "copy")
 		movement = new Movement3D(*movement);
 
-	Mesh3D* model = new Mesh3D(fullMesh, material, shader, transform, physics);
+	Mesh3D* model = new Mesh3D(fullMesh, material, shaders[0], transform, physics);
+	for(int i = 1; i < shaders.size(); ++i)
+		model->addShader(shaders[i]);
 	
 	// Link movement with model3D
 	if (movement)
@@ -394,9 +420,71 @@ SpotLight* LuaLevelLoader::loadSpotLight(luabridge::LuaRef r){
 	return light;
 }
 
+// v0.2 new interface methods
+Mesh3D* LuaLevelLoader::loadStaticModel3D(luabridge::LuaRef r){
+	// Load mesh
+	FullModel3D* fullmesh = defaultFullmesh;
+	if(!r["fullmesh"].isNil()){
+		fullmesh = loadFullMesh3D(r["fullmesh"]);
+	}else if(!r["mesh"].isNil()){
+		std::vector<Model3D*> meshes;
+		meshes.resize(1);
+		meshes[0] = loadMesh3D(r["mesh"]);
+		fullmesh = new FullModel3D(meshes);
+	}
+	assert(fullmesh);
+
+	// Load material
+	Material* material = defaultMaterial;
+	if(!r["material"].isNil())
+		material = loadMaterial(r["material"]);
+	assert(material);
+
+	// Load shader
+	Shader* shader = defaultShader;
+	if(!r["shader"].isNil())
+		shader = loadShader(r["shader"]);
+	assert(shader);
+
+	// Load Transform3D
+	Transform3D* transform = defaultTransform;
+	if(!r["transform"].isNil())
+		transform = loadTransform3D(r["transform"]);
+	assert(transform);
+
+	// Load physics
+	PhysicsPrimitive* physics = defaultPhysics;
+	if(!r["physics"].isNil())
+		physics = loadPhysics(r["physics"]);
+
+	// Load movement
+	Movement3D* movement = defaultMovement;
+	if(!r["movement"].isNil())
+		movement = loadMovement3D(r["movement"]);
+
+	// Load skeleton
+	Skeleton* skeleton;
+	
+}
+
+Mesh3D* LuaLevelLoader::loadDynamicModel3D(luabridge::LuaRef r){
+	return nullptr;
+}
+
+void LuaLevelLoader::addStaticModel3D(luabridge::LuaRef r){
+	Mesh3D* model = loadStaticModel3D(r);
+
+	// Find the state of the model (lighted, animated, etc..)
+	
+}
+
+void LuaLevelLoader::addDynamicModel3D(luabridge::LuaRef r){
+	
+}
+
 void LuaLevelLoader::addModel3D(luabridge::LuaRef r){
 	std::string rendergroup;
-	Mesh3D* model = loadModel3D(r, rendergroup);
+	Mesh3D* model = loadModel3D(r, rendergroup, false);
 	
 	if (rendergroup == "AABB")
 		level->addAABB(model);
@@ -412,8 +500,17 @@ void LuaLevelLoader::addModel3D(luabridge::LuaRef r){
 		level->addLine(model);
 	else if(rendergroup == "lighted")
 		level->addLightedMesh3D(model);
+	else if(rendergroup == "deferredlighted")
+		level->addDeferredLightedMesh3D(model);
 	else
 		level->addMesh3D(model);
+}
+
+void LuaLevelLoader::addAnimatedModel3D(luabridge::LuaRef r){
+	std::string rendergroup;
+	Mesh3D* model = loadModel3D(r, rendergroup, true);
+	
+	level->addAnimatedMesh3D(model);
 }
 
 void LuaLevelLoader::addDirectionalLight(luabridge::LuaRef r){
@@ -428,18 +525,49 @@ void LuaLevelLoader::addSpotLight(luabridge::LuaRef r){
 	level->addSpotLight(loadSpotLight(r));
 }
 
+void LuaLevelLoader::addDeferredDirectionalLight(luabridge::LuaRef r){
+	level->addDeferredDirectionalLight(loadDirectionalLight(r));
+}
+
+void LuaLevelLoader::addDeferredPointLight(luabridge::LuaRef r){
+	level->addDeferredPointLight(loadPointLight(r));
+}
+
+void LuaLevelLoader::addDeferredSpotLight(luabridge::LuaRef r){
+	level->addDeferredSpotLight(loadSpotLight(r));
+}
+
+void LuaLevelLoader::registerPlayer(luabridge::LuaRef r){
+	level->player->speed = loadFloat(r["speed"], 0.35f);
+
+	if(!r["controls"].isNil()){
+		luabridge::LuaRef c = r["controls"];
+		// Load custom control values
+		initControls = true;
+		
+		registerControl(c["forward"], Player::FORWARD, 1.0);
+		registerControl(c["backward"], Player::BACKWARD, -1.0); 
+		registerControl(c["right"], Player::RIGHT, 1.0);
+		registerControl(c["left"], Player::LEFT, -1.0);
+		registerControl(c["up"], Player::UP, 1.0);
+		registerControl(c["down"], Player::DOWN, -1.0);
+	}
+}
+
 Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* resManager) {
+	initKeyMap();
+	
 	// Set the resource manager
 	LuaLevelLoader::resManager = resManager;
 
-	// Create new camera for level
-	Camera* camera = new Camera();
+	// Create default player
+	Player* player = new Player(new Camera());
 
 	// Create the renderer
-	Renderer* renderer = new Renderer(camera);
+	Renderer* renderer = new Renderer(player);
 
 	// Create the level
-	Level* newLevel = new Level(renderer, camera);
+	Level* newLevel = new Level(renderer, player);
 	level = newLevel;
 
 	// Start lua scripting support
@@ -451,11 +579,16 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 	luabridge::getGlobalNamespace(state).
 		addFunction("print", print).
 		addFunction("addModel3D", addModel3D).
+		addFunction("addAnimatedModel3D", addAnimatedModel3D).
 		addFunction("loadLevelParameters", loadLevelParameters).
 		addFunction("updateDefaultVariables", updateDefaultVariables).
 		addFunction("addDirectionalLight", addDirectionalLight).
 		addFunction("addPointLight", addPointLight).
-		addFunction("addSpotLight", addSpotLight);
+		addFunction("addSpotLight", addSpotLight).
+		addFunction("addDeferredDirectionalLight", addDeferredDirectionalLight).
+		addFunction("addDeferredPointLight", addDeferredPointLight).
+		addFunction("addDeferredSpotLight", addDeferredSpotLight).
+		addFunction("registerPlayer", registerPlayer);
 
 	// Open and execute lua script
 	if (luaL_loadfile(state, filename.c_str())) {
@@ -466,6 +599,16 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 
 	// End lua session
 	lua_close(state);
+
+	// Post initialization
+	if(!initControls){
+		level->player->registerAxisControl(new InputControl(LMX_KEY_W, 1.0f), Player::FORWARD);
+		level->player->registerAxisControl(new InputControl(LMX_KEY_S, -1.0f), Player::BACKWARD);
+		level->player->registerAxisControl(new InputControl(LMX_KEY_A, -1.0f), Player::LEFT);
+		level->player->registerAxisControl(new InputControl(LMX_KEY_D, 1.0f), Player::RIGHT);
+		level->player->registerAxisControl(new InputControl(LMX_KEY_SPACE, 1.0f), Player::UP);
+		level->player->registerAxisControl(new InputControl(LMX_KEY_LSHIFT, -1.0f), Player::DOWN);
+	}
 
 	return level;
 }
@@ -572,4 +715,92 @@ Vec3 LuaLevelLoader::loadVector3D(luabridge::LuaRef r) {
 Vec2 LuaLevelLoader::loadVector2D(luabridge::LuaRef r) {
 	Vec2 result(r[1].cast<float>(), r[2].cast<float>());
 	return result;
+}
+
+void LuaLevelLoader::registerControl(luabridge::LuaRef r, unsigned control, float weight){
+	if(r.isNil())
+		return;
+	std::cout << "input" << std::endl;
+	std::cout << "loading input for " << r.cast<std::string>() << std::endl;
+	std::map<std::string, unsigned>::iterator it = keys.find(r.cast<std::string>());
+	if(it == keys.end())
+		std::cout << "Key not recognized in Player controls section" << std::endl, assert(false);
+	unsigned key = it->second;
+
+	level->player->registerAxisControl(new InputControl(key, weight), static_cast<Player::AxisControl>((int)control));
+}
+
+void LuaLevelLoader::initKeyMap(){
+	keys.insert(std::pair<std::string,unsigned>("KEY_A", LMX_KEY_A));
+	keys.insert(std::pair<std::string,unsigned>("KEY_B", LMX_KEY_B));
+	keys.insert(std::pair<std::string,unsigned>("KEY_C", LMX_KEY_C));
+	keys.insert(std::pair<std::string,unsigned>("KEY_D", LMX_KEY_D));
+	keys.insert(std::pair<std::string,unsigned>("KEY_E", LMX_KEY_E));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F", LMX_KEY_F));
+	keys.insert(std::pair<std::string,unsigned>("KEY_G", LMX_KEY_G));
+	keys.insert(std::pair<std::string,unsigned>("KEY_H", LMX_KEY_H));
+	keys.insert(std::pair<std::string,unsigned>("KEY_I", LMX_KEY_I));
+	keys.insert(std::pair<std::string,unsigned>("KEY_J", LMX_KEY_J));
+	keys.insert(std::pair<std::string,unsigned>("KEY_K", LMX_KEY_K));
+	keys.insert(std::pair<std::string,unsigned>("KEY_L", LMX_KEY_L));
+	keys.insert(std::pair<std::string,unsigned>("KEY_M", LMX_KEY_M));
+	keys.insert(std::pair<std::string,unsigned>("KEY_N", LMX_KEY_N));
+	keys.insert(std::pair<std::string,unsigned>("KEY_O", LMX_KEY_O));
+	keys.insert(std::pair<std::string,unsigned>("KEY_P", LMX_KEY_P));
+	keys.insert(std::pair<std::string,unsigned>("KEY_Q", LMX_KEY_Q));
+	keys.insert(std::pair<std::string,unsigned>("KEY_R", LMX_KEY_R));
+	keys.insert(std::pair<std::string,unsigned>("KEY_S", LMX_KEY_S));
+	keys.insert(std::pair<std::string,unsigned>("KEY_T", LMX_KEY_T));
+	keys.insert(std::pair<std::string,unsigned>("KEY_U", LMX_KEY_U));
+	keys.insert(std::pair<std::string,unsigned>("KEY_V", LMX_KEY_V));
+	keys.insert(std::pair<std::string,unsigned>("KEY_W", LMX_KEY_W));
+	keys.insert(std::pair<std::string,unsigned>("KEY_X", LMX_KEY_X));
+	keys.insert(std::pair<std::string,unsigned>("KEY_Y", LMX_KEY_Y));
+	keys.insert(std::pair<std::string,unsigned>("KEY_Z", LMX_KEY_Z));
+	keys.insert(std::pair<std::string,unsigned>("KEY_0", LMX_KEY_0));
+	keys.insert(std::pair<std::string,unsigned>("KEY_1", LMX_KEY_1));
+	keys.insert(std::pair<std::string,unsigned>("KEY_2", LMX_KEY_2));
+	keys.insert(std::pair<std::string,unsigned>("KEY_3", LMX_KEY_3));
+	keys.insert(std::pair<std::string,unsigned>("KEY_4", LMX_KEY_4));
+	keys.insert(std::pair<std::string,unsigned>("KEY_5", LMX_KEY_5));
+	keys.insert(std::pair<std::string,unsigned>("KEY_6", LMX_KEY_6));
+	keys.insert(std::pair<std::string,unsigned>("KEY_7", LMX_KEY_7));
+	keys.insert(std::pair<std::string,unsigned>("KEY_8", LMX_KEY_8));
+	keys.insert(std::pair<std::string,unsigned>("KEY_9", LMX_KEY_9));
+	keys.insert(std::pair<std::string,unsigned>("KEY_ESCAPE", LMX_KEY_ESCAPE));
+	keys.insert(std::pair<std::string,unsigned>("KEY_SPACE", LMX_KEY_SPACE));
+	keys.insert(std::pair<std::string,unsigned>("KEY_MINUS", LMX_KEY_MINUS));
+	keys.insert(std::pair<std::string,unsigned>("KEY_EQUAL", LMX_KEY_EQUAL));
+	keys.insert(std::pair<std::string,unsigned>("KEY_BACKSPACE", LMX_KEY_BACKSPACE));
+	keys.insert(std::pair<std::string,unsigned>("KEY_TAB", LMX_KEY_TAB));
+	keys.insert(std::pair<std::string,unsigned>("KEY_LBRACKET", LMX_KEY_LBRACKET));
+	keys.insert(std::pair<std::string,unsigned>("KEY_RBRACKET", LMX_KEY_RBRACKET));
+	keys.insert(std::pair<std::string,unsigned>("KEY_SEMICOLON", LMX_KEY_SEMICOLON));
+	keys.insert(std::pair<std::string,unsigned>("KEY_ENTER", LMX_KEY_ENTER));
+	keys.insert(std::pair<std::string,unsigned>("KEY_APOSTROPHE", LMX_KEY_APOSTROPHE));
+	keys.insert(std::pair<std::string,unsigned>("KEY_COMMA", LMX_KEY_COMMA));
+	keys.insert(std::pair<std::string,unsigned>("KEY_PERIOD", LMX_KEY_PERIOD));
+	keys.insert(std::pair<std::string,unsigned>("KEY_SLASH", LMX_KEY_SLASH));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F1", LMX_KEY_F1));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F2", LMX_KEY_F2));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F3", LMX_KEY_F3));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F4", LMX_KEY_F4));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F5", LMX_KEY_F5));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F6", LMX_KEY_F6));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F7", LMX_KEY_F7));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F8", LMX_KEY_F8));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F9", LMX_KEY_F9));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F10", LMX_KEY_F10));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F11", LMX_KEY_F11));
+	keys.insert(std::pair<std::string,unsigned>("KEY_F12", LMX_KEY_F12));
+	keys.insert(std::pair<std::string,unsigned>("KEY_CAPSLOCK", LMX_KEY_CAPSLOCK));
+	keys.insert(std::pair<std::string,unsigned>("KEY_LSHIFT", LMX_KEY_LSHIFT));
+	keys.insert(std::pair<std::string,unsigned>("KEY_RSHIFT", LMX_KEY_RSHIFT));
+	keys.insert(std::pair<std::string,unsigned>("KEY_SHIFT", LMX_KEY_SHIFT));
+	keys.insert(std::pair<std::string,unsigned>("KEY_LCTRL", LMX_KEY_LCTRL));
+	keys.insert(std::pair<std::string,unsigned>("KEY_RCTRL", LMX_KEY_RCTRL));
+	keys.insert(std::pair<std::string,unsigned>("KEY_CTRL", LMX_KEY_CTRL));
+	keys.insert(std::pair<std::string,unsigned>("KEY_LALT", LMX_KEY_LALT));
+	keys.insert(std::pair<std::string,unsigned>("KEY_RALT", LMX_KEY_RALT));
+	keys.insert(std::pair<std::string,unsigned>("KEY_ALT", LMX_KEY_ALT));
 }

@@ -20,6 +20,7 @@ public:
 	Vec3 position;
 	Vec3 color;
 	Attenuation attenuation;
+	float radius;
 private:
 };
 

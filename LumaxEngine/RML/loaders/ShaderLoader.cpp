@@ -1,13 +1,15 @@
 
 #include "ShaderLoader.hpp"
-#include "../RAL/Log.hpp"
-#include "../utils/StringUtils.hpp"
+#include "../../RAL/Log.hpp"
+#include "../../utils/StringUtils.hpp"
 
 #include <fstream>
 
+#include "../ResourceManager.hpp"
+
 #ifdef _USE_DIRECTX11
 
-Shader* ShaderLoader::loadShaderDX11(const std::string& filename) {
+Shader* ShaderLoader::loadShader(const std::string& filename) {
 	ShaderInformation info;
 
 	// Begin with vertex shader
@@ -101,7 +103,7 @@ int ShaderLoader::getSize(const std::string& type) {
 
 std::vector<StructGLSL> ShaderLoader::structsGLSL;
 
-Shader* ShaderLoader::loadShaderGL(const std::string& filename) {
+Shader* ShaderLoader::loadShader(const std::string& filename) {
 	ShaderInformation info;
 	info.shaderPath = filename;
 
@@ -132,7 +134,11 @@ Shader* ShaderLoader::loadShaderGL(const std::string& filename) {
 			uniformName = uniformName.substr(0, uniformName.size() - 1);
 			// Check if uniform is an array
 			if(uniformName.substr(uniformName.length() - 1, 1) == "]"){
-				int arraySize = std::stoi(uniformName.substr(uniformName.length() - 2, 1));
+				int strStart = uniformName.length() - 1;
+				while(uniformName.substr(strStart, 1) != "[")
+					--strStart;
+				++strStart;
+				int arraySize = std::stoi(uniformName.substr(strStart, uniformName.length() - strStart));
 				for(int i = 0; i < arraySize; ++i){
 					std::string baseName = uniformName.substr(0, uniformName.length() - 2) + std::to_string(i) + "]";
 					if(uniformSize == -1){
@@ -331,8 +337,8 @@ void ShaderLoader::loadShaderFile(const std::string& filename, ShaderInformation
 			// Uniform statement
 			std::vector<std::string> data = Utils::split(line);
 			// Exit if sampler2D
-			if (data[1] == "sampler2D")
-				continue;
+			//if (data[1] == "sampler2D")
+			//	continue;
 			// Get uniform name and size
 			int uniformSize = getSize(data[1]);
 			std::string uniformName = data[2];
@@ -343,8 +349,14 @@ void ShaderLoader::loadShaderFile(const std::string& filename, ShaderInformation
 			std::string baseName = "";
 			if(uniformName.substr(uniformName.length() - 1, 1) == "]"){
 				// Uniform is an array
-				numUniforms = std::stoi(uniformName.substr(uniformName.length() - 2, 1));
-				baseName = uniformName.substr(0, uniformName.length() - 3);
+				//numUniforms = std::stoi(uniformName.substr(uniformName.length() - 2, 1));
+				int strStart = uniformName.length() - 1;
+				while(uniformName.substr(strStart, 1) != "[")
+					--strStart;
+				++strStart;
+				int arraySubscriptLength = uniformName.length() - strStart;
+				numUniforms = std::stoi(uniformName.substr(strStart, arraySubscriptLength));
+				baseName = uniformName.substr(0, uniformName.length() - arraySubscriptLength - 1);
 			}
 			if(numUniforms == 1)
 				loadUniform(uniformName, data[1], info);
@@ -437,7 +449,7 @@ int ShaderLoader::getSize(const std::string& type) {
 	else if (type == "mat4")
 		return 16;
 	else if (type == "sampler2D")
-		return -2;
+		return 1;
 	else
 		return -1;
 }

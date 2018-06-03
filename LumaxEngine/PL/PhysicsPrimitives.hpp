@@ -9,6 +9,8 @@
 #include <functional>
 #include <cassert>
 
+#include "ContactManifold.hpp"
+
 class PhysicsPrimitive {
 public:
 	virtual void addTranslation(Vec3 translation) { };
@@ -37,14 +39,41 @@ public:
 		return result;
 	}
 
+	void dynamicCollidesWithStatic(PhysicsPrimitive* other){
+		auto handler = dynamicCollisionHandlers.find(getKey(tid, other->tid));
+
+		// Detect any interpenetration
+		ContactManifold contact;
+		if(handler != dynamicCollisionHandlers.end())
+			handler->second(this, other, contact);
+		else {
+			handler = dynamicCollisionHandlers.find(getKey(other->tid, tid));
+			if(handler == dynamicCollisionHandlers.end()){
+				// Something went horribly wrong
+				Log::println("Error: Collision detection of dynamic primitive with static primitive could not be found: no valid dynamic handler function");
+				assert(false);
+				return;
+			}
+			handler->second(other, this, contact);
+		}
+
+		// Resolve the collision if necessary
+		if(contact.isIntersecting){
+			this->pmesh->addTranslation(contact.normal * contact.penetration);
+		}
+	}
+
 	static void initialize();
 protected:
 	PhysicsPrimitive(const unsigned int tid) : tid(tid) { }
 	const unsigned tid;
 
 	typedef std::function<bool(const PhysicsPrimitive* a, const PhysicsPrimitive* b)> CollisionHandler;
+	typedef std::function<void(const PhysicsPrimitive* a, const PhysicsPrimitive* b, ContactManifold& contact)> DynamicCollisionHandler;
+	
 	typedef unsigned long long keyID;
 	static std::unordered_map<keyID, CollisionHandler> collisionHandlers;
+	static std::unordered_map<keyID, DynamicCollisionHandler> dynamicCollisionHandlers;
 
 	static keyID getKey(unsigned tid1, unsigned tid2) {
 		return (keyID)(tid1) << 32 | tid2;
@@ -52,6 +81,9 @@ protected:
 
 	static void addCollisionHandler(unsigned tid1, unsigned tid2, CollisionHandler handler) {
 		collisionHandlers.insert(std::pair<unsigned long long, CollisionHandler>(getKey(tid1, tid2), handler));
+	}
+	static void addDynamicCollisionHandler(unsigned tid1, unsigned tid2, DynamicCollisionHandler handler){
+		dynamicCollisionHandlers.insert(std::pair<unsigned long long, DynamicCollisionHandler>(getKey(tid1, tid2), handler));
 	}
 };
 

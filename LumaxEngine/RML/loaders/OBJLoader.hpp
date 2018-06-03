@@ -7,8 +7,8 @@
 #include <string>
 #include <fstream>
 
-#include "../RL/Model3D.hpp"
-#include "../utils/StringUtils.hpp"
+#include "../../RL/Model3D.hpp"
+#include "../../utils/StringUtils.hpp"
 
 class OBJLoader {
 public:

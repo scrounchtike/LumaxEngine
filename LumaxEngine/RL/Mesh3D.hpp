@@ -22,7 +22,7 @@ public:
 	void addTranslation(Vec3 translation) {
 		// 1. Update transform if present
 		if (transform) {
-
+			
 		}
 		// 2. Update physics primitive
 		if (physics) {
@@ -33,7 +33,7 @@ public:
 	void addRotation(Vec3 rotation) {
 		// 1. Update transform
 		if (transform) {
-
+			
 		}
 		// 2. Update physics primitive
 		if (physics) {
@@ -44,7 +44,7 @@ public:
 	void addScale(Vec3 scale) {
 		// 1. Update transform
 		if (transform) {
-
+			
 		}
 		// 2. Update physics primitive
 		if (physics) {
@@ -62,9 +62,15 @@ public:
 	
 	FullModel3D* fullModel;
 	Material* material;
-	Shader* shader;
 	Transform3D* transform;
 	PhysicsPrimitive* physics;
+
+	// Abstract shaders for easier use
+	void addShader(Shader* shader) { shaders.push_back(shader); }
+	Shader* getShader() const { assert(shaders.size()); return shaders[0]; }
+	Shader* getGShader() const { assert(shaders.size()); return shaders[0];}
+private:
+	std::vector<Shader*> shaders;
 };
 
 #endif

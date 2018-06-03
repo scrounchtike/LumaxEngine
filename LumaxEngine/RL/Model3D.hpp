@@ -34,10 +34,14 @@ public:
 
 	~Model3D();
 
+	// Animation support
+	void addAnimationWeights(const float* boneIDs, const float* weights, unsigned numWeights);
+
 	bool isIndexed() const;
 	bool isTextured() const;
 	bool hasNormals() const;
 	bool hasTangents() const;
+	bool isAnimated() const;
 	unsigned int getNumVertices() const;
 	unsigned int getNumIndices() const;
 

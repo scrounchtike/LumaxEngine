@@ -4,7 +4,14 @@
 
 #include "../math.hpp"
 
+#include "../RAL/input.hpp"
+
 class Camera {
+	friend class Player;
+	Vec3 forward;
+	Vec3 right;
+	Vec3 up;
+	Vec3 walk;
 public:
 #ifdef _USE_OPENGL
 	Camera(Vec3 position = Vec3(0,0,0), Vec3 forward = Vec3(0,0,1), Vec3 up = Vec3(0,1,0), float fov = 70.0f, float zNear = 0.1f, float zFar = 1000.0f);
@@ -33,13 +40,8 @@ private:
 	// Movement variables
 	float movSpeed = 0.05f;
 	float sensitivity = 0.003f;
-
-	// Camera data
+	
 	Vec3 position;
-	Vec3 walk;
-	Vec3 forward;
-	Vec3 up;
-	Vec3 right;
 
 	// View variables
 	float fov;

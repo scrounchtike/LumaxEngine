@@ -5,8 +5,11 @@
 
 #include "../RAL/Log.hpp"
 
-Matrix4f::Matrix4f() {
-	
+Matrix4f::Matrix4f() {	
+}
+
+Matrix4f::Matrix4f(float* ptrMatrix){
+	memcpy(m, ptrMatrix, 16);
 }
 
 Matrix4f& Matrix4f::initIdentity() {
@@ -90,6 +93,16 @@ Matrix4f& Matrix4f::initSkewedRotationZ(float theta, float ar) {
 	m[1][0] = sinTheta;		 m[1][1] = cosTheta;       m[1][2] = 0;    m[1][3] = 0;
 	m[2][0] = 0;			 m[2][1] = 0;              m[2][2] = 1;    m[2][3] = 0;
 	m[3][0] = 0;             m[3][1] = 0;			   m[3][2] = 0;    m[3][3] = 1;
+	return *this;
+}
+
+// taken from:
+// http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix/index.htm
+Matrix4f& Matrix4f::initRotation(const Quaternion &q){
+	m[0][0] = 1 - 2*q.y*q.y - 2*q.z*q.z;    m[0][1] = 2*q.x*q.y - 2*q.z*q.w;    m[0][2] = 2*q.x*q.z + 2*q.y*q.w;    m[0][3] = 0;
+	m[1][0] = 2*q.x*q.y + 2*q.z*q.w;    m[1][1] = 1 - 2*q.x*q.x - 2*q.z*q.z;    m[1][2] = 2*q.y*q.z - 2*q.x*q.w;    m[1][3] = 0;
+	m[2][0] = 2*q.x*q.z - 2*q.y*q.w;    m[2][1] = 2*q.y*q.z + 2*q.x*q.w;    m[2][2] = 1 - 2*q.x*q.x - 2*q.y*q.y;    m[2][3] = 0;
+	m[3][0] = 0;    m[3][1] = 0;    m[3][2] = 0;    m[3][3] = 1;
 	return *this;
 }
 

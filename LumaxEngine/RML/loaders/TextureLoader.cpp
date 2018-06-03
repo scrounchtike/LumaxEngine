@@ -2,13 +2,23 @@
 #include "TextureLoader.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../utils/stb_image.h"
+#include "../../utils/stb_image.h"
 
-#include "../math/types.hpp"
+#include "../../math/types.hpp"
+
+#include "../ResourceManager.hpp"
+
+Texture* TextureLoader::loadTexture(const std::string& filename){
+#ifdef _USE_OPENGL
+	return new Texture(loadTextureSTB(filename));
+#elif defined _USE_DIRECTX11
+	// TODO: DX11 textures support
+#endif
+}
 
 #ifdef _USE_OPENGL
 
-TextureGL* TextureLoader::loadTextureSTB(const std::string& filename) {
+GLuint TextureLoader::loadTextureSTB(const std::string& filename) {
 	int32 width, height, numComponents;
 	uint8* data = stbi_load(filename.c_str(), &width, &height, &numComponents, 3);
 
@@ -25,8 +35,7 @@ TextureGL* TextureLoader::loadTextureSTB(const std::string& filename) {
 
 	stbi_image_free(data);
 
-	TextureGL* texture = new TextureGL(texID);
-	return texture;
+	return texID;
 }
 
 #elif defined _USE_DIRECTX11

@@ -1,90 +1,100 @@
 
-#include "buildDesc.hpp"
-
-#if !defined(RENDERING_CONTEXT_DX11_HPP) && defined(_USE_DIRECTX11)
+#ifndef RENDERING_CONTEXT_DX11_HPP
 #define RENDERING_CONTEXT_DX11_HPP
 
-#include "RenderingContext.hpp"
-#include "UsingDX11.hpp"
+#include "RenderingState.hpp"
 
-#include <vector>
-#include <string>
-#include <map>
+#ifdef _USE_DIRECTX11
 
-struct DepthStencilState {
-	ID3D11Texture2D* depthStencilBuffer;
-	ID3D11DepthStencilState* depthStencilState;
-	ID3D11DepthStencilView* depthStencilView;
-};
-
-class RenderingContextDX11 : public RenderingContext {
+class RenderingContextDX11 {
 public:
-	RenderingContextDX11(ContextDescription description, HWND hwnd);
-	virtual ~RenderingContextDX11();
+	void setClearColor(float color[4]);
+	void clearBuffers();
+	void clearColor();
+	void clearDepth();
+	void clearStencil();
+	
+	void setFaceCulling(bool);
+	void setCullFace(int);
+	void setFrontFace(int);
 
-	virtual void clearColorBuffer(float color[4]);
-	virtual void clearDepthBuffer(float depthValue = 1.0);
-	virtual void clearBuffers(float color[4], float depthValue = 1.0);
-	virtual void clearBuffers();
-	virtual void setClearColor(float color[4]);
+	void setDepth(bool);
+	void setDepthTest(bool);
+	void setDepthFunc(int);
 
-	virtual void enableZBuffer();
-	virtual void disableZBuffer();
+	void setStencil(bool);
+	void setStencilFailOp(int);
+	void setStencilDepthFailOp(int);
+	void setStencilPassOp(int);
+	void setStencilFunc(int);
+	void setStencilBackFailOp(int);
+	void setStencilBackDepthFailOp(int);
+	void setStencilBackPassOp(int);
+	void setStencilBackFunc(int);
 
-	virtual void enableTransparency();
-	virtual void disableTransparency();
+	void setScissor(bool);
 
-	virtual void setViewport(unsigned int width, unsigned int height);
+	void setBlending(bool);
+	void setBlendSrcOp(int);
+	void setBlendDstOp(int);
 
-	virtual void swapBuffers();
+	void setViewport(unsigned width, unsigned height);
 
-	// Allow state modification
-	void registerDepthStencilView(DepthStencilDescription depthStencilDescription, const std::string& stateIdentifier);
-	void changeState(const std::string& stateIdentifier);
+	void setFillMode(int);
 
-	ID3D11Device* getDevice() { return device; }
-	ID3D11DeviceContext* getDeviceContext() { return deviceContext; }
+	void update();
+	void initialize(RenderingState&);
 
-	ID3D11DepthStencilView* getDepthStencilView() { return depthStencilDescriptions[depthStencilIndex].depthStencilView; }
-private:
-	ContextDescription state;
+	/*
+		DX11 Data and caching
+	*/
 
-	// Clear color
-	float defaultColor[4];
-	float defaultDepthValue = 1.0;
+	// flags
+#define DEPTH_STENCIL 1
+#define RASTER 2
+#define BLENDING 4
+#define VIEWPORT 8
+	unsigned int updateFlag = 0;
+	
+	float color[4];
 
-	// Window reference
-	HWND hwnd;
+	// Depth Stencil
+	D3D11_DEPTH_STENCIL_DESC depthStencilStateDesc;
+	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
 
-	// DX11 State declarations
+	// Raster
+	D3D11_RASTERIZER_DESC rasterDesc;
+
+	// Blending
+	D3D11_BLEND_DESC blendStateDesc;
+
+	// Viewport
+	D3D11_VIEWPORT viewportDesc;
+	
+	/*
+		DX11 State buffers
+	*/
+	
 	ID3D11Device* device;
 	ID3D11DeviceContext* deviceContext;
 	IDXGISwapChain* swapChain;
 
+	//Depth Stencil
+	ID3D11Texture2D* depthStencilTexture;
+	ID3D11DepthStencilState* depthStencilState;
+	ID3D11DepthStencilView* depthStencilView;
+
+	// Raster
 	ID3D11RasterizerState* rasterState;
+
+	// Target View
 	ID3D11RenderTargetView* renderTargetView;
 
-	int depthStencilIndex = 0;
-	std::vector<DepthStencilState> depthStencilDescriptions;
-	std::map<const std::string, int> map;
-
-	// Blend states
+	// Blending
 	ID3D11BlendState* blendState;
-	ID3D11BlendState* transparencyEnabledBlendState;
-	ID3D11BlendState* transparencyDisabledBlendState;
-
-	ID3D11BlendState* transparencyState;
 
 	D3D_FEATURE_LEVEL featureLevel;
-
-	bool initialize();
-	bool cleanUp();
-
-	bool createRenderBuffer();
-	bool createDepthStencilBuffer();
-	bool createRasterMode();
-	bool createBlendMode(BlendModeDescription, ID3D11BlendState* blendState);
-	bool createViewport();
 };
 
+#endif
 #endif

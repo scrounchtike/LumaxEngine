@@ -139,10 +139,19 @@ Model3D::~Model3D() {
 	delete model;
 }
 
+void Model3D::addAnimationWeights(const float *boneIDs, const float *weights, unsigned int numWeights){
+#ifdef _USE_OPENGL
+	model->addAnimationWeights(boneIDs, weights, numWeights);
+#elif defined _USE_DIRECTX11
+	// TODO: Support animation for DX11 3D models
+#endif
+}
+
 bool Model3D::isIndexed() const { return model->isIndexed; }
 bool Model3D::isTextured() const { return model->isTextured; }
 bool Model3D::hasNormals() const { return model->hasNormals; }
 bool Model3D::hasTangents() const { return model->hasTangents; }
+bool Model3D::isAnimated() const { return model->isAnimated; }
 unsigned int Model3D::getNumVertices() const { return model->numVertices; }
 unsigned int Model3D::getNumIndices() const { return model->numIndices; }
 

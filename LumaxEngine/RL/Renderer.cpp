@@ -9,11 +9,11 @@
 #include "renderers/RendererDX11.hpp"
 #endif
 
-Renderer::Renderer(Camera* camera) {
+Renderer::Renderer(Player* player) {
 #ifdef _USE_OPENGL
-	renderer = new RendererGL(camera);
+	renderer = new RendererGL(player->getCamera());
 #elif defined _USE_DIRECTX11
-	renderer = new RendererDX11(camera);
+	renderer = new RendererDX11(player->getCamera());
 #endif
 }
 
@@ -23,151 +23,144 @@ Renderer::~Renderer() {
 
 // Individual rendering methods
 void Renderer::renderPoint2D(const Point2D& point) const {
-	renderer->shaderPoint2D->bind();
-	renderer->shaderPoint2D->setUniform2f("position", point.position);
-	renderer->shaderPoint2D->setUniform3f("color", point.color);
-	renderer->shaderPoint2D->prepareUniforms();
+	shader2Dpoint->bind();
+	shader2Dpoint->setUniform2f("position", point.position);
+	shader2Dpoint->setUniform3f("color", point.color);
+	shader2Dpoint->prepareUniforms();
 
-	renderer->renderPoint2D(point);
+	point2D->render();
 }
 
 void Renderer::renderLine2D(const Line2D& line) const {
-	renderer->shaderLine2D->bind();
-	renderer->shaderLine2D->setUniform2f("A", line.A);
-	renderer->shaderLine2D->setUniform2f("B", line.B);
-	renderer->shaderLine2D->setUniform3f("color", line.color);
-	renderer->shaderLine2D->prepareUniforms();
+	shader2Dline->bind();
+	shader2Dline->setUniform2f("A", line.A);
+	shader2Dline->setUniform2f("B", line.B);
+	shader2Dline->setUniform3f("color", line.color);
+	shader2Dline->prepareUniforms();
 
-	renderer->renderLine2D(line);
+	line2D->render();
 }
 
 void Renderer::renderSprite2D(const Sprite2D& sprite) const {
-	renderer->shaderSprite2D->bind();
-	renderer->shaderSprite2D->setUniform2f("position", sprite.position);
-	renderer->shaderSprite2D->setUniform2f("extents", sprite.extents);
-	renderer->shaderSprite2D->setUniform3f("color", sprite.color);
-	renderer->shaderSprite2D->prepareUniforms();
+	shader2Dsprite->bind();
+	shader2Dsprite->setUniform2f("position", sprite.position);
+	shader2Dsprite->setUniform2f("extents", sprite.extents);
+	shader2Dsprite->setUniform3f("color", sprite.color);
+	shader2Dsprite->prepareUniforms();
 
-	renderer->renderSprite2D(sprite);
+	sprite2D->render();
 }
 
 void Renderer::renderPoint3D(const Point3D& point) const {
-	renderer->shaderPoint3D->bind();
-	renderer->shaderPoint3D->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderPoint3D->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
-	renderer->shaderPoint3D->setUniform3f("position", point.position);
-	renderer->shaderPoint3D->setUniform3f("color", point.color);
-	renderer->shaderPoint3D->prepareUniforms();
+	shader3Dpoint->bind();
+	shader3Dpoint->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shader3Dpoint->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shader3Dpoint->setUniform3f("position", point.position);
+	shader3Dpoint->setUniform3f("color", point.color);
+	shader3Dpoint->prepareUniforms();
+
+	//renderer->renderPoint3D();
+	cube->render();
 }
 
 void Renderer::renderLine3D(const Line3D& line) const {
-	renderer->shaderLine3D->bind();
-	renderer->shaderLine3D->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderLine3D->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
-	renderer->shaderLine3D->setUniform3f("start", line.start);
-	renderer->shaderLine3D->setUniform3f("end", line.end);
-	renderer->shaderLine3D->setUniform3f("color", line.color);
-	renderer->shaderLine3D->prepareUniforms();
+	shader3Dline->bind();
+	shader3Dline->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shader3Dline->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shader3Dline->setUniform3f("start", line.start);
+	shader3Dline->setUniform3f("end", line.end);
+	shader3Dline->setUniform3f("color", line.color);
+	shader3Dline->prepareUniforms();
+
+	renderer->renderLine3D();
 }
 
 void Renderer::renderSprite3D(const Sprite3D& sprite) const {
 	assert(false);
 }
 
-void Renderer::renderMesh2D(const Mesh2D& mesh2D) const {
-	renderer->renderMesh2D(mesh2D);
-}
-
-void Renderer::renderMesh3D(const Mesh3D& mesh3D) const {
-	renderer->renderMesh3D(mesh3D);
-}
-
-void Renderer::renderLightedMesh3D(const Mesh3D& mesh3D) const {
-	//renderer->renderLightedMesh3D(mesh3D);
-}
-
 void Renderer::renderAABB(const Mesh3D& aabb) const {
-	renderer->shaderAABB->bind();
-	renderer->shaderAABB->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderAABB->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
-	renderer->shaderAABB->setUniform3f("position", ((AABB*)(aabb.physics))->position);
-	renderer->shaderAABB->setUniform3f("extents", ((AABB*)(aabb.physics))->extents);
-	aabb.material->setShaderUniforms(renderer->shaderAABB);
-	renderer->shaderAABB->prepareUniforms();
+	shaderAABB->bind();
+	shaderAABB->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shaderAABB->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shaderAABB->setUniform3f("position", ((AABB*)(aabb.physics))->position);
+	shaderAABB->setUniform3f("extents", ((AABB*)(aabb.physics))->extents);
+	aabb.material->setShaderUniforms(shaderAABB);
+	shaderAABB->prepareUniforms();
 
-	renderer->renderAABB(aabb);
+	cube->render();
 }
 
 void Renderer::renderSphere(const Mesh3D& sphere) const {
-	renderer->shaderSphere->bind();
-	renderer->shaderSphere->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderSphere->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
-	renderer->shaderSphere->setUniform3f("position", ((Sphere*)(sphere.physics))->position);
-	renderer->shaderSphere->setUniform1f("radius", ((Sphere*)(sphere.physics))->radius);
-	sphere.material->setShaderUniforms(renderer->shaderSphere);
-	renderer->shaderSphere->prepareUniforms();
+	shaderSphere->bind();
+	shaderSphere->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shaderSphere->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shaderSphere->setUniform3f("position", ((Sphere*)(sphere.physics))->position);
+	shaderSphere->setUniform1f("radius", ((Sphere*)(sphere.physics))->radius);
+	sphere.material->setShaderUniforms(shaderSphere);
+	shaderSphere->prepareUniforms();
 
-	renderer->renderSphere(sphere);
+	sphere->render();
 }
 
 void Renderer::renderPlane(const Mesh3D& plane) const {
-	renderer->shaderPlane->bind();
-	renderer->shaderPlane->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderPlane->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shaderPlane->bind();
+	shaderPlane->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shaderPlane->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
 	if (plane.material->getTexture())
-		renderer->shaderPlane->setUniform1f("isTextured", 1.0);
+		shaderPlane->setUniform1f("isTextured", 1.0);
 	else
-		renderer->shaderPlane->setUniform1f("isTextured", 0.0);
+		shaderPlane->setUniform1f("isTextured", 0.0);
 	Vec3 bitangent = -cross(((Plane*)plane.physics)->tangent, ((Plane*)plane.physics)->normal);
 	Mat4 rotation = Mat4().initSpecialRotation2(((Plane*)plane.physics)->tangent, bitangent, ((Plane*)plane.physics)->normal);
-	renderer->shaderPlane->setUniformMatrix4f("rotation", rotation);
-	renderer->shaderPlane->setUniform3f("position", ((Plane*)plane.physics)->position);
-	renderer->shaderPlane->setUniform1f("scale", ((Plane*)plane.physics)->renderingScale);
-	plane.material->setShaderUniforms(renderer->shaderPlane);
-	renderer->shaderPlane->prepareUniforms();
+	shaderPlane->setUniformMatrix4f("rotation", rotation);
+	shaderPlane->setUniform3f("position", ((Plane*)plane.physics)->position);
+	shaderPlane->setUniform1f("scale", ((Plane*)plane.physics)->renderingScale);
+	plane.material->setShaderUniforms(shaderPlane);
+	shaderPlane->prepareUniforms();
 
-	renderer->renderPlane(plane);
+	plane->render();
 }
 
 void Renderer::renderOBB(const Mesh3D& obb) const {
-	renderer->shaderOBB->bind();
-	renderer->shaderOBB->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderOBB->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shaderOBB->bind();
+	shaderOBB->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shaderOBB->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
 	OBB* phys = (OBB*)obb.physics;
 	Vec3 u2 = cross(phys->u[0], phys->u[1]);
 	Mat4 translation = Mat4().initTranslation(phys->position);
 	Mat4 rotation = Mat4().initSpecialRotation2(phys->u[0], phys->u[1], u2);
 	Mat4 scale = Mat4().initScale(phys->e);
 	Mat4 transform = translation.mul(rotation.mul(scale));
-	renderer->shaderOBB->setUniformMatrix4f("transform", transform);
-	obb.material->setShaderUniforms(renderer->shaderOBB);
-	renderer->shaderOBB->prepareUniforms();
+	shaderOBB->setUniformMatrix4f("transform", transform);
+	obb.material->setShaderUniforms(shaderOBB);
+	shaderOBB->prepareUniforms();
 
-	renderer->renderOBB(obb);
+	cube->render();
 }
 
 void Renderer::renderRay(const Mesh3D& ray) const {
-	renderer->shaderLine3D->bind();
-	renderer->shaderLine3D->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderLine3D->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
-	renderer->shaderLine3D->setUniform3f("start", ((Ray*)ray.physics)->position);
-	renderer->shaderLine3D->setUniform3f("start", ((Ray*)ray.physics)->position + ((Ray*)ray.physics)->direction * 10000.0f);
-	ray.material->setShaderUniforms(renderer->shaderLine3D);
-	renderer->shaderLine3D->prepareUniforms();
+	shaderLine3D->bind();
+	shaderLine3D->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shaderLine3D->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shaderLine3D->setUniform3f("start", ((Ray*)ray.physics)->position);
+	shaderLine3D->setUniform3f("end", ((Ray*)ray.physics)->position + ((Ray*)ray.physics)->direction * 10000.0f);
+	ray.material->setShaderUniforms(shaderLine3D);
+	shaderLine3D->prepareUniforms();
 
-	renderer->renderRay(ray);
+	renderer->renderLine3D();
 }
 
 void Renderer::renderLine(const Mesh3D& line) const {
-	renderer->shaderLine3D->bind();
-	renderer->shaderLine3D->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
-	renderer->shaderLine3D->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
-	renderer->shaderLine3D->setUniform3f("start", ((Line*)line.physics)->start);
-	renderer->shaderLine3D->setUniform3f("start", ((Line*)line.physics)->end);
-	line.material->setShaderUniforms(renderer->shaderLine3D);
-	renderer->shaderLine3D->prepareUniforms();
+	shaderLine3D->bind();
+	shaderLine3D->setUniformMatrix4f("projection", renderer->camera->getProjectionMatrix());
+	shaderLine3D->setUniformMatrix4f("view", renderer->camera->getViewMatrix());
+	shaderLine3D->setUniform3f("start", ((Line*)line.physics)->start);
+	shaderLine3D->setUniform3f("end", ((Line*)line.physics)->end);
+	line.material->setShaderUniforms(shaderLine3D);
+	shaderLine3D->prepareUniforms();
 
-	renderer->renderLine(line);
+	renderer->renderLine();
 }
 
 // Vector rendering methods (more efficient state reuse)
@@ -203,8 +196,16 @@ void Renderer::renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const {
 	renderer->renderMeshes3D(meshes3D);
 }
 
-void Renderer::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const{
+void Renderer::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights) const {
 	renderer->renderLightedMeshes3D(meshes3D, lights);
+}
+
+void Renderer::renderDeferredLightedMeshes3D(const std::vector<Mesh3D *> &meshes3D, const LightingDescription &lights) const {
+	renderer->renderDeferredLightedMeshes3D(meshes3D, lights);
+}
+
+void Renderer::renderAnimatedMeshes3D(const std::vector<Mesh3D*>& meshes3D){
+	renderer->renderAnimatedMeshes3D(meshes3D);
 }
 
 void Renderer::renderAABBs(const std::vector<Mesh3D*>& aabbs) const {
@@ -229,4 +230,21 @@ void Renderer::renderRays(const std::vector<Mesh3D*>& rays) const {
 
 void Renderer::renderLines(const std::vector<Mesh3D*>& lines) const {
 	renderer->renderLines(lines);
+}
+
+void Renderer::initializeGeometries(){
+	// Point2D initialization
+	{
+		const float sizePoint = 0.025;
+		float ar = getStaticWindowHeight() / getStaticWindowWidth();
+		float offset = sizePoint / 2.0;
+		float vertices[12] = { (0 - offset)*ar,0 - offset,(0 - offset)*ar,sizePoint - offset,(sizePoint - offset)*ar,sizePoint - offset,(sizePoint - offset)*ar,sizePoint - offset,(sizePoint - offset)*ar,0 - offset,(0 - offset)*ar,0 - offset };
+		point2D = new Model2D(vertices, 12);
+	}
+
+	// Line2D initialization
+	{
+		float vertices = { 0,0,1,1 };
+		line2D = new Model2D(vertices, 4);
+	}
 }

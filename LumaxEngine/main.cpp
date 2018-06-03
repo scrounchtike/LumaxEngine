@@ -5,15 +5,18 @@
 #include "RAL/Window.hpp"
 
 #include "GL/Level.hpp"
-#include "loaders/LevelLoader_lua.hpp"
+#include "GL/LuaLevelLoader.hpp"
 
 #include "RAL/Window.hpp"
 #include "RL/Renderer.hpp"
+#include "RAL/input.hpp"
 
 #include "core/Time.hpp"
 
-#include "loaders/ShaderLoader.hpp"
+#include "RML/loaders/ShaderLoader.hpp"
 #include "RML/ResourceManager.hpp"
+
+#include <sys/time.h>
 
 const std::string TITLE = "Lumax Game Engine";
 const unsigned int WIDTH = 800;
@@ -88,6 +91,13 @@ int main(int argc, char* argv[]) {
 	window->initOpenGL();
 #endif
 
+	// Input callback
+#ifdef _USE_GLFW
+	Input::getInputs = std::bind(&Window::input, window);
+#elif defined _USE_DIRECTINPUT
+	Input::getInputs = DirectInput::input;
+#endif
+
 	// Init static resource manager
 	resManager = new ResourceManager("res");
 
@@ -96,7 +106,7 @@ int main(int argc, char* argv[]) {
 	LuaLevelLoader::initLoaders();
 	
 	// Init Level
-	level = LuaLevelLoader::loadLevel("levels/level_test2.lua", resManager);
+	level = LuaLevelLoader::loadLevel("levels/level_test.lua", resManager);
 	
 #ifdef _WINDOWS
 	Time::initTimer();
@@ -125,6 +135,11 @@ void run() {
 	float64 fpsTimeCounter = 0.0;
 	float64 updateTimer = 1.0;
 	float32 frameTime = 1000.0f / 60.0f; // (in milliseconds)
+#elif defined _UNIX
+	timeval lastTime, currentTime;
+	gettimeofday(&lastTime, NULL);
+	double deltaTime = 0; // in milliseconds
+	double timeCounter = 0; // in milliseconds
 #endif
 
 	while (!window->shouldClose()) {
@@ -140,6 +155,18 @@ void run() {
 			float64 msPerFrame = 1000.0 / (float64)fps;
 			std::cout << "FPS TIMER: " << fps << " updates: " << updates << "   frame took " << msPerFrame << std::endl;
 			fpsTimeCounter -= 1000, fps = 0, updates = 0;
+		}
+#elif defined _UNIX
+		gettimeofday(&currentTime, NULL);
+		deltaTime = (currentTime.tv_sec - lastTime.tv_sec) * 1000.0;
+		deltaTime += (currentTime.tv_usec - lastTime.tv_usec) / 1000.0;
+		lastTime = currentTime;
+		timeCounter += deltaTime;
+
+		if(timeCounter >= 1000.0){
+			timeCounter -= 1000.0;
+			std::cout << "FPS: " << fps << "  |  updates: " << updates << std::endl;
+			fps = updates = 0;
 		}
 #endif
 
@@ -171,7 +198,7 @@ void run() {
 }
 
 void input() {
-	window->input();
+	Input::input();
 }
 
 void update() {

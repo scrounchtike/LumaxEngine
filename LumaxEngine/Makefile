@@ -1,7 +1,8 @@
 
-SOURCES = $(wildcard *.cpp GL/*.cpp PL/*.cpp RAL/*.cpp RL/*.cpp RL/lights/*.cpp RML/*.cpp core/*.cpp levels/*.cpp loaders/*.cpp utils/*.cpp math/*.cpp)
+#SOURCES = $(wildcard *.cpp GL/*.cpp PL/*.cpp RAL/*.cpp RAL/windows/*.cpp RL/*.cpp RL/animations/*.cpp RL/lights/*.cpp RL/models3D/*.cpp RL/models2D/*.cpp RL/renderers/*.cpp RL/shaders/*.cpp RL/textures/*.cpp RML/*.cpp RML/loaders/*.cpp core/*.cpp levels/*.cpp utils/*.cpp math/*.cpp)
+SOURCES = $(wildcard *.cpp RAL/*.cpp RAL/windows/*.cpp math/*.cpp)
 
-HEADERS = $(wildcart *.hpp *.h GL/*.hpp PL/*.hpp RAL/*.hpp RL/*.hpp RL/lights/*.hpp RML/*.hpp core/*.hpp levels/*.hpp loaders/*.hpp math/*.hpp utils/*.hpp utils/*.h)
+HEADERS = $(wildcart *.hpp *.h GL/*.hpp PL/*.hpp RAL/*.hpp RAL/windows/*.hpp RL/*.hpp RL/animations/*.hpp RL/lights/*.hpp RL/models3D/*.hpp RL/models2D/*.hpp RL/renderers/*.hpp RL/shaders/*.hpp RL/textures/*.hpp RML/*.hpp RML/loaders/*.hpp core/*.hpp levels/*.hpp math/*.hpp utils/*.hpp utils/*.h)
 
 all: clean make
 

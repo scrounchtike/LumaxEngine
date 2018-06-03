@@ -10,6 +10,8 @@
 class Matrix4f {
 public:
 	Matrix4f();
+	Matrix4f(float* ptrMatrix);
+	
 	Matrix4f& initIdentity();
 	Matrix4f& initTranslation(float x, float y, float z);
 	Matrix4f& initTranslation(Vec3 translation);
@@ -30,6 +32,9 @@ public:
 	Matrix4f& initRotationY(float angle);
 	Matrix4f& initRotationZ(float angle);
 	Matrix4f& initSkewedRotationZ(float angle, float xSkewing);
+
+	// From quaternion
+	Matrix4f& initRotation(const Quaternion& q);
 
 	// Special Rotation
 	Matrix4f& initSpecialRotation(const Vec3& right, const Vec3& up, const Vec3& forward);

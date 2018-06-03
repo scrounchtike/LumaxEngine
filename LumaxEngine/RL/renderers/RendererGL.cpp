@@ -8,17 +8,18 @@
 #ifdef _USE_OPENGL
 
 #include <cassert>
-#include "../../loaders/ShaderLoader.hpp"
 
 RendererGL::RendererGL(Camera* camera) : camera(camera) {
 	bool success = initializeGeometries();
 	success &= initializeShaders();
+	success &= initializeFramebuffers();
 	assert(success);
 }
 
 RendererGL::~RendererGL() {
 	bool success = cleanUpGeometries();
 	success &= cleanUpShaders();
+	success &= cleanUpFramebuffers();
 	assert(success);
 }
 
@@ -242,17 +243,17 @@ void RendererGL::renderMeshes3D(const std::vector<Mesh3D*>& meshes3D) const {
 	if (!meshes3D.size())
 		return;
 	for (Mesh3D* mesh : meshes3D) {
-		mesh->shader->bind();
+		mesh->getShader()->bind();
 		//material uniforms
-		mesh->material->setShaderUniforms(mesh->shader);
+		mesh->material->setShaderUniforms(mesh->getShader());
 		// Uniforms
 		static Mat4 identity = Mat4().initIdentity();
-		mesh->shader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
-		mesh->shader->setUniformMatrix4f("view", camera->getViewMatrix());
+		mesh->getShader()->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->getShader()->setUniformMatrix4f("view", camera->getViewMatrix());
 		if (mesh->transform) {
-			mesh->shader->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
+			mesh->getShader()->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
 		}else
-			mesh->shader->setUniformMatrix4f("transform", identity);
+			mesh->getShader()->setUniformMatrix4f("transform", identity);
 
 		mesh->fullModel->render();
 	}
@@ -263,14 +264,14 @@ void RendererGL::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, con
 	if(!meshes3D.size())
 		return;
 	for(Mesh3D* mesh : meshes3D){
-		mesh->shader->bind();
+		mesh->getShader()->bind();
 		// material uniforms
-		mesh->material->setShaderUniforms(mesh->shader);
+		mesh->material->setShaderUniforms(mesh->getShader());
 		// Camera uniforms
 		static Mat4 identity = Mat4().initIdentity();
-		mesh->shader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
-		mesh->shader->setUniformMatrix4f("view", camera->getViewMatrix());
-		mesh->shader->setUniform3f("cameraPos", camera->getPosition());
+		mesh->getShader()->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->getShader()->setUniformMatrix4f("view", camera->getViewMatrix());
+		mesh->getShader()->setUniform3f("cameraPos", camera->getPosition());
 		// LIGHTING uniforms
 		/*
 		// TEMP Test directional light
@@ -290,45 +291,363 @@ void RendererGL::renderLightedMeshes3D(const std::vector<Mesh3D*>& meshes3D, con
 		assert(lights.directionalLights.size() <= 4);
 		int index = 0;
 		for(DirectionalLight* light : lights.directionalLights){
-			mesh->shader->setUniform3f("dlights[" + std::to_string(index) + "].direction", light->direction);
-			mesh->shader->setUniform3f("dlights[" + std::to_string(index) + "].color", light->color);
-			mesh->shader->setUniform1f("dlights[" + std::to_string(index) + "].intensity", light->intensity);
+			mesh->getShader()->setUniform3f("dlights[" + std::to_string(index) + "].direction", light->direction);
+			mesh->getShader()->setUniform3f("dlights[" + std::to_string(index) + "].color", light->color);
+			mesh->getShader()->setUniform1f("dlights[" + std::to_string(index) + "].intensity", light->intensity);
 			++index;
 		}
 
 		assert(lights.pointLights.size() <= 4);
 		index = 0;
 		for(PointLight* light : lights.pointLights){
-			mesh->shader->setUniform3f("plights[" + std::to_string(index) + "].position", light->position);
-			mesh->shader->setUniform3f("plights[" + std::to_string(index) + "].color", light->color);
-			mesh->shader->setUniform1f("plights[" + std::to_string(index) + "].constant", light->attenuation.constant);
-			mesh->shader->setUniform1f("plights[" + std::to_string(index) + "].linear", light->attenuation.linear);
-			mesh->shader->setUniform1f("plights[" + std::to_string(index) + "].exponent", light->attenuation.exponent);
+			mesh->getShader()->setUniform3f("plights[" + std::to_string(index) + "].position", light->position);
+			mesh->getShader()->setUniform3f("plights[" + std::to_string(index) + "].color", light->color);
+			mesh->getShader()->setUniform1f("plights[" + std::to_string(index) + "].constant", light->attenuation.constant);
+			mesh->getShader()->setUniform1f("plights[" + std::to_string(index) + "].linear", light->attenuation.linear);
+			mesh->getShader()->setUniform1f("plights[" + std::to_string(index) + "].exponent", light->attenuation.exponent);
 			++index;
 		}
 
 		assert(lights.spotLights.size() <= 4);
 		index = 0;
 		for(SpotLight* light : lights.spotLights){
-			mesh->shader->setUniform3f("slights[" + std::to_string(index) + "].pointlight.position", light->pointlight.position);
-			mesh->shader->setUniform3f("slights[" + std::to_string(index) + "].pointlight.color", light->pointlight.color);
-			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].pointlight.constant", light->pointlight.attenuation.constant);
-			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].pointlight.linear", light->pointlight.attenuation.linear);
-			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].pointlight.exponent", light->pointlight.attenuation.exponent);
-			mesh->shader->setUniform3f("slights[" + std::to_string(index) + "].direction", light->direction);
-			mesh->shader->setUniform1f("slights[" + std::to_string(index) + "].cutoff", light->cutoff);
+			mesh->getShader()->setUniform3f("slights[" + std::to_string(index) + "].pointlight.position", light->pointlight.position);
+			mesh->getShader()->setUniform3f("slights[" + std::to_string(index) + "].pointlight.color", light->pointlight.color);
+			mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].pointlight.constant", light->pointlight.attenuation.constant);
+			mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].pointlight.linear", light->pointlight.attenuation.linear);
+			mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].pointlight.exponent", light->pointlight.attenuation.exponent);
+			mesh->getShader()->setUniform3f("slights[" + std::to_string(index) + "].direction", light->direction);
+			mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].cutoff", light->cutoff);
 		}
 		
 		// TRANSFORM uniform
 		if (mesh->transform) {
-			mesh->shader->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
+			mesh->getShader()->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
 		}else
-			mesh->shader->setUniformMatrix4f("transform", identity);
+			mesh->getShader()->setUniformMatrix4f("transform", identity);
 
 		// Render call for geometry
 		mesh->fullModel->render();
 	}
 }
+
+void RendererGL::renderDeferredLightedMeshes3D(const std::vector<Mesh3D *> &meshes3D, const LightingDescription &lights) const {
+	// GPass
+	glDisable(GL_BLEND);
+	gBuffer->bind();
+	for(Mesh3D* mesh : meshes3D){
+		Shader* gShader = mesh->getGShader();
+		
+		gShader->bind();
+		gShader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		gShader->setUniformMatrix4f("view", camera->getViewMatrix());
+		if(mesh->transform)
+			gShader->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
+		else
+			gShader->setUniformMatrix4f("transform", Mat4().initIdentity());
+		mesh->material->setShaderUniforms(gShader);
+		gShader->prepareUniforms();
+		mesh->fullModel->render();
+	}
+	// Copy depth gbuffer to main buffer
+	gBuffer->copyDepth();
+	gBuffer->unbind();
+
+	// Additive Blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
+	// Deferred pass
+	deferredShader->bind();
+	// Set texture uniforms
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, gBuffer->getNormalTexture());
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, gBuffer->getAlbedoTexture());
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, gBuffer->getDepthTexture());
+	deferredShader->setUniform1i("gDepth", 0);
+	deferredShader->setUniform1i("gAlbedo", 1);
+	deferredShader->setUniform1i("gNormal", 2);
+
+	// Render ambient brightness
+	deferredShader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		deferredShader->setUniformMatrix4f("view", camera->getViewMatrix());
+
+	for(DirectionalLight* dlight : lights.directionalLights){
+		
+	}
+	for(PointLight* plight : lights.pointLights){
+		deferredShader->setUniform3f("lightPos", plight->position);
+		deferredShader->setUniform3f("lightColor", plight->color);
+		deferredShader->setUniform1f("constant", plight->attenuation.constant);
+		deferredShader->setUniform1f("linear", plight->attenuation.linear);
+		deferredShader->setUniform1f("exponent", plight->attenuation.exponent);
+		glDisable(GL_DEPTH_TEST);
+		
+		float radius = plight->radius;
+		//renderLightBox(plight->position, radius);
+		deferredShader->bind();
+		
+		deferredShader->setUniform3f("position", plight->position);
+		deferredShader->setUniform1f("radius", plight->radius);
+
+		// Viewport uniform for testing
+		deferredShader->setUniform2f("viewport", Vec2(1600,1200));
+
+		deferredShader->prepareUniforms();
+		
+		// Shameless rendering of an AABB
+		glBindVertexArray(vaoIDcube3D);
+		glEnableVertexAttribArray(0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
+		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+		glDisableVertexAttribArray(0);
+		glBindVertexArray(0);
+	}
+	for(SpotLight* slight : lights.spotLights){
+		
+	}
+
+	glEnable(GL_DEPTH_TEST);
+
+	// Normal Blending
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+void RendererGL::renderLightBox(Vec3 position, float radius) const{
+	shaderAABB->bind();
+	shaderAABB->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	shaderAABB->setUniformMatrix4f("view", camera->getViewMatrix());
+	shaderAABB->setUniform3f("position", position);
+	shaderAABB->setUniform3f("extents", Vec3(radius));
+	shaderAABB->setUniform3f("color", Vec3(1,0,1));
+	
+	glBindVertexArray(vaoIDcube3D);
+	glEnableVertexAttribArray(0);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
+}
+
+void RendererGL::renderAnimatedMeshes3D(const std::vector<Mesh3D*>& meshes3D) const {
+	assert(camera);
+	if (!meshes3D.size())
+		return;
+	for (Mesh3D* mesh : meshes3D) {
+		mesh->getShader()->bind();
+		//material uniforms
+		mesh->material->setShaderUniforms(mesh->getShader());
+		// Uniforms
+		static Mat4 identity = Mat4().initIdentity();
+		mesh->getShader()->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->getShader()->setUniformMatrix4f("view", camera->getViewMatrix());
+		if (mesh->transform) {
+			mesh->getShader()->setUniformMatrix4f("transform", *mesh->transform->getTransformation());
+		}else
+			mesh->getShader()->setUniformMatrix4f("transform", identity);
+
+		// Animation bones
+		std::vector<Mat4> boneTransforms;
+		boneTransforms.resize(32);
+
+		animation->getBoneTransforms();
+		
+		for(int i = 0; i < 32; ++i)
+			mesh->getShader()->setUniformMatrix4f("boneTransforms[" + std::to_string(i) + "]", identity);
+		
+		mesh->fullModel->render();
+	}
+}
+
+
+
+
+// v0.2 Interface methods
+
+void RendererGL::renderMeshes3DForward(const std::vector<Mesh3D*>& meshes3D, const LightingDescription& lights, Animation* animation) const {
+	assert(camera);
+	for(Mesh3D* mesh : meshes3D){
+		mesh->getShader()->bind();
+		
+		// Basic transformation uniforms
+		mesh->getShader()->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->getShader()->setUniformMatrix4f("view", camera->getViewMatrix());
+		static Mat4 identity = Mat4().initIdentity();
+		if(mesh->transform)
+			mesh->getShader()->setUniformMatrix4f("transform", mesh->transform->getTransformation());
+		else
+			mesh->getShader()->setUniformMatrix4f("transform", identity);
+		
+		// Material uniforms - textures, colors, etc...
+		mesh->material->setShaderUniforms(mesh->getShader());
+		
+		bool lighted = mesh->getShader()->lighted;
+		if(lighted)
+			setLightUniforms(mesh->getShader(), lights);
+		
+		bool animated = mesh->getShader()->animated && mesh->skeleton && animation;
+		if(animated)
+			setAnimationUniforms(mesh->getShader(), animation, mesh->skeleton);
+		
+		mesh->getShader()->prepareUniforms();
+		
+		// Full mesh rendering
+		mesh->fullModel->render();
+	}
+}
+
+void RendererGL::setLightUniformsForward(Shader *shader, const LightingDescription &lights){
+	// Send eye position
+	shader->setUniform3f("cameraPos", camera->position);
+
+	// Send light uniforms
+	assert(lights.directionalLights.size() <= 4);
+	int index = 0;
+	for(DirectionalLight* light : lights.directionalLights){
+		mesh->getShader()->setUniform3f("dlights[" + std::to_string(index) + "].direction", light->direction);
+		mesh->getShader()->setUniform3f("dlights[" + std::to_string(index) + "].color", light->color);
+		mesh->getShader()->setUniform1f("dlights[" + std::to_string(index) + "].intensity", light->intensity);
+		++index;
+	}
+	
+	assert(lights.pointLights.size() <= 4);
+	index = 0;
+	for(PointLight* light : lights.pointLights){
+		mesh->getShader()->setUniform3f("plights[" + std::to_string(index) + "].position", light->position);
+		mesh->getShader()->setUniform3f("plights[" + std::to_string(index) + "].color", light->color);
+		mesh->getShader()->setUniform1f("plights[" + std::to_string(index) + "].constant", light->attenuation.constant);
+		mesh->getShader()->setUniform1f("plights[" + std::to_string(index) + "].linear", light->attenuation.linear);
+		mesh->getShader()->setUniform1f("plights[" + std::to_string(index) + "].exponent", light->attenuation.exponent);
+		++index;
+	}
+	
+	assert(lights.spotLights.size() <= 4);
+	index = 0;
+	for(SpotLight* light : lights.spotLights){
+		mesh->getShader()->setUniform3f("slights[" + std::to_string(index) + "].pointlight.position", light->pointlight.position);
+		mesh->getShader()->setUniform3f("slights[" + std::to_string(index) + "].pointlight.color", light->pointlight.color);
+		mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].pointlight.constant", light->pointlight.attenuation.constant);
+		mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].pointlight.linear", light->pointlight.attenuation.linear);
+		mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].pointlight.exponent", light->pointlight.attenuation.exponent);
+		mesh->getShader()->setUniform3f("slights[" + std::to_string(index) + "].direction", light->direction);
+		mesh->getShader()->setUniform1f("slights[" + std::to_string(index) + "].cutoff", light->cutoff);
+	}
+}
+
+void RendererGL::renderMeshes3DDeferred(const std::vector<Mesh3D *> &meshes3D, const LightingDescription &lights, Animation* animation) const {
+	assert(camera);
+
+	// GPass
+	glDisable(GL_BLEND);
+	gBuffer->bind();
+	for(Mesh3D* mesh : meshes3D){
+		mesh->getShader()->bind();
+
+		// Camera and transformation uniforms
+		mesh->getShader()->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+		mesh->getShader()->setUniformMatrix4f("view", camera->getViewMatrix());
+		static Mat4 identity = Mat4().initIdentity();
+		if(mesh->transform)
+			mesh->getShader()->setUniformMatrix4f("transform", mesh->transform->getTransformation());
+		else
+			mesh->getShader()->setUniformMatrix4f("transform", identity);
+
+		// material uniforms
+		mesh->material->setShaderUniforms(mesh->getShader());
+
+		// Animation uniforms
+		bool animated = mesh->getShader()->animated && mesh->skeleton && animation;
+		if(animated)
+			setAnimationUniforms(mesh->getShader(), animation, skeleton);
+		
+		mesh->getShader()->prepareUniforms();
+
+		mesh->fullModel->render();
+	}
+	gBuffer->unbind();
+	// Additive blending for deferred pass
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
+	// Deferred pass
+	deferredShader->bind();
+
+	// Gbuffer textures
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, gBuffer->getNormalTexture());
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, gBuffer->getAlbedoTexture());
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, gBuffer->getDepthTexture());
+	deferredShader->setUniform1i("gDepth", 0);
+	deferredShader->setUniform1i("gAlbedo", 1);
+	deferredShader->setUniform1i("gNormal", 2);
+	
+	// Camera uniforms
+	deferredShader->setUniformMatrix4f("projection", camera->getProjectionMatrix());
+	deferredShader->setUniformMatrix4f("view", camera->getViewMatrix());
+
+	// Render light volumes
+	for(DirectionalLight* dlight : lights.directionalLights){
+		
+	}
+	for(PointLight* plight : lights.pointLights){
+		deferredShader->setUniform3f("lightPos", plight->position);
+		deferredShader->setUniform3f("lightColor", plight->color);
+		deferredShader->setUniform1f("constant", plight->attenuation.constant);
+		deferredShader->setUniform1f("linear", plight->attenuation.linear);
+		deferredShader->setUniform1f("exponent", plight->attenuation.exponent);
+		glDisable(GL_DEPTH_TEST);
+		
+		float radius = plight->radius;
+		//renderLightBox(plight->position, radius);
+		deferredShader->bind();
+		
+		deferredShader->setUniform3f("position", plight->position);
+		deferredShader->setUniform1f("radius", plight->radius);
+
+		// Viewport uniform for testing
+		deferredShader->setUniform2f("viewport", Vec2(1600,1200));
+
+		deferredShader->prepareUniforms();
+		
+		// Shameless rendering of an AABB
+		glBindVertexArray(vaoIDcube3D);
+		glEnableVertexAttribArray(0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboIDcube3D);
+		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+		glDisableVertexAttribArray(0);
+		glBindVertexArray(0);
+	}
+	for(SpotLight* slight : lights.spotLights){
+		
+	}
+	
+	// Back to normal blending
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+void RendererGL::setAnimationUniforms(Shader *shader, Animation *animation, Skeleton *skeleton){
+	static int MAX_BONES = 64;
+	assert(skeleton->bones.size() <= MAX_BONES);
+
+	std::vector<Mat4> boneTransforms;
+	boneTransforms.resize(skeleton->bones.size());
+	animation->updateBones(skeleton, boneTransforms, 0.0f);
+
+	for(int i = 0; i < skeleton->bones.size(); ++i)
+		shader->setUniformMatrix4f("boneTransforms[" + std::to_string(i) + "]", boneTransforms[i]);
+}
+
+
+
+
+
+
 
 void RendererGL::renderAABBs(const std::vector<Mesh3D*>& aabbs) const {
 	shaderAABB->bind();
@@ -562,7 +881,7 @@ bool RendererGL::initializeGeometries() {
 
 	// Cube3D initialization
 	{
-		const float pointSize = 1; // 2x2x2 cube
+		const float pointSize = 0.5; // 2x2x2 cube
 		float verticesCubes3D[24] = { -pointSize, pointSize, pointSize,
 			pointSize, pointSize, pointSize,
 			pointSize, -pointSize, pointSize,
@@ -727,18 +1046,34 @@ bool RendererGL::initializeGeometries() {
 }
 
 bool RendererGL::initializeShaders() {
-	shaderPoint2D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader2Dpoint");
-	shaderLine2D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader2Dline");
-	shaderSprite2D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader2Dsprite");
+	ResourceManager* resManager = getStaticResourceManager();
+	shaderPoint2D = resManager->getShader("renderer/shader2Dpoint");
+	shaderLine2D = resManager->getShader("renderer/shader2Dline");
+	shaderSprite2D = resManager->getShader("renderer/shader2Dsprite");
 
-	shaderPoint3D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader3Dpoint");
-	shaderLine3D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader3Dline");
+	shaderPoint3D = resManager->getShader("renderer/shader3Dpoint");
+	shaderLine3D = resManager->getShader("renderer/shader3Dline");
 	//shaderSprite3D = ShaderLoader::loadShaderGL("shaders/GLSL/renderer/shader3Dsprite");
 
-	shaderAABB = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3DAABB");
-	shaderSphere = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3Dsphere");
-	shaderPlane = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3Dplane");
-	shaderOBB = ShaderLoader::loadShaderGL("shaders/GLSL/physics/shader3DOBB");
+	shaderAABB = resManager->getShader("physics/shader3DAABB");
+	shaderSphere = resManager->getShader("physics/shader3Dsphere");
+	shaderPlane = resManager->getShader("physics/shader3Dplane");
+	shaderOBB = resManager->getShader("physics/shader3DOBB");
+
+	deferredShader = resManager->getShader("deferred/deferred");
+
+	return true;
+}
+
+bool RendererGL::initializeFramebuffers(){
+	gBuffer = new GBuffer();
+	
+	return true;
+}
+
+bool RendererGL::cleanUpFramebuffers(){
+	if(gBuffer)
+		delete gBuffer;
 
 	return true;
 }

@@ -8,13 +8,18 @@
 
 #ifdef _USE_OPENGL
 class TextureGL;
+#include "../RAL/UsingOpenGL.hpp"
 #elif defined _USE_DIRECTX11
 class TextureDX11;
 #endif
 
 class Texture {
 public:
-	Texture(const std::string& filename);
+#ifdef _USE_OPENGL
+	Texture(GLuint texID);
+#elif defined _USE_DIRECTX11
+	// TODO: Make DX11 constructor
+#endif
 	Texture(const Texture& lhs);
 	~Texture();
 
