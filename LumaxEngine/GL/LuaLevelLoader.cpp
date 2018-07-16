@@ -50,8 +50,8 @@ void LuaLevelLoader::updateDefaultVariables(luabridge::LuaRef r) {
 	// Load default variables if provided
 	if (!r["material"].isNil())
 		defaultMaterial = loadMaterial(r["material"]);
-	if (!r["shader"].isNil())
-		defaultShader = loadShader(r["shader"]);
+	//if (!r["shader"].isNil())
+	//	defaultShader = loadShader(r["shader"]);
 	if (!r["transform"].isNil())
 		defaultTransform = loadTransform3D(r["transform"]);
 	if (!r["movement"].isNil())
@@ -121,6 +121,31 @@ Model3D* LuaLevelLoader::loadMesh3D(luabridge::LuaRef r) {
 	return mesh;
 }
 
+Model2D* LuaLevelLoader::loadMesh2D(luabridge::LuaRef r){
+	std::vector<float> vertices;
+	std::vector<int> indices;
+	std::vector<float> texCoords;
+
+	loadFloatVector(getLuaRef(r, "vertices"), vertices);
+	bool isIndexed = loadIntVector(getLuaRef(r, "indices"), indices);
+	bool hasTexCoords = loadFloatVector(getLuaRef(r, "texCoords"), texCoords);
+
+	Model2D* mesh = nullptr;
+	if(!isIndexed){
+		if(hasTexCoords)
+			mesh = new Model2D(vertices, texCoords);
+		else
+			mesh = new Model2D(vertices);
+	}else{
+		if(hasTexCoords)
+			mesh = new Model2D(vertices, indices, texCoords);
+		else
+			mesh = new Model2D(vertices, indices);
+	}
+	assert(mesh);
+	return mesh;
+}
+
 Model3D* LuaLevelLoader::loadAnimatedMesh3D(luabridge::LuaRef r){
 	luabridge::LuaRef _file = r["file"];
 	if(_file.isNil()){
@@ -170,17 +195,39 @@ Material* LuaLevelLoader::loadMaterial(luabridge::LuaRef r) {
 	if(!_texture.isNil())
 		texture = loadTexture2D(_texture);
 
+	float blend = -1;
+	luabridge::LuaRef _blend = getLuaRef(r, "blend");
+	if(!_blend.isNil())
+		blend = _blend.cast<float>();
+
 	Material* material;
-	if (texture)
+	if(texture && blend >= 0)
+		material = new Material(texture, colors[0], blend);
+	else if (texture)
 		material = new Material(texture);
 	else
 		material = new Material(&colors[0], colors.size());
 	return material;
 }
 
-Shader* LuaLevelLoader::loadShader(luabridge::LuaRef r) {
-	std::string filename = checkLuaRef(r, "file", "ERROR: Failed to load shader from lua level script. No shader file provided: ").cast<std::string>();
-	return getStaticResourceManager()->getShader(filename);
+ShaderPipeline* LuaLevelLoader::loadShader(luabridge::LuaRef r) {
+	//std::string filename = checkLuaRef(r, "file", "ERROR: Failed to load shader from lua level script. No shader file provided: ").cast<std::string>();
+	if(!r["file"].isNil()){
+		std::string filename = r["file"].cast<std::string>();
+		return new ShaderPipeline(getStaticResourceManager()->getShader(filename));
+	}
+	else{
+		luabridge::LuaRef _vertex = checkLuaRef(r, "vertex", "Error: no vertex shader or shader file provided from lua level script");
+		std::string vertexFile = _vertex["file"].cast<std::string>();
+		luabridge::LuaRef _fragment = checkLuaRef(r, "fragment", "Error: no fragment shader or shader file provided from lua level script");
+		std::string fragmentFile = _fragment["file"].cast<std::string>();
+		
+		Shader* vertexShader = getStaticResourceManager()->getVertexShader(vertexFile);
+		Shader* fragmentShader = getStaticResourceManager()->getFragmentShader(fragmentFile);
+
+		ShaderPipeline* pipeline = new ShaderPipeline(vertexShader, fragmentShader);
+		return pipeline;
+	}
 }
 
 PhysicsPrimitive* LuaLevelLoader::loadAABB(luabridge::LuaRef r) {
@@ -254,6 +301,13 @@ Transform3D* LuaLevelLoader::loadTransform3D(luabridge::LuaRef r) {
 	return new Transform3D(translation, rotation, scale);
 }
 
+Transform2D* LuaLevelLoader::loadTransform2D(luabridge::LuaRef r){
+	Vec2 translation = loadVector2D(r["translation"], Vec2(0,0));
+	float rotation = loadFloat(r["rotation"], 0);
+	Vec2 scale = loadVector2D(r["scale"], Vec2(1,1));
+	return new Transform2D(translation, rotation, scale);
+}
+
 Movement3D* LuaLevelLoader::loadMovement3D(luabridge::LuaRef r) {
 	Movement3D* movement = new Movement3D(nullptr);
 	if (!r["translation"].isNil())
@@ -313,16 +367,16 @@ Mesh3D* LuaLevelLoader::loadModel3D(luabridge::LuaRef r, std::string& rendergrou
 		material = loadMaterial(_material);
 
 	// Load Shader
-	luabridge::LuaRef _shader = r["shader"];
-	if (!_shader.isNil())
-		shaders[0] = loadShader(_shader);
+	//luabridge::LuaRef _shader = r["shader"];
+	//if (!_shader.isNil())
+	//	shaders[0] = loadShader(_shader);
 
 	luabridge::LuaRef _shaders = r["shaders"];
-	if(!_shaders.isNil()){
-		for(int i = 0; i < _shaders.length(); ++i){
-			shaders[i] = loadShader(_shaders[i+1]);
-		}
-	}
+	//if(!_shaders.isNil()){
+	//	for(int i = 0; i < _shaders.length(); ++i){
+	//		shaders[i] = loadShader(_shaders[i+1]);
+	//	}
+	//}
 
 	// Load transform
 	luabridge::LuaRef _transform = r["transform"];
@@ -423,9 +477,9 @@ SpotLight* LuaLevelLoader::loadSpotLight(luabridge::LuaRef r){
 // v0.2 new interface methods
 Mesh3D* LuaLevelLoader::loadStaticModel3D(luabridge::LuaRef r){
 	// Load mesh
-	FullModel3D* fullmesh = defaultFullmesh;
+	FullModel3D* fullmesh = defaultFullMesh;
 	if(!r["fullmesh"].isNil()){
-		fullmesh = loadFullMesh3D(r["fullmesh"]);
+		fullmesh = loadFullMesh3D(r["fullmesh"], defaultFullMesh);
 	}else if(!r["mesh"].isNil()){
 		std::vector<Model3D*> meshes;
 		meshes.resize(1);
@@ -442,8 +496,8 @@ Mesh3D* LuaLevelLoader::loadStaticModel3D(luabridge::LuaRef r){
 
 	// Load shader
 	Shader* shader = defaultShader;
-	if(!r["shader"].isNil())
-		shader = loadShader(r["shader"]);
+	//if(!r["shader"].isNil())
+		//shader = loadShader(r["shader"]);
 	assert(shader);
 
 	// Load Transform3D
@@ -483,34 +537,140 @@ void LuaLevelLoader::addDynamicModel3D(luabridge::LuaRef r){
 }
 
 void LuaLevelLoader::addModel3D(luabridge::LuaRef r){
-	std::string rendergroup;
-	Mesh3D* model = loadModel3D(r, rendergroup, false);
+	// Load mesh
+	FullModel3D* fullmesh = defaultFullMesh;
+	if(!r["fullmesh"].isNil()){
+		fullmesh = loadFullMesh3D(r["fullmesh"], false);
+	}else if(!r["mesh"].isNil()){
+		std::vector<Model3D*> meshes;
+		meshes.resize(1);
+		meshes[0] = loadMesh3D(r["mesh"]);
+		fullmesh = new FullModel3D(meshes);
+	}
+	assert(fullmesh);
+
+	// Load material
+	Material* material = defaultMaterial;
+	if(!r["material"].isNil())
+		material = loadMaterial(r["material"]);
+	assert(material);
+
+	// Load shader
+	ShaderPipeline* pipeline = nullptr;
+	std::string shaderName = "";
+	if(!r["shader"].isNil()){
+		pipeline = loadShader(r["shader"]);
+		luabridge::LuaRef shaderRef = r["shader"];
+		shaderName = shaderRef["name"].cast<std::string>();
+	}
+	assert(pipeline);
+	assert(shaderName != "");
 	
-	if (rendergroup == "AABB")
-		level->addAABB(model);
-	else if (rendergroup == "Sphere")
-		level->addSphere(model);
-	else if (rendergroup == "Plane")
-		level->addPlane(model);
-	else if (rendergroup == "OBB")
-		level->addOBB(model);
-	else if (rendergroup == "Ray")
-		level->addRay(model);
-	else if (rendergroup == "Line")
-		level->addLine(model);
-	else if(rendergroup == "lighted")
-		level->addLightedMesh3D(model);
-	else if(rendergroup == "deferredlighted")
-		level->addDeferredLightedMesh3D(model);
-	else
-		level->addMesh3D(model);
+	// Load Transform3D
+	Transform3D* transform = defaultTransform;
+	if(!r["transform"].isNil())
+		transform = loadTransform3D(r["transform"]);
+	assert(transform);
+
+	// Load physics
+	PhysicsPrimitive* physics = defaultPhysics;
+	if(!r["physics"].isNil())
+		physics = loadPhysics(r["physics"]);
+
+	// Load movement
+	Movement3D* movement = defaultMovement;
+	if(!r["movement"].isNil())
+		movement = loadMovement3D(r["movement"]);
+
+	// Load skeleton
+	Skeleton* skeleton; // TODO
+
+	level->addModel3D(fullmesh->models[0], pipeline, material, transform, shaderName);
+}
+
+void LuaLevelLoader::addModel2D(luabridge::LuaRef r){
+	Model2D* mesh = nullptr;
+	if(!r["mesh"].isNil())
+		mesh = loadMesh2D(r["mesh"]);
+	assert(mesh);
+
+	ShaderPipeline* pipeline = nullptr;
+	std::string shaderName = "";
+	if(!r["shader"].isNil()){
+		pipeline = loadShader(r["shader"]);
+		luabridge::LuaRef shaderRef = r["shader"];
+		shaderName = shaderRef["name"].cast<std::string>();
+	}
+	assert(pipeline);
+	assert(shaderName != "");
+
+	Material* material = nullptr;
+	if(!r["material"].isNil())
+		material = loadMaterial(r["material"]);
+	assert(material);
+
+	Transform2D* transform = new Transform2D();
+	if(!r["transform"].isNil())
+		transform = loadTransform2D(r["transform"]);
+
+	level->addModel2D(mesh, pipeline, material, transform, shaderName);
+}
+
+void LuaLevelLoader::addInstancedModel3D(luabridge::LuaRef r, unsigned int count){
+	
+}
+
+void LuaLevelLoader::addInstancedModel2D(luabridge::LuaRef r, unsigned int count){
+	Model2D* mesh = nullptr;
+	if(!r["mesh"].isNil())
+		mesh = loadMesh2D(r["mesh"]);
+	assert(mesh);
+
+	std::cout << "0" << std::endl;
+
+	ShaderPipeline* pipeline = nullptr;
+	std::string shaderName = "";
+	if(!r["shader"].isNil()){
+		pipeline = loadShader(r["shader"]);
+		std::cout << "loaded shader" << std::endl;
+		luabridge::LuaRef shaderRef = r["shader"];
+		shaderName = shaderRef["name"].cast<std::string>();
+	}
+	assert(pipeline);
+	assert(shaderName != "");
+
+	std::cout << "1" << std::endl;
+	
+	Material* material = nullptr;
+	if(!r["material"].isNil())
+		material = loadMaterial(r["material"]);
+	assert(material);
+
+	std::cout << "2" << std::endl;
+
+	if(r["positions"].isNil())
+		assert(false);
+	luabridge::LuaRef _positions = r["positions"];
+	std::vector<Vec2> positions;
+	std::cout << count << std::endl;
+	positions.reserve(count);
+	for(int i = 0; i < count; ++i){
+		float x = _positions[i*2+0+1].cast<float>();
+		float y = _positions[i*2+1+1].cast<float>();
+		positions.push_back(Vec2(x, y));
+	}
+
+	std::cout << "3" << std::endl;
+
+	std::cout << positions.size() << std::endl;
+	level->addInstancedModel2D(mesh, pipeline, material, positions, shaderName);
 }
 
 void LuaLevelLoader::addAnimatedModel3D(luabridge::LuaRef r){
-	std::string rendergroup;
-	Mesh3D* model = loadModel3D(r, rendergroup, true);
-	
-	level->addAnimatedMesh3D(model);
+	//std::string rendergroup;
+	//Mesh3D* model = loadModel3D(r, rendergroup, true);
+	//
+	//level->addAnimatedMesh3D(model);
 }
 
 void LuaLevelLoader::addDirectionalLight(luabridge::LuaRef r){
@@ -567,7 +727,7 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 	Renderer* renderer = new Renderer(player);
 
 	// Create the level
-	Level* newLevel = new Level(renderer, player);
+	Level* newLevel = new Level(renderer, player, resManager);
 	level = newLevel;
 
 	// Start lua scripting support
@@ -579,6 +739,9 @@ Level* LuaLevelLoader::loadLevel(const std::string& filename, ResourceManager* r
 	luabridge::getGlobalNamespace(state).
 		addFunction("print", print).
 		addFunction("addModel3D", addModel3D).
+		addFunction("addModel2D", addModel2D).
+		addFunction("addInstancedModel2D", addInstancedModel2D).
+		addFunction("addInstancedModel3D", addInstancedModel3D).
 		addFunction("addAnimatedModel3D", addAnimatedModel3D).
 		addFunction("loadLevelParameters", loadLevelParameters).
 		addFunction("updateDefaultVariables", updateDefaultVariables).

@@ -13,10 +13,17 @@
 
 #include "core/Time.hpp"
 
-#include "RML/loaders/ShaderLoader.hpp"
 #include "RML/ResourceManager.hpp"
+#include "RAL/RenderingContext.hpp"
+
+#include "RL/Renderer.hpp"
 
 #include <sys/time.h>
+#include <tuple>
+#include <type_traits>
+
+#include "utils/SMPL.hpp"
+#include "core/ECS.hpp"
 
 const std::string TITLE = "Lumax Game Engine";
 const unsigned int WIDTH = 800;
@@ -36,17 +43,6 @@ float getStaticWindowHeight() {
 	return window->getHeight();
 }
 
-// Rendering context functions
-#ifdef _USE_DIRECTX11
-RenderingContextDX11* getStaticRenderingContextDX11() {
-	return (RenderingContextDX11*)window->getRenderingContext();
-}
-#elif defined _USE_OPENGL
-RenderingContextGL* getStaticRenderingContextGL() {
-	return (RenderingContextGL*)window->getRenderingContext();
-}
-#endif
-
 // Resource Manager
 ResourceManager* resManager;
 ResourceManager* getStaticResourceManager() {
@@ -62,6 +58,54 @@ void input();
 void render();
 void update();
 
+template<typename... T> struct tl {};
+
+template <typename T>
+static constexpr bool isWindowType() {
+	return std::is_same<T, Window>::value;
+}
+template <typename T>
+using isWindow = std::integral_constant<bool, isWindowType<T>()>;
+
+struct C0 {
+	float a;
+	float b;
+};
+struct C1 {};
+struct C2 {
+	float c;
+};
+struct C3 {
+	float d = 4;
+};
+struct C4 {};
+
+void TestSystemUpdate(C0& c0, C2& c2, C3& c3){
+	std::cout << c0.a << " " << c0.b << " " << c2.c << " " << c3.d << std::endl;
+	std::cout << "inside" << std::endl;
+}
+void test(C0& c0, C1& c1, C2& c2, C3& c3){
+	std::cout << "inside2" << std::endl;
+}
+
+template <typename ECS>
+class TestSystem : public System<ECS, C0, C2, C3> {
+public:
+	static void update(C0& c0, C2& c2, C3& c3) {
+		std::cout << "system1 called!" << std::endl;
+		std::cout << c0.a << " " << c0.b << " " << c2.c << " " << c3.d << std::endl;
+	}
+};
+template <typename ECS>
+class TestSystem2 : public System<ECS, C0, C2, C3> {
+public:
+	static void update(C0& c0, C2& c2, C3& c3) {
+		std::cout << "system2 called!" << std::endl;
+		std::cout << c0.a << std::endl;
+	}
+};
+
+
 #ifdef _UNIX
 // Main standard function
 int main(int argc, char* argv[]) {
@@ -76,21 +120,23 @@ int main(int argc, char* argv[]) {
 #endif	
 
 #ifdef UNICODE
-	// TODO: Log an error for unicode
-	Log::println("Error: Unicode characters not supported in code");
+	Log::println("Error: Unicode characters not supported");
 	assert(false);
 #endif
-
+	
 	// Create Window
 	window = new Window(0, TITLE, WIDTH, HEIGHT);
-
-	// Initlialize Rendering Context
+	
+	// Initialize Rendering Context
+	RenderingState state = RenderingState(WIDTH*2, HEIGHT*2); // default graphics state description (Retina display has 4x more pixels)
 #ifdef _USE_DIRECTX11
-	window->initDirectX11();
+	window->initDirectX11(state);
 #elif defined _USE_OPENGL
-	window->initOpenGL();
+	window->initOpenGL(state);
 #endif
-
+	float color[4] = { 0,0,1,1 };
+	lmx::setClearColor(color);
+	
 	// Input callback
 #ifdef _USE_GLFW
 	Input::getInputs = std::bind(&Window::input, window);
@@ -104,13 +150,19 @@ int main(int argc, char* argv[]) {
 	// Init physics collsion handlers
 	PhysicsPrimitive::initialize();
 	LuaLevelLoader::initLoaders();
+
+	// Renderer static intialization methods
+	Renderer::initializeUBOs();
+	Renderer::initializeGeometries();
+	Renderer::initializeShaders();
 	
 	// Init Level
-	level = LuaLevelLoader::loadLevel("levels/level_test.lua", resManager);
+	level = LuaLevelLoader::loadLevel("levels/arch2_0.lua", resManager);
 	
 #ifdef _WINDOWS
 	Time::initTimer();
 #endif
+	
 	run();
 
 	// Clean up
@@ -174,26 +226,6 @@ void run() {
 		update();
 		render();
 		++fps, ++updates;
-		
-		/*
-		//bool shouldRender = false;
-		//while (updateTimer >= frameTime) {
-			input();
-			update();
-			++updates;
-
-		//	updateTimer -= frameTime;
-		//	shouldRender = true;
-		//}
-		
-		//if (shouldRender) {
-			render();
-			++fps;
-		//}
-		//else {
-			// sleep(1.0) // TODO: Sleep 1 ms
-		//}
-		*/
 	}
 }
 
@@ -207,9 +239,8 @@ void update() {
 
 void render() {
 	window->clear();
-
-	// Rendering calls
+	
 	level->render();
-
+	
 	window->update();
 }

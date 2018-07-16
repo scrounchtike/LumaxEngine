@@ -27,6 +27,10 @@ public:
 #elif defined _USE_DIRECTX11
 	void setShaderUniforms(Shader* shader);
 #endif
+
+	bool isTextured = false;
+	bool isColored = false;
+	bool isBlended = false;
 private:
 	Texture* texture = nullptr;
 	Vec3* colors;
@@ -34,8 +38,6 @@ public:
 	int numColors = 1;
 	int colorIndex = 0;
 	float blend;
-private:
-	bool isColored = false;
 };
 
 #endif

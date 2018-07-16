@@ -2,6 +2,7 @@
 #include "input.hpp"
 
 #include <iostream>
+#include <cassert>
 
 #include "windows/WindowGLFW.hpp"
 #include "windows/WindowWinAPI.hpp"

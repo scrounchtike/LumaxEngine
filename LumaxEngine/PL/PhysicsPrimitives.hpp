@@ -39,11 +39,10 @@ public:
 		return result;
 	}
 
-	void dynamicCollidesWithStatic(PhysicsPrimitive* other){
+	void dynamicCollidesWithStatic(PhysicsPrimitive* other, ContactManifold& contact){
 		auto handler = dynamicCollisionHandlers.find(getKey(tid, other->tid));
 
 		// Detect any interpenetration
-		ContactManifold contact;
 		if(handler != dynamicCollisionHandlers.end())
 			handler->second(this, other, contact);
 		else {
@@ -58,9 +57,9 @@ public:
 		}
 
 		// Resolve the collision if necessary
-		if(contact.isIntersecting){
-			this->pmesh->addTranslation(contact.normal * contact.penetration);
-		}
+		//if(contact.isIntersecting){
+		//this->pmesh->addTranslation(contact.normal * contact.penetration);
+		//}
 	}
 
 	static void initialize();

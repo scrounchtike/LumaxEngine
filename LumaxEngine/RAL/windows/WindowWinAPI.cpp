@@ -170,7 +170,7 @@ bool WindowWinAPI::cleanUp() {
 	return true;
 }
 
-bool WindowWinAPI::initOpenGL() {
+bool WindowWinAPI::initOpenGL(const RenderingState& state) {
 	// Get Device Context
 	HDC hdc = GetDC(hwnd);
 
@@ -204,18 +204,12 @@ bool WindowWinAPI::initOpenGL() {
 	wglMakeCurrent(hdc, opengl);
 
 	// Init GL rendering context
-#ifdef _USE_OPENGL
-	ContextDescription stateDesc;
-	renderContext = new RenderingContextGL(stateDesc);
-#endif
+	lmx::initialize(state);
 
 	return true;
 }
 
 bool WindowWinAPI::cleanUpOpenGL() {
-	delete renderContext;
-	renderContext = nullptr;
-
 	// Get Device Context
 	HDC hdc = GetDC(hwnd);
 
@@ -229,11 +223,8 @@ bool WindowWinAPI::cleanUpOpenGL() {
 	return true;
 }
 
-bool WindowWinAPI::initDirectX11() {
-#ifdef _USE_DIRECTX11
-	ContextDescription stateDesc;
-	renderContext = new RenderingContextDX11(stateDesc, hwnd);
-#endif
+bool WindowWinAPI::initDirectX11(const RenderingState& state) {
+	lmx::initialize(state);
 	return true;
 }
 

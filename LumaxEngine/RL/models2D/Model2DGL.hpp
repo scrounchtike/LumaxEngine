@@ -11,6 +11,7 @@
 #include <vector>
 
 class Model2DGL {
+	friend class Model2D;
 public:
 	bool isTextured, isIndexed;
 	unsigned int numVertices, numIndices;
@@ -24,6 +25,7 @@ public:
 
 	void update();
 	void render() const;
+	void renderInstanced(unsigned int count) const;
 
 	void bindForRender() const;
 	void renderBuffersOnly() const;

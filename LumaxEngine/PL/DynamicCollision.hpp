@@ -8,7 +8,7 @@
 class DynamicCollision {
 public:
 	static void no_collision(const PhysicsPrimitive* pp1, const PhysicsPrimitive* pp2, ContactManifold& contact) {
-		return false;
+		return;
 	}
 
 	// Dynamic - Static Collision tests

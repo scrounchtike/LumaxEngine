@@ -52,11 +52,11 @@ public:
 		}
 	}
 
-	void render(const Camera* camera) const;
+	void render() const;
 
 	bool collidesWith(Mesh3D* mesh) const;
 
-	void bindForRender(const Camera* camera) const;
+	void bindForRender() const;
 	void renderBuffersOnly() const;
 	void unbindForRender() const;
 	

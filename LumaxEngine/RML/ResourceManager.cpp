@@ -10,6 +10,38 @@ Shader* ResourceManager::getShader(const std::string &filename){
 	if(it != shaders.end())
 		return it->second;
 
+  std::string fullName = getShaderFullName(filename);
+	//Shader* shader = ShaderLoader::loadShader(fullName);
+	Shader* shader = new Shader(fullName);
+	shaders.insert(std::pair<std::string, Shader*>(filename, shader));
+	return shader;
+}
+
+Shader* ResourceManager::getVertexShader(const std::string &filename){
+	auto it = vertexShaders.find(filename);
+	if(it != vertexShaders.end())
+		return it->second;
+
+	std::string fullName = getShaderFullName(filename);
+	//Shader* shader = ShaderLoader::loadVertexShader(fullName);
+	Shader* shader = new Shader(fullName, GL_VERTEX_SHADER);
+	vertexShaders.insert(std::pair<std::string, Shader*>(filename, shader));
+	return shader;
+}
+
+Shader* ResourceManager::getFragmentShader(const std::string &filename){
+	auto it = fragmentShaders.find(filename);
+	if(it != fragmentShaders.end())
+		return it->second;
+
+	std::string fullName = getShaderFullName(filename);
+	//Shader* shader = ShaderLoader::loadFragmentShader(fullName);
+	Shader* shader = new Shader(fullName, GL_FRAGMENT_SHADER);
+	fragmentShaders.insert(std::pair<std::string, Shader*>(filename, shader));
+	return shader;
+}
+
+std::string ResourceManager::getShaderFullName(const std::string &filename){
 	std::string APIFolder = "";
 #ifdef _USE_OPENGL
 	APIFolder = "GLSL";
@@ -17,10 +49,7 @@ Shader* ResourceManager::getShader(const std::string &filename){
 	APIFolder = "HLSL";
 #endif
 	std::string fullName = "shaders/" + APIFolder + "/" + filename;
-
-	Shader* shader = ShaderLoader::loadShader(fullName);
-	shaders.insert(std::pair<std::string, Shader*>(filename, shader));
-	return shader;
+	return fullName;
 }
 
 Model3D* ResourceManager::getModel3D(const std::string& filename){
@@ -41,6 +70,10 @@ Model3D* ResourceManager::getAnimatedModel3D(const std::string &filename){
 	Model3D* model = ModelLoader::loadAnimatedModel(resFile + "/models/" + filename)[0];
 	models3D.insert(std::pair<std::string, Model3D*>(filename,model));
 	return model;
+}
+
+Animation* ResourceManager::getAnimation(const std::string& filename){
+	return nullptr;
 }
 
 FullModel3D* ResourceManager::getFullModel3D(const std::string& filename){

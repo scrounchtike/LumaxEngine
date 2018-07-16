@@ -25,7 +25,7 @@ void DynamicCollision::AABB_collides(const PhysicsPrimitive* pp1, const PhysicsP
 	contact = ContactManifold();
 	contact.isIntersecting = true;
 	contact.normal = normal;
-	contact.penetration = normal * overlap;
+	contact.penetration = dot(normal, overlap);
 }
 
 void DynamicCollision::AABB_collides_Sphere(const PhysicsPrimitive* aabb, const PhysicsPrimitive* sphere, ContactManifold& contact){

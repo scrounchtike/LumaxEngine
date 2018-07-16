@@ -88,6 +88,10 @@ void Model2D::render() const {
 	model->render();
 }
 
+void Model2D::renderInstanced(unsigned int count) const {
+	model->renderInstanced(count);
+}
+
 void Model2D::bindForRender() const {
 	model->bindForRender();
 }

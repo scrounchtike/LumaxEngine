@@ -7,9 +7,11 @@
 #include "../RAL/buildDesc.hpp"
 
 #ifdef _USE_OPENGL
-class Model2DGL;
+//class Model2DGL;
+#include "models2D/Model2DGL.hpp"
 #elif defined _USE_DIRECTX11
-class Model2DDX11;
+//class Model2DDX11;
+#include "models2D/Model2DDX11.hpp"
 #endif
 
 class Model2D {
@@ -33,10 +35,19 @@ public:
 
 	void update();
 	void render() const;
+	void renderInstanced(unsigned int count) const;
 
 	void bindForRender() const;
 	void renderBuffersOnly() const;
 	void unbindForRender() const;
+
+	unsigned getGeometryID() const {
+#ifdef _USE_OPENGL
+		return model->vaoID;
+#elif defined _USE_DIRECTX11
+		return -1; // TODO: Unique geometry id for DX11 meshes
+#endif
+	}
 private:
 	// API dependent Model2D implementation
 #ifdef _USE_OPENGL

@@ -1,11 +1,12 @@
 
 #include "TextureGL.hpp"
+#include "../Texture.hpp"
 
 #include "../../Utils/stb_image.h"
 
 #ifdef _USE_OPENGL
 
-TextureGL::TextureGL(GLuint id) : texture_ID(id) {
+TextureGL::TextureGL(GLuint id) : textureID(id) {
 
 }
 
@@ -20,12 +21,12 @@ TextureGL::~TextureGL() {
 }
 
 void TextureGL::bind() const {
-	glBindTexture(GL_TEXTURE_2D, texture_ID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 }
 
 bool TextureGL::initialize(float** data, unsigned int size, GLenum format, GLenum type) {
-	glGenTextures(1, &texture_ID);
-	glBindTexture(GL_TEXTURE_2D, texture_ID);
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, format, size, size, 0, format, type, data);
 

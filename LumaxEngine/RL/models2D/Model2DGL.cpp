@@ -1,5 +1,6 @@
 
 #include "Model2DGL.hpp"
+#include "../Model2D.hpp"
 
 #ifdef _USE_OPENGL
 
@@ -61,6 +62,28 @@ void Model2DGL::render() const {
 	}
 	else
 		glDrawArrays(GL_TRIANGLES, 0, numVertices);
+
+	// Unbinding
+	glDisableVertexAttribArray(0);
+	if (isTextured)
+		glDisableVertexAttribArray(1);
+	glBindVertexArray(0);
+}
+
+void Model2DGL::renderInstanced(unsigned int count) const {
+	// Binding for render
+	glBindVertexArray(vaoID);
+	glEnableVertexAttribArray(0);
+	if (isTextured)
+		glEnableVertexAttribArray(1);
+	
+	// Render call
+	if (isIndexed) {
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
+		glDrawElementsInstanced(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0, count);
+	}
+	else
+		glDrawArraysInstanced(GL_TRIANGLES, 0, numVertices, count);
 
 	// Unbinding
 	glDisableVertexAttribArray(0);

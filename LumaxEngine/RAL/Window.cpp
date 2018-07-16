@@ -13,16 +13,16 @@ Window::~Window() {
 	delete window;
 }
 
-bool Window::initOpenGL() {
-	return window->initOpenGL();
+bool Window::initOpenGL(const RenderingState& state) {
+	return window->initOpenGL(state);
 }
 
 bool Window::cleanUpOpenGL() {
 	return window->cleanUpOpenGL();
 }
 
-bool Window::initDirectX11() {
-	return window->initDirectX11();
+bool Window::initDirectX11(const RenderingState& state) {
+	return window->initDirectX11(state);
 }
 
 bool Window::cleanUpDirectX11() {

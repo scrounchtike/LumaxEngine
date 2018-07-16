@@ -28,6 +28,7 @@ extern "C" {
 
 #include "../RL/Model3D.hpp"
 #include "../RL/Shader.hpp"
+#include "../RL/ShaderPipeline.hpp"
 #include "../RL/Texture.hpp"
 #include "../RL/Material.hpp"
 
@@ -74,12 +75,15 @@ private:
 	static PhysicsPrimitive* loadLine(luabridge::LuaRef r);
 
 	static PhysicsPrimitive* loadPhysics(luabridge::LuaRef r);
-	static Shader* loadShader(luabridge::LuaRef r);
+	static ShaderPipeline* loadShader(luabridge::LuaRef r);
 	static Material* loadMaterial(luabridge::LuaRef r);
 	static Transform3D* loadTransform3D(luabridge::LuaRef r);
+	static Transform2D* loadTransform2D(luabridge::LuaRef r);
 	static Movement3D* loadMovement3D(luabridge::LuaRef r);
 
 	static Model3D* loadMesh3D(luabridge::LuaRef r);
+	static Model2D* loadMesh2D(luabridge::LuaRef r);
+	
 	static Model3D* loadAnimatedMesh3D(luabridge::LuaRef r);
 	static FullModel3D* loadFullMesh3D(luabridge::LuaRef r, bool animated);
 
@@ -92,6 +96,10 @@ private:
 
 	// Lua interface methods (Have to be void for some reason?)
 	static void addModel3D(luabridge::LuaRef r);
+	static void addModel2D(luabridge::LuaRef r);
+	static void addInstancedModel3D(luabridge::LuaRef r, unsigned int count);
+	static void addInstancedModel2D(luabridge::LuaRef r, unsigned int count);
+	
 	static void addDirectionalLight(luabridge::LuaRef r);
 	static void addPointLight(luabridge::LuaRef r);
 	static void addSpotLight(luabridge::LuaRef r);

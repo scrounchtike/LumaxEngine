@@ -1,7 +1,7 @@
 
 #include "RenderingContextGL.hpp"
 
-void RenderingContextGL::setClearColor(float color[4]){
+void RenderingContextGL::setClearColor(const float color[4]){
 	glClearColor(color[0], color[1], color[2], color[3]);
 }
 
@@ -116,7 +116,7 @@ void RenderingContextGL::setBlendSrcOp(int op){
 }
 
 void RenderingContextGL::setBlendDstOp(int op){
-	blendDstop = op;
+	blendDstOp = op;
 	blendUpdate = 1;
 }
 
@@ -126,6 +126,10 @@ void RenderingContextGL::setViewport(unsigned width, unsigned height){
 
 void RenderingContextGL::setFillMode(int fillmode){
 	glPolygonMode(GL_FRONT_AND_BACK, fillmode);
+}
+
+void RenderingContextGL::setRenderingTopology(int topology){
+	// Do nothing in GL state
 }
 
 void RenderingContextGL::update(){
@@ -142,39 +146,33 @@ void RenderingContextGL::update(){
 	blendUpdate = 0;
 }
 
-void RenderingContextGL::initialize(RenderingState& state){
+void RenderingContextGL::initialize(const RenderingState& state){
 	// Clear color
-	setClearColor(state.color);
+	setClearColor(&state.color[0]);
 
 	// Culling
 	setFaceCulling(state.cullingEnabled);
 	setCullFace(state.cullFace);
 	setFrontFace(state.frontFace);
-
+	
 	// Depth
 	setDepth(state.depthEnabled);
 	setDepthTest(state.depthTest);
 	setDepthFunc(state.depthFunc);
-
+	
 	// Stencil
 	setStencil(state.stencilEnabled);
 	// Front face
 	setStencilFailOp(state.stencilFailOp);
-	stencilFailOp = state.stencilFailOp;
 	setStencilDepthFailOp(state.stencilDepthFailOp);
-	stencilDepthFailOp = state.stencilDepthFailOp;
 	setStencilPassOp(state.stencilPassOp);
-	stencilPassOp = state.stencilPassOp;
 	setStencilFunc(state.stencilFunc);
 	// Back face
 	setStencilBackFailOp(state.stencilBackFailOp);
-	stencilBackFailOp = state.stencilBackFailOp;
 	setStencilBackDepthFailOp(state.stencilBackDepthFailOp);
-	stencilBackDepthFailOp = state.stencilBackDepthFailOp;
 	setStencilBackPassOp(state.stencilBackPassOp);
-	stencilBackPassOp = state.stencilBackPassOp;
 	setStencilBackFunc(state.stencilBackFunc);
-
+  
 	// Scissoring
 	setScissor(state.scissorEnabled);
 

@@ -28,3 +28,26 @@
 
 1. [ ] Ability to change screen coordinates: NDC(-1.0 to 1.0) or pixels(0 to size) or shifted NDC (0.0 to 1.0)
 2. [ ] Transforms for points / lines / sprites
+
+
+// TODO 20th june 2018
+
+1.  [ X ] Add support for subroutines in shaders
+		1.1 [ X ] Automatic queries of subroutine uniforms
+		1.2 [   ] Way to set subroutines variables in lua scripting (i.e. not having to hardcode string values in rendering code)
+2.  [ X ] Add support for shader pipelines for 2 (or more) shaders (Program staging)
+2.5 [   ] Fix program staging and subroutines bug
+3.  [ X ] Add querying of normal uniforms (get rid of ShaderLoader)
+4.1 [ X ] Add 2D instanced rendering
+4.2 [   ] Add 3D instanced rendering
+5.  [   ] Add Indirect Draw Calls to speed up driver-GPU connection (No OSX support -- so postpone?)
+6.  [   ] Add blending / ordering / sorting support
+7.  [   ] Frustum Culling
+8.  [   ] Occlusion Culling (Indirect draw calls + GPU queries) (Portals)
+9.  [   ] Switch Model / Mesh names in engine
+10. [   ] Support for FullMeshes or scene graph (maybe both?)
+11. [   ] Add deferred shading support
+12. [   ] Add support for normal mapping
+13. [   ] Add support for parallax mapping
+14. [   ] Physically Based Rendering shaders
+15. [   ] ECS

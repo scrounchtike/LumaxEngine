@@ -3,8 +3,8 @@
 
 #include "../RAL/Log.hpp"
 
-Level::Level(Renderer* renderer, Player* player) 
-	: renderer(renderer), player(player)
+Level::Level(Renderer* renderer, Player* player, ResourceManager* resManager) 
+	: renderer(renderer), player(player), resManager(resManager)
 {
 }
 
@@ -12,206 +12,178 @@ Level::~Level() {
 
 }
 
-// Global Level setings
-void Level::setClearColor(const Vec3& clearColor) {
-	// TODO: Change clear color
+void Level::addModel3D(Model3D* mesh, ShaderPipeline* pipeline, Material* material, Transform3D* transform, const std::string& shaderName){
+	auto it = mapGroups3D.find(shaderName);
+	if(it != mapGroups3D.end()){
+		// Found an existing shader group
+		PipelineGroup3D* group = it->second;
+		unsigned int textureID = material->getTexture()->getTextureID();
+
+		// Check for existing material
+		int i = 0;
+		for(; i < group->materials.size(); ++i){
+			if(group->materials[i]->material->getTexture()->getTextureID() == textureID){
+				// Found an already existing corresponding material
+				MaterialGroup3D* materialGroup = group->materials[i];
+				unsigned int geometryID = mesh->getGeometryID();
+				// Search for existing geometry
+				int j = 0;
+				for(; j < materialGroup->geometries.size(); ++j){
+					if(materialGroup->geometries[j]->getGeometryID() == geometryID){
+						// Found existing matching geometry ID
+						materialGroup->geometries[j]->transforms.push_back(transform);
+						return;
+					}
+				}
+				if(j == materialGroup->geometries.size()){
+					// Create new geometry group
+					GeometryGroup3D* geometryGroup = new GeometryGroup3D(mesh);
+					materialGroup->geometries.push_back(geometryGroup);
+					geometryGroup->transforms.push_back(transform);
+				}
+				return;
+			}
+		}
+		if(i == group->materials.size()){
+			// Create new material group
+			MaterialGroup3D* materialGroup = new MaterialGroup3D(material);
+			group->materials.push_back(materialGroup);
+			GeometryGroup3D* geometryGroup = new GeometryGroup3D(mesh);
+			materialGroup->geometries.push_back(geometryGroup);
+			geometryGroup->transforms.push_back(transform);
+		}
+		return;
+	}
+	// Create new shader group
+	PipelineGroup3D* group = new PipelineGroup3D(pipeline);
+	MaterialGroup3D* materialGroup = new MaterialGroup3D(material);
+	group->materials.push_back(materialGroup);
+	GeometryGroup3D* geometryGroup = new GeometryGroup3D(mesh);
+	materialGroup->geometries.push_back(geometryGroup);
+	geometryGroup->transforms.push_back(transform);
+
+	mapGroups3D.insert(std::pair<std::string, PipelineGroup3D*>(shaderName, group));
+	groups3D.push_back(group);
 }
 
-Point2D* Level::addPoint2D(Point2D* point2D) {
-	points2D.push_back(point2D);
-	return point2D;
+void Level::addModel2D(Model2D *mesh, ShaderPipeline* pipeline, Material *material, Transform2D *transform, const std::string& shaderName){
+	auto it = mapGroups2D.find(shaderName);
+	if(it != mapGroups2D.end()){
+		// Found an existing shader group
+		PipelineGroup2D* group = it->second;
+		unsigned int textureID = material->getTexture()->getTextureID();
+
+		// Check for existing material
+		int i = 0;
+		for(; i < group->materials.size(); ++i){
+			if(group->materials[i]->material->getTexture()->getTextureID() == textureID){
+				// Found an already existing corresponding material
+				MaterialGroup2D* materialGroup = group->materials[i];
+				unsigned int geometryID = mesh->getGeometryID();
+				// Search for existing geometry
+				int j = 0;
+				for(; j < materialGroup->geometries.size(); ++j){
+					if(materialGroup->geometries[j]->getGeometryID() == geometryID){
+						// Found existing matching geometry ID
+						materialGroup->geometries[j]->transform = transform;
+						return;
+					}
+				}
+				if(j == materialGroup->geometries.size()){
+					// Create new geometry group
+					GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
+					materialGroup->geometries.push_back(geometryGroup);
+					geometryGroup->transform = transform;
+				}
+				return;
+			}
+		}
+		if(i == group->materials.size()){
+			// Create new material group
+			MaterialGroup2D* materialGroup = new MaterialGroup2D(material);
+			group->materials.push_back(materialGroup);
+			GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
+			materialGroup->geometries.push_back(geometryGroup);
+			geometryGroup->transform = transform;
+		}
+		return;
+	}
+	// Create new shader group
+	PipelineGroup2D* group = new PipelineGroup2D(pipeline);
+	MaterialGroup2D* materialGroup = new MaterialGroup2D(material);
+	group->materials.push_back(materialGroup);
+	GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
+	materialGroup->geometries.push_back(geometryGroup);
+	geometryGroup->transform = transform;
+
+	mapGroups2D.insert(std::pair<std::string, PipelineGroup2D*>(shaderName, group));
+	groups2D.push_back(group);
 }
 
-Line2D* Level::addLine2D(Line2D* line2D) {
-	lines2D.push_back(line2D);
-	return line2D;
+void Level::addInstancedModel3D(Model3D* mesh, ShaderPipeline* pipeline, Material* material, const std::vector<Vec2>& positions, const std::string& shaderName){
+	
 }
 
-Sprite2D* Level::addSprite2D(Sprite2D* sprite2D) {
-	sprites2D.push_back(sprite2D);
-	return sprite2D;
-}
+void Level::addInstancedModel2D(Model2D *mesh, ShaderPipeline *pipeline, Material *material, const std::vector<Vec2>& positions, const std::string &shaderName){
+  auto it = mapGroups2D.find(shaderName);
+	if(it != mapGroups2D.end()){
+		// Found an existing shader group
+		PipelineGroup2D* group = it->second;
+		unsigned int textureID = material->getTexture()->getTextureID();
 
-Point3D* Level::addPoint3D(Point3D* point3D) {
-	points3D.push_back(point3D);
-	return point3D;
-}
+		// Check for existing material
+		int i = 0;
+		for(; i < group->materials.size(); ++i){
+			if(group->materials[i]->material->getTexture()->getTextureID() == textureID){
+				// Found an already existing corresponding material
+				MaterialGroup2D* materialGroup = group->materials[i];
+				unsigned int geometryID = mesh->getGeometryID();
+				// Search for existing geometry
+				int j = 0;
+				for(; j < materialGroup->geometries.size(); ++j){
+					if(materialGroup->geometries[j]->getGeometryID() == geometryID){
+						// Found existing matching geometry ID
+						for(int k = 0; k < positions.size(); ++k)
+							materialGroup->geometries[j]->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+						return;
+					}
+				}
+				if(j == materialGroup->geometries.size()){
+					// Create new geometry group
+					GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
+					materialGroup->geometries.push_back(geometryGroup);
+					geometryGroup->isInstanced = true;
+					for(int k = 0; k < positions.size(); ++k)
+						geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+					
+				}
+				return;
+			}
+		}
+		if(i == group->materials.size()){
+			// Create new material group
+			MaterialGroup2D* materialGroup = new MaterialGroup2D(material);
+			group->materials.push_back(materialGroup);
+			GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
+			materialGroup->geometries.push_back(geometryGroup);
+			geometryGroup->isInstanced = true;
+			for(int k = 0; k < positions.size(); ++k)
+				geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+		}
+		return;
+	}
+	// Create new shader group
+	PipelineGroup2D* group = new PipelineGroup2D(pipeline);
+	MaterialGroup2D* materialGroup = new MaterialGroup2D(material);
+	group->materials.push_back(materialGroup);
+	GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
+	materialGroup->geometries.push_back(geometryGroup);
+	geometryGroup->isInstanced = true;
+	for(int k = 0; k < positions.size(); ++k)
+		geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
 
-Line3D* Level::addLine3D(Line3D* line3D) {
-	lines3D.push_back(line3D);
-	return line3D;
-}
-
-Sprite3D* Level::addSprite3D(Sprite3D* sprite3D) {
-	sprites3D.push_back(sprite3D);
-	return sprite3D;
-}
-
-Mesh2D* Level::addMesh2D(Mesh2D* mesh2D) {
-	meshes2D.push_back(mesh2D);
-	return mesh2D;
-}
-
-Mesh3D* Level::addMesh3D(Mesh3D* mesh3D, bool dynamic) {
-	if(dynamic)
-		dynamicMeshes3D.push_back(mesh3D);
-	else
-		staticMeshes3D.push_back(mesh3D);
-	if (mesh3D->physics)
-		physicsPrimitives.push_back(mesh3D);
-	return mesh3D;
-}
-
-Mesh3D* Level::addLightedMesh3D(Mesh3D* mesh3D){
-	lightedMeshes3D.push_back(mesh3D);
-	if(mesh3D->physics)
-		physicsPrimitives.push_back(mesh3D);
-	return mesh3D;
-}
-
-Mesh3D* Level::addDeferredLightedMesh3D(Mesh3D *mesh3D){
-	deferredLightedMeshes3D.push_back(mesh3D);
-	if(mesh3D->physics)
-		physicsPrimitives.push_back(mesh3D);
-	return mesh3D;
-}
-
-Mesh3D* Level::addAnimatedMesh3D(Mesh3D *mesh3D){
-	animatedMeshes3D.push_back(mesh3D);
-	if(mesh3D->physics)
-		physicsPrimitives.push_back(mesh3D);
-	return mesh3D;
-}
-
-Mesh3D* Level::addAABB(Mesh3D* aabb) {
-	aabbs.push_back(aabb);
-	physicsPrimitives.push_back(aabb);
-	return aabb;
-}
-
-Mesh3D* Level::addSphere(Mesh3D* sphere) {
-	spheres.push_back(sphere);
-	physicsPrimitives.push_back(sphere);
-	return sphere;
-}
-
-Mesh3D* Level::addPlane(Mesh3D* plane) {
-	planes.push_back(plane);
-	physicsPrimitives.push_back(plane);
-	return plane;
-}
-
-Mesh3D* Level::addOBB(Mesh3D* obb) {
-	obbs.push_back(obb);
-	physicsPrimitives.push_back(obb);
-	return obb;
-}
-
-Mesh3D* Level::addRay(Mesh3D* ray) {
-	rays.push_back(ray);
-	physicsPrimitives.push_back(ray);
-	return ray;
-}
-
-Mesh3D* Level::addLine(Mesh3D* line) {
-	lines.push_back(line);
-	physicsPrimitives.push_back(line);
-	return line;
-}
-
-Point2D* Level::addNamedPoint2D(const std::string& name, Point2D* point2D) {
-	points2D.push_back(point2D);
-	mapPoints2D.insert(std::pair<std::string, Point2D*>(name, point2D));
-	return point2D;
-}
-
-Line2D* Level::addNamedLine2D(const std::string& name, Line2D* line2D) {
-	lines2D.push_back(line2D);
-	mapLines2D.insert(std::pair<std::string, Line2D*>(name, line2D));
-	return line2D;
-}
-
-Sprite2D* Level::addNamedSprite2D(const std::string& name, Sprite2D* sprite2D) {
-	sprites2D.push_back(sprite2D);
-	mapSprites2D.insert(std::pair<std::string, Sprite2D*>(name, sprite2D));
-	return sprite2D;
-}
-
-Point3D* Level::addNamedPoint3D(const std::string& name, Point3D* point3D) {
-	points3D.push_back(point3D);
-	mapPoints3D.insert(std::pair<std::string, Point3D*>(name, point3D));
-	return point3D;
-}
-
-Line3D* Level::addNamedLine3D(const std::string& name, Line3D* line3D) {
-	lines3D.push_back(line3D);
-	mapLines3D.insert(std::pair<std::string, Line3D*>(name, line3D));
-	return line3D;
-}
-
-Sprite3D* Level::addNamedSprite3D(const std::string& name, Sprite3D* sprite3D) {
-	sprites3D.push_back(sprite3D);
-	mapSprites3D.insert(std::pair<std::string, Sprite3D*>(name, sprite3D));
-	return sprite3D;
-}
-
-Mesh2D* Level::addNamedMesh2D(const std::string& name, Mesh2D* mesh2D) {
-	meshes2D.push_back(mesh2D);
-	mapMeshes2D.insert(std::pair<std::string, Mesh2D*>(name, mesh2D));
-	return mesh2D;
-}
-
-Mesh3D* Level::addNamedMesh3D(const std::string& name, Mesh3D* mesh3D, bool dynamic) {
-	if(dynamic)
-		dynamicMeshes3D.push_back(mesh3D);
-	else
-		staticMeshes3D.push_back(mesh3D);
-	mapMeshes3D.insert(std::pair<std::string, Mesh3D*>(name, mesh3D));
-	if (mesh3D->physics)
-		physicsPrimitives.push_back(mesh3D);
-	return mesh3D;
-}
-
-Mesh3D* Level::addNamedAABB(const std::string& name, Mesh3D* aabb) {
-	physicsPrimitives.push_back(aabb);
-	aabbs.push_back(aabb);
-	mapAABBs.insert(std::pair<std::string, Mesh3D*>(name, aabb));
-	return aabb;
-}
-
-Mesh3D* Level::addNamedSphere(const std::string& name, Mesh3D* sphere) {
-	physicsPrimitives.push_back(sphere);
-	spheres.push_back(sphere);
-	mapSpheres.insert(std::pair<std::string, Mesh3D*>(name, sphere));
-	return sphere;
-}
-
-Mesh3D* Level::addNamedPlane(const std::string& name, Mesh3D* plane) {
-	physicsPrimitives.push_back(plane);
-	planes.push_back(plane);
-	mapPlanes.insert(std::pair<std::string, Mesh3D*>(name, plane));
-	return plane;
-}
-
-Mesh3D* Level::addNamedOBB(const std::string& name, Mesh3D* obb) {
-	physicsPrimitives.push_back(obb);
-	obbs.push_back(obb);
-	mapOBBs.insert(std::pair<std::string, Mesh3D*>(name, obb));
-	return obb;
-}
-
-Mesh3D* Level::addNamedRay(const std::string& name, Mesh3D* ray) {
-	physicsPrimitives.push_back(ray);
-	rays.push_back(ray);
-	mapRays.insert(std::pair<std::string, Mesh3D*>(name, ray));
-	return ray;
-}
-
-Mesh3D* Level::addNamedLine(const std::string& name, Mesh3D* line) {
-	physicsPrimitives.push_back(line);
-	lines.push_back(line);
-	mapLines.insert(std::pair<std::string, Mesh3D*>(name, line));
-	return line;
+	mapGroups2D.insert(std::pair<std::string, PipelineGroup2D*>(shaderName, group));
+	groups2D.push_back(group);
 }
 
 // Lights
@@ -221,31 +193,13 @@ DirectionalLight* Level::addDirectionalLight(DirectionalLight* light) {
 	return light;
 }
 
-DirectionalLight* Level::addNamedDirectionalLight(const std::string& name, DirectionalLight* light) {
-	lights.directionalLights.push_back(light);
-	mapDirectionalLights.insert(std::pair<std::string, DirectionalLight*>(name, light));
-	return light;
-}
-
 PointLight* Level::addPointLight(PointLight* light){
 	lights.pointLights.push_back(light);
 	return light;
 }
 
-PointLight* Level::addNamedPointLight(const std::string &name, PointLight *light){
-	lights.pointLights.push_back(light);
-	mapPointLights.insert(std::pair<std::string, PointLight*>(name, light));
-	return light;
-}
-
 SpotLight* Level::addSpotLight(SpotLight* light){
 	lights.spotLights.push_back(light);
-	return light;
-}
-
-SpotLight* Level::addNamedSpotLight(const std::string& name, SpotLight* light){
-	lights.spotLights.push_back(light);
-	mapSpotLights.insert(std::pair<std::string, SpotLight*>(name, light));
 	return light;
 }
 
@@ -281,7 +235,7 @@ void Level::update() {
 		for(int j = 0; j < staticMeshes3D.size(); ++j){
 			Mesh3D* staticMesh = staticMeshes3D[j];
 			ContactManifold manifold;
-			dynamicMesh->physics->dynamicCollidesWithStatic(staticMesh, manifold);
+			dynamicMesh->physics->dynamicCollidesWithStatic(staticMesh->physics, manifold);
 			if(manifold.isIntersecting){
 				// Resolve interpenetration
 				dynamicMesh->addTranslation(manifold.normal * manifold.penetration);
@@ -345,53 +299,6 @@ void Level::updateLevelTest() {
 
 
 void Level::render() const {
-	// Render deferred lighted meshes
-	renderer->renderDeferredLightedMeshes3D(deferredLightedMeshes3D, deferredLights);
-
-	// Points 3D
-	renderer->renderPoints3D(points3D);
-
-	// Lines 3D
-	renderer->renderLines3D(lines3D);
-
-	// Sprites 3D
-	renderer->renderSprites3D(sprites3D);
-
-	// Meshes 3D
-	renderer->renderMeshes3D(staticMeshes3D);
-	renderer->renderMeshes3D(dynamicMeshes3D);
-
-	// Render lighted meshes
-	renderer->renderLightedMeshes3D(lightedMeshes3D, lights);
-
-	// Render animated meshes
-	renderer->renderAnimatedMeshes3D(animatedMeshes3D);
-
-	// Physics Primitives
-	renderer->renderAABBs(aabbs);
-	renderer->renderSpheres(spheres);
-	renderer->renderPlanes(planes);
-	renderer->renderOBBs(obbs);
-
-	//renderer->renderRays(rays);
-	renderer->renderLines(lines);
-
-	//for (Mesh3D* obb : obbs)
-	//	obb->physics->renderAxes(renderer);
-	//for (Mesh3D* plane : planes)
-	//	plane->physics->renderAxes(renderer);
-	//for (Mesh3D* aabb : aabbs)
-	//	aabb->physics->renderAxes(renderer);
-
-	// Points 2D
-	renderer->renderPoints2D(points2D);
-
-	// Lines 2D
-	renderer->renderLines2D(lines2D);
-
-	// Sprites 2D
-	renderer->renderSprites2D(sprites2D);
-
-	// Meshes 2D
-	renderer->renderMeshes2D(meshes2D);
+	//renderer->renderGroups3D(groups3D);
+	renderer->renderGroups2D(groups2D);
 }

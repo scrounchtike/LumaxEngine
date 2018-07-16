@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include "../Log.hpp"
+#include <cassert>
+
+#include "../RenderingContext.hpp"
+#include "../../main.hpp"
 
 #ifdef _USE_GLFW
 
@@ -21,8 +25,7 @@ bool WindowGLFW::shouldClose() {
 }
 
 void WindowGLFW::clear() {
-	float color[4] = { 0, 0, 0, 0 };
-	renderContext->clearBuffers(color);
+	lmx::clearBuffers();
 }
 
 void WindowGLFW::input() {
@@ -83,7 +86,7 @@ bool WindowGLFW::initialize(int style) {
 	glfwMakeContextCurrent(window);
 	// Vsync
 	glfwSwapInterval(1); // FPS locks at 57-59 with it...
-
+	
 	// Have been bugs where if this is not included weird stuff happens.
 	glfwPollEvents();
 

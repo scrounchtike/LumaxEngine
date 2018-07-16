@@ -10,6 +10,7 @@
 #include "../../RAL/UsingOpenGL.hpp"
 
 class Model3DGL {
+	friend class Model3D;
 public:
 	unsigned int numVertices, numIndices;
 	bool isIndexed, isTextured, hasNormals, hasTangents, isAnimated;

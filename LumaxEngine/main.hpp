@@ -15,12 +15,6 @@
 
 #include "math/types.hpp"
 
-#ifdef _USE_DIRECTX11
-RenderingContextDX11* getStaticRenderingContextDX11();
-#elif defined _USE_OPENGL
-RenderingContextGL* getStaticRenderingContextGL();
-#endif
-
 Window* getStaticWindow();
 
 ResourceManager* getStaticResourceManager();

@@ -1,5 +1,6 @@
 
 #include "Model3DGL.hpp"
+#include "../Model3D.hpp"
 
 #include <cassert>
 

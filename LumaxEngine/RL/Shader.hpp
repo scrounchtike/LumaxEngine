@@ -15,31 +15,20 @@ class ShaderGL;
 class ShaderDX11;
 #endif
 
-struct ShaderInformation {
-	std::string shaderPath;
-
-	std::vector<std::string> uniformNames;
-	std::vector<int> uniformSizes;
-	std::vector<std::string> attributeNames;
-	std::vector<std::string> attributeKeywords;
-	std::vector<int> attributeSizes;
-
-	// Instancing
-	std::vector<std::string> instanceAttributeNames;
-	std::vector<std::string> instanceAttributeKeywords;
-	std::vector<int> instanceAttributeSizes;
-};
-
 class Shader {
 public:
 	Shader() {}
-	Shader(const ShaderInformation& info);
+	Shader(const std::string& shaderPath);
+	Shader(const std::string& shaderPath, unsigned shaderType);
 	~Shader();
 
 	Shader(const Shader& lhs) { shader = lhs.shader; }
 	
 	void bind() const;
 	void prepareUniforms() const;
+	void updateSubroutines() const;
+
+	unsigned getProgram() const;
 
 	void addUniform(const std::string& uniformName);
 
@@ -55,6 +44,11 @@ public:
 	void setUniformMatrix(const std::string& uniformName, const float* matrix, unsigned int size);
 	void setUniformMatrix3f(const std::string& uniformName, const Mat3& matrix);
 	void setUniformMatrix4f(const std::string& uniformName, const Mat4& matrix);
+
+	void setSubroutine(const std::string& name, unsigned shaderType, const std::string& function);
+
+	bool hasLights = false;
+	bool hasBones = false;
 private:
 	// Graphics API dependent shader implementation
 #ifdef _USE_OPENGL

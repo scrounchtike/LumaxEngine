@@ -7,11 +7,19 @@
 #include "shaders/ShaderDX11.hpp"
 #endif
 
-Shader::Shader(const ShaderInformation& info) {
+Shader::Shader(const std::string& shaderPath) {
 #ifdef _USE_OPENGL
-	shader = new ShaderGL(info);
+	shader = new ShaderGL(shaderPath);
 #elif defined _USE_DIRECTX11
-	shader = new ShaderDX11(info);
+	shader = new ShaderDX11(shaderPath);
+#endif
+}
+
+Shader::Shader(const std::string& shaderPath, unsigned shaderType){
+#ifdef _USE_OPENGL
+	shader = new ShaderGL(shaderPath, shaderType);
+#elif defined _USE_DIRECTX11
+	shader = new ShaderDX11(shaderPath, shaderType);
 #endif
 }
 
@@ -25,6 +33,18 @@ void Shader::bind() const {
 
 void Shader::prepareUniforms() const {
 	shader->prepareUniforms();
+}
+
+void Shader::updateSubroutines() const {
+	shader->updateSubroutines();
+}
+
+unsigned Shader::getProgram() const {
+#ifdef _USE_OPENGL
+	return shader->program;
+#elif defined _USE_DIRECTX11
+	return -1; // TODO: Get unique ID for DX11 shader
+#endif
 }
 
 void Shader::addUniform(const std::string& uniformName) {
@@ -77,4 +97,8 @@ void Shader::setUniformMatrix3f(const std::string& uniformName, const Mat3& matr
 
 void Shader::setUniformMatrix4f(const std::string& uniformName, const Mat4& matrix) {
 	shader->setUniformMatrix4f(uniformName, matrix);
+}
+
+void Shader::setSubroutine(const std::string &name, unsigned shaderType, const std::string &function){
+	shader->setSubroutine(name, shaderType, function);
 }

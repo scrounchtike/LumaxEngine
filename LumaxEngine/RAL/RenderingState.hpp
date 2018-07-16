@@ -44,6 +44,9 @@
 #define LMX_FILL_LINES GL_LINES
 #define LMX_FILL_TRIANGLES GL_TRIANGLES
 
+#define LMX_LINES GL_LINES
+#define LMX_TRIANGLES GL_TRIANGLES
+
 #elif defined _USE_DIRECTX11
 
 #define LMX_CULL_FRONT D3D11_CULL_FRONT
@@ -78,9 +81,14 @@
 #define LMX_FILL_LINES D3D11_FILL_WIREFRAME
 #define LMX_FILL_TRIANGLES D3D11_FILL_SOLID
 
+#define LMX_LINES D3D11_PRIMITIVE_TOPOLOGY_LINES
+#define LMX_TRIANGLES D3D11_PRIMITIVE_TOPOLOGY_TRIANGLES
+
 #endif
 
 struct RenderingState {
+	RenderingState() : width(800), height(600) { }
+	RenderingState(unsigned width, unsigned height) : width(width), height(height) { }
 	float color[4];
 
 	bool cullingEnabled = true;
@@ -106,11 +114,12 @@ struct RenderingState {
 	
 	bool blendingEnabled = false;
 	int blendSrcOp = LMX_SRC_ALPHA;
-	int blendDstOp = LMX_ONE_MINUS_ALPHA;
+	int blendDstOp = LMX_ONE_MINUS_SRC_ALPHA;
 	
-	unsigned width = 0, height = 0;
+	unsigned width = 800, height = 600;
 
 	int fillMode = LMX_FILL_TRIANGLES;
+	int renderingTopology = LMX_TRIANGLES;
 };
 
 #endif

@@ -10,12 +10,12 @@ Material::Material(Vec3* colors, int numColors) : colors(new Vec3[numColors]), n
 		this->colors[i] = colors[i];
 }
 
-Material::Material(Texture* texture) : texture(texture) {
+Material::Material(Texture* texture) : texture(texture), isTextured(true) {
 
 }
 
 Material::Material(Texture* texture, const Vec3& color, float blend)
-	: texture(texture), colors(new Vec3[1]), blend(blend), isColored(true)
+	: texture(texture), colors(new Vec3[1]), blend(blend), isColored(true), isTextured(true), isBlended(true)
 {
 	colors[0] = color;
 }

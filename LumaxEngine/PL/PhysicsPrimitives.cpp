@@ -6,6 +6,7 @@
 #include "../RL/Renderer.hpp"
 
 std::unordered_map<PhysicsPrimitive::keyID, PhysicsPrimitive::CollisionHandler> PhysicsPrimitive::collisionHandlers;
+std::unordered_map<PhysicsPrimitive::keyID, PhysicsPrimitive::DynamicCollisionHandler> PhysicsPrimitive::dynamicCollisionHandlers;
 
 // Init cids at compile time
 const unsigned int AABB::cid = typeid(AABB).hash_code();

@@ -7,10 +7,12 @@
 #include <string>
 
 #ifdef _USE_OPENGL
-class TextureGL;
+//class TextureGL;
+#include "textures/TextureGL.hpp"
 #include "../RAL/UsingOpenGL.hpp"
 #elif defined _USE_DIRECTX11
-class TextureDX11;
+//class TextureDX11;
+#include "textures/TextureDX11.hpp"
 #endif
 
 class Texture {
@@ -22,6 +24,14 @@ public:
 #endif
 	Texture(const Texture& lhs);
 	~Texture();
+
+	unsigned getTextureID(){
+#ifdef _USE_OPENGL
+		return texture->getTexture();
+#elif defined _USE_DIRECTX11
+		return -1; // TODO: Make DX11 return unique ids
+#endif
+	}
 
 	void bind();
 private:

@@ -431,7 +431,7 @@ bool RendererDX11::cleanUpShaders() {
 	delete shaderPoint2D;
 	delete shaderLine2D;
 	delete shaderSprite2D;
-
+	
 	return true;
 }
 

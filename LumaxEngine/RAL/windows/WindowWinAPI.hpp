@@ -46,16 +46,12 @@ public:
 	void getCursorPosition(int& posX, int& posY);
 
 	// Rendering Context
-	bool initOpenGL();
+	bool initOpenGL(const RenderingState& state);
 	bool cleanUpOpenGL();
 
-	bool initDirectX11();
+	bool initDirectX11(const RenderingState& state);
 	bool cleanUpDirectX11();
-
-	RenderingContext* getRenderingContext() { return renderContext; }
 private:
-	RenderingContext* renderContext;
-
 	bool initialize(int nCmdShow);
 	bool cleanUp();
 

@@ -136,6 +136,10 @@ void RenderingContextDX11::setFillMode(int fillmode){
 	updateFlag |= RASTER;
 }
 
+void RenderingContextDX11::setRenderingTopology(int topology){
+	deviceContext->IASetPrimitiveTopology(topology);
+}
+
 void RenderingContextDX11::update(){
 	HRESULT result;
 	// Depth Stencil
@@ -177,7 +181,7 @@ void RenderingContextDX11::update(){
 	updateFlag &= 0;
 }
 
-void RenderingContextDX11::initialize(RenderingState& state){
+void RenderingContextDX11::initialize(const RenderingState& state){
 	HRESULT result;
 
 	// Rendering Context initialization

@@ -11,19 +11,20 @@
 #ifdef _USE_OPENGL
 
 class TextureGL {
+	friend class Texture;
 public:
 	TextureGL(GLuint id);
 	TextureGL(float** data, unsigned int size, GLenum format = GL_RGBA, GLenum type = GL_FLOAT);
 	~TextureGL();
 
-	GLuint getTexture() { return texture_ID; }
+	GLuint getTexture() { return textureID; }
 
 	void bind() const;
 private:
 	bool initialize(float** data, unsigned int size, GLenum format, GLenum type);
 	bool cleanUp();
 
-	GLuint texture_ID;
+	GLuint textureID;
 };
 
 #endif

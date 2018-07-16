@@ -7,9 +7,11 @@
 #include "../RAL/buildDesc.hpp"
 
 #ifdef _USE_OPENGL
-class Model3DGL;
+//class Model3DGL;
+#include "models3D/Model3DGL.hpp"
 #elif defined _USE_DIRECTX11
-class Model3DDX11;
+//class Model3DDX11;
+#include "models3D/Model3DDX11.hpp"
 #endif
 
 class Model3D {
@@ -51,6 +53,14 @@ public:
 	void bindForRender() const;
 	void renderBuffersOnly() const;
 	void unbindForRender() const;
+
+	unsigned getGeometryID() const {
+#ifdef _USE_OPENGL
+		return model->vaoID;
+#elif defined _USE_DIRECTX11
+		return -1; // TODO: Unique geometry id for DX11 meshes
+#endif
+	}
 private:
 	// Model3D API specific implementation
 #ifdef _USE_OPENGL

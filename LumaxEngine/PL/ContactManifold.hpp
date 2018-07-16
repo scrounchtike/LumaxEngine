@@ -6,7 +6,7 @@
 
 class ContactManifold {
 public:
-	ContactManifold();
+	ContactManifold() { }
 
 	bool isIntersecting;
 	Vec3 normal;

@@ -42,8 +42,10 @@ public:
 
 	void setFillMode(int);
 
+	void setRenderingTopology(int topology);
+
 	void update();
-	void initialize(RenderingState&);
+	void initialize(const RenderingState&);
 
 	/*
 		DX11 Data and caching
