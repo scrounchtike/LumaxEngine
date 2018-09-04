@@ -7,7 +7,7 @@
 #include "models3D/Model3DDX11.hpp"
 #endif
 
-Model3D::Model3D(const float* vertices, int numVertices) {
+Model3D::Model3D(const float* vertices, int numVertices) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices);
 #elif defined _USE_DIRECTX11
@@ -15,7 +15,7 @@ Model3D::Model3D(const float* vertices, int numVertices) {
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords) {
+Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, texCoords);
 #elif defined _USE_DIRECTX11
@@ -23,7 +23,7 @@ Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords)
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals) {
+Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, texCoords, normals);
 #elif defined _USE_DIRECTX11
@@ -31,7 +31,7 @@ Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords,
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals, const float* tangents) {
+Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals, const float* tangents) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, texCoords, normals, tangents);
 #elif defined _USE_DIRECTX11
@@ -39,7 +39,7 @@ Model3D::Model3D(const float* vertices, int numVertices, const float* texCoords,
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices) {
+Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, indices, numIndices);
 #elif defined _USE_DIRECTX11
@@ -47,7 +47,7 @@ Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords) {
+Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, indices, numIndices, texCoords);
 #elif defined _USE_DIRECTX11
@@ -55,7 +55,8 @@ Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals) {
+Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals)
+	: ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, indices, numIndices, texCoords, normals);
 #elif defined _USE_DIRECTX11
@@ -63,7 +64,7 @@ Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int
 #endif
 }
 
-Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals, const float* tangents) {
+Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords, const float* normals, const float* tangents) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(vertices, numVertices, indices, numIndices, texCoords, normals, tangents);
 #elif defined _USE_DIRECTX11
@@ -71,7 +72,7 @@ Model3D::Model3D(const float* vertices, int numVertices, const int* indices, int
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices) {
+Model3D::Model3D(const std::vector<float>& vertices) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size());
 #elif defined _USE_DIRECTX11
@@ -79,7 +80,7 @@ Model3D::Model3D(const std::vector<float>& vertices) {
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &texCoords[0]);
 #elif defined _USE_DIRECTX11
@@ -87,7 +88,7 @@ Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& t
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &texCoords[0], &normals[0]);
 #elif defined _USE_DIRECTX11
@@ -95,7 +96,7 @@ Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& t
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& tangents) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& tangents) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &texCoords[0], &normals[0], &tangents[0]);
 #elif defined _USE_DIRECTX11
@@ -103,7 +104,7 @@ Model3D::Model3D(const std::vector<float>& vertices, const std::vector<float>& t
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &indices[0], indices.size());
 #elif defined _USE_DIRECTX11
@@ -111,7 +112,7 @@ Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& ind
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &indices[0], indices.size(), &texCoords[0]);
 #elif defined _USE_DIRECTX11
@@ -119,7 +120,7 @@ Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& ind
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords, const std::vector<float>& normals) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords, const std::vector<float>& normals) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &indices[0], indices.size(), &texCoords[0], &normals[0]);
 #elif defined _USE_DIRECTX11
@@ -127,7 +128,7 @@ Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& ind
 #endif
 }
 
-Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& tangents) {
+Model3D::Model3D(const std::vector<float>& vertices, const std::vector<int>& indices, const std::vector<float>& texCoords, const std::vector<float>& normals, const std::vector<float>& tangents) : ID(genID()){
 #ifdef _USE_OPENGL
 	model = new Model3DGL(&vertices[0], vertices.size(), &indices[0], indices.size(), &texCoords[0], &normals[0], &tangents[0]);
 #elif defined _USE_DIRECTX11

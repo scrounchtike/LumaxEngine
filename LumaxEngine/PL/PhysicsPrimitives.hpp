@@ -94,11 +94,11 @@ struct AABB : public PhysicsPrimitive {
 	}
 	static void initCases();
 	static const unsigned int cid;
-
+	
 	virtual void addTranslation(Vec3 translation) { position += translation; }
 	//virtual void addRotation(Vec3 rotation) { assert(false); }
 	virtual void addScale(Vec3 scale) { extents = extents.mul(scale); }
-
+	
 	//virtual void renderAxes(const RendererGL* renderer);
 };
 
@@ -162,7 +162,7 @@ struct OBB : public PhysicsPrimitive {
 	static const unsigned int cid;
 
 	virtual void addTranslation(Vec3 translation) { position += translation; }
-	virtual void addRotation(Vec3 rotation) { 
+	virtual void addRotation(Vec3 rotation) {
 		Matrix4f rotationMatrix = Mat4().initRotation(rotation);
 		u[0] = Matrix4f::mulDirection(rotationMatrix, u[0]);
 		u[1] = Matrix4f::mulDirection(rotationMatrix, u[1]);

@@ -39,7 +39,7 @@ public:
 
 	Vec2 pivot;
 	float pivot_rotation;
-
+	
 	void updateMatrix();
 private:
 };

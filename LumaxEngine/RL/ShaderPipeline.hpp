@@ -9,8 +9,12 @@
 #include <map>
 #include <string>
 
+#include "../math/types.hpp"
+
 class ShaderPipeline {
 public:
+	const uint16 ID;
+	
 	ShaderPipeline(Shader* vertex, Shader* fragment);
 	ShaderPipeline(Shader* shader);
 

@@ -9,10 +9,13 @@
 #include "../../RAL/UsingOpenGL.hpp"
 
 #include <vector>
+#include "../../math/types.hpp"
 
 class Model2DGL {
 	friend class Model2D;
 public:
+	const uint16 ID;
+	
 	bool isTextured, isIndexed;
 	unsigned int numVertices, numIndices;
 

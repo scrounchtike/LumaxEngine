@@ -3,6 +3,7 @@
 #define SMPL_HPP
 
 #include <cstddef>
+#include <iostream>
 
 #include <functional>
 #include <type_traits>
@@ -39,8 +40,8 @@ namespace smpl {
 		static constexpr size_t value = type_list_size<U>::value + 1;
 	};
 	template<typename T>
-	constexpr size_t getSize() { return type_list_size<T>::value; } 
-
+	constexpr size_t getSize() { return type_list_size<T>::value; }
+	
 	// Type list contains
 	template<typename T, typename V>
 	struct type_list_contains;
@@ -59,24 +60,54 @@ namespace smpl {
 	template<typename T, typename V>
 	constexpr bool contains() { return type_list_contains<T, V>::value; }
 
-	// Type list index of
+	// Type list concatenation
+	template <typename T, typename... Ts>
+	struct concat_last;
+	template <typename T, typename U, typename... Ts>
+	struct concat;
+	template <typename T, typename U, typename V, typename W, typename... Ts>
+	struct concat<type_list_impl<T, U>, type_list_impl<V, W>, Ts...>{
+		using type = typename concat<U, W, T, V, Ts...>::type;
+	};
+	template <typename T, typename U, typename... Ts>
+	struct concat<type_list_impl<T, U>, type_list_null, Ts...>{
+		using type = typename concat_last<U, T, Ts...>::type;
+	};
+	template <typename V, typename W, typename... Ts>
+	struct concat<type_list_null, type_list_impl<V, W>, Ts...>{
+		using type = typename concat_last<W, V, Ts...>::type;
+	};
+	template <typename... Ts>
+	struct concat<type_list_null, type_list_null, Ts...>{
+		using type = type_list<Ts...>;
+	};
+	template <typename T, typename U, typename... Ts>
+	struct concat_last<type_list_impl<T, U>, Ts...>{
+		using type = typename concat_last<U, T, Ts...>::type;
+	};
+	template <typename... Ts>
+	struct concat_last<type_list_null, Ts...>{
+		using type = type_list<Ts...>;
+	};
+
+	// TYPE list index of
 	template<typename T, typename V>
 	struct type_list_index_of;
 	template<typename V>
 	struct type_list_index_of<type_list_null, V> {
-		static constexpr size_t value = -1;
+		static constexpr int value = -1;
 	};
 	template<typename T, typename U>
 	struct type_list_index_of<type_list_impl<T, U>, T> {
-		static constexpr size_t value = 0;
+		static constexpr int value = 0;
 	};
 	template<typename T, typename U, typename V>
 	struct type_list_index_of<type_list_impl<T, U>, V> {
 		using result = type_list_index_of<U, V>;
-		static constexpr size_t value = result::value == -1 ? -1 : result::value + 1;
+		static constexpr int value = result::value == -1 ? -1 : result::value + 1;
 	};
 	template <typename T, typename V>
-	constexpr size_t getIndexOf() { return type_list_index_of<T, V>::value; }
+	constexpr int getIndexOf() { return type_list_index_of<T, V>::value; }
 	
 	// Type list filter
 	template <typename T, template<typename> typename Predicate, typename... Ts>
@@ -100,6 +131,18 @@ namespace smpl {
 	template <template<typename> typename Predicate, typename... Ts>
 	struct type_list_filter<type_list_null, Predicate, Ts...> {
 		using result = type_list<Ts...>;
+	};
+
+	// Create tuple from list
+	template <typename T, typename... Ts>
+	struct create_tuple_from_list;
+	template <typename T, typename U, typename... Ts>
+	struct create_tuple_from_list<smpl::type_list_impl<T, U>, Ts...> {
+		using type = typename create_tuple_from_list<U, Ts..., T>::type;
+	};
+	template <typename... Ts>
+	struct create_tuple_from_list<smpl::type_list_null, Ts...> {
+		using type = std::tuple<Ts...>;
 	};
 	
 	// Type list repeater
@@ -177,6 +220,45 @@ namespace smpl {
 			
 		}
 	};
+	
+	template <typename E>
+	struct TestBase{
+		TestBase() {}
+	};
+	template <typename E, typename... Ts>
+	struct TestStruct : public TestBase<E> {
+		void construct(){
+			std::cout << "test" << std::endl;
+		}
+	};
+	
+	template <typename T>
+	struct has_construct{
+		template <class, class> class checker;
+		
+		template <typename C>
+		static std::true_type test(checker<C, decltype(&C::construct)>*);
+		
+		template <typename C>
+		static std::false_type test(...);
+		
+		static const bool value = std::is_same<std::true_type, decltype(test<T>(nullptr))>::value;
+	};
+	
+	template <typename T, typename U>
+	struct Eval{
+		static void execute(T* t) { /* NOP */ }
+	};
+	template <typename T>
+	struct Eval<T, std::true_type>{
+		static void execute(T* t){
+			t->construct();
+		}
+	};
+	template <typename T, typename Test>
+	void call_if_exists(T* t){
+	  Eval<T, decltype(Test::template test<T>(nullptr))>::execute(t);
+	}
 };
 
 #endif

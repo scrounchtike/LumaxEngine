@@ -34,32 +34,32 @@ void Camera::initialize() {
 #ifdef _USE_OPENGL
 	projectionMatrix = Mat4().initProjection(fov, zNear, zFar);
 #elif defined _USE_DIRECTX11
-	float ar = getStaticWindowHeight() / getStaticWindowWidth();
+	float ar = lmx::getStaticWindowHeight() / lmx::getStaticWindowWidth();
 	projectionMatrix = Mat4().initProjectionDX11(fov, ar, zNear, zFar);
 #endif
 }
 
 void Camera::update() {
-	Window* w = getStaticWindow();
+	Window* w = lmx::getStaticWindow();
 	bool mouseMovement = false;
 	
 	// Mouse locking mechanism
 	if (!mouseLocked && Input::mouseDownOnce(0)) {
 		mouseLocked = true;
-		w->setCursorPosition(getStaticWindowWidth() / 2, getStaticWindowHeight() / 2);
+		w->setCursorPosition(lmx::getStaticWindowWidth() / 2, lmx::getStaticWindowHeight() / 2);
 		w->showCursor(false);
 	}
 	if (mouseLocked && Input::keyDownOnce(LMX_KEY_ESCAPE)) {
 		mouseLocked = false;
-		w->setCursorPosition(getStaticWindowWidth() / 2, getStaticWindowHeight() / 2);
+		w->setCursorPosition(lmx::getStaticWindowWidth() / 2, lmx::getStaticWindowHeight() / 2);
 		w->showCursor(true);
 	}
 	if (mouseLocked) {
 		// Mouse movement detection
 		int mouseX, mouseY;
 		Input::getMousePosition(mouseX, mouseY);
-		float deltaX = mouseX - getStaticWindowWidth() / 2.0;
-		float deltaY = mouseY - getStaticWindowHeight() / 2.0;
+		float deltaX = mouseX - lmx::getStaticWindowWidth() / 2.0;
+		float deltaY = mouseY - lmx::getStaticWindowHeight() / 2.0;
 
 		// Rotate vectors accordingly
 		if (deltaX)
@@ -68,7 +68,7 @@ void Camera::update() {
 			rotateX(sensitivity * deltaY);
 
 		// Recenter mouse cursor
-		w->setCursorPosition(getStaticWindowWidth() / 2.0, getStaticWindowHeight() / 2.0);
+		w->setCursorPosition(lmx::getStaticWindowWidth() / 2.0, lmx::getStaticWindowHeight() / 2.0);
 
 		if (deltaX || deltaY)
 			mouseMovement = true;

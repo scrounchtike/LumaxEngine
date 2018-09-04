@@ -16,6 +16,7 @@
 
 class Model2D {
 public:
+	Model2D(){}
 	Model2D(const float* vertices, int numVertices);
 	Model2D(const float* vertices, int numVertices, const float* texCoords);
 	Model2D(const float* vertices, int numVertices, const int* indices, int numIndices);

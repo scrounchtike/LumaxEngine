@@ -1,5 +1,6 @@
 
 #include "Level.hpp"
+/*
 
 #include "../RAL/Log.hpp"
 
@@ -31,7 +32,7 @@ void Level::addModel3D(Model3D* mesh, ShaderPipeline* pipeline, Material* materi
 				for(; j < materialGroup->geometries.size(); ++j){
 					if(materialGroup->geometries[j]->getGeometryID() == geometryID){
 						// Found existing matching geometry ID
-						materialGroup->geometries[j]->transforms.push_back(transform);
+						//materialGroup->geometries[j]->transforms.push_back(transform);
 						return;
 					}
 				}
@@ -39,7 +40,7 @@ void Level::addModel3D(Model3D* mesh, ShaderPipeline* pipeline, Material* materi
 					// Create new geometry group
 					GeometryGroup3D* geometryGroup = new GeometryGroup3D(mesh);
 					materialGroup->geometries.push_back(geometryGroup);
-					geometryGroup->transforms.push_back(transform);
+					//geometryGroup->transforms.push_back(transform);
 				}
 				return;
 			}
@@ -50,7 +51,7 @@ void Level::addModel3D(Model3D* mesh, ShaderPipeline* pipeline, Material* materi
 			group->materials.push_back(materialGroup);
 			GeometryGroup3D* geometryGroup = new GeometryGroup3D(mesh);
 			materialGroup->geometries.push_back(geometryGroup);
-			geometryGroup->transforms.push_back(transform);
+			//geometryGroup->transforms.push_back(transform);
 		}
 		return;
 	}
@@ -60,7 +61,7 @@ void Level::addModel3D(Model3D* mesh, ShaderPipeline* pipeline, Material* materi
 	group->materials.push_back(materialGroup);
 	GeometryGroup3D* geometryGroup = new GeometryGroup3D(mesh);
 	materialGroup->geometries.push_back(geometryGroup);
-	geometryGroup->transforms.push_back(transform);
+	//geometryGroup->transforms.push_back(transform);
 
 	mapGroups3D.insert(std::pair<std::string, PipelineGroup3D*>(shaderName, group));
 	groups3D.push_back(group);
@@ -85,7 +86,7 @@ void Level::addModel2D(Model2D *mesh, ShaderPipeline* pipeline, Material *materi
 				for(; j < materialGroup->geometries.size(); ++j){
 					if(materialGroup->geometries[j]->getGeometryID() == geometryID){
 						// Found existing matching geometry ID
-						materialGroup->geometries[j]->transform = transform;
+						//materialGroup->geometries[j]->transform = transform;
 						return;
 					}
 				}
@@ -93,7 +94,7 @@ void Level::addModel2D(Model2D *mesh, ShaderPipeline* pipeline, Material *materi
 					// Create new geometry group
 					GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
 					materialGroup->geometries.push_back(geometryGroup);
-					geometryGroup->transform = transform;
+					//geometryGroup->transform = transform;
 				}
 				return;
 			}
@@ -104,7 +105,7 @@ void Level::addModel2D(Model2D *mesh, ShaderPipeline* pipeline, Material *materi
 			group->materials.push_back(materialGroup);
 			GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
 			materialGroup->geometries.push_back(geometryGroup);
-			geometryGroup->transform = transform;
+			//geometryGroup->transform = transform;
 		}
 		return;
 	}
@@ -114,7 +115,7 @@ void Level::addModel2D(Model2D *mesh, ShaderPipeline* pipeline, Material *materi
 	group->materials.push_back(materialGroup);
 	GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
 	materialGroup->geometries.push_back(geometryGroup);
-	geometryGroup->transform = transform;
+	//geometryGroup->transform = transform;
 
 	mapGroups2D.insert(std::pair<std::string, PipelineGroup2D*>(shaderName, group));
 	groups2D.push_back(group);
@@ -143,8 +144,8 @@ void Level::addInstancedModel2D(Model2D *mesh, ShaderPipeline *pipeline, Materia
 				for(; j < materialGroup->geometries.size(); ++j){
 					if(materialGroup->geometries[j]->getGeometryID() == geometryID){
 						// Found existing matching geometry ID
-						for(int k = 0; k < positions.size(); ++k)
-							materialGroup->geometries[j]->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+						//for(int k = 0; k < positions.size(); ++k)
+						//	materialGroup->geometries[j]->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
 						return;
 					}
 				}
@@ -153,8 +154,8 @@ void Level::addInstancedModel2D(Model2D *mesh, ShaderPipeline *pipeline, Materia
 					GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
 					materialGroup->geometries.push_back(geometryGroup);
 					geometryGroup->isInstanced = true;
-					for(int k = 0; k < positions.size(); ++k)
-						geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+					//for(int k = 0; k < positions.size(); ++k)
+					//	geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
 					
 				}
 				return;
@@ -167,8 +168,8 @@ void Level::addInstancedModel2D(Model2D *mesh, ShaderPipeline *pipeline, Materia
 			GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
 			materialGroup->geometries.push_back(geometryGroup);
 			geometryGroup->isInstanced = true;
-			for(int k = 0; k < positions.size(); ++k)
-				geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+			//for(int k = 0; k < positions.size(); ++k)
+			//	geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
 		}
 		return;
 	}
@@ -179,8 +180,8 @@ void Level::addInstancedModel2D(Model2D *mesh, ShaderPipeline *pipeline, Materia
 	GeometryGroup2D* geometryGroup = new GeometryGroup2D(mesh);
 	materialGroup->geometries.push_back(geometryGroup);
 	geometryGroup->isInstanced = true;
-	for(int k = 0; k < positions.size(); ++k)
-		geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
+	//for(int k = 0; k < positions.size(); ++k)
+	//	geometryGroup->instancedTransforms.push_back(Vec4(positions[k].x, positions[k].y, 0.0, 1.0));
 
 	mapGroups2D.insert(std::pair<std::string, PipelineGroup2D*>(shaderName, group));
 	groups2D.push_back(group);
@@ -263,6 +264,7 @@ void Level::update() {
 		}
 	}
 	*/
+/*
 }
 
 void Level::updateLevelTest() {
@@ -275,7 +277,7 @@ void Level::updateLevelTest() {
 	transform->rotation += 1;
 	transform->updateMatrix();
 	*/
-
+/*
 	//Mesh3D* aabb2 = mapAABBs.find("aabb2")->second;
 	//AABB* aabb = (AABB*)aabb2->getPhysics();
 	//aabb->position -= Vec3(0.01f, 0, 0);
@@ -302,3 +304,4 @@ void Level::render() const {
 	//renderer->renderGroups3D(groups3D);
 	renderer->renderGroups2D(groups2D);
 }
+*/

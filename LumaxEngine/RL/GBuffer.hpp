@@ -3,7 +3,6 @@
 #define GBUFFER_HPP
 
 #include "Shader.hpp"
-#include "../main.hpp"
 
 #include "Model2D.hpp"
 

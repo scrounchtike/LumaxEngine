@@ -74,7 +74,9 @@ void ShaderGL::setUniformMatrix3f(const std::string& uniformName, const Mat3& ma
 }
 
 void ShaderGL::setUniformMatrix4f(const std::string &uniformName, const Mat4 &matrix) {
-	glUniformMatrix4fv(uniforms[uniformName], 1, GL_TRUE, matrix.getHeadPointer());
+	auto it = uniforms.find(uniformName);
+	assert(it != uniforms.end());
+	glUniformMatrix4fv(it->second, 1, GL_TRUE, matrix.getHeadPointer());
 }
 
 void ShaderGL::setSubroutine(const std::string &name, GLenum shaderType, const std::string& function){

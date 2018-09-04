@@ -3,6 +3,8 @@
 #define VECTOR3_HPP
 
 #include <math.h>
+#include <iostream>
+
 #include "Vector2.hpp"
 
 class Vector3 {
@@ -11,6 +13,9 @@ public:
 	Vector3() : x(0), y(0), z(0) { }
 	Vector3(float x) : x(x), y(x), z(x) { }
 	Vector3(float x, float y, float z) : x(x), y(y), z(z) {
+	}
+	void print(){
+		std::cout << x << " " << y << " " << z << std::endl;
 	}
 	bool equals(Vector3 other) {
 		return x == other.x && y == other.y && z == other.z;

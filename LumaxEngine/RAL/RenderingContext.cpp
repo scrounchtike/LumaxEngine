@@ -1,10 +1,12 @@
 
 #include "RenderingContext.hpp"
 
+#include <cstring>
+
 // Clearing buffers
 void lmx::setClearColor(float color[4]){
 	if(state.color[0] != color[0] || state.color[1] != color[1] || state.color[2] != color[2] || state.color[3] != color[3])
-		memcpy(state.color, color, 4*sizeof(float)), context->setClearColor(color);
+		std::memcpy(state.color, color, 4*sizeof(float)), context->setClearColor(color);
 }
 void lmx::clearBuffers(){
 	context->clearBuffers();

@@ -3,7 +3,7 @@
 
 #include "Renderer.hpp"
 
-ShaderPipeline::ShaderPipeline(Shader* vertex, Shader* fragment) : stagedPipeline(true), vertexShader(vertex), fragmentShader(fragment) {
+ShaderPipeline::ShaderPipeline(Shader* vertex, Shader* fragment) : ID(genID()), stagedPipeline(true), vertexShader(vertex), fragmentShader(fragment) {
 	glGenProgramPipelines(1, &pipeline);
 	glBindProgramPipeline(pipeline);
 	
@@ -29,7 +29,7 @@ ShaderPipeline::ShaderPipeline(Shader* vertex, Shader* fragment) : stagedPipelin
 	queryFragmentSubroutines();
 }
 
-ShaderPipeline::ShaderPipeline(Shader* shader) : shader(shader) {
+ShaderPipeline::ShaderPipeline(Shader* shader) : ID(genID()), shader(shader) {
 	
 }
 

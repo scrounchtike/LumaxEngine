@@ -9,6 +9,8 @@
 #include <vector>
 #include "../../RAL/UsingOpenGL.hpp"
 
+#include "../../math/types.hpp"
+
 class Model3DGL {
 	friend class Model3D;
 public:

@@ -309,7 +309,7 @@ void PrimitiveCollision::AABB_closest_point(const AABB* aabb1, const AABB* aabb2
 }
 
 void PrimitiveCollision::AABB_closest_point_Sphere(const AABB* aabb, const Sphere* sphere, Vec3& pt1, Vec3& pt2) {
-
+	
 }
 
 void PrimitiveCollision::AABB_closest_point_Plane(const AABB* aabb, const Plane* plane, Vec3& pt1, Vec3& pt2) {

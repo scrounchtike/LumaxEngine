@@ -1,0 +1,3 @@
+/Users/Marc/Emacs/LumaxEngine/LumaxEngine/build/CMakeFiles/rebuild_cache.dir
+/Users/Marc/Emacs/LumaxEngine/LumaxEngine/build/CMakeFiles/edit_cache.dir
+/Users/Marc/Emacs/LumaxEngine/LumaxEngine/build/CMakeFiles/LumaxEngine.dir

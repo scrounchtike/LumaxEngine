@@ -4,7 +4,6 @@
 
 #include "RenderPrimitives.hpp"
 #include "../RAL/buildDesc.hpp"
-#include "../main.hpp"
 
 #include "Mesh2D.hpp"
 #include "Mesh3D.hpp"
@@ -15,69 +14,19 @@
 
 #include <vector>
 #include <map>
+#include <functional>
 
-class GeometryGroup3D {
-public:
-	GeometryGroup3D(Model3D* mesh) : mesh(mesh) { }
-	Model3D* mesh;
-	bool isInstanced = false;
-	
-	unsigned int getGeometryID(){
-		return mesh->getGeometryID();
-	}
-	//std::vector<Transform3D*> transforms;
-};
+#include "../RAL/RenderingContext.hpp"
+#include "../core/RenderComponentStorage.hpp"
 
-class MaterialGroup3D {
-public:
-	MaterialGroup3D(Material* material) : material(material) { }
-	Material* material;
-	bool hasTexture = false;
-	bool hasColor = false;
-	
-	std::vector<GeometryGroup3D*> geometries;
-};
+#include "../math/types.hpp"
 
-class PipelineGroup3D {
-public:
-	PipelineGroup3D(ShaderPipeline* pipeline) : pipeline(pipeline) { }
-	ShaderPipeline* pipeline = nullptr;
-	bool isInstanced = false;
-	bool hasLights = false;
-	bool hasBones = false;
-	
-	std::vector<MaterialGroup3D*> materials;
-};
+#include "GBuffer.hpp"
 
-class GeometryGroup2D {
-public:
-	GeometryGroup2D(Model2D* mesh) : mesh(mesh) { }
-	Model2D* mesh;
-	bool isInstanced = false;
-
-	unsigned int getGeometryID(){
-		return mesh->getGeometryID();
-	}
-	Transform2D* transform;
-	std::vector<Vec4> instancedTransforms;
-};
-
-class MaterialGroup2D {
-public:
-	MaterialGroup2D(Material* material) : material(material) { }
-	Material* material;
-	
-	std::vector<GeometryGroup2D*> geometries;
-};
-
-class PipelineGroup2D {
-public:
-	PipelineGroup2D(ShaderPipeline* pipeline) : pipeline(pipeline) { }
-	ShaderPipeline* pipeline = nullptr;
-	bool isInstanced = false;
-
-	std::vector<MaterialGroup2D*> materials;
-};
+template <typename T>
+struct PipelineGroup2D;
+template <typename T>
+struct PipelineGroup3D;
 
 struct LightingDescription;
 
@@ -102,10 +51,151 @@ public:
 	void renderRay(const Mesh3D& ray) const;
 	void renderLine(const Mesh3D& line) const;
 
-	// Group rendering methods
-	void renderGroups3D(const std::vector<PipelineGroup3D*>& groups) const;
-	void renderGroups2D(const std::vector<PipelineGroup2D*>& groups) const;
+	void input(){
+		player->input();
+	}
+	void update(){
+		player->update();
+	}
 
+	Camera* getCamera() const{
+		return camera;
+	}
+
+	// Group rendering methods
+	template <typename ECS>
+	void renderGroups3D(const std::vector<PipelineGroup3D<ECS>*>& groups, std::function<void(const std::vector<uint32>&)> callback) const{
+		lmx::setDepthClip(true);
+		lmx::setFaceCulling(false);
+
+		// TEMPORARY
+		camera->update();
+
+		for(PipelineGroup3D<ECS>* shaderGroup : groups){
+			ShaderPipeline* pipeline = shaderGroup->pipeline;
+			pipeline->bind();
+			// Set shader constant uniform variables
+			for(MaterialGroup3D* materialGroup : shaderGroup->materials){
+				Material* material = materialGroup->material;
+				// Set Material constant uniform variables
+				
+				if(material->isBlended){
+					pipeline->setUniform1f("blend", material->blend); // Normal uniform since blends are rare (could make a special UBO if uses increase)
+					// TODO: Better way to upload subroutine uniforms
+					pipeline->setSubroutine("getFinalColor", GL_FRAGMENT_SHADER, "getBlendedColor");
+					pipeline->updateSubroutines();
+				}
+				if(material->isTextured){
+					// Set texture
+					material->getTexture()->bind();
+				}
+				if(material->isColored){
+					// Set color UBO
+					glBindBuffer(GL_UNIFORM_BUFFER, uboColor);
+					Vec3 color = material->getColor();
+					Vec4 color4 = Vec4(color.x, color.y, color.z, 1.0);
+					glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4, &color4.x, GL_DYNAMIC_DRAW);
+				}
+				
+
+				for(GeometryGroup3D* geometryGroup : materialGroup->geometries){
+					Model3D* mesh = geometryGroup->mesh;
+					if(!geometryGroup->isInstanced){
+						glBindBuffer(GL_UNIFORM_BUFFER, uboMVP3D);
+						
+						// Bind projection and view matrices
+						glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float)*16, camera->getProjectionMatrix().getHeadPointer());
+						glBufferSubData(GL_UNIFORM_BUFFER, sizeof(float)*16, sizeof(float)*16, camera->getViewMatrix().getHeadPointer());
+						
+						mesh->bindForRender();
+						
+						callback(geometryGroup->entities);
+						
+						mesh->unbindForRender();
+						
+					}
+				}
+			}
+		}
+	}
+	//template <typename Manager, typename... Ts>
+	template <typename ECS>
+	void renderGroups2D(const std::vector<PipelineGroup2D<ECS>*>& groups, std::function<void(const std::vector<uint32>&)> callback) const{
+		// Prepare for 2D rendering
+		lmx::setDepthClip(false);
+
+		std::cout << "renderer render" << std::endl;
+		for(PipelineGroup2D<ECS>* shaderGroup : groups){
+			ShaderPipeline* pipeline = shaderGroup->pipeline;
+			std::cout << "found a pipeline" << std::endl;
+			// Find appropriate system for update of entities' render components
+			
+			pipeline->bind();
+			if(!shaderGroup->isInstanced){
+				// Set constant uniforms
+			}else{
+				// Set constant uniform buffer instanced variables
+			}
+			
+			for(MaterialGroup2D* materialGroup : shaderGroup->materials){
+				Material* material = materialGroup->material;
+				if(material->isBlended){
+					pipeline->setUniform1f("blend", material->blend); // Normal uniform since blends are rare (could make a special UBO if uses increase)
+					// TODO: Better way to upload subroutine uniforms
+					pipeline->setSubroutine("getFinalColor", GL_FRAGMENT_SHADER, "getBlendedColor");
+					pipeline->updateSubroutines();
+				}
+				if(material->isTextured){
+					// Set texture
+					material->getTexture()->bind();
+				}
+				
+				if(material->isColored){
+					// Set color UBO
+					glBindBuffer(GL_UNIFORM_BUFFER, uboColor);
+					Vec3 color = material->getColor();
+					Vec4 color4 = Vec4(color.x, color.y, color.z, 1.0);
+					glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4, &color4.x, GL_DYNAMIC_DRAW);
+				}
+				
+				for(GeometryGroup2D* geometryGroup : materialGroup->geometries){
+					Model2D* mesh = geometryGroup->mesh;
+					// Set transform UBO
+					if(!geometryGroup->isInstanced){
+						// Not instanced
+						glBindBuffer(GL_UNIFORM_BUFFER, uboTransform2D);
+						
+						// TODO: Fix
+						// Send transform component into UBO
+						// ----
+						//glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16, (float*)geometryGroup->transform->getTransformation(), GL_DYNAMIC_DRAW);
+						
+						// ----
+						
+						mesh->bindForRender();
+						
+						// Call appropriate render system
+						//pipeline->update();
+						callback(geometryGroup->entities);
+						//glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16, (float*)&(Mat4().initIdentity()), GL_DYNAMIC_DRAW);
+						//mesh->renderBuffersOnly();
+						
+						mesh->unbindForRender();
+					}else{
+						// Instanced
+						glBindBuffer(GL_UNIFORM_BUFFER, uboInstancedTransforms2D);
+						// TODO: Fix
+						//glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4*geometryGroup->instancedTransforms.size(), (float*)&geometryGroup->instancedTransforms[0].x, GL_DYNAMIC_DRAW);
+						
+						// TODO: Fix
+						//mesh->renderInstanced(geometryGroup->instancedTransforms.size());
+					}
+				}
+			}
+		}
+		glBindBuffer(GL_UNIFORM_BUFFER, 0);
+	}
+	
 	static void initializeUBOs();
 	static void initializeGeometries();
 	static void initializeShaders();
@@ -138,10 +228,11 @@ public:
 	static unsigned int uboInstancedTransforms3D;
 	static unsigned int uboLights;
 	static unsigned int uboBones;
-
+	
 	static std::map<std::string, unsigned> mapUBOs;
 private:
 	Camera* camera;
+	Player* player;
 };
 
 #endif

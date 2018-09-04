@@ -1,16 +1,22 @@
 
-#SOURCES = $(wildcard *.cpp GL/*.cpp PL/*.cpp RAL/*.cpp RAL/windows/*.cpp RL/*.cpp RL/animations/*.cpp RL/lights/*.cpp RL/models3D/*.cpp RL/models2D/*.cpp RL/renderers/*.cpp RL/shaders/*.cpp RL/textures/*.cpp RML/*.cpp RML/loaders/*.cpp core/*.cpp levels/*.cpp utils/*.cpp math/*.cpp)
+all: make
 
-SOURCES = $(wildcard *.cpp GL/*.cpp PL/*.cpp RAL/*.cpp RAL/windows/*.cpp RL/*.cpp RL/animations/*.cpp RL/lights/*.cpp RL/models3D/*.cpp RL/models2D/*.cpp RL/shaders/*.cpp RL/textures/*.cpp RML/*.cpp RML/loaders/*.cpp core/*.cpp levels/*.cpp utils/*.cpp math/*.cpp)
+new:
+	cd build;\
+	cmake .;\
+  make
+make:
+	cd build;\
+	make
 
-HEADERS = $(wildcard *.hpp *.h GL/*.hpp PL/*.hpp RAL/*.hpp RAL/windows/*.hpp RL/*.hpp RL/animations/*.hpp RL/lights/*.hpp RL/models3D/*.hpp RL/models2D/*.hpp RL/renderers/*.hpp RL/shaders/*.hpp RL/textures/*.hpp RML/*.hpp RML/loaders/*.hpp core/*.hpp levels/*.hpp math/*.hpp utils/*.hpp utils/*.h)
+run:
+	./LumaxEngine
 
-all: clean make
-
-make: $(SOURCES)
-	g++ -I/usr/local/Cellar/LuaBridge/ -I/usr/local/Cellar/assimp/4.1.0/include/ -L/usr/local/Cellar/assimp/4.1.0/lib/ -I/usr/local/Cellar/lua/5.3.4_3/include/ -L/usr/local/Cellar/lua/5.3.4_3/lib/ -I/usr/local/Cellar/libpng/1.6.32/include/ -lpng -I/usr/local/Cellar/boost/1.65.0/include -L/usr/local/Cellar/boost/1.65.0/lib/ -lassimp -llua.5.3 -lboost_filesystem -lboost_system -std=c++1z -framework OpenGL -lglfw3 -Wall -Wno-unused-function -Wno-unused-variable $(SOURCES)
+debug:
+	/usr/local/Cellar/gdb/8.0.1/bin/gdb LumaxEngine
 
 clean:
 	rm -rf *.o
 	rm -rf *.out
 	rm -rf *.obj
+	rm -r build/*

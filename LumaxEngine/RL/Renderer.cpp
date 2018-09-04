@@ -5,6 +5,10 @@
 
 #include "../RAL/RenderingContext.hpp"
 
+#include "../core/ECS.hpp"
+#include "../core/RenderComponentStorage.hpp"
+#include "../main.hpp"
+
 Model2D* Renderer::point2D;
 Model2D* Renderer::line2D;
 Model2D* Renderer::square;
@@ -35,7 +39,15 @@ unsigned int Renderer::uboBones;
 
 std::map<std::string, unsigned> Renderer::mapUBOs;
 
-Renderer::Renderer(Player* player) : camera(player->getCamera()) {
+Renderer::Renderer(Player* player) : player(player), camera(player->getCamera()) {
+	// Player control
+	player->registerAxisControl(new InputControl(LMX_KEY_W, 1.0), Player::FORWARD);
+	player->registerAxisControl(new InputControl(LMX_KEY_S, -1.0), Player::FORWARD);
+	player->registerAxisControl(new InputControl(LMX_KEY_A, -1.0), Player::RIGHT);
+	player->registerAxisControl(new InputControl(LMX_KEY_D, 1.0), Player::RIGHT);
+	player->registerAxisControl(new InputControl(LMX_KEY_SPACE, 1.0), Player::UP);
+	player->registerAxisControl(new InputControl(LMX_KEY_LSHIFT, -1.0), Player::UP);
+	
 	initializeGeometries();
 	initializeShaders();
 }
@@ -198,6 +210,7 @@ void Renderer::renderLine(const Mesh3D& line) const {
 	line3D->render();
 }
 
+/*
 void Renderer::renderGroups3D(const std::vector<PipelineGroup3D*>& groups) const {
 	for(PipelineGroup3D* shaderGroup : groups){
 		ShaderPipeline* pipeline = shaderGroup->pipeline;
@@ -234,13 +247,20 @@ void Renderer::renderGroups3D(const std::vector<PipelineGroup3D*>& groups) const
 		}
 	}
 }
+*/
 
-void Renderer::renderGroups2D(const std::vector<PipelineGroup2D*>& groups) const {
+/*
+template <typename ECS>
+void Renderer::renderGroups2D(const std::vector<PipelineGroup2D<ECS>*>& groups, std::function<void(const std::vector<uint32>&)> callback) const {
 	// Prepare for 2D rendering
 	lmx::setDepthClip(false);
 	
-	for(PipelineGroup2D* shaderGroup : groups){
+	for(PipelineGroup2D<ECS>* shaderGroup : groups){
 		ShaderPipeline* pipeline = shaderGroup->pipeline;
+
+		// Find appropriate system for update of entities' render components
+		uint32 entity0 = shaderGroup->materials[0]->geometries[0]->entities[0];
+		
 		pipeline->bind();
 	  if(!shaderGroup->isInstanced){
 			// Set constant uniforms
@@ -267,28 +287,43 @@ void Renderer::renderGroups2D(const std::vector<PipelineGroup2D*>& groups) const
 				Vec4 color4 = Vec4(color.x, color.y, color.z, 1.0);
 				glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4, &color4.x, GL_DYNAMIC_DRAW);
 			}
-
+			
 			for(GeometryGroup2D* geometryGroup : materialGroup->geometries){
 				Model2D* mesh = geometryGroup->mesh;
 				// Set transform UBO
 				if(!geometryGroup->isInstanced){
 					// Not instanced
 					glBindBuffer(GL_UNIFORM_BUFFER, uboTransform2D);
-					glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16, (float*)geometryGroup->transform->getTransformation(), GL_DYNAMIC_DRAW);
 					
-					mesh->render();
+					// TODO: Fix
+					// Send transform component into UBO
+					// ----
+					//glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16, (float*)geometryGroup->transform->getTransformation(), GL_DYNAMIC_DRAW);
+					
+					// ----
+					
+					mesh->bindForRender();
+					
+					// Call appropriate render system
+					//pipeline->update();
+					callback(geometryGroup->entities);
+					
+					mesh->unbindForRender();
 				}else{
 					// Instanced
 					glBindBuffer(GL_UNIFORM_BUFFER, uboInstancedTransforms2D);
-					glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4*geometryGroup->instancedTransforms.size(), (float*)&geometryGroup->instancedTransforms[0].x, GL_DYNAMIC_DRAW);
+					// TODO: Fix
+					//glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4*geometryGroup->instancedTransforms.size(), (float*)&geometryGroup->instancedTransforms[0].x, GL_DYNAMIC_DRAW);
 					
-					mesh->renderInstanced(geometryGroup->instancedTransforms.size());
+					// TODO: Fix
+					//mesh->renderInstanced(geometryGroup->instancedTransforms.size());
 				}
 			}
 		}
 	}
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
+*/
 
 void Renderer::initializeUBOs(){
 	// Initialize UBO Lookup table
@@ -297,7 +332,7 @@ void Renderer::initializeUBOs(){
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboColor", 2));
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboInstancedColors", 3));
 	//mapUBOs.insert(std::pair<std::string, unsigned>("uboTexture", 4));
-	mapUBOs.insert(std::pair<std::string, unsigned>("uboMvp3D", 5));
+	mapUBOs.insert(std::pair<std::string, unsigned>("uboMVP3D", 5));
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboInstancedTransforms3D", 6));
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboLights", 7));
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboBones", 8));
@@ -321,15 +356,29 @@ void Renderer::initializeUBOs(){
 
 	glGenBuffers(1, &uboMVP3D);
 	glBindBuffer(GL_UNIFORM_BUFFER, uboMVP3D);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16, NULL, GL_DYNAMIC_DRAW);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16*3, NULL, GL_DYNAMIC_DRAW);
 
 	glGenBuffers(1, &uboInstancedTransforms3D);
 	glBindBuffer(GL_UNIFORM_BUFFER, uboInstancedTransforms3D);
 	glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*8*2000, NULL, GL_DYNAMIC_DRAW); // 2 vec4 (position + scale + quaternion) for 2000 objects
-
+	
+	struct DirectionalLight{
+		Vec3 direction;
+		Vec3 color;
+	};
+	struct PointLight{
+		Vec3 position;
+		Vec3 color;
+		float constant, linear, exponent;
+	};
+	struct SpotLight{
+		PointLight pointLight;
+		Vec3 direction;
+		float cutoff;
+	};
 	glGenBuffers(1, &uboLights);
 	glBindBuffer(GL_UNIFORM_BUFFER, uboLights);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(DirectionalLight)*4 + sizeof(PointLight)*4 + sizeof(SpotLight)*4, NULL, GL_DYNAMIC_DRAW); // Assuming maximum of 4 lights for each light type
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(DirectionalLight)*1 + sizeof(PointLight)*4 + sizeof(SpotLight)*4, NULL, GL_DYNAMIC_DRAW); // Assuming maximum of 4 lights per type and 1 directional light
 
 	glGenBuffers(1, &uboBones);
 	glBindBuffer(GL_UNIFORM_BUFFER, uboBones);
@@ -353,7 +402,7 @@ void Renderer::initializeGeometries(){
 	// Point2D initialization
 	{
 		const float sizePoint = 0.025;
-		float ar = getStaticWindowHeight() / getStaticWindowWidth();
+		float ar = lmx::getStaticWindowHeight() / lmx::getStaticWindowWidth();
 		float offset = sizePoint / 2.0;
 		float vertices[12] = { (0 - offset)*ar,0 - offset,(0 - offset)*ar,sizePoint - offset,(sizePoint - offset)*ar,sizePoint - offset,(sizePoint - offset)*ar,sizePoint - offset,(sizePoint - offset)*ar,0 - offset,(0 - offset)*ar,0 - offset };
 		point2D = new Model2D(vertices, 12);
@@ -372,14 +421,12 @@ void Renderer::initializeGeometries(){
 		};
 		square = new Model2D(vertices, 12);
 	}
-
 	// 3D primitives initialization
 	{
-		cube = getStaticResourceManager()->getModel3D("cube.obj");
-		sphere = getStaticResourceManager()->getModel3D("sphere.obj");
+		cube = lmx::getStaticResourceManager()->getModel3D("cube.obj");
+		sphere = lmx::getStaticResourceManager()->getModel3D("sphere.obj");
 		// TODO: Plane
 	}
-
 	// Line3D initialization
 	{
 		float vertices[6] = {
@@ -390,8 +437,8 @@ void Renderer::initializeGeometries(){
 }
 
 void Renderer::initializeShaders(){
-	shader2D = getStaticResourceManager()->getShader("renderer/shader2Dcolor");
-	shader2Dline = getStaticResourceManager()->getShader("renderer/shader2Dline");
-	shader3D = getStaticResourceManager()->getShader("renderer/shader3D");
-	shader3Dline = getStaticResourceManager()->getShader("renderer/shader3Dline");
+	shader2D = lmx::getStaticResourceManager()->getShader("renderer/shader2Dcolor");
+	shader2Dline = lmx::getStaticResourceManager()->getShader("renderer/shader2Dline");
+	shader3D = lmx::getStaticResourceManager()->getShader("renderer/shader3D");
+	shader3Dline = lmx::getStaticResourceManager()->getShader("renderer/shader3Dline");
 }

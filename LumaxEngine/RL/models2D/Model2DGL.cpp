@@ -1,41 +1,43 @@
 
+#include <iostream>
+
 #include "Model2DGL.hpp"
 #include "../Model2D.hpp"
 
 #ifdef _USE_OPENGL
 
 Model2DGL::Model2DGL(const float* vertices, int numVertices)
-	: isTextured(false), isIndexed(false), numVertices(numVertices), numIndices(0)
+	: ID(genID()), isTextured(false), isIndexed(false), numVertices(numVertices), numIndices(0)
 {
 	createVertexArray(&vaoID);
-	createVBO(&vboID, vertices, numVertices, 0, 2);
+	createVBO(&vboID, vertices, numVertices * 2, 0, 2);
 	unbindBuffers();
 }
 
 Model2DGL::Model2DGL(const float* vertices, int numVertices, const float* texCoords)
-	: isTextured(true), isIndexed(false), numVertices(numVertices), numIndices(0)
+	: ID(genID()), isTextured(true), isIndexed(false), numVertices(numVertices), numIndices(0)
 {
 	createVertexArray(&vaoID);
-	createVBO(&vboID, vertices, numVertices, 0, 2);
-	createVBOT(&vbotID, texCoords, numVertices, 1, 2);
+	createVBO(&vboID, vertices, numVertices * 2, 0, 2);
+	createVBOT(&vbotID, texCoords, numVertices * 2, 1, 2);
 	unbindBuffers();
 }
 
 Model2DGL::Model2DGL(const float* vertices, int numVertices, const int* indices, int numIndices)
-	: isTextured(false), isIndexed(true), numVertices(numVertices), numIndices(numIndices)
+	: ID(genID()), isTextured(false), isIndexed(true), numVertices(numVertices), numIndices(numIndices)
 {
 	createVertexArray(&vaoID);
-	createVBO(&vboID, vertices, numVertices, 0, 2);
+	createVBO(&vboID, vertices, numVertices * 2, 0, 2);
 	createIBO(&iboID, indices, numIndices);
 	unbindBuffers();
 }
 
 Model2DGL::Model2DGL(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords)
-	: isTextured(true), isIndexed(true), numVertices(numVertices), numIndices(numIndices)
+	: ID(genID()), isTextured(true), isIndexed(true), numVertices(numVertices), numIndices(numIndices)
 {
 	createVertexArray(&vaoID);
-	createVBO(&vboID, vertices, numVertices, 0, 2);
-	createVBOT(&vbotID, texCoords, numVertices, 1, 2);
+	createVBO(&vboID, vertices, numVertices * 2, 0, 2);
+	createVBOT(&vbotID, texCoords, numVertices * 2, 1, 2);
 	createIBO(&iboID, indices, numIndices);
 	unbindBuffers();
 }

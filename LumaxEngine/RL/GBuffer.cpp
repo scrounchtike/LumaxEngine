@@ -1,6 +1,8 @@
 
 #include "GBuffer.hpp"
 
+#include "../lumax.hpp"
+
 GBuffer::GBuffer(){
 	initFramebuffer();
 }
@@ -18,7 +20,7 @@ void GBuffer::unbind(){
 void GBuffer::copyDepth(){
 	glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-	glBlitFramebuffer(0, 0, getStaticWindowWidth()*2, getStaticWindowHeight()*2, 0, 0, getStaticWindowWidth()*2, getStaticWindowHeight()*2, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+	glBlitFramebuffer(0, 0, lmx::getStaticWindowWidth()*2, lmx::getStaticWindowHeight()*2, 0, 0, lmx::getStaticWindowWidth()*2, lmx::getStaticWindowHeight()*2, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
 }
 
 void GBuffer::renderQuad(){
@@ -30,13 +32,13 @@ void GBuffer::initFramebuffer(){
 	glGenFramebuffers(1, &fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 
-	std::cout << "Window size: " << getStaticWindowWidth() << "   " << getStaticWindowHeight() << std::endl;
+	std::cout << "Window size: " << lmx::getStaticWindowWidth() << "   " << lmx::getStaticWindowHeight() << std::endl;
 	
 	// Create texture for MRT rendering
 	/*
 	glGenTextures(1, &gWorldPos);
 	glBindTexture(GL_TEXTURE_2D, gWorldPos);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, getStaticWindowWidth()*2, getStaticWindowHeight()*2, 0, GL_RGB, GL_FLOAT, NULL);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, lmx::getStaticWindowWidth()*2, lmx::getStaticWindowHeight()*2, 0, GL_RGB, GL_FLOAT, NULL);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, gWorldPos, 0);
@@ -44,14 +46,14 @@ void GBuffer::initFramebuffer(){
 
 	glGenTextures(1, &gAlbedo);
 	glBindTexture(GL_TEXTURE_2D, gAlbedo);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, getStaticWindowWidth()*2, getStaticWindowHeight()*2, 0, GL_RGB, GL_FLOAT, 0);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, lmx::getStaticWindowWidth()*2, lmx::getStaticWindowHeight()*2, 0, GL_RGB, GL_FLOAT, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, gAlbedo, 0);
 
 	glGenTextures(1, &gNormal);
 	glBindTexture(GL_TEXTURE_2D, gNormal);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_R11F_G11F_B10F, getStaticWindowWidth()*2, getStaticWindowHeight()*2, 0, GL_RGB, GL_FLOAT, 0);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_R11F_G11F_B10F, lmx::getStaticWindowWidth()*2, lmx::getStaticWindowHeight()*2, 0, GL_RGB, GL_FLOAT, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D, gNormal, 0);
@@ -63,7 +65,7 @@ void GBuffer::initFramebuffer(){
 	// Create depth texture
 	glGenTextures(1, &gDepth);
 	glBindTexture(GL_TEXTURE_2D, gDepth);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, getStaticWindowWidth()*2, getStaticWindowHeight()*2, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, lmx::getStaticWindowWidth()*2, lmx::getStaticWindowHeight()*2, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, gDepth, 0);
@@ -76,7 +78,7 @@ void GBuffer::initFramebuffer(){
 	}
 
 	// Make sure viewport is matching
-	glViewport(0, 0, getStaticWindowWidth() * 2, getStaticWindowHeight() * 2);
+	glViewport(0, 0, lmx::getStaticWindowWidth() * 2, lmx::getStaticWindowHeight() * 2);
 	
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

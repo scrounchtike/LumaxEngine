@@ -6,7 +6,7 @@
 
 #ifdef _USE_OPENGL
 
-Model3DGL::Model3DGL(const float* vertices, int numVertices) 
+Model3DGL::Model3DGL(const float* vertices, int numVertices)
 	: numVertices(numVertices), numIndices(0), isIndexed(false), isTextured(false), hasNormals(false), hasTangents(false)
 {
 	createVertexArray(&vaoID);
@@ -54,7 +54,7 @@ Model3DGL::Model3DGL(const float* vertices, int numVertices, const int* indices,
 }
 
 Model3DGL::Model3DGL(const float* vertices, int numVertices, const int* indices, int numIndices, const float* texCoords) 
-	: numVertices(numVertices), numIndices(numIndices), isIndexed(true), isTextured(true), hasNormals(false), hasTangents(false) 
+	:numVertices(numVertices), numIndices(numIndices), isIndexed(true), isTextured(true), hasNormals(false), hasTangents(false) 
 {
 	createVertexArray(&vaoID);
 	createVBO(&vboID, vertices, numVertices * 3, 0, 3);

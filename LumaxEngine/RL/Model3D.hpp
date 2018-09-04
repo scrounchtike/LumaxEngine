@@ -14,8 +14,12 @@
 #include "models3D/Model3DDX11.hpp"
 #endif
 
+#include "../math/types.hpp"
+
 class Model3D {
 public:
+	const uint16 ID;
+	
 	Model3D(const float* vertices, int numVertices);
 	Model3D(const float* vertices, int numVertices, const float* texCoords);
 	Model3D(const float* vertices, int numVertices, const float* texCoords, const float* normals);

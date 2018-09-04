@@ -2,6 +2,7 @@
 #include "Matrix4f.hpp"
 
 #include <string>
+#include <cstring>
 
 #include "../RAL/Log.hpp"
 
@@ -9,7 +10,7 @@ Matrix4f::Matrix4f() {
 }
 
 Matrix4f::Matrix4f(float* ptrMatrix){
-	memcpy(m, ptrMatrix, 16);
+	std::memcpy(m, ptrMatrix, 16);
 }
 
 Matrix4f& Matrix4f::initIdentity() {
@@ -234,7 +235,7 @@ Matrix4f& Matrix4f::initPerspectiveHemicube(float zNear, float zFar) {
 
 Matrix4f& Matrix4f::transpose() {
 	float temp[4][4];
-	memcpy(temp, m, sizeof(float) * 16);
+	std::memcpy(temp, m, sizeof(float) * 16);
 	for (int i = 0; i < 4; ++i) {
 		m[i][0] = temp[0][i];
 		m[i][1] = temp[1][i];

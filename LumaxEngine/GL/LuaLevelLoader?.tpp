@@ -1,4 +1,239 @@
 
+#ifndef LUA_LEVEL_LOADER_TPP
+#define LUA_LEVEL_LOADER_TPP
+
+#include <iostream>
+
+#include "../RAL/Keys.hpp"
+
+#include "../RML/ResourceManager.hpp"
+#include "../math/types.hpp"
+#include "../math.hpp"
+
+#include "../RL/ShaderPipeline.hpp"
+#include "../RL/Model2D.hpp"
+#include "../RL/Model3D.hpp"
+
+#include "../lumax.hpp"
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>* LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::level;
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+lua_State* LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::state;
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+std::map<std::string, unsigned> LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::keys;
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+ResourceManager* LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::resManager;
+
+void print(const std::string& str){
+	std::cout << str << std::endl;
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadMeshes3D(luabridge::LuaRef s, luabridge::LuaRef r){
+	std::cout << "Loading meshes 3D" << std::endl;
+	assert(s.length() == r.length());
+	
+	for(int i = 0; i < r.length(); ++i){
+		// Load each mesh
+		luabridge::LuaRef meshRef = r[i+1];
+
+		std::string name = s[i+1].cast<std::string>();
+		if(!meshRef["file"].isNil()){
+			// From file
+			resManager->addModel3D(name, meshRef["file"].cast<std::string>());
+		}else{
+			// From static geometry
+			std::vector<float> vertices;
+			std::vector<int> indices;
+			std::vector<float> texCoords;
+			std::vector<float> normals;
+			std::vector<float> tangents;
+			
+			// Load vertices
+			LuaHelper::loadFloatVector(r["vertices"], vertices);
+			bool isIndexed = LuaHelper::loadIntVector(r["indices"], indices);
+			bool hasTexCoords = LuaHelper::loadFloatVector(r["texCoords"], texCoords);
+			bool hasNormals = LuaHelper::loadFloatVector(r["normals"], normals);
+			bool hasTangents = LuaHelper::loadFloatVector(r["tangents"], tangents);
+
+			Model3D* mesh = nullptr;
+			if (!isIndexed) {
+				// Not indexed
+				if (hasTangents)
+					mesh = new Model3D(vertices, texCoords, normals, tangents);
+				else if (hasNormals)
+					mesh = new Model3D(vertices, texCoords, normals);
+				else if (hasTexCoords)
+					mesh = new Model3D(vertices, texCoords);
+				else
+					mesh = new Model3D(vertices);
+			}
+			else {
+				// Indexed
+				if (hasTangents)
+					mesh = new Model3D(vertices, indices, texCoords, normals, tangents);
+				else if (hasNormals)
+					mesh = new Model3D(vertices, indices, texCoords, normals);
+				else if (hasTexCoords)
+					mesh = new Model3D(vertices, indices, texCoords);
+				else
+					mesh = new Model3D(vertices, indices);
+			}
+			resManager->addModel3D(name, mesh);
+		}
+	}
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadMaterials(luabridge::LuaRef s, luabridge::LuaRef r){
+	std::cout << "Loading materials" << std::endl;
+	assert(s.length() == r.length());
+	
+	for(int i = 0; i < r.length(); ++i){
+		// Load each material
+		luabridge::LuaRef materialRef = r[i+1];
+
+		std::string name = s[i+1].cast<std::string>();
+		// Create material
+		Material* material = new Material();
+		if(!materialRef["color"].isNil()){
+			// Load single color
+			Vec3 color = LuaHelper::loadVector3D(materialRef["color"]);
+			material->setColor(color);
+		}else if(!materialRef["colors"].isNil()){
+			// Load multiple colors
+			std::vector<Vec3> colors;
+			for(int c = 0; c < materialRef["colors"].length(); ++c){
+				colors.push_back(LuaHelper::loadVector3D((materialRef["colors"])[c+1]));
+			}
+			material->setColors(colors);
+		}
+		if(!materialRef["texture"].isNil()){
+			luabridge::LuaRef textureRef = materialRef["texture"];
+			if(textureRef["file"].isNil())
+				std::cerr << "Error: Texture needs a file to be loaded." << std::endl, assert(false);
+			Texture* texture = resManager->getTexture(textureRef["file"].cast<std::string>());
+			material->setTexture(texture);
+		}
+		resManager->addMaterial(name, material);
+	}
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadPipelines(luabridge::LuaRef s, luabridge::LuaRef r){
+	std::cout << "Loading shader pipelines" << std::endl;
+	assert(s.length() == r.length());
+
+	for(int i = 0; i < r.length(); ++i){
+		// Load each shader pipeline
+		// TODO: Add support for more pipeline with different shader stages (Pipeline staging)
+		luabridge::LuaRef pipelineRef = r[i+1];
+		luabridge::LuaRef shaderRef = pipelineRef["shader"];
+		if(shaderRef.isNil())
+			std::cout << "Error: Pipeline needs a shader!" << std::endl, assert(false);
+		if(shaderRef["file"].isNil())
+			std::cerr << "Error: Shader needs a file" << std::endl, assert(false);
+		
+		std::string name = s[i+1].cast<std::string>();
+		resManager->addShaderPipeline(name, new ShaderPipeline(resManager->getShader(shaderRef["file"].cast<std::string>())));
+	}
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::makeEntities(luabridge::LuaRef r){
+	std::cout << "Adding entities to ECS : " << r.length() << std::endl;
+	for(int i = 0; i < r.length(); ++i){
+		// Create each entity
+		uint32 entity = level->createEntity();
+		
+		luabridge::LuaRef entityRef = r[i+1];
+		assert(!entityRef.isNil());
+		luabridge::LuaRef keys = entityRef[1];
+		luabridge::LuaRef components = entityRef[2];
+		assert(!keys.isNil());
+		assert(!components.isNil());
+		assert(keys.length() == components.length());
+
+		for(int c = 0; c < keys.length(); ++c){
+			std::string key = keys[c+1].cast<std::string>();
+			luabridge::LuaRef cref = components[c+1];
+			if(key == "groups"){
+				for(int g = 0; g < cref.length(); ++g){
+					std::string group = cref[g+1].cast<std::string>();
+					if(group == "ForwardRender")
+						level->template addToGroup<ForwardRender>(entity), std::cout << "Adding to forward render group" << std::endl;
+				}
+			}else if(key == "Transform3D")
+				ComponentAdder<Transform3D>::execute(entity, cref), std::cout << "T" << std::endl;
+			else if(key == "DynamicTransform3D")
+				ComponentAdder<DynamicTransform3D>::execute(entity, cref), std::cout << "T" << std::endl;
+			else if(key == "Mesh3D")
+				ComponentAdder<Model3D>::execute(entity, cref), std::cout << "T" << std::endl;
+			else if(key == "Material")
+				ComponentAdder<Material>::execute(entity, cref), std::cout << "T" << std::endl;
+			else if(key == "ShaderPipeline")
+				ComponentAdder<ShaderPipeline>::execute(entity, cref), std::cout << "T" << std::endl;
+		}
+		
+		level->registerEntity(entity);
+	}
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::initLoader(){
+	// TODO: Move the init keymap function somewhere else (in core perhaps)
+	initKeyMap();
+
+	// Get static Resource Manager
+	resManager = lmx::getStaticResourceManager();
+	assert(resManager); // Making sure the static resource manager was initialized before hand
+
+	// Create lua global state
+	state = luaL_newstate();
+	luaL_openlibs(state);
+	
+	// Register necessary C++ functions for lua
+	luabridge::getGlobalNamespace(state).
+		addFunction("print", print).
+		addFunction("makeEntities", makeEntities).
+		addFunction("loadMeshes3D", loadMeshes3D).
+		addFunction("loadMaterials", loadMaterials).
+		addFunction("loadPipelines", loadPipelines);//.
+	//addFunction("addModel2D", addModel2D).
+		//addFunction("addInstancedModel2D", addInstancedModel2D).
+		//addFunction("addInstancedModel3D", addInstancedModel3D).
+		//addFunction("addAnimatedModel3D", addAnimatedModel3D).
+		//addFunction("loadLevelParameters", loadLevelParameters).
+		//addFunction("updateDefaultVariables", updateDefaultVariables).
+		//addFunction("addDirectionalLight", addDirectionalLight).
+		//addFunction("addPointLight", addPointLight).
+		//addFunction("addSpotLight", addSpotLight).
+		//addFunction("addDeferredDirectionalLight", addDeferredDirectionalLight).
+		//addFunction("addDeferredPointLight", addDeferredPointLight).
+		//addFunction("addDeferredSpotLight", addDeferredSpotLight).
+		//addFunction("registerPlayer", registerPlayer);
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>* LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadLevel(const std::string& filename){
+	level = new Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>();
+	// Open and execute lua script
+	if (luaL_loadfile(state, filename.c_str())) {
+		std::cout << "ERROR: Lua level script not found: " << filename << std::endl;
+		assert(false);
+	}
+	luaL_dofile(state, filename.c_str());
+
+	// End lua session
+	lua_close(state);
+
+	return level;
+}
+
+/*
 #include "LuaLevelloader.hpp"
 #include "../main.hpp"
 
@@ -802,40 +1037,6 @@ luabridge::LuaRef LuaLevelLoader::checkLuaRef(luabridge::LuaRef r, const std::st
 	return _param;
 }
 
-Vec3 LuaLevelLoader::loadVector3D(luabridge::LuaRef r, const Vec3& def) {
-	if (r.isNil())
-		return def;
-	return loadVector3D(r);
-}
-
-Vec2 LuaLevelLoader::loadVector2D(luabridge::LuaRef r, const Vec2& def) {
-	if (r.isNil())
-		return def;
-	return loadVector2D(r);
-}
-
-float LuaLevelLoader::loadFloat(luabridge::LuaRef r, float def) {
-	if (r.isNil())
-		return def;
-	return r.cast<float>();
-}
-
-bool LuaLevelLoader::loadFloatVector(luabridge::LuaRef r, std::vector<float>& vector) {
-	if (r.isNil())
-		return false;
-	for (int i = 0; i < r.length(); ++i)
-		vector.push_back(r[1 + i].cast<float>());
-	return true;
-}
-
-bool LuaLevelLoader::loadIntVector(luabridge::LuaRef r, std::vector<int>& vector) {
-	if (r.isNil())
-		return false;
-	for (int i = 0; i < r.length(); ++i)
-		vector.push_back(r[1 + i].cast<int>());
-	return true;
-}
-
 MovComponent* LuaLevelLoader::loadMovComponent(luabridge::LuaRef r) {
 	MovComponent* component = new MovComponent();
 	for (int i = 0; i < 3; ++i) {
@@ -870,15 +1071,9 @@ void LuaLevelLoader::loadMovFunction(const std::string& str, float& amplitude, f
 	frequency = std::stof(frequency_);
 }
 
-Vec3 LuaLevelLoader::loadVector3D(luabridge::LuaRef r) {
-	Vec3 result(r[1].cast<float>(), r[2].cast<float>(), r[3].cast<float>());
-	return result;
-}
+*/
 
-Vec2 LuaLevelLoader::loadVector2D(luabridge::LuaRef r) {
-	Vec2 result(r[1].cast<float>(), r[2].cast<float>());
-	return result;
-}
+/*
 
 void LuaLevelLoader::registerControl(luabridge::LuaRef r, unsigned control, float weight){
 	if(r.isNil())
@@ -892,8 +1087,54 @@ void LuaLevelLoader::registerControl(luabridge::LuaRef r, unsigned control, floa
 
 	level->player->registerAxisControl(new InputControl(key, weight), static_cast<Player::AxisControl>((int)control));
 }
+*/
 
-void LuaLevelLoader::initKeyMap(){
+Vec3 LuaHelper::loadVector3D(luabridge::LuaRef r, const Vec3& def) {
+	if (r.isNil())
+		return def;
+	return loadVector3D(r);
+}
+
+Vec2 LuaHelper::loadVector2D(luabridge::LuaRef r, const Vec2& def) {
+	if (r.isNil())
+		return def;
+	return loadVector2D(r);
+}
+
+float LuaHelper::loadFloat(luabridge::LuaRef r, float def) {
+	if (r.isNil())
+		return def;
+	return r.cast<float>();
+}
+
+bool LuaHelper::loadFloatVector(luabridge::LuaRef r, std::vector<float>& vector) {
+	if (r.isNil())
+		return false;
+	for (int i = 0; i < r.length(); ++i)
+		vector.push_back(r[1 + i].cast<float>());
+	return true;
+}
+
+bool LuaHelper::loadIntVector(luabridge::LuaRef r, std::vector<int>& vector) {
+	if (r.isNil())
+		return false;
+	for (int i = 0; i < r.length(); ++i)
+		vector.push_back(r[1 + i].cast<int>());
+	return true;
+}
+
+Vec3 LuaHelper::loadVector3D(luabridge::LuaRef r) {
+	Vec3 result(r[1].cast<float>(), r[2].cast<float>(), r[3].cast<float>());
+	return result;
+}
+
+Vec2 LuaHelper::loadVector2D(luabridge::LuaRef r) {
+	Vec2 result(r[1].cast<float>(), r[2].cast<float>());
+	return result;
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::initKeyMap(){
 	keys.insert(std::pair<std::string,unsigned>("KEY_A", LMX_KEY_A));
 	keys.insert(std::pair<std::string,unsigned>("KEY_B", LMX_KEY_B));
 	keys.insert(std::pair<std::string,unsigned>("KEY_C", LMX_KEY_C));
@@ -967,3 +1208,5 @@ void LuaLevelLoader::initKeyMap(){
 	keys.insert(std::pair<std::string,unsigned>("KEY_RALT", LMX_KEY_RALT));
 	keys.insert(std::pair<std::string,unsigned>("KEY_ALT", LMX_KEY_ALT));
 }
+
+#endif
