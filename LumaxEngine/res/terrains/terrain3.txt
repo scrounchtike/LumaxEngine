@@ -1,6 +1,0 @@
-filename: res/textures/heightmap4.png
-width: 128
-height: 128
-scale: 1.0
-calcNormals: 1
-calcTangents: 0
