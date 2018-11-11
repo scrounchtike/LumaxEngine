@@ -1,0 +1,17 @@
+
+cbuffer UniformBuffer {
+	float4x4 projection;
+	float4x4 view;
+	float3 position;
+	float padding1;
+	float3 color;
+	float padding2;
+};
+
+struct PixelInput {
+	float4 position : SV_POSITION;
+};
+
+float4 main(PixelInput input) : SV_TARGET {
+	return float4(color, 1.0);
+}

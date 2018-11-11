@@ -1,0 +1,16 @@
+
+#version 010
+
+add Shader name: shader3Dcolor file: HLSL/3D/shader3Dcolor
+add Shader name: shader3Dtexture file: HLSL/3D/shader3Dtexture
+
+add Material name: matBoard1 color: 1,1,0
+//add Model3D name: cubeOBJ file: res/models/cube2.obj
+//add Mesh3D model: cubeOBJ material: matBoard1 shader: shader3Dcolor transform: (position: 0,0,0 scale: 1,1,1)
+
+add Point3D position: 0,0,5 color: 1,0,1
+add Point3D position: 0,0,-10 color: 1,1,0
+
+add Model3D name: board vertices: -0.5f,-0.5f,-5,-0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,-0.5f,-5,-0.5f,-0.5f,-5 texCoords: 0,0,0,1,1,1,1,1,1,0,0,0
+//add Model3D name: board vertices: -0.5f,-0.5f,-5,-0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,-0.5f,-5,-0.5f,-0.5f,-5
+add Mesh3D model: board material: matBoard1 shader: shader3Dtexture

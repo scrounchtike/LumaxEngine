@@ -1,0 +1,149 @@
+
+#version 010
+
+// Global variables
+set DefaultBaseColor 1,0,0
+set DefaultHitColor 0,1,0
+
+// Scene description
+set ScreenCoordinates NDC
+
+//add Transform2D name: point1TR translation: 0.8f,0
+
+//add Point2D position: -0.5,0.5 color: 0,1,0 transform: point1TR
+//add Point2D position: 0.5f,0 color: 0,1,0
+
+//add Line2D start: 0,0 end: -0.5,0.5 color: 1,1,0
+//add Line2D start: -1,-1 end: 0.5,-0.2 color: 1,0,0
+
+//add Sprite2D position: 0.5,-0.2 extents: 1,2 color: 0,0,1
+
+// 2D Meshes
+add Model2D name: square2D vertices: -0.5f,-0.5f,-0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,-0.5f,-0.5f,-0.5f
+add Material name: matSquare2D
+add Shader name: shader2Dcolor file: GLSL/2D/shader2Dcolor
+//add Shader name: shader2Dcolor file: HLSL/2D/shader2Dcolor
+
+//add Mesh2D model: square2D material: matSquare2D shader: shader2Dcolor transform: (position: 0,0 scale: 1,1)
+
+add Transform2D name: transform1 position: 0.5f,0 scale: 0.5f,0.2f
+//add Mesh2D model: square2D material: matSquare2D shader: shader2Dcolor transform: transform1
+
+//add Transform2D name: transform1 mode: dynamic position: -0.5,0 scale: 0.5,0.8 rotation: 45
+//add Mesh2D name: mesh1 model: square2D material: matSquare2D shader: shader2Dcolor transform: transform1
+
+//add Mesh2D model: square2D material: matSquare2D shader: shader2Dcolor transform: (mode: dynamic position: 0.5,-0.8 rotation: 45 scale: 0.5,0.5)
+
+
+//*** LIGHTING ***//
+
+add Shader name: shader3Dlight file: GLSL/3D/shader3Dlight
+
+
+add Material name: matCube1 color: 1,0,0
+add Shader name: shader3D file: GLSL/3D/shader3Dcolor
+//add Shader name: shader3D file: HLSL/3D/shader3Dcolor
+add Transform3D name: transformCube position: 0,0,3
+
+add Shader name: shader3Dtexture file: GLSL/3D/shader3Dtexture
+//add Shader name: shader3Dtexture file: HLSL/3D/shader3Dtexture
+add Texture name: texture1 format: rgb size: 2 pixels: 1,0,0,1,0,1,0,1,0,0,1,1,1,1,1,1
+//add Texture name: texture1 format: rgb size: 2 pixels: 1,0,0,0,1,0,0,0,1,1,1,1
+add Texture name: texture2 file: res/textures/test.png
+add Material name: matBoard1 texture: texture2
+
+add Model3D name: board vertices: -0.5f,-0.5f,-5,-0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,-0.5f,-5,-0.5f,-0.5f,-5 texCoords: 0,0,0,1,1,1,1,1,1,0,0,0
+//add Model3D name: board vertices: -0.5f,-0.5f,-5,-0.5f,0.5f,-5,0.5f,0.5f,-5,0.5f,-0.5f,-5 indices: 0,1,2,2,3,0
+add Mesh3D name: mesh3D1 model: board material: matBoard1 shader: shader3Dtexture transform: transformCube
+
+add Model3D name: cubeOBJ file: res/models/cube2.obj
+add Mesh3D model: cubeOBJ material: matBoard1 shader: shader3Dtexture transform: (scale: 0.25,0.25,0.25)
+
+//add Material name: matColorGold color: 1,1,0
+//add Model3D name: dragonOBJ file: res/models/dragon.obj
+//add Mesh3D model: dragonOBJ material: matColorGold shader: shader3D transform: (position: 3,0,0 scale: 0.05,0.05,0.05)
+
+add Model3D name: treeOBJ file: res/models/tree.obj
+add Mesh3D model: treeOBJ material: matBoard1 shader: shader3Dtexture transform: (position: 6,0,0)
+
+add Model3D name: boxDAE file: res/models/box.dae
+add Mesh3D model: boxDAE material: matBoard1 shader: shader3Dtexture transform: (position: -3,0,0 scale: 0.25,0.25,0.25)
+
+add Texture name: texturePokemon file: res/textures/pokemonTrainerTexture.png
+add Material name: matPokemon texture: texturePokemon
+add Model3D name: pokemonDAE file: res/models/PokemonTrainer.dae
+add Mesh3D model: pokemonDAE material: matPokemon shader: shader3Dtexture transform: (position: -6,0,0 rotation: 0,0,0 scale: 0.25,0.25,0.25)
+
+//add Model3D name: tankDAE file: res/models/T-90_2.dae
+//add Mesh3D model: tankDAE material: matBoard1 shader: shader3Dtexture transform: (position: -9,0,0 scale: 0.008,0.008,0.008)
+
+//add Model3D name: squirtleDAE file: res/models/squirtle.dae
+//add Mesh3D model: squirtleDAE material: matBoard1 shader: shader3Dlight transform: (position: 0,5,0 scale: 0.05,0.05,0.05)
+
+//add Model3D name: astroBoyDAE file: res/models/ausfb.dae
+//add Mesh3D model: astroBoyDAE material: matBoard1 shader: shader3Dtexture transform: (position: 3,0,0 scale: 0.01,0.01,0.01)
+
+add Point3D position: 0,2,5 color: 1,1,0
+add Point3D position: 0,2,-5 color: 1,0,0
+
+add Line3D start: 0,0,0 end: 1,0,0 color: 1,0,0
+add Line3D start: 0,0,0 end: 0,1,0 color: 0,1,0
+add Line3D start: 0,0,0 end: 0,0,1 color: 0,1,1
+
+// Physics tests
+
+add Material name: material1 baseColor: 1,0,0 hitColor: 0,1,0
+
+
+add Mesh3D name: aabb1 render: AABB material: *material1 physics: AABB(position: -5,0,3 extents: 1,1,1)
+add Mesh3D name: aabb2 render: AABB material: *material1 physics: AABB(position: 0,1,2 extents: 1,1,1)
+
+//add Mesh3D name: sphere1 render: Sphere material: *material1 physics: Sphere(position: -5,0,6 radius: 1)
+//add Mesh3D name: sphere2 render: Sphere material: *material1 physics: Sphere(position: 0,1,6 radius: 0.5)
+
+//add Mesh3D name: plane1 render: Plane material: *material1 physics: Plane(position: 0,4,0 normal: 0.707,0,0.707 tangent: -0.707,0,0.707)
+//add Mesh3D name: plane2 render: Plane material: *material1 physics: Plane(position: 5,0,0 rotation: 90,0,0)
+
+add Movement3D name: movementOBB1 translation: 0,0,0.005 rotation: 0.03,0,0
+add Mesh3D name: obb1 render: OBB material: *material1 movement: movementOBB1 physics: OBB(position: 10,0,0 extents: 0.4,0.4,0.4 u1: 0.707,0.707,0 u2: -0.707,0.707,0 u3: 0,0,1)
+add Movement3D name: movementOBB2 translation: 0,-0.001,0 rotation: 0,0.002,0
+add Mesh3D name: obb2 render: OBB material: *material1 movement: movementOBB2 physics: OBB(position: 10.3,1,4 extents: 0.6,0.4,1 u1: 1,0,0 u2: 0,1,0 u3: 0,0,1)
+
+add Movement3D name: movementAABB3 translation: 0,0,0.005
+add Mesh3D name: aabb3 render: AABB material: *material1 movement: movementAABB3 physics: AABB(position: 14,0,0 extents: 0.4,1,0.6)
+//add Mesh3D name: sphere3 render: Sphere material: *material1 physics: Sphere(position: 13,1,5 radius: 1.5)
+
+add Movement3D name: movementAABB4 translation: 0,-0.001,0.001
+add Mesh3D name: aabb4 render: AABB material: *material1 movement: movementAABB4 physics: AABB(position: 18,0,0 extents: 0.5,0.5,1)
+add Movement3D name: movementOBB3 translation: 0,0,-0.005 rotation: 0.01,0.01,0.001
+add Mesh3D name: obb3 render: OBB material: *material1 movement: movementOBB3 physics: OBB(position: 18,0.5,4 extents: 0.2,0.9,0.5 u1: 1,0,0 u2: 0,1,0 u3: 0,0,1)
+
+add Movement3D name: movementAABB5 translation: 0,0,0.02
+add Mesh3D name: aabb5 render: AABB material: *material1 movement: movementAABB5 physics: AABB(position: 22,0,0 extents: 1,0.7,0.6)
+add Mesh3D name: plane3 render: Plane material: *material1 physics: Plane(position: 24,0,10 normal: 0,0,-1 tangent: 1,0,0 scale: 6)
+
+add Movement3D name: movementSphere4 translation: 0,0,0.025
+add Mesh3D name: sphere4 render: Sphere material: *material1 movement: movementSphere4 physics: Sphere(position: 26,0,0 radius: 1)
+
+add Movement3D name: movementOBB4 translation: 0,0,0.02 rotation: 0.01,0.001,0.015
+add Mesh3D name: obb4 render: OBB material: *material1 movement: movementOBB4 physics: OBB(position: 30,0,0 extents: 0.5,0.7,0.7 u1: 1,0,0 u2: 0,1,0 u3: 0,0,1)
+add Mesh3D name: sphere5 render: Sphere material: *material1 physics: Sphere(position: 30,0.5,10 radius: 1.7)
+
+add Movement3D name: movementAABB6 translation: 0,0,0.02
+add Mesh3D name: aabb6 render: AABB material: *material1 movement: movementAABB6 physics: AABB(position: 4,0,0 extents: 0.4,0.4,0.8)
+add Mesh3D name: sphere6 render: Sphere material: *material1 physics: Sphere(position: 4,0,5 radius: 1.4)
+
+add Movement3D name: movementOBB5 translation: 0,0,0.02 rotation: 0.01,0.02,0.005
+add Mesh3D name: obb5 render: OBB material: *material1 movement: movementOBB5 physics: OBB(position: 0,0,-10 u1: 1,0,0 u2: 0,1,0 extents: 1,1,1)
+add Mesh3D name: plane4 render: Plane material: *material1 physics: Plane(position: 0,0,0 normal: 0,0,-1 tangent: 1,0,0 scale: 4)
+
+
+
+// Ray - Line intersections tests
+
+add Material name: material2 baseColor: 1,0,1 hitColor: 0.3,0.7,0
+add Mesh3D name: sphere6 render: Sphere material: *material1 physics: Sphere(position: 6,0,-10 radius: 1.2)
+add Mesh3D name: line1 render: Line material: *material2 physics: Line(start: 7,1,-11 end: 5,-1,-8)
+
+add Mesh3D name: aabb7 render: AABB material: *material1 physics: AABB(position: 12,0,-10 extents: 1,1.5,1.5)
+add Mesh3D name: line2 render: Line material: *material2 physics: Line(start: 13,2,-12 end: 11,0,-8)
