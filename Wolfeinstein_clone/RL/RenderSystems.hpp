@@ -1,6 +1,6 @@
 
-#ifndef RENDER_SYSTEMS_TPP
-#define RENDER_SYSTEMS_TPP
+#ifndef RENDER_SYSTEMS_HPP
+#define RENDER_SYSTEMS_HPP
 
 #include "../lumax.hpp"
 #include "../RML/ResourceManager.hpp"
@@ -44,135 +44,77 @@ struct RenderSystemPivotTransform2D : public RenderingSystem<ECS, TYPE_2D, Pivot
 };
 */
 
-//3D
-// Unity like Rendering System
-template <typename ECS>
-struct RenderSystemTransform3DUnity : public RenderingSystem<ECS, Material, Model3D, Transform3D, LightComponent, ForwardRender>{
+template <typename E>
+struct UnityForwardRender{
+	// Static data that both systems share
+	static bool initialized;
 	static bool newFrame;
 
-	static ShaderPipeline* basePipelineColor;
-	static ShaderPipeline* basePipelineTexture;
-	static ShaderPipeline* basePipelineBoth;
-
-	static ShaderPipeline* pointLightPipelineColor;
-	static ShaderPipeline* pointLightPipelineTexture;
-	static ShaderPipeline* pointLightPipelineBoth;
-
-	static ShaderPipeline* spotLightPipelineColor;
-	static ShaderPipeline* spotLightPipelineTexture;
-	static ShaderPipeline* spotLightPipelineBoth;
-
-	static ShaderPipeline* pipeline;
+	static ShaderPipeline* basePipeline;
+	static ShaderPipeline* perpixelLightPipeline;
 
 	static DirectionalLight dlight;
 	
-	static void construct(){
-		std::cout << "Construct method called" << std::endl;
-		basePipelineColor = new ShaderPipeline(lmx::getStaticResourceManager()->getShader("renderer/baseShaderForwardColor"));
-		basePipelineTexture = new ShaderPipeline(lmx::getStaticResourceManager()->getShader("renderer/baseShaderForwardTexture"));
-		//basePipelineBoth = new ShaderPipeline(lmx::getStaticResourceManager()->getShader("renderer/baseShaderForwardBoth"));
+	// Functions that both systems share
+	static void impl_construct(){
+		initialized = true;
+		
+		basePipeline = lmx::getStaticResourceManager()->getShaderPipeline("renderer/shader3DunityBase");
+		//perpixelLightPipeline = lmx::getStaticResourceManager()->getShaderPipeline("renderer/shader3DunityPerpixelLight");
 
-		pointLightPipelineTexture = new ShaderPipeline(lmx::getStaticResourceManager()->getShader("renderer/pointLightPipelineTexture"));
-
-		pipeline = new ShaderPipeline(lmx::getStaticResourceManager()->getShader("renderer/shaderLight"));
-
+		// Dir light for testing (very temp)
 		dlight = DirectionalLight(Vec3(-1,1,-1).normalize(), Vec3(1,0.6f,0.6f), 0.7f);
-		
-		// Light uniforms
-		pipeline->bind();
-		struct VertexLights{
-			PointLight plights[4];
-			SpotLight slights[4];
-		};
-		VertexLights vlights;
-		//vlights.plights[0] = PointLight(Vec3(3,2,10), Vec3(1,1,0), Vec3(0.5,0.5,0.5));
-		struct PixelLights{
-			DirectionalLight dlight;
-			PointLight plights[4];
-			SpotLight slights[4];
-		};
-		PixelLights plights;
-		//plights.plights[0] = PointLight(Vec3(3,2,10), Vec3(1,1,0), Vec3(0.2,0.2,0.2));
-		plights.dlight = DirectionalLight(Vec3(1,-1,1).normalize(), Vec3(1,0,0), 0.5f);
-		
-		glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboLightsVertex);
-		glBufferData(GL_UNIFORM_BUFFER, sizeof(PointLight)*4 + sizeof(SpotLight)*4, &vlights, GL_DYNAMIC_DRAW);
-		glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboLights);
-		glBufferData(GL_UNIFORM_BUFFER, sizeof(DirectionalLight) + sizeof(PointLight)*4 + sizeof(SpotLight)*4, &plights, GL_DYNAMIC_DRAW);
-		
+
 		glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboDirectionalLight);
-		basePipelineColor->bind();
 		glBufferData(GL_UNIFORM_BUFFER, sizeof(DirectionalLight), &dlight, GL_DYNAMIC_DRAW);
 	}
-
-	static void update(const std::vector<Material*>& materials, const std::vector<Model3D*>& meshes, const std::vector<Transform3D*>& transforms, const std::vector<LightComponent*>& lightDescs, Camera* camera){
+	
+	static void impl_update(const std::vector<Material*>& materials,
+										 const std::vector<Model3D*>& meshes,
+										 const std::vector<Transform3D*>& transforms,
+										 const std::vector<LightComponent*>& lightDescs,
+										 Camera* camera)
+	{
 		newFrame = true;
 		
 		static uint32 materialID = (uint32)(-1);
 		static uint32 modelID = (uint32)(-1);
+		
+		// First, we begin with the base pass for directional light and vertex / baked lights
+		// no baked lights for now though
+		ShaderPipeline* pipeline = basePipeline;
+
+		// We bind the base pass pipeline and set the camera uniforms
+		pipeline->bind();
+		// Update projection and view matrices
+		glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboMVP3D);
+		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float)*16, camera->getProjectionMatrix().getHeadPointer());
+		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(float)*16, sizeof(float)*16, camera->getViewMatrix().getHeadPointer());
+		// Update camera position
+		pipeline->setUniform3f("cameraPos", camera->getPosition());
+		
+		// IMPORTANT !!
+		// This assumes that the meshes have vertex, texcoord and normal information! 
+
+		// Loop over all entities and forward draw with first base pipeline
 		for(int i = 0; i < meshes.size(); ++i){
 			Material* material = materials[i];
 			Model3D* mesh = meshes[i];
 			Transform3D* transform = transforms[i];
 			LightComponent* lights = lightDescs[i];
-
-			// Bind color/texture light pipeline for forward rendering
-			pipeline->bind();
-			if(newFrame){
-				newFrame = false;
-				// Update projection and view matrices
-				glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboMVP3D);
-				glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float)*16, camera->getProjectionMatrix().getHeadPointer());
-				glBufferSubData(GL_UNIFORM_BUFFER, sizeof(float)*16, sizeof(float)*16, camera->getViewMatrix().getHeadPointer());
-				// Update camera position
-				pipeline->setUniform3f("cameraPos", camera->getPosition());
-			}
-			
-			//Switch shader pipeline if necessary
-			/*
-			static ShaderPipeline* pipeline = nullptr;
-			static ShaderPipeline* pointLightPipeline = pointLightPipelineTexture;
-			static ShaderPipeline* spotLightPipeline = spotLightPipelineTexture;
-			if(materialDesc != newMaterialDesc || newFrame){
-				newFrame = false;
-				materialDesc = newMaterialDesc;
-				if(materialDesc == (MAT_TEXTURED | MAT_COLORED)){
-					pipeline = basePipelineBoth;
-					//pointLightPipeline = pointLightPipelineBoth;
-					//spotLightPipeline = spotLightPipelineBoth;
-				}else if(materialDesc == MAT_COLORED){
-					pipeline = basePipelineColor;
-					//pointLightPipeline = pointLightPipelineColor;
-					//spotLightPipeline = spotLightPipelineColor;
-				}else if(materialDesc == MAT_TEXTURED){
-					pipeline = basePipelineTexture;
-					//pointLightPipeline = pointLightPipelineTexture;
-					//spotLightPipeline = spotLightPipelineTexture;
-				}
-				// Bind projection and view matrices
-				glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboMVP3D);
-				// Bind projection and view matrices for light pipelines
-				pointLightPipeline->bind();
-				glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float)*16, camera->getProjectionMatrix().getHeadPointer());
-				glBufferSubData(GL_UNIFORM_BUFFER, sizeof(float)*16, sizeof(float)*16, camera->getViewMatrix().getHeadPointer());
-				//spotLightPipeline->bind();
-				//glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float)*16, camera->getProjectionMatrix().getHeadPointer());
-				//glBufferSubData(GL_UNIFORM_BUFFER, sizeof(float)*16, sizeof(float)*16, camera->getViewMatrix().getHeadPointer());
-				// Bind pipeline
-				pipeline->bind();
-				glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float)*16, camera->getProjectionMatrix().getHeadPointer());
-				glBufferSubData(GL_UNIFORM_BUFFER, sizeof(float)*16, sizeof(float)*16, camera->getViewMatrix().getHeadPointer());
-			}
-			assert(pipeline);
-			*/
 			
 			// Material Settings
-			if(materialID != material->ID){
+			// This sets the subroutines necessary for texturing and/or
+			// coloring
+			if(materialID != material->ID || newFrame){
+			//if(newFrame){
+				newFrame = false;
 				materialID = material->ID;
 				if(material->isTextured){
 					// Set texture
+					glActiveTexture(GL_TEXTURE0);
 					material->getTexture()->bind();
-					pipeline->setSubroutine("getAlbedo", GL_FRAGMENT_SHADER, "getTexturedColor");
+					pipeline->setSubroutine("getAlbedo", GL_FRAGMENT_SHADER, "getTextureColor");
 				}
 				if(material->isColored){
 					// Set color UBO
@@ -183,12 +125,18 @@ struct RenderSystemTransform3DUnity : public RenderingSystem<ECS, Material, Mode
 					pipeline->setSubroutine("getAlbedo", GL_FRAGMENT_SHADER, "getColor");
 				}
 				if(material->isBlended){
+					// Cant really blend if we are missing a blend source
+					assert(material->isTextured && material->isColored);
 					pipeline->setUniform1f("blend", material->blend); 
 					pipeline->setSubroutine("getAlbedo", GL_FRAGMENT_SHADER, "getBlendedColor");
 				}
 				pipeline->updateSubroutines();
 			}
 
+			// Light information
+			glBindBuffer(GL_UNIFORM_BUFFER, Renderer::uboLightsVertex);
+		  glBufferData(GL_UNIFORM_BUFFER, sizeof(PointLight)*4 + sizeof(SpotLight)*4, &(lights->vertexPointLights[0]), GL_DYNAMIC_DRAW);
+			
 			// Mesh settings
 			if(modelID != mesh->ID){
 				modelID = mesh->ID;
@@ -204,7 +152,7 @@ struct RenderSystemTransform3DUnity : public RenderingSystem<ECS, Material, Mode
 			//glEnable(GL_BLEND);
 			//glBlendFunc(GL_ONE, GL_ONE);
 			//lmx::setDepthClip(false);
-
+			
 			// For all point lights and spot lights, render the mesh with additive blending enabled
 			
 			// Point Lights
@@ -235,39 +183,55 @@ struct RenderSystemTransform3DUnity : public RenderingSystem<ECS, Material, Mode
 			//glDisable(GL_BLEND);
 			//lmx::setDepthClip(true);
 		}
-		
-		
-		// Light passes
 	}
+		
+	template <typename ECS>
+	struct RenderingSystemTransform3DUnity : public RenderingSystem<ECS, Material, Model3D, Transform3D, LightComponent, ForwardRender>
+	{
+		static void construct(){
+			if(!initialized)
+				impl_construct();
+		}
+		static void update(const std::vector<Material*>& materials,
+											 const std::vector<Model3D*>& meshes,
+											 const std::vector<Transform3D*>& transforms,
+											 const std::vector<LightComponent*>& lightDescs,
+											 Camera* camera)
+		{
+			impl_update(materials, meshes, transforms, lightDescs, camera);
+		}
+	};
+	
+	template <typename ECS>
+	struct RenderingSystemDynamicTransform3DUnity : public RenderingSystem<ECS, Material, Model3D, DynamicTransform3D, LightComponent, ForwardRender>
+	{
+		static void construct(){
+			if(!initialized)
+				impl_construct();
+		}
+		static void update(const std::vector<Material*>& materials,
+											 const std::vector<Model3D*>& meshes,
+											 const std::vector<DynamicTransform3D*>& transforms,
+											 const std::vector<LightComponent*>& lightDescs,
+											 Camera* camera)
+		{
+			impl_update(materials, meshes, std::vector<Transform3D*>(transforms.begin(), transforms.end()), lightDescs, camera);
+		}
+	};
 };
-template <typename ECS>
-bool RenderSystemTransform3DUnity<ECS>::newFrame = false;
-template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::basePipelineColor = nullptr;
-template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::basePipelineTexture = nullptr;
-template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::basePipelineBoth = nullptr;
 
 template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::pointLightPipelineColor = nullptr;
+bool UnityForwardRender<ECS>::newFrame = false;
 template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::pointLightPipelineTexture = nullptr;
-template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::pointLightPipelineBoth = nullptr;
+bool UnityForwardRender<ECS>::initialized = false;
 
 template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::spotLightPipelineColor = nullptr;
+ShaderPipeline* UnityForwardRender<ECS>::basePipeline;
 template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::spotLightPipelineTexture = nullptr;
-template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::spotLightPipelineBoth = nullptr;
+ShaderPipeline* UnityForwardRender<ECS>::perpixelLightPipeline;
 
 template <typename ECS>
-ShaderPipeline* RenderSystemTransform3DUnity<ECS>::pipeline = nullptr;
-
-template <typename ECS>
-DirectionalLight RenderSystemTransform3DUnity<ECS>::dlight;
+DirectionalLight UnityForwardRender<ECS>::dlight;
 
 // 3D
 // Static entities rendering
@@ -281,9 +245,9 @@ struct RenderSystemTransform3D : public RenderingSystem<ECS, ShaderPipeline, Mat
 		// Reset new frame hint
 		newFrame = true;
 		// Forward render entities
-		//for(int i = 0; i < pipelines.size(); ++i){
-		//	impl(pipelines[i], materials[i], meshes[i], transforms[i], camera);
-		//}
+		for(int i = 0; i < pipelines.size(); ++i){
+			impl(pipelines[i], materials[i], meshes[i], transforms[i], camera);
+		}
 		// For each directional light
 
 		// For each point light
@@ -292,6 +256,12 @@ struct RenderSystemTransform3D : public RenderingSystem<ECS, ShaderPipeline, Mat
 	}
 	
 	static void impl(ShaderPipeline* pipeline, Material* material, Model3D* mesh, Transform3D* transform, Camera* camera){
+		assert(pipeline);
+		assert(material);
+		assert(mesh);
+		assert(transform);
+		assert(camera);
+		
 		static uint32 pipelineID = (uint32)(-1);
 		static uint32 materialID = (uint32)(-1);
 		static uint32 modelID = (uint32)(-1);

@@ -60,15 +60,15 @@ include CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o: ECS_desc.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp
 
 CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp > CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp > CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.i
 
 CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp -o CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp -o CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.s
 
 CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o.requires:
 
@@ -84,15 +84,15 @@ CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o.provides.build: CMakeFiles/LumaxEngine
 CMakeFiles/LumaxEngine.dir/lumax.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/lumax.cpp.o: lumax.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/LumaxEngine.dir/lumax.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/lumax.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/lumax.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp
 
 CMakeFiles/LumaxEngine.dir/lumax.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/lumax.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp > CMakeFiles/LumaxEngine.dir/lumax.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp > CMakeFiles/LumaxEngine.dir/lumax.cpp.i
 
 CMakeFiles/LumaxEngine.dir/lumax.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/lumax.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp -o CMakeFiles/LumaxEngine.dir/lumax.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp -o CMakeFiles/LumaxEngine.dir/lumax.cpp.s
 
 CMakeFiles/LumaxEngine.dir/lumax.cpp.o.requires:
 
@@ -108,15 +108,15 @@ CMakeFiles/LumaxEngine.dir/lumax.cpp.o.provides.build: CMakeFiles/LumaxEngine.di
 CMakeFiles/LumaxEngine.dir/main.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/main.cpp.o: main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/LumaxEngine.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/main.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/main.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.cpp
 
 CMakeFiles/LumaxEngine.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.cpp > CMakeFiles/LumaxEngine.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.cpp > CMakeFiles/LumaxEngine.dir/main.cpp.i
 
 CMakeFiles/LumaxEngine.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.cpp -o CMakeFiles/LumaxEngine.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.cpp -o CMakeFiles/LumaxEngine.dir/main.cpp.s
 
 CMakeFiles/LumaxEngine.dir/main.cpp.o.requires:
 
@@ -132,15 +132,15 @@ CMakeFiles/LumaxEngine.dir/main.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir
 CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o: TL/FBmTerrain.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/FBmTerrain.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/FBmTerrain.cpp
 
 CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/FBmTerrain.cpp > CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/FBmTerrain.cpp > CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.i
 
 CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/FBmTerrain.cpp -o CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/FBmTerrain.cpp -o CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.s
 
 CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o.requires:
 
@@ -156,15 +156,15 @@ CMakeFiles/LumaxEngine.dir/TL/FBmTerrain.cpp.o.provides.build: CMakeFiles/LumaxE
 CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o: TL/HeightMapTerrain.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/HeightMapTerrain.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/HeightMapTerrain.cpp
 
 CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/HeightMapTerrain.cpp > CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/HeightMapTerrain.cpp > CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.i
 
 CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/HeightMapTerrain.cpp -o CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/HeightMapTerrain.cpp -o CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.s
 
 CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o.requires:
 
@@ -180,15 +180,15 @@ CMakeFiles/LumaxEngine.dir/TL/HeightMapTerrain.cpp.o.provides.build: CMakeFiles/
 CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o: TL/Map.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Map.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Map.cpp
 
 CMakeFiles/LumaxEngine.dir/TL/Map.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/TL/Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Map.cpp > CMakeFiles/LumaxEngine.dir/TL/Map.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Map.cpp > CMakeFiles/LumaxEngine.dir/TL/Map.cpp.i
 
 CMakeFiles/LumaxEngine.dir/TL/Map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/TL/Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Map.cpp -o CMakeFiles/LumaxEngine.dir/TL/Map.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Map.cpp -o CMakeFiles/LumaxEngine.dir/TL/Map.cpp.s
 
 CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o.requires:
 
@@ -204,15 +204,15 @@ CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o.provides.build: CMakeFiles/LumaxEngine.d
 CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o: TL/Simplex.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Simplex.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Simplex.cpp
 
 CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Simplex.cpp > CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Simplex.cpp > CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.i
 
 CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Simplex.cpp -o CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Simplex.cpp -o CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.s
 
 CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o.requires:
 
@@ -228,15 +228,15 @@ CMakeFiles/LumaxEngine.dir/TL/Simplex.cpp.o.provides.build: CMakeFiles/LumaxEngi
 CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o: TL/Terrain.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Terrain.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Terrain.cpp
 
 CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Terrain.cpp > CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Terrain.cpp > CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.i
 
 CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Terrain.cpp -o CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/Terrain.cpp -o CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.s
 
 CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o.requires:
 
@@ -252,15 +252,15 @@ CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o.provides.build: CMakeFiles/LumaxEngi
 CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o: TL/TerrainQueue.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/TerrainQueue.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/TerrainQueue.cpp
 
 CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/TerrainQueue.cpp > CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/TerrainQueue.cpp > CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.i
 
 CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/TerrainQueue.cpp -o CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/TL/TerrainQueue.cpp -o CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.s
 
 CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o.requires:
 
@@ -276,15 +276,15 @@ CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o.provides.build: CMakeFiles/Luma
 CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o: GL/Door.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp
 
 CMakeFiles/LumaxEngine.dir/GL/Door.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/Door.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp > CMakeFiles/LumaxEngine.dir/GL/Door.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp > CMakeFiles/LumaxEngine.dir/GL/Door.cpp.i
 
 CMakeFiles/LumaxEngine.dir/GL/Door.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/Door.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp -o CMakeFiles/LumaxEngine.dir/GL/Door.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp -o CMakeFiles/LumaxEngine.dir/GL/Door.cpp.s
 
 CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o.requires:
 
@@ -300,15 +300,15 @@ CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o.provides.build: CMakeFiles/LumaxEngine.
 CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o: GL/Enemy.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.cpp
 
 CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.cpp > CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.cpp > CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.i
 
 CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.cpp -o CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.cpp -o CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.s
 
 CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o.requires:
 
@@ -321,18 +321,42 @@ CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o.provides: CMakeFiles/LumaxEngine.dir/G
 CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o
 
 
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o: GL/Game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.cpp
+
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/Game.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.cpp > CMakeFiles/LumaxEngine.dir/GL/Game.cpp.i
+
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/Game.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.cpp -o CMakeFiles/LumaxEngine.dir/GL/Game.cpp.s
+
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.requires:
+
+.PHONY : CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.requires
+
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.provides: CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.requires
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.provides.build
+.PHONY : CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.provides
+
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o
+
+
 CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o: GL/Level.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp
 
 CMakeFiles/LumaxEngine.dir/GL/Level.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/Level.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp > CMakeFiles/LumaxEngine.dir/GL/Level.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp > CMakeFiles/LumaxEngine.dir/GL/Level.cpp.i
 
 CMakeFiles/LumaxEngine.dir/GL/Level.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/Level.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp -o CMakeFiles/LumaxEngine.dir/GL/Level.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp -o CMakeFiles/LumaxEngine.dir/GL/Level.cpp.s
 
 CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o.requires:
 
@@ -347,16 +371,16 @@ CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o.provides.build: CMakeFiles/LumaxEngine
 
 CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o: GL/LevelWolf.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.cpp
 
 CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.cpp > CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.cpp > CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.i
 
 CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.cpp -o CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.cpp -o CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.s
 
 CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o.requires:
 
@@ -371,16 +395,16 @@ CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o.provides.build: CMakeFiles/LumaxEn
 
 CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o: GL/MedKit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp
 
 CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp > CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp > CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.i
 
 CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp -o CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp -o CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.s
 
 CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o.requires:
 
@@ -395,16 +419,16 @@ CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o: GL/Player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.cpp
 
 CMakeFiles/LumaxEngine.dir/GL/Player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/GL/Player.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.cpp > CMakeFiles/LumaxEngine.dir/GL/Player.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.cpp > CMakeFiles/LumaxEngine.dir/GL/Player.cpp.i
 
 CMakeFiles/LumaxEngine.dir/GL/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/GL/Player.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.cpp -o CMakeFiles/LumaxEngine.dir/GL/Player.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.cpp -o CMakeFiles/LumaxEngine.dir/GL/Player.cpp.s
 
 CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o.requires:
 
@@ -419,16 +443,16 @@ CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o: PL/DynamicCollision.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/DynamicCollision.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/DynamicCollision.cpp
 
 CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/DynamicCollision.cpp > CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/DynamicCollision.cpp > CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.i
 
 CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/DynamicCollision.cpp -o CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/DynamicCollision.cpp -o CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.s
 
 CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o.requires:
 
@@ -443,16 +467,16 @@ CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o: PL/PhysicsPrimitives.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.cpp
 
 CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.cpp > CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.cpp > CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.i
 
 CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.cpp -o CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.cpp -o CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.s
 
 CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o.requires:
 
@@ -467,16 +491,16 @@ CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o: PL/PrimitiveCollision.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.cpp
 
 CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.cpp > CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.cpp > CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.i
 
 CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.cpp -o CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.cpp -o CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.s
 
 CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o.requires:
 
@@ -491,16 +515,16 @@ CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o: RAL/DirectInput.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.cpp > CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.cpp > CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.cpp -o CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.cpp -o CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o.requires:
 
@@ -515,16 +539,16 @@ CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o.provides.build: CMakeFiles/Luma
 
 CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o: RAL/Log.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.cpp > CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.cpp > CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.cpp -o CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.cpp -o CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o.requires:
 
@@ -539,16 +563,16 @@ CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o.provides.build: CMakeFiles/LumaxEngine.
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o: RAL/RenderingContext.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.cpp > CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.cpp > CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.cpp -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.cpp -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o.requires:
 
@@ -563,16 +587,16 @@ CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o: RAL/RenderingContextDX11.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.cpp > CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.cpp > CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.cpp -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.cpp -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o.requires:
 
@@ -587,16 +611,16 @@ CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o.provides.build: CMakeF
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o: RAL/RenderingContextGL.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.cpp > CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.cpp > CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.cpp -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.cpp -o CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o.requires:
 
@@ -611,16 +635,16 @@ CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o: RAL/Window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.cpp > CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.cpp > CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.cpp -o CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.cpp -o CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o.requires:
 
@@ -635,16 +659,16 @@ CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o.provides.build: CMakeFiles/LumaxEngi
 
 CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o: RAL/cpuid.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/cpuid.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/cpuid.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/cpuid.cpp > CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/cpuid.cpp > CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/cpuid.cpp -o CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/cpuid.cpp -o CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o.requires:
 
@@ -659,16 +683,16 @@ CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o: RAL/input.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/input.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/input.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.cpp > CMakeFiles/LumaxEngine.dir/RAL/input.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.cpp > CMakeFiles/LumaxEngine.dir/RAL/input.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/input.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/input.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.cpp -o CMakeFiles/LumaxEngine.dir/RAL/input.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.cpp -o CMakeFiles/LumaxEngine.dir/RAL/input.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o.requires:
 
@@ -683,16 +707,16 @@ CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o: RAL/windows/WindowGLFW.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.cpp > CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.cpp > CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.cpp -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.cpp -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o.requires:
 
@@ -707,16 +731,16 @@ CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o: RAL/windows/WindowWinAPI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.cpp
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.cpp > CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.cpp > CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.cpp -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.cpp -o CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o.requires:
 
@@ -731,16 +755,16 @@ CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o.provides.build: CMakeF
 
 CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o: RL/Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.cpp > CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.cpp > CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.cpp -o CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.cpp -o CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o.requires:
 
@@ -755,16 +779,16 @@ CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o: RL/GBuffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp > CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp > CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp -o CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp -o CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o.requires:
 
@@ -777,18 +801,42 @@ CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o.provides: CMakeFiles/LumaxEngine.dir
 CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o
 
 
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o: RL/LookAtCamera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.cpp
+
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.cpp > CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.i
+
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.cpp -o CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.s
+
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.requires:
+
+.PHONY : CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.requires
+
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.provides: CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.requires
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.provides.build
+.PHONY : CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.provides
+
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o
+
+
 CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o: RL/Material.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Material.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Material.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp > CMakeFiles/LumaxEngine.dir/RL/Material.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp > CMakeFiles/LumaxEngine.dir/RL/Material.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Material.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Material.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp -o CMakeFiles/LumaxEngine.dir/RL/Material.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp -o CMakeFiles/LumaxEngine.dir/RL/Material.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o.requires:
 
@@ -803,16 +851,16 @@ CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o.provides.build: CMakeFiles/LumaxEng
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o: RL/Mesh2D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh2D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh2D.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh2D.cpp > CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh2D.cpp > CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh2D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh2D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o.requires:
 
@@ -827,16 +875,16 @@ CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o: RL/Mesh3D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh3D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh3D.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh3D.cpp > CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh3D.cpp > CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh3D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Mesh3D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o.requires:
 
@@ -851,16 +899,16 @@ CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o: RL/Model2D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.cpp > CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.cpp > CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o.requires:
 
@@ -875,16 +923,16 @@ CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o.provides.build: CMakeFiles/LumaxEngi
 
 CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o: RL/Model3D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.cpp > CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.cpp > CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.cpp -o CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o.requires:
 
@@ -899,16 +947,16 @@ CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o.provides.build: CMakeFiles/LumaxEngi
 
 CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o: RL/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.cpp > CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.cpp > CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.cpp -o CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.cpp -o CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o.requires:
 
@@ -923,16 +971,16 @@ CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o.provides.build: CMakeFiles/LumaxEng
 
 CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o: RL/Shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.cpp > CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.cpp > CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.cpp -o CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.cpp -o CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o.requires:
 
@@ -947,16 +995,16 @@ CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o: RL/ShaderPipeline.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.cpp > CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.cpp > CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.cpp -o CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.cpp -o CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o.requires:
 
@@ -971,16 +1019,16 @@ CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o.provides.build: CMakeFiles/Lu
 
 CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o: RL/Skybox.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Skybox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Skybox.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Skybox.cpp > CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Skybox.cpp > CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Skybox.cpp -o CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Skybox.cpp -o CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o.requires:
 
@@ -995,16 +1043,16 @@ CMakeFiles/LumaxEngine.dir/RL/Skybox.cpp.o.provides.build: CMakeFiles/LumaxEngin
 
 CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o: RL/Texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.cpp > CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.cpp > CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.cpp -o CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.cpp -o CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o.requires:
 
@@ -1019,16 +1067,16 @@ CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o.provides.build: CMakeFiles/LumaxEngi
 
 CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o: RL/WaterFrameBuffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFrameBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFrameBuffer.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFrameBuffer.cpp > CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFrameBuffer.cpp > CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFrameBuffer.cpp -o CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFrameBuffer.cpp -o CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o.requires:
 
@@ -1043,16 +1091,16 @@ CMakeFiles/LumaxEngine.dir/RL/WaterFrameBuffer.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o: RL/WaterTile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.cpp > CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.cpp > CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.cpp -o CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.cpp -o CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o.requires:
 
@@ -1067,16 +1115,16 @@ CMakeFiles/LumaxEngine.dir/RL/WaterTile.cpp.o.provides.build: CMakeFiles/LumaxEn
 
 CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o: RL/animations/Animation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/animations/Animation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/animations/Animation.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/animations/Animation.cpp > CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/animations/Animation.cpp > CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/animations/Animation.cpp -o CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/animations/Animation.cpp -o CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o.requires:
 
@@ -1091,16 +1139,16 @@ CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o: RL/lights/DirectionalLight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.cpp > CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.cpp > CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.cpp -o CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.cpp -o CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o.requires:
 
@@ -1115,16 +1163,16 @@ CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o.provides.build: CMak
 
 CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o: RL/lights/PointLight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.cpp > CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.cpp > CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.cpp -o CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.cpp -o CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o.requires:
 
@@ -1139,16 +1187,16 @@ CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o: RL/lights/SpotLight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.cpp > CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.cpp > CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.cpp -o CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.cpp -o CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o.requires:
 
@@ -1163,16 +1211,16 @@ CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o: RL/models3D/Model3DDX11.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o.requires:
 
@@ -1187,16 +1235,16 @@ CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o: RL/models3D/Model3DGL.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.cpp > CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.cpp > CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o.requires:
 
@@ -1211,16 +1259,16 @@ CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o: RL/models2D/Model2DDX11.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o.requires:
 
@@ -1235,16 +1283,16 @@ CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o: RL/models2D/Model2DGL.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.cpp > CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.cpp > CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o.requires:
 
@@ -1259,16 +1307,16 @@ CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o: RL/shaders/ShaderDX11.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderDX11.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderDX11.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o.requires:
 
@@ -1283,16 +1331,16 @@ CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o: RL/shaders/ShaderGL.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderGL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderGL.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderGL.cpp > CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderGL.cpp > CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/shaders/ShaderGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o.requires:
 
@@ -1307,16 +1355,16 @@ CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o: RL/textures/TextureDX11.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.cpp > CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.cpp -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o.requires:
 
@@ -1331,16 +1379,16 @@ CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o: RL/textures/TextureGL.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.cpp
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.cpp > CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.cpp > CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.cpp -o CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o.requires:
 
@@ -1355,16 +1403,16 @@ CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o: RML/ResourceManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.cpp
 
 CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.cpp > CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.cpp > CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.cpp -o CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.cpp -o CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o.requires:
 
@@ -1379,16 +1427,16 @@ CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o: RML/loaders/ModelLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/ModelLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/ModelLoader.cpp
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/ModelLoader.cpp > CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/ModelLoader.cpp > CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/ModelLoader.cpp -o CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/ModelLoader.cpp -o CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o.requires:
 
@@ -1403,16 +1451,16 @@ CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o: RML/loaders/OBJLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/OBJLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/OBJLoader.cpp
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/OBJLoader.cpp > CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/OBJLoader.cpp > CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/OBJLoader.cpp -o CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/OBJLoader.cpp -o CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o.requires:
 
@@ -1427,16 +1475,16 @@ CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o: RML/loaders/TextureLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/TextureLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/TextureLoader.cpp
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/TextureLoader.cpp > CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/TextureLoader.cpp > CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.i
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/TextureLoader.cpp -o CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/loaders/TextureLoader.cpp -o CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.s
 
 CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o.requires:
 
@@ -1451,16 +1499,16 @@ CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o.provides.build: CMake
 
 CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o: core/ECS.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.cpp
 
 CMakeFiles/LumaxEngine.dir/core/ECS.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/core/ECS.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.cpp > CMakeFiles/LumaxEngine.dir/core/ECS.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.cpp > CMakeFiles/LumaxEngine.dir/core/ECS.cpp.i
 
 CMakeFiles/LumaxEngine.dir/core/ECS.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/core/ECS.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.cpp -o CMakeFiles/LumaxEngine.dir/core/ECS.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.cpp -o CMakeFiles/LumaxEngine.dir/core/ECS.cpp.s
 
 CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o.requires:
 
@@ -1475,16 +1523,16 @@ CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o.provides.build: CMakeFiles/LumaxEngine
 
 CMakeFiles/LumaxEngine.dir/core/Level.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/core/Level.cpp.o: core/Level.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/LumaxEngine.dir/core/Level.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/core/Level.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/LumaxEngine.dir/core/Level.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/core/Level.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp
 
 CMakeFiles/LumaxEngine.dir/core/Level.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/core/Level.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp > CMakeFiles/LumaxEngine.dir/core/Level.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp > CMakeFiles/LumaxEngine.dir/core/Level.cpp.i
 
 CMakeFiles/LumaxEngine.dir/core/Level.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/core/Level.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp -o CMakeFiles/LumaxEngine.dir/core/Level.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp -o CMakeFiles/LumaxEngine.dir/core/Level.cpp.s
 
 CMakeFiles/LumaxEngine.dir/core/Level.cpp.o.requires:
 
@@ -1499,16 +1547,16 @@ CMakeFiles/LumaxEngine.dir/core/Level.cpp.o.provides.build: CMakeFiles/LumaxEngi
 
 CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o: math/Matrix3f.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.cpp
 
 CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.cpp > CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.cpp > CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.i
 
 CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.cpp -o CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.cpp -o CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.s
 
 CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o.requires:
 
@@ -1523,16 +1571,16 @@ CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o.provides.build: CMakeFiles/LumaxE
 
 CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o: math/Matrix4f.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.cpp
 
 CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.cpp > CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.cpp > CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.i
 
 CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.cpp -o CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.cpp -o CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.s
 
 CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o.requires:
 
@@ -1547,16 +1595,16 @@ CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o.provides.build: CMakeFiles/LumaxE
 
 CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o: math/Transform2D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.cpp
 
 CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.cpp > CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.cpp > CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.i
 
 CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.cpp -o CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.cpp -o CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.s
 
 CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o.requires:
 
@@ -1571,16 +1619,16 @@ CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o.provides.build: CMakeFiles/Lum
 
 CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
 CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o: math/Transform3D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.cpp
 
 CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.cpp > CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.cpp > CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.i
 
 CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.cpp -o CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.cpp -o CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.s
 
 CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o.requires:
 
@@ -1591,6 +1639,30 @@ CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o.provides: CMakeFiles/LumaxEngi
 .PHONY : CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o.provides
 
 CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o
+
+
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o: CMakeFiles/LumaxEngine.dir/flags.make
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o: games/GameDemo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o -c /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.cpp
+
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.cpp > CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.i
+
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.cpp -o CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.s
+
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.requires:
+
+.PHONY : CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.requires
+
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.provides: CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.requires
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.provides.build
+.PHONY : CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.provides
+
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.provides.build: CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o
 
 
 # Object files for target LumaxEngine
@@ -1606,6 +1678,7 @@ LumaxEngine_OBJECTS = \
 "CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o" \
+"CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o" \
@@ -1625,6 +1698,7 @@ LumaxEngine_OBJECTS = \
 "CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o" \
+"CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o" \
@@ -1658,7 +1732,8 @@ LumaxEngine_OBJECTS = \
 "CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o" \
 "CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o" \
-"CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o"
+"CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o" \
+"CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o"
 
 # External object files for target LumaxEngine
 LumaxEngine_EXTERNAL_OBJECTS =
@@ -1674,6 +1749,7 @@ LumaxEngine: CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o
+LumaxEngine: CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o
@@ -1693,6 +1769,7 @@ LumaxEngine: CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o
+LumaxEngine: CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o
@@ -1727,9 +1804,10 @@ LumaxEngine: CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o
+LumaxEngine: CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o
 LumaxEngine: CMakeFiles/LumaxEngine.dir/build.make
 LumaxEngine: CMakeFiles/LumaxEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Linking CXX executable LumaxEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Linking CXX executable LumaxEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LumaxEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1748,6 +1826,7 @@ CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o.requires
+CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o.requires
@@ -1767,6 +1846,7 @@ CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RAL/windows/Wind
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o.requires
+CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o.requires
@@ -1801,6 +1881,7 @@ CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/math/Matrix3f.cp
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o.requires
 CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o.requires
+CMakeFiles/LumaxEngine.dir/requires: CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o.requires
 
 .PHONY : CMakeFiles/LumaxEngine.dir/requires
 

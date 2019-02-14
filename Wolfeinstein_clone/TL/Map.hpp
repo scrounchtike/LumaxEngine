@@ -27,9 +27,15 @@ class Model3D;
 // 1 - Good
 // 0 - Best
 
-enum LODs {
-	NONE, LOD0, LOD1, LOD2, LOD3
-};
+//enum LODs {
+//	NONE, LOD0, LOD1, LOD2, LOD3
+//};
+
+#define LOD0 0
+#define LOD1 1
+#define LOD2 2
+#define LOD3 3
+#define NONE 255
 
 #define UNLOAD 1
 #define SEEN 2
@@ -40,27 +46,30 @@ enum LODs {
 
 struct TileHolder {
 	TileHolder() {}
-
+	
 	WaterTile* water;
-
+	
 	FBmTerrain* terrainDesc;
 	
 	Model3D* terrain;
-	Model3D* swapTerrain;
+	//Model3D* swapTerrain;
 	Transform3D* transform;
-	Transform3D* swapTransform;
-
+	//Transform3D* swapTransform;
+	
 	const int vertexCount = 128;
-	float heights[128][128];
-	Vec3 normals[128][128];
-	float slopes[128][128];
+	//float heights[128][128];
+	//Vec3 normals[128][128];
+	//float slopes[128][128];
 	
 	float LOD = NONE;
 	float previousLOD = NONE;
 	
 	Vec2 terrainPos;
-Vec2 swapTerrainPos;
 
+	//bool needSwap = false;
+	//TileHolder* swap;
+Vec2 swapTerrainPos;
+	
 	uint64 flags = 0;
 };
 
@@ -85,6 +94,9 @@ std::vector<TileHolder*> loadedTerrains;
 	TerrainQueue queue;
 
 	//FBmTerrain* terrainDesc;
+
+	unsigned maxTerrainSide;
+	TileHolder*** swap_tiles;
 
 public:
 	static std::mutex mutex_terrain;

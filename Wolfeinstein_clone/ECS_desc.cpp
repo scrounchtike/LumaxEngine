@@ -8,7 +8,7 @@
 #include "RL/RenderSystems.hpp"
 
 #include "PL/PhysicsPrimitives.hpp"
-#include "Cl/GeometryData.hpp"
+#include "CL/GeometryData.hpp"
 #include "CL/Movement.hpp"
 #include "CL/LightComponent.hpp"
 

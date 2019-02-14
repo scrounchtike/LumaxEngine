@@ -15,7 +15,7 @@
 #include "../RL/ShaderPipeline.hpp"
 
 ResourceManager::ResourceManager(const std::string& resFile) : resFile(resFile) {
-
+	
 }
 
 // Add assets to manager
@@ -102,7 +102,10 @@ ShaderPipeline* ResourceManager::getShaderPipeline(const std::string &name){
 	if(it != shaderPipelines.end())
 		return it->second;
 
-	assert(false);
+	Shader* shader = new Shader(getShaderFullName(name));
+	ShaderPipeline* pipeline = new ShaderPipeline(shader);
+	return pipeline;
+	//assert(false);
 }
 
 std::string ResourceManager::getShaderFullName(const std::string &filename){
@@ -161,7 +164,8 @@ Model2D* ResourceManager::getModel2D(const std::string& filename){
 }
 
 Texture* ResourceManager::getTexture(const std::string &filename){
-	std::map<std::string, Texture*>::iterator it = textures.find(filename);
+	assert(this);
+	auto it = textures.find(filename);
 	if(it != textures.end())
 		return it->second;
 

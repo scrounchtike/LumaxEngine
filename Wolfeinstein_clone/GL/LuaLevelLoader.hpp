@@ -34,18 +34,21 @@ class Vector3;
 class Vector2;
 typedef Vector3 Vec3;
 typedef Vector2 Vec2;
+class Movement3D;
 
 // Lua Helper
 class LuaHelper {
 public:
-	static Vec3 loadVector3D(luabridge::LuaRef r, const Vec3& def);
-	static Vec2 loadVector2D(luabridge::LuaRef r, const Vec2& def);
-	static float loadFloat(luabridge::LuaRef, float def);
-	static bool loadFloatVector(luabridge::LuaRef r, std::vector<float>& vector);
-	static bool loadIntVector(luabridge::LuaRef r, std::vector<int>& vector);
+	static inline Vec3 loadVector3D(luabridge::LuaRef r, const Vec3& def);
+	static inline Vec2 loadVector2D(luabridge::LuaRef r, const Vec2& def);
+	static inline float loadFloat(luabridge::LuaRef, float def = 0.0);
+	static inline bool loadFloatVector(luabridge::LuaRef r, std::vector<float>& vector);
+	static inline bool loadIntVector(luabridge::LuaRef r, std::vector<int>& vector);
+	
+	static inline Vec3 loadVector3D(luabridge::LuaRef r);
+	static inline Vec2 loadVector2D(luabridge::LuaRef r);
 
-	static Vec3 loadVector3D(luabridge::LuaRef r);
-	static Vec2 loadVector2D(luabridge::LuaRef r);
+	static inline void loadMovFunctions(std::function<void(Movement::MovFunc3)> callback, luabridge::LuaRef r, std::function<float(float)> def);
 };
 
 // Component Adder to help create entities
@@ -122,10 +125,16 @@ template <>
 struct ComponentAdder<LightComponent>{
 	template <typename Function>
 	static void execute(Function&& addComponent, uint32 entity, luabridge::LuaRef r) noexcept {
-		std::cout << "adding light component" << std::endl;
 		LightComponent* lc = new LightComponent();
-		//lc->pointLights[0] = (new PointLight(Vec3(2,2,12), Vec3(1,1,0), Vec3(0.1,0.1,0.1)));
 		addComponent(entity, lc);
+	}
+};
+
+template <>
+struct ComponentAdder<Movement3D>{
+	template <typename Function>
+	static void execute(Function&& addComponent, uint32  entity, luabridge::LuaRef r) noexcept{
+		// This function shouldnt exist
 	}
 };
 
@@ -139,6 +148,13 @@ struct AddComponent{
 				level->template addComponent<T>(entity, t);
 			}, entity, r);
 	}
+	// AddComponent execute for Light Components (since I cant specialize in the Level class ...)
+	static void executeLightComponent(Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>* level, uint32 entity, luabridge::LuaRef r){
+		ComponentAdder<LightComponent>::execute([level](uint32 entity, auto* t){
+				typedef typename std::remove_reference<decltype(*t)>::type T;
+				level->addLightComponent(entity, t);
+			}, entity, r);
+	}
 };
 
 // Lua Level Loader
@@ -150,18 +166,24 @@ public:
 	
 	static Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>* loadLevel(const std::string& levelName);
 private:
+	static void loadGameSettings(luabridge::LuaRef s);
 	static void loadMeshes3D(luabridge::LuaRef s, luabridge::LuaRef r);
 	static void loadMaterials(luabridge::LuaRef s, luabridge::LuaRef r);
 	static void loadPipelines(luabridge::LuaRef s, luabridge::LuaRef r);
 	static void loadDirectionalLight(luabridge::LuaRef r);
 	static void loadPointLights(luabridge::LuaRef r);
 	static void loadSpotLights(luabridge::LuaRef r);
+
+	static void loadMovements2D(luabridge::LuaRef s, luabridge::LuaRef r);
+	static void loadMovements3D(luabridge::LuaRef s, luabridge::LuaRef r);
 	
 	static void makeEntities(luabridge::LuaRef r);
 	
 	static lua_State* state;
 
 	static ResourceManager* resManager;
+
+	static std::map<std::string, Movement3D> movements3D;
 	
 	// TODO: Move keymap elsewhere more relevant
 	static void initKeyMap();
@@ -170,7 +192,6 @@ private:
 	using ComponentAdder = AddComponent<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>;
 	
 };
-
 
 
 #include "LuaLevelLoader.tpp"

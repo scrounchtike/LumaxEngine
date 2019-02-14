@@ -7,14 +7,20 @@
 #include "../RL/Renderer.hpp"
 #include "../RL/Camera.hpp"
 
+// IMPORTANT
+// This method is called by the ECS system to pass the camera to the systems!
+// Make sure this is the correct camera used!
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 Camera* Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::getCamera() const {
-	return new Camera();
+	//return new Camera();
+	//return nullptr;
+	return lmx::getStaticCamera();
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::Level() : renderer(new Renderer(new Player())) {
 	// Initialize all systems : instances unique to this level
+	// The following lines simply call constructors of each systems if it exists
 	for_each<SystemList>::execute([this](auto* t){
 			typedef typename std::remove_reference<decltype(*t)>::type T;
 			std::get<T>(systems) = T();
@@ -80,8 +86,8 @@ void Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::registe
 			typedef typename std::remove_reference<decltype(*t)>::type T;
 			T& system = std::get<T>(renderSystems3D);
 			std::cout << "Checking entity against bitset" << std::endl;
-			std::cout << std::hex << system.bitset << std::endl;
-			std::cout << std::hex << entities[entity].bitset << std::endl;
+			//std::cout << std::hex << system.bitset << std::endl;
+			//std::cout << std::hex << entities[entity].bitset << std::endl;
 			std::cout << ECSDesc::template getComponentID<Model3D>() << std::endl;
 			std::cout << ECSDesc::template getComponentID<ShaderPipeline>() << std::endl;
 			std::cout << ECSDesc::template getComponentID<Material>() << std::endl;
@@ -117,11 +123,22 @@ void Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::addComp
 	std::vector<Component*>& componentStorage = std::get<std::vector<Component*>>(components);
 	uint32 location = componentStorage.size();
 	
-	// Construct new Component at the end of Component array
+	// Push new Component at the end of Component array
 	componentStorage.push_back(component);
 	
 	// Map the new component to location returned from ECS
 	entities[entity].map.insert(std::pair<uint32, void*>(ECSDesc::template getComponentID<Component>(), (void*)component));
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::addLightComponent(uint32 entity, LightComponent* lc){
+	// Fill in the light component struct with static lights if the object is static
+	if(hasComponent<Transform3D>(entity)){
+		// TODO
+	}
+
+	// Add the component like any other
+	addComponent<LightComponent>(entity, lc);
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
@@ -162,61 +179,14 @@ void Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::input()
 }
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 void Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::update(){
-	// Register all enitites that have changed (or been added) in the last frame
+	// Register all entities that have changed (or been added) in the last frame
 	for(int i = 0; i < entities.size(); ++i){
-		if(!entities[i].isValid)
-			registerEntity(i), entities[i].isValid = true;
-	}
-
-	// DOOM Collision detection with walls
-	Vec3 position = renderer->getCamera()->getPosition();
-	// TODO: Add getDeltaMovement function in camera before movement addition
-	Vec3 newPos = position;// + deltaMovement();
-
-	// Ray trace downwards
-	//for(int i = 0; i < floors.size(); ++i){
-	//uint32 floorID = floors[i];
-		// 1. Find if 2D xz position intersects floor
-		//DOOM_Floor* floorComp = getComponent<DOOM_Floor>(floorID);
-		//float floorY = floorComp->y;
-	  //Vec2 pos2D = Vec2(newPos.x, newPos.z);
-
-		//bool intersects = PrimitiveCollision::Point_intersects_Rectangle(floorComp->A, floorComp->B, floorComp->C, floorComp->D, pos2D);
-		//if(!intersects)
-		//	continue;
-		//newPos.y = floorY;
-		
-		// 2. If so, calculate deltaY
-		//float deltaY = std::abs(position.y - floorY);
-	//}
-	
-	// Physics update
-	/*
-	for(int i = 0; i < physicsEntities.size(); ++i){
-		setFlag<FlagCollided>(physicsEntities[i], false);
-		setFlag<FlagNotCollided>(physicsEntities[i], true);
-	}
-	// Update physics simulation
-	for(int i = 0; i < physicsEntities.size(); ++i){
-		PhysicsPrimitive* primA = getComponent<PhysicsPrimitive>(physicsEntities[i]);
-		for(int j = i+1; j < physicsEntities.size(); ++j){
-			// Check for any collision
-			//ContactManifold manifold = intersects<PhysicsTypeA, PhysicsTypeB>::execute(a, b);
-			// Need to get the PhysicsPrimitive from entity
-			PhysicsPrimitive* primB = getComponent<PhysicsPrimitive>(physicsEntities[j]);
-			
-			// Collision detection
-			bool collides = primA->collidesWith(primB);
-			if(collides){
-				// Update collision flag
-				setFlag<FlagCollided>(physicsEntities[i], true);
-				setFlag<FlagCollided>(physicsEntities[j], true);
-				setFlag<FlagNotCollided>(physicsEntities[i], false);
-				setFlag<FlagNotCollided>(physicsEntities[j], false);
-			}
+		if(!entities[i].isValid){
+			registerEntity(i);
+			entities[i].isValid = true;
 		}
 	}
-	*/
+	
 	// Camera update
 	renderer->update();
 

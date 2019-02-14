@@ -183,7 +183,7 @@ Matrix4f& Matrix4f::initCamera(Vec3 forward, Vec3 up, Vec3 right) {
 Matrix4f& Matrix4f::lookAt(Vec3 cameraPos, Vec3 up, Vec3 target) {
 	Vec3 zaxis = (target - cameraPos).normalize();
 	Vec3 xaxis = cross(up, zaxis).normalize();
-	Vec3 yaxis = cross(zaxis, xaxis);
+	Vec3 yaxis = cross(zaxis, xaxis).normalize();
 
 	m[0][0] = xaxis.x;    m[0][1] = xaxis.y;    m[0][2] = xaxis.z;    m[0][3] = -dot(xaxis, cameraPos);
 	m[1][0] = yaxis.x;    m[1][1] = yaxis.y;    m[1][2] = yaxis.z;    m[1][3] = -dot(yaxis, cameraPos);

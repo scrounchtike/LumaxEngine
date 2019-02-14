@@ -320,7 +320,7 @@ std::string ShaderGL::loadShader(const std::string& filename) {
 
 	if (!file.good()) {
 		Log::println("Error while trying to read shader source file: " + filename);
-		return NULL;
+		assert(false);
 	}
 
 	std::string line;

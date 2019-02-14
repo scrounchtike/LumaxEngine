@@ -8,146 +8,198 @@
 #include "../core/ECS.hpp"
 //#include "../lumax.hpp"
 
-struct Func2 {
-	Func2(std::function<float(float)> x, std::function<float(float)> y) : x(x), y(y) {}
-	std::function<float(float)> x;
-	std::function<float(float)> y;
-};
-struct Func3 {
-	Func3(std::function<float(float)> x, std::function<float(float)> y, std::function<float(float)> z) : x(x), y(y), z(z) {}
-	std::function<float(float)> x;
-	std::function<float(float)> y;
-	std::function<float(float)> z;
-};
+#include "../PL/PhysicsPrimitives.hpp"
 
-static float function0(float delta) { return 0; }
-static float function1(float delta) { return 1; }
+namespace Movement{
 
+	static float function0(float delta) { return 0; }
+	static float function1(float delta) { return 1; }
+	static float sin(float delta) { return std::sin(delta); }
+	static float cos(float delta) { return std::cos(delta); }
+	static float tan(float delta) { return std::tan(delta); }
+	
+	struct MovFunc{
+		MovFunc()
+			: function(function0), coeff(1.0), speed(1.0)
+		{
+		}
+		MovFunc(std::function<float(float)> function, float coeff = 1.0, float speed = 1.0)
+			: function(function), coeff(coeff), speed(speed)
+		{
+			
+		}
+		std::function<float(float)> function;
+		float coeff = 1.0;
+		float speed = 1.0;
+		float operator()(float delta){
+			return coeff * function(speed * delta);
+		}
+	};
+	
+	struct MovFunc2{
+		MovFunc2(MovFunc x, MovFunc y) : x(x), y(y) {}
+		MovFunc x, y;
+		MovFunc& operator[](int index){
+			return index ? y : x;
+		}
+	};
+	struct MovFunc3{
+		MovFunc3(MovFunc x, MovFunc y, MovFunc z) : x(x), y(y), z(z) {}
+		MovFunc x, y, z;
+		MovFunc& operator[](int index){
+			if(index == 2)
+				return z;
+			return index ? y : x;
+		}
+	};
+}
+
+using namespace Movement;
+
+// Add MovFuncs to Movement2D
 struct Movement2D {
 	Movement2D(Vec2 translation){
-		tx = [translation](float delta){ return translation.x; };
-		ty = [translation](float delta){ return translation.y; };
+		tx = MovFunc([translation](float delta){ return translation.x; });
+		ty = MovFunc([translation](float delta){ return translation.y; });
 	}
 	Movement2D(Vec2 translation, float rotation){
-		tx = [translation](float delta){ return translation.x; };
-		ty = [translation](float delta){ return translation.y; };
-		r = [rotation](float delta){ return rotation; };
+		tx = MovFunc([translation](float delta){ return translation.x; });
+		ty = MovFunc([translation](float delta){ return translation.y; });
+		r = MovFunc([rotation](float delta){ return rotation; });
 	}
 	Movement2D(Vec2 translation, float rotation, Vec2 scale){
-		tx = [translation](float delta){ return translation.x; };
-		ty = [translation](float delta){ return translation.y; };
-		r = [rotation](float delta){ return rotation; };
-		sx = [scale](float delta){ return scale.x; };
-		sy = [scale](float delta){ return scale.y; };
+		tx = MovFunc([translation](float delta){ return translation.x; });
+		ty = MovFunc([translation](float delta){ return translation.y; });
+		r = MovFunc([rotation](float delta){ return rotation; });
+		sx = MovFunc([scale](float delta){ return scale.x; });
+		sy = MovFunc([scale](float delta){ return scale.y; });
 	}
-	Movement2D(Func2 translation){
+	Movement2D(MovFunc2 translation){
 		tx = translation.x;
 		ty = translation.y;
 	}
-	Movement2D(Func2 translation, std::function<float(float)> rotation){
+	Movement2D(MovFunc2 translation, MovFunc rotation){
 		tx = translation.x;
 		ty = translation.y;
 		r = rotation;
 	}
-	Movement2D(Func2 translation, std::function<float(float)> rotation, Func2 scale){
+	Movement2D(MovFunc2 translation, MovFunc rotation, MovFunc2 scale){
 		tx = translation.x;
 		ty = translation.y;
 		r = rotation;
 		sx = scale.x;
 		sy = scale.y;
 	}
-	void setTranslation(Func2 translation){
+	void setTranslation(MovFunc2 translation){
 		tx = translation.x;
 		ty = translation.y;
 	}
-	void setRotation(std::function<float(float)> rotation){
+	void setRotation(MovFunc rotation){
 		r = rotation;
 	}
-	void setScale(Func2 scale){
+	void setScale(MovFunc2 scale){
 		sx = scale.x;
 		sy = scale.y;
 	}
-	std::function<float(float)> tx = function0;
-	std::function<float(float)> ty = function0;
-	std::function<float(float)> r = function0;
-	std::function<float(float)> sx = function1;
-	std::function<float(float)> sy = function1;
+  MovFunc tx = MovFunc(function0);
+	MovFunc ty = MovFunc(function0);
+	MovFunc r  = MovFunc(function0);
+	MovFunc sx = MovFunc(function0);
+	MovFunc sy = MovFunc(function0);
 };
 
 struct Movement3D {
 	Movement3D() {}
 	Movement3D(Vec3 translation){
-		tx = [translation](float delta) { return translation.x; };
-		ty = [translation](float delta) { return translation.y; };
-		tz = [translation](float delta) { return translation.z; };
+		tx = MovFunc([translation](float delta) { return translation.x; });
+		ty = MovFunc([translation](float delta) { return translation.y; });
+		tz = MovFunc([translation](float delta) { return translation.z; });
+    hasTranslation = true;
+	}
+	Movement3D(MovFunc3 translation)
+		: tx(translation.x),
+			ty(translation.y),
+			tz(translation.z),
+			hasTranslation(true)
+	{
 	}
 	Movement3D(Vec3 translation, Vec3 rotation){
-		tx = [translation](float delta) { return translation.x; };
-		ty = [translation](float delta) { return translation.y; };
-		tz = [translation](float delta) { return translation.z; };
-		rx = [rotation](float delta) { return rotation.x; };
-		ry = [rotation](float delta) { return rotation.y; };
-		rz = [rotation](float delta) { return rotation.z; };
+		tx = MovFunc([translation](float delta) { return translation.x; });
+		ty = MovFunc([translation](float delta) { return translation.y; });
+		tz = MovFunc([translation](float delta) { return translation.z; });
+		rx = MovFunc([rotation](float delta) { return rotation.x; });
+		ry = MovFunc([rotation](float delta) { return rotation.y; });
+		rz = MovFunc([rotation](float delta) { return rotation.z; });
+		hasTranslation = hasRotation = true;
+	}
+	Movement3D(MovFunc3 translation, MovFunc3 rotation)
+	  : tx(translation.x),
+			ty(translation.y),
+			tz(translation.z),
+			rx(rotation.x),
+			ry(rotation.y),
+			rz(rotation.z),
+			hasTranslation(true),
+			hasRotation(true)
+	{
 	}
 	Movement3D(Vec3 translation, Vec3 rotation, Vec3 scale){
-		tx = [translation](float delta) { return translation.x; };
-		ty = [translation](float delta) { return translation.y; };
-		tz = [translation](float delta) { return translation.z; };
-		rx = [rotation](float delta) { return rotation.x; };
-		ry = [rotation](float delta) { return rotation.y; };
-		rz = [rotation](float delta) { return rotation.z; };
-		sx = [scale](float delta) { return scale.x; };
-		sy = [scale](float delta) { return scale.y; };
-		sz = [scale](float delta) { return scale.z; };
+		tx = MovFunc([translation](float delta) { return translation.x; });
+		ty = MovFunc([translation](float delta) { return translation.y; });
+		tz = MovFunc([translation](float delta) { return translation.z; });
+		rx = MovFunc([rotation](float delta) { return rotation.x; });
+		ry = MovFunc([rotation](float delta) { return rotation.y; });
+		rz = MovFunc([rotation](float delta) { return rotation.z; });
+		sx = MovFunc([scale](float delta) { return scale.x; });
+		sy = MovFunc([scale](float delta) { return scale.y; });
+		sz = MovFunc([scale](float delta) { return scale.z; });
+		hasTranslation = hasRotation = hasScale = true;
 	}
-	Movement3D(Func3 translation){
+	Movement3D(MovFunc3 translation, MovFunc3 rotation, MovFunc3 scale)
+		: tx(translation.x),
+			ty(translation.y),
+			tz(translation.z),
+			rx(rotation.x),
+			ry(rotation.y),
+			rz(rotation.z),
+			sx(scale.x),
+			sy(scale.y),
+			sz(scale.z),
+			hasTranslation(true),
+			hasRotation(true),
+			hasScale(true)
+	{
+	}
+	void setTranslation(MovFunc3 translation){
+		hasTranslation = true;
 		tx = translation.x;
 		ty = translation.y;
 		tz = translation.z;
 	}
-	Movement3D(Func3 translation, Func3 rotation){
-		tx = translation.x;
-		ty = translation.y;
-		tz = translation.z;
+	void setRotation(MovFunc3 rotation){
+		hasRotation = true;
 		rx = rotation.x;
 		ry = rotation.y;
 		rz = rotation.z;
 	}
-	Movement3D(Func3 translation, Func3 rotation, Func3 scale){
-		tx = translation.x;
-		ty = translation.y;
-		tz = translation.z;
-		rx = rotation.x;
-		ry = rotation.y;
-		rz = rotation.z;
+	void setScale(MovFunc3 scale){
+		hasScale = true;
 		sx = scale.x;
 		sy = scale.y;
 		sz = scale.z;
 	}
-	void setTranslation(Func3 translation){
-		tx = translation.x;
-		ty = translation.y;
-		tz = translation.z;
-	}
-	void setRotation(Func3 rotation){
-		rx = rotation.x;
-		ry = rotation.y;
-		rz = rotation.z;
-	}
-	void setScale(Func3 scale){
-		sx = scale.x;
-		sy = scale.y;
-		sz = scale.z;
-	}
-	std::function<float(float)> tx = function0;
-	std::function<float(float)> ty = function0;
-	std::function<float(float)> tz = function0;
-	std::function<float(float)> rx = function0;
-	std::function<float(float)> ry = function0;
-	std::function<float(float)> rz = function0;
-	std::function<float(float)> sx = function1;
-	std::function<float(float)> sy = function1;
-	std::function<float(float)> sz = function1;
+	MovFunc tx = MovFunc(function0);
+	MovFunc ty = MovFunc(function0);
+  MovFunc tz = MovFunc(function0);
+	MovFunc rx = MovFunc(function0);
+	MovFunc ry = MovFunc(function0);
+	MovFunc rz = MovFunc(function0);
+	MovFunc sx = MovFunc(function1);
+	MovFunc sy = MovFunc(function1);
+	MovFunc sz = MovFunc(function1);
+	bool hasTranslation = false;
+	bool hasRotation = false;
+	bool hasScale = false;
 };
 
 // Movement2D System
@@ -169,7 +221,7 @@ struct MovementSystem3D : public System<ECS, DynamicTransform3D, Movement3D>{
 	static void update(DynamicTransform3D* transform, Movement3D* movement){
 		static float delta = 0.0f;
 		delta += 1.0f / 60.0f;
-		transform->translation += Vec3(movement->tx(delta), movement->ty(delta), movement->tz(delta));
+		transform->translation += Vec3(0.01f*movement->tx(delta), movement->ty(delta), movement->tz(delta));
 		transform->rotation += Vec3(movement->rx(delta), movement->ry(delta), movement->rz(delta));
 		transform->scale = transform->scale.mul(Vec3(movement->sx(delta), movement->sy(delta), movement->sz(delta)));
 		transform->updateMatrix();

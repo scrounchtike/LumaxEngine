@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/LumaxEngine.dir/TL/TerrainQueue.cpp.o"
   "CMakeFiles/LumaxEngine.dir/GL/Door.cpp.o"
   "CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o"
+  "CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o"
   "CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o"
   "CMakeFiles/LumaxEngine.dir/GL/LevelWolf.cpp.o"
   "CMakeFiles/LumaxEngine.dir/GL/MedKit.cpp.o"
@@ -29,6 +30,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o"
   "CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o"
   "CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o"
+  "CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o"
   "CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o"
   "CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o"
   "CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o"
@@ -63,6 +65,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o"
   "CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o"
   "CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o"
+  "CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o"
   "LumaxEngine.pdb"
   "LumaxEngine"
 )

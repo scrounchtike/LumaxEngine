@@ -22,7 +22,7 @@ public:
 																	std::function<float(int i, int j)> h,
 																	std::function<Vec3(int i, int j)> n,
 																	std::function<float(int i, int j)> s);
-private:
+public:
 	static std::vector<float> staticVertices;
 	static std::vector<int> staticIndices;
 	static std::vector<float> staticTexCoords;

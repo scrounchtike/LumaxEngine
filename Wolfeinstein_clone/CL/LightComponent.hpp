@@ -5,15 +5,15 @@
 #include "../RL/lights.hpp"
 
 struct LightComponent {
-	PointLight* vertexPointLights[4];
+	PointLight vertexPointLights[4];
+	SpotLight  vertexSpotLights[4];
 	float scoreVPL[4];
-	SpotLight*  vertexSpotLights[4];
 	float scoreVSL[4];
 
-	PointLight* pixelPointLights[4];
-	float scorePPL[4];
-	SpotLight*  pixelSpotLights[4];
-	float scorePSL[4];
+	PointLight pixelPointLights[2];
+	SpotLight  pixelSpotLights[2];
+	float scorePPL[2];
+	float scorePSL[2];
 };
 
 #endif

@@ -204,6 +204,33 @@ GL/Enemy.cpp.s:
 	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.s
 .PHONY : GL/Enemy.cpp.s
 
+GL/Game.o: GL/Game.cpp.o
+
+.PHONY : GL/Game.o
+
+# target to build an object file
+GL/Game.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o
+.PHONY : GL/Game.cpp.o
+
+GL/Game.i: GL/Game.cpp.i
+
+.PHONY : GL/Game.i
+
+# target to preprocess a source file
+GL/Game.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Game.cpp.i
+.PHONY : GL/Game.cpp.i
+
+GL/Game.s: GL/Game.cpp.s
+
+.PHONY : GL/Game.s
+
+# target to generate assembly for a file
+GL/Game.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Game.cpp.s
+.PHONY : GL/Game.cpp.s
+
 GL/Level.o: GL/Level.cpp.o
 
 .PHONY : GL/Level.o
@@ -716,6 +743,33 @@ RL/GBuffer.s: RL/GBuffer.cpp.s
 RL/GBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.s
 .PHONY : RL/GBuffer.cpp.s
+
+RL/LookAtCamera.o: RL/LookAtCamera.cpp.o
+
+.PHONY : RL/LookAtCamera.o
+
+# target to build an object file
+RL/LookAtCamera.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o
+.PHONY : RL/LookAtCamera.cpp.o
+
+RL/LookAtCamera.i: RL/LookAtCamera.cpp.i
+
+.PHONY : RL/LookAtCamera.i
+
+# target to preprocess a source file
+RL/LookAtCamera.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.i
+.PHONY : RL/LookAtCamera.cpp.i
+
+RL/LookAtCamera.s: RL/LookAtCamera.cpp.s
+
+.PHONY : RL/LookAtCamera.s
+
+# target to generate assembly for a file
+RL/LookAtCamera.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.s
+.PHONY : RL/LookAtCamera.cpp.s
 
 RL/Material.o: RL/Material.cpp.o
 
@@ -1689,6 +1743,33 @@ core/Level.cpp.s:
 	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/core/Level.cpp.s
 .PHONY : core/Level.cpp.s
 
+games/GameDemo.o: games/GameDemo.cpp.o
+
+.PHONY : games/GameDemo.o
+
+# target to build an object file
+games/GameDemo.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o
+.PHONY : games/GameDemo.cpp.o
+
+games/GameDemo.i: games/GameDemo.cpp.i
+
+.PHONY : games/GameDemo.i
+
+# target to preprocess a source file
+games/GameDemo.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.i
+.PHONY : games/GameDemo.cpp.i
+
+games/GameDemo.s: games/GameDemo.cpp.s
+
+.PHONY : games/GameDemo.s
+
+# target to generate assembly for a file
+games/GameDemo.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.s
+.PHONY : games/GameDemo.cpp.s
+
 lumax.o: lumax.cpp.o
 
 .PHONY : lumax.o
@@ -1869,6 +1950,9 @@ help:
 	@echo "... GL/Enemy.o"
 	@echo "... GL/Enemy.i"
 	@echo "... GL/Enemy.s"
+	@echo "... GL/Game.o"
+	@echo "... GL/Game.i"
+	@echo "... GL/Game.s"
 	@echo "... GL/Level.o"
 	@echo "... GL/Level.i"
 	@echo "... GL/Level.s"
@@ -1926,6 +2010,9 @@ help:
 	@echo "... RL/GBuffer.o"
 	@echo "... RL/GBuffer.i"
 	@echo "... RL/GBuffer.s"
+	@echo "... RL/LookAtCamera.o"
+	@echo "... RL/LookAtCamera.i"
+	@echo "... RL/LookAtCamera.s"
 	@echo "... RL/Material.o"
 	@echo "... RL/Material.i"
 	@echo "... RL/Material.s"
@@ -2034,6 +2121,9 @@ help:
 	@echo "... core/Level.o"
 	@echo "... core/Level.i"
 	@echo "... core/Level.s"
+	@echo "... games/GameDemo.o"
+	@echo "... games/GameDemo.i"
+	@echo "... games/GameDemo.s"
 	@echo "... lumax.o"
 	@echo "... lumax.i"
 	@echo "... lumax.s"

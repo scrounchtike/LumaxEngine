@@ -2,9 +2,7 @@
 #ifndef ECS_HPP
 #define ECS_HPP
 
-#include <iostream>
 #include <tuple>
-#include <vector>
 #include <type_traits>
 #include <bitset>
 #include <unordered_map>
@@ -14,12 +12,6 @@
 #include "../math/types.hpp"
 
 #include "RenderComponentStorage.hpp"
-
-//#include "../RL/ShaderPipeline.hpp"
-//#include "../RL/Material.hpp"
-//#include "../RL/Model2D.hpp"
-//#include "../RL/Model3D.hpp"
-//#include "../RL/Renderer.hpp"
 
 #include "BSPTree.hpp"
 
@@ -47,6 +39,7 @@ class Entity;
 //
 
 // For each type list meta-programming help method
+// TODO: This shouldn't be here! Its confusing to always have to search..
 template <typename T>
 struct for_each;
 template <typename T, typename U>
@@ -67,6 +60,7 @@ struct for_each<smpl::type_list_null>{
 // System updating at run-time
 // Expand call
 
+// Using built-in types is stupid, use structs
 typedef float  RENDER3D_TYPE;
 typedef long   RENDER2D_TYPE;
 typedef int    UPDATE_TYPE;
@@ -229,75 +223,6 @@ public:
 	using SystemTupleStorage = typename smpl::create_tuple_from_list<SystemList>::type;
 	using RenderSystem2DTupleStorage = typename smpl::create_tuple_from_list<RenderingSystem2DList>::type;
 	using RenderSystem3DTupleStorage = typename smpl::create_tuple_from_list<RenderingSystem3DList>::type;
-
-	/*
-	template <typename Manager, typename Component>
-	struct AddComponent{
-		static constexpr void execute(Manager& manager, uint32 entity, Component* component){
-			manager.template addComponent<Component>(entity, component);
-		}
-	};
-	template <typename Manager, typename T, typename... Ts>
-	struct ComponentAdder{
-		static constexpr void execute(Manager& manager, uint32 entity, T component, Ts... rest){
-			AddComponent<Manager, typename std::remove_pointer<T>::type>::execute(manager, entity, component);
-			ComponentAdder<Manager, Ts...>::execute(manager, entity, rest...);
-		}
-	};
-	template <typename Manager, typename T>
-	struct ComponentAdder<Manager, T>{
-		static constexpr void execute(Manager& manager, uint32 entity, T component){
-			AddComponent<Manager, typename std::remove_pointer<T>::type>::execute(manager, entity, component);
-		}
-	};
-	// Specialization of components
-	template <typename Manager>
-	struct AddComponent<Manager, Transform3D>{
-		static constexpr void execute(Manager& manager, uint32 entity, Transform3D* transform){
-			manager.template staticEntities.push_back(entity);
-			manager.template addComponent<Transform3D>(entity, transform);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, DynamicTransform3D>{
-		static constexpr void execute(Manager& manager, uint32 entity, DynamicTransform3D* transform){
-			manager.template dynamicEntities.push_back(entity);
-			manager.template addComponent<DynamicTransform3D>(entity, transform);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, PivotTransform3D>{
-		static constexpr void execute(Manager& manager, uint32 entity, PivotTransform3D* transform){
-			manager.template dynamicEntities.push_back(entity);
-			manager.template addComponent<PivotTransform3D>(entity, transform);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, PhysicsPrimitive>{
-		static constexpr void execute(Manager& manager, uint32 entity, PhysicsPrimitive* physics){
-			manager.template physicsEntities.push_back(entity);
-			manager.template addComponent<PhysicsPrimitive>(entity, physics);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, MaterialPipeline>{
-		static constexpr void execute(Manager& manager, uint32 entity, MaterialPipeline* material){
-			// TODO: Allow sorting based on material pipeline
-			manager.template addComponent<MaterialPipeline>(entity, material);
-		}
-	};
-	// For polygon soup, adding of individual polygons:
-	template <typename Manager>
-	struct AddComponent<Manager, GeometryDataComponent>{
-		static constexpr void execute(Manager& manager, uint32 entity, GeometryDataComponent* component){
-			// Add Geometry to BSP tree
-			std::cout << "adding polygons to scene" << std::endl;
-			for(int i = 0; i < component->polygons.size(); ++i){
-				manager.template scenePolygons.push_back(component->polygons[i]);
-			}
-		}
-	};
-	*/
 	
 	template <typename Manager, typename G, typename... groups>
 	struct GroupAdder{
@@ -315,23 +240,8 @@ public:
 	
 	template <typename... Ts>
 	constexpr uint32 makeEntity(Ts... components){
-		//uint32 entity = createEntity();
-
-		// Add components
-		//ComponentAdder<ThisType, Ts...>::execute(*this, entity, components...);
-
-		// Register entity to systems
-		//registerEntity(entity);
-		
-		//return entity;
 		return 1;
 	}
-	
-	// Render component specialization
-	//template <typename Signature>
-	//void addRenderComponent2D(uint32 entity, ShaderPipeline* pipeline, Material* material, Model2D* model, const std::string& name);
-	//template <typename Signature>
-	//void addRenderComponent3D(uint32 entity, ShaderPipeline* pipeline, Material* material, Model3D* model, const std::string& name);
 	
 	// System management methods
 	ECSManager(){ }
@@ -391,7 +301,7 @@ public:
 	// Component hashmap
 	using ComponentMap = typename ECS::ComponentMap;
 	ComponentMap map;
-
+	
 	// Valid flag
 	bool isValid = true;
 };

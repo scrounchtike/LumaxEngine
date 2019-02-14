@@ -12,10 +12,6 @@ Camera::Camera(Vec3 position, Vec3 forward, Vec3 up, float fov, float zNear, flo
 	initialize();
 }
 
-Camera::~Camera() {
-	
-}
-
 void Camera::initialize() {
 #ifdef _USE_OPENGL
 	right = cross(forward, up).normalize();

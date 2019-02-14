@@ -1,0 +1,55 @@
+
+SMPL.hpp   ShaderPipeline.hpp   Material.hpp   Model2D.hpp
+Model3D.hpp
+
+										  | |
+
+					 RenderComponentStorage.hpp
+
+
+SMPL.hpp   RenderComponentStorage.hpp   BSPTree.hpp
+
+					       | |
+
+					     ECS.hpp
+
+ECS.hpp
+
+									 | |
+
+							 ECSDesc.hpp
+
+
+SMPL.hpp   ECS.hpp   buildDesc.hpp   RenderingContext__.hpp
+
+					 		 	  | |
+								 
+					     lumax.hpp
+
+input.hpp   lumax.hpp
+
+								  | |
+
+							 Camera.hpp
+
+InputControl.hpp   Camera.hpp
+
+									| |
+
+							 Player.hpp
+
+
+lumax.hpp   ResourceManager.hpp   LightComponent.hpp   Camera.hpp
+Renderer.hpp   GBuffer.hpp
+
+							        | |
+											
+							 RenderSystems.hpp
+
+
+RenderPrimitives.hpp   RenderingContext.hpp   Player.hpp
+
+									 | |
+									 
+							 Renderer.hpp
+

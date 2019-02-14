@@ -16,6 +16,8 @@
 
 #include "../lumax.hpp"
 
+#include "../utils/StringUtils.hpp"
+
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>* LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::level;
 
@@ -27,8 +29,16 @@ std::map<std::string, unsigned> LuaLevelLoader<TSystemList, TRenderingSystem2DLi
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 ResourceManager* LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::resManager;
 
-void print(const std::string& str){
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+std::map<std::string, Movement3D> LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::movements3D;
+
+static void print(const std::string& str){
 	std::cout << str << std::endl;
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadGameSettings(luabridge::LuaRef s){
+	// TODO: Game settings
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
@@ -97,7 +107,7 @@ void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>
 	for(int i = 0; i < r.length(); ++i){
 		// Load each material
 		luabridge::LuaRef materialRef = r[i+1];
-
+		
 		std::string name = s[i+1].cast<std::string>();
 		// Create material
 		Material* material = new Material();
@@ -120,6 +130,7 @@ void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>
 				std::cerr << "Error: Texture needs a file to be loaded." << std::endl, assert(false);
 			Texture* texture = resManager->getTexture(textureRef["file"].cast<std::string>());
 			material->setTexture(texture);
+			//std::cout << "texture = " << material->isTextured << std::endl;
 		}
 		resManager->addMaterial(name, material);
 	}
@@ -147,7 +158,11 @@ void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadDirectionalLight(luabridge::LuaRef r){
-	
+	luabridge::LuaRef dlight = r;
+	Vec3 direction = LuaHelper::loadVector3D(dlight["direction"]);
+	Vec3 color = LuaHelper::loadVector3D(dlight["color"]);
+	float intensity = LuaHelper::loadFloat(dlight["intensity"]);
+	level->setDirectionalLight(DirectionalLight(direction, color, intensity));
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
@@ -163,7 +178,45 @@ void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
 void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadSpotLights(luabridge::LuaRef r){
-	
+	// TODO
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadMovements2D(luabridge::LuaRef s, luabridge::LuaRef r){
+	// TODO
+}
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>::loadMovements3D(luabridge::LuaRef s, luabridge::LuaRef r){
+	std::cout << "Loading movements 3D" << std::endl;
+	assert(s.length() == r.length());
+
+	for(int i = 0; i < r.length(); ++i){
+		luabridge::LuaRef movementRef = r[i+1];
+		std::string name = s[i+1].cast<std::string>();
+		movements3D.insert(std::pair<std::string, Movement3D>(name, Movement3D()));
+		Movement3D* movement = &movements3D.find(name)->second;
+		
+		if(!movementRef["Translation"].isNil()){
+			LuaHelper::loadMovFunctions([movement](Movement::MovFunc3 translation){
+					movement->setTranslation(translation);
+				}, movementRef["Translation"], Movement::function0);
+		}
+		else if(!movementRef["Rotation"].isNil()){
+			LuaHelper::loadMovFunctions([movement](Movement::MovFunc3 rotation){
+					movement->setRotation(rotation);
+				}, movementRef["Rotation"], Movement::function0);
+		}
+		else if(!movementRef["Scale"].isNil()){
+			LuaHelper::loadMovFunctions([movement](Movement::MovFunc3 scale){
+					movement->setScale(scale);
+				}, movementRef["Scale"], Movement::function1);
+		}
+		
+		
+		// Store it somewhere temporarily, like a vector idk
+		// ...
+	}
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
@@ -190,18 +243,29 @@ void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>
 					if(group == "ForwardRender")
 						level->template addToGroup<ForwardRender>(entity);
 				}
-			}else if(key == "Transform3D")
+			}else if(key == "Transform3D"){
 				ComponentAdder::template execute<Transform3D>(level, entity, cref);
-			else if(key == "DynamicTransform3D")
+			}
+			else if(key == "DynamicTransform3D"){
 				ComponentAdder::template execute<DynamicTransform3D>(level, entity, cref);
-			else if(key == "Mesh3D")
+			}
+			else if(key == "Mesh3D"){
 				ComponentAdder::template execute<Model3D>(level, entity, cref);
-			else if(key == "Material")
+			}
+			else if(key == "Material"){
 				ComponentAdder::template execute<Material>(level, entity, cref);
-			else if(key == "ShaderPipeline")
+			}
+			else if(key == "ShaderPipeline"){
 				ComponentAdder::template execute<ShaderPipeline>(level, entity, cref);
-			else if(key == "LightComponent")
-				ComponentAdder::template execute<LightComponent>(level, entity, cref), std::cout << "TESSSSSST" << std::endl;
+			}
+			else if(key == "LightComponent"){
+				//ComponentAdder::template execute<LightComponent>(level, entity, cref);
+				ComponentAdder::executeLightComponent(level, entity, cref);
+			}
+			else if(key == "Movement3D"){
+				//ComponentAdder::template execute<Movement3D>(level, entity, cref);
+				level->template addComponent<Movement3D>(entity, new Movement3D(movements3D.find(cref.cast<std::string>())->second));
+			}
 		}
 		
 		//level->registerEntity(entity);
@@ -224,13 +288,15 @@ void LuaLevelLoader<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>
 	// Register necessary C++ functions for lua
 	luabridge::getGlobalNamespace(state).
 		addFunction("print", print).
-		addFunction("makeEntities", makeEntities).
-		addFunction("loadMeshes3D", loadMeshes3D).
-		addFunction("loadMaterials", loadMaterials).
-		addFunction("loadPipelines", loadPipelines).
-		addFunction("loadDirectionalLight", loadDirectionalLight).
-		addFunction("loadPointLights", loadPointLights).
-		addFunction("loadSpotLights", loadSpotLights);
+		addFunction("lmx_loadGameSettings", loadGameSettings).
+		addFunction("lmx_makeEntities", makeEntities).
+		addFunction("lmx_loadMeshes3D", loadMeshes3D).
+		addFunction("lmx_loadMaterials", loadMaterials).
+		addFunction("lmx_loadPipelines", loadPipelines).
+		addFunction("lmx_loadDirectionalLight", loadDirectionalLight).
+		addFunction("lmx_loadPointLights", loadPointLights).
+		addFunction("lmx_loadSpotLights", loadSpotLights).
+		addFunction("lmx_loadMovements3D", loadMovements3D);
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
@@ -238,12 +304,12 @@ Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>* LuaLevelLoad
 	level = new Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>();
 	// Open and execute lua script
 	if (luaL_loadfile(state, filename.c_str())) {
-		std::cout << "ERROR: A problem occured while loading: " << filename << std::endl;
+		std::cout << "ERROR: A problem occured when trying to load: " << filename << std::endl;
 		std::cout << "Make sure the file exists in level directory and that it contains valid lua scripting" << std::endl;
 		assert(false);
 	}
 	luaL_dofile(state, filename.c_str());
-
+	
 	// End lua session
 	lua_close(state);
 
@@ -292,6 +358,55 @@ Vec3 LuaHelper::loadVector3D(luabridge::LuaRef r) {
 Vec2 LuaHelper::loadVector2D(luabridge::LuaRef r) {
 	Vec2 result(r[1].cast<float>(), r[2].cast<float>());
 	return result;
+}
+
+void LuaHelper::loadMovFunctions(std::function<void(Movement::MovFunc3)> callback, luabridge::LuaRef r, std::function<float(float)> def){
+	Movement::MovFunc movfuncs[3];
+	
+	for(int i = 0; i < 3; ++i){
+		luabridge::LuaRef f = r[i+1];
+		std::string argumentsStr = f.cast<std::string>();
+		
+		// Each argument separated by number of commas
+		std::vector<std::string> arguments;
+		Utils::splitByRegex(argumentsStr, ',');
+		unsigned length = arguments.size();
+
+		// Get function name
+		assert(length > 0);
+		std::string funcName = arguments[0];
+		std::vector<float(float)> function;
+		if(funcName == "sin"){
+			 function = MovFunc(Movement::sin);
+		}
+		else if(funcName == "cos"){
+			function = Movement::cos;
+		}
+		else if(funcName == "tan"){
+			function = Movement::tan;
+		}
+		else if(funcName == "none"){
+			function = def;
+		}
+		else{
+			std::cout << "Error : unrecognized function name in Movement3D loading" << std::endl;
+			std::cout << funcName << std::endl;
+			assert(false);
+		}
+		// Get coeff
+		float coeff = 1.0;
+		if(length >= 2){
+			coeff = std::stof(arguments[1]);
+		}
+		float speed = 1.0;
+		if(length >= 3){
+			speed = std::stof(arguments[2]);
+		}
+
+		movfuncs[i] = Movement::MovFunc(function, coeff, speed);
+	}
+
+	callback(Movement::MovFunc3(movfuncs[0], movfuncs[1], movfuncs[2]));
 }
 
 template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>

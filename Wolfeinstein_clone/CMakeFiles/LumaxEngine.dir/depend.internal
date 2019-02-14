@@ -6,7 +6,6 @@ CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/LightComponent.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/Movement.hpp
- /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/Cl/GeometryData.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.hpp
@@ -14,6 +13,7 @@ CMakeFiles/LumaxEngine.dir/ECS_desc.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.tpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/ContactManifold.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.hpp
@@ -177,6 +177,10 @@ CMakeFiles/LumaxEngine.dir/GL/Enemy.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector4.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/types.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/SMPL.hpp
+CMakeFiles/LumaxEngine.dir/GL/Game.cpp.o
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.cpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.hpp
 CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp
@@ -657,6 +661,57 @@ CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.cpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderPrimitives.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/BSPTree.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/RenderComponentStorage.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Quaternion.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector2.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector3.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector4.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/types.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/SMPL.hpp
+CMakeFiles/LumaxEngine.dir/RL/LookAtCamera.cpp.o
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/BuildDesc.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/InputControl.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Keys.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingState.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/UsingDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/UsingOpenGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/buildDesc.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.cpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.hpp
@@ -1733,7 +1788,11 @@ CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/SMPL.hpp
 CMakeFiles/LumaxEngine.dir/core/Level.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/LightComponent.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/Movement.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/ContactManifold.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.hpp
@@ -1755,10 +1814,12 @@ CMakeFiles/LumaxEngine.dir/core/Level.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderPrimitives.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderSystems.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.hpp
@@ -1773,6 +1834,7 @@ CMakeFiles/LumaxEngine.dir/core/Level.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/BSPTree.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.cpp
@@ -1792,6 +1854,80 @@ CMakeFiles/LumaxEngine.dir/core/Level.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector4.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/types.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/SMPL.hpp
+CMakeFiles/LumaxEngine.dir/games/GameDemo.cpp.o
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/LightComponent.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/Movement.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LuaLevelLoader.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LuaLevelLoader.tpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/ContactManifold.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PrimitiveCollision.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/BuildDesc.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/DirectInput.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/InputControl.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Keys.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContext.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingContextGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/RenderingState.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/UsingDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/UsingOpenGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Window.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/buildDesc.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/input.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowGLFW.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/windows/WindowWinAPI.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/GBuffer.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderPrimitives.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderSystems.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/ShaderPipeline.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/DirectionalLight.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/PointLight.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/lights/SpotLight.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models2D/Model2DGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/models3D/Model3DGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureDX11.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/textures/TextureGL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/BSPTree.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.tpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/RenderComponentStorage.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.cpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix3f.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Matrix4f.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Quaternion.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform2D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Transform3D.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector2.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector3.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector4.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/types.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/SMPL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/StringUtils.hpp
 CMakeFiles/LumaxEngine.dir/lumax.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/LightComponent.hpp
@@ -1802,6 +1938,7 @@ CMakeFiles/LumaxEngine.dir/lumax.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.tpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/ContactManifold.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.hpp
@@ -1870,12 +2007,14 @@ CMakeFiles/LumaxEngine.dir/main.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LevelWolf.tpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LuaLevelLoader.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LuaLevelLoader.tpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Player.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/ContactManifold.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/Movement3D.hpp
@@ -1949,6 +2088,7 @@ CMakeFiles/LumaxEngine.dir/main.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/Vector4.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math/types.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/SMPL.hpp
+ /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/StringUtils.hpp
 CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/Log.hpp
  /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RAL/buildDesc.hpp

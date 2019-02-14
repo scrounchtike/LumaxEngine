@@ -59,15 +59,22 @@ public:
 	std::vector<SpotLight>& getSpotLights() const {
 		return spotLights;
 	}
+	void fillStaticStaticLightComponent(uint32 entity, LightComponent* lc) const {
+		
+	}
 
 	// Entity management
 	uint32 createEntity();
 	void removeEntity(uint32 entity);
 	void registerEntity(uint32 entity);
 
+	// This kinda shouldnt be here
+	// A lot of ECS stuff should not be in the Level class really
+	// Move this somewhere else?
 	// Component management
 	template <typename Component>
 	void addComponent(uint32 entity, Component* component);
+	void addLightComponent(uint32 entity, LightComponent* lc);
 	template <typename Component>
 	void removeComponent(uint32 entity);
 	template <typename Component>
@@ -97,7 +104,7 @@ private:
 	DirectionalLight directionalLight;
 	std::vector<PointLight> pointLights;
 	std::vector<SpotLight> spotLights;
-
+	
 	// Component Storage
 	ComponentTupleVectors components;
 
@@ -109,9 +116,6 @@ private:
 	RenderSystem3DTupleStorage renderSystems3D;
 
 	Renderer* renderer = nullptr;
-
-	// DOOM Level management
-	std::vector<uint32> floors;
 };
 template <typename A, typename B, typename C>
 uint32 Level<A, B, C>::current_entity = 0;

@@ -10,18 +10,9 @@
 Model3DGL::Model3DGL(const float* vertices, int numVertices)
 	: numVertices(numVertices), numIndices(0), isIndexed(false), isTextured(false), hasNormals(false), hasTangents(false)
 {
-	//createVertexArray(&vaoID);
-	//createVBO(&vboID, vertices, numVertices * 3, 0, 3);
-	//unbindBuffers();
-	
-	glGenVertexArrays(1, &vaoID);
-	glBindVertexArray(vaoID);
-
-	glGenBuffers(1, &vboID);
-	glBindBuffer(GL_ARRAY_BUFFER, vboID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numVertices, vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	createVertexArray(&vaoID);
+	createVBO(&vboID, vertices, numVertices * 3, 0, 3);
+	unbindBuffers();
 }
 
 Model3DGL::Model3DGL(const float* vertices, int numVertices, const float* texCoords)
@@ -178,20 +169,6 @@ void Model3DGL::update() {
 void Model3DGL::render() const {
 	glBindVertexArray(vaoID);
 	
-	glEnableVertexAttribArray(0);
-	if (isTextured)
-		glEnableVertexAttribArray(1);
-	if (hasNormals)
-		glEnableVertexAttribArray(2);
-	if(hasTangents)
-		glEnableVertexAttribArray(3);
-	if(hasSlopes)
-		glEnableVertexAttribArray(6);
-	//if(isAnimated){
-	//glEnableVertexAttribArray(3);
-	//glEnableVertexAttribArray(4);
-	//}
-	
 	// Render call
 	if (isIndexed) {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
@@ -199,40 +176,12 @@ void Model3DGL::render() const {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	} else
 	glDrawArrays(GL_TRIANGLES, 0, numVertices*3);
-	
-	glDisableVertexAttribArray(0);
-	if (isTextured)
-		glDisableVertexAttribArray(1);
-	if (hasNormals)
-		glDisableVertexAttribArray(2);
-	if(hasTangents)
-		glDisableVertexAttribArray(3);
-	if(hasSlopes)
-		glDisableVertexAttribArray(6);
-	//if(isAnimated){
-	//	glDisableVertexAttribArray(3);
-	//	glDisableVertexAttribArray(4);
-	//}
 
 	//glBindVertexArray(0);
 }
 
 void Model3DGL::bindForRender() const {
 	glBindVertexArray(vaoID);
-
-	glEnableVertexAttribArray(0);
-	if (isTextured)
-		glEnableVertexAttribArray(1);
-	if (hasNormals)
-		glEnableVertexAttribArray(2);
-	if (hasTangents)
-		glEnableVertexAttribArray(3);
-	//if(isAnimated){
-	//	glEnableVertexAttribArray(3);
-	//	glEnableVertexAttribArray(4);
-	//}
-	if(hasSlopes)
-		glEnableVertexAttribArray(6);
 
 	if(isIndexed)
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
@@ -248,20 +197,6 @@ void Model3DGL::renderBuffersOnly() const {
 void Model3DGL::unbindForRender() const {
 	if(isIndexed)
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	glDisableVertexAttribArray(0);
-	if (isTextured)
-		glDisableVertexAttribArray(1);
-	if (hasNormals)
-		glDisableVertexAttribArray(2);
-	if (hasTangents)
-		glDisableVertexAttribArray(3);
-	if(hasSlopes)
-		glDisableVertexAttribArray(6);
-	//if(isAnimated){
-	//	glDisableVertexAttribArray(3);
-	//	glDisableVertexAttribArray(4);
-	//}
 
 	glBindVertexArray(0);
 }
@@ -280,6 +215,7 @@ void Model3DGL::createVBO(GLuint* vboID, const float* vertices, int numVertices,
 	glBindBuffer(GL_ARRAY_BUFFER, *vboID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numVertices, vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::createVBOT(GLuint* vbotID, const float* texCoords, int numTexcoords, int index, int size) {
@@ -287,6 +223,7 @@ void Model3DGL::createVBOT(GLuint* vbotID, const float* texCoords, int numTexcoo
 	glBindBuffer(GL_ARRAY_BUFFER, *vbotID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numTexcoords, texCoords, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::createVBON(GLuint* vbonID, const float* normals, int numNormals, int index, int size) {
@@ -294,6 +231,7 @@ void Model3DGL::createVBON(GLuint* vbonID, const float* normals, int numNormals,
 	glBindBuffer(GL_ARRAY_BUFFER, *vbonID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numNormals, normals, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::createVBOTG(GLuint* vbotgID, const float* tangents, int numTangents, int index, int size) {
@@ -301,6 +239,7 @@ void Model3DGL::createVBOTG(GLuint* vbotgID, const float* tangents, int numTange
 	glBindBuffer(GL_ARRAY_BUFFER, *vbotgID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numTangents, tangents, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::createIBO(GLuint* iboID, const int* indices, int numIndices) {
@@ -314,6 +253,7 @@ void Model3DGL::createVBOB(GLuint* vbobID, const float* boneIDs, int numWeights,
 	glBindBuffer(GL_ARRAY_BUFFER, *vbobID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numWeights, boneIDs, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::createVBOW(GLuint* vbowID, const float* weights, int numWeights, int index, int size){
@@ -321,6 +261,7 @@ void Model3DGL::createVBOW(GLuint* vbowID, const float* weights, int numWeights,
 	glBindBuffer(GL_ARRAY_BUFFER, *vbowID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numWeights, weights, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::createVBOS(GLuint* vbosID, const float* slopes, int numSlopes, int index, int size){
@@ -328,6 +269,7 @@ void Model3DGL::createVBOS(GLuint* vbosID, const float* slopes, int numSlopes, i
 	glBindBuffer(GL_ARRAY_BUFFER, *vbosID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*numSlopes, slopes, GL_STATIC_DRAW);
 	glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
+	glEnableVertexAttribArray(index);
 }
 
 void Model3DGL::unbindBuffers() {

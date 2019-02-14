@@ -23,25 +23,24 @@ public:
 #elif defined _USE_DIRECTX11
 	Camera(Vec3 position = Vec3(0, 0, 0), Vec3 forward = Vec3(0, 0, -1), Vec3 up = Vec3(0, 1, 0), float fov = 70.0f, float zNear = 0.1f, float zFar = 1000.0f);
 #endif
-	~Camera();
 
-	void update(Vec3 deltaMovement = Vec3(0,0,0));
-	void updateViewMatrix();
-
-	void addMovement(Vec3 movement);
-	void invertPitch();
-
+	virtual void update(Vec3 deltaMovement = Vec3(0,0,0));
+	virtual void updateViewMatrix();
+	
+	virtual void addMovement(Vec3 movement);
+	virtual void invertPitch();
+	
 	const Vec3& getPosition() const { return position; }
 
 	const Mat4& getViewMatrix() const { return viewMatrix; }
 	const Mat4& getProjectionMatrix() const { return projectionMatrix; }
-
+	
 	// Movement variables
-	float movSpeed = 0.55f;
+	float movSpeed = 0.05f;
 	float sensitivity = 0.003f;
 	
 	Vec3 position;
-private:
+protected:
 	void initialize();
 	
 	// Rotation functions

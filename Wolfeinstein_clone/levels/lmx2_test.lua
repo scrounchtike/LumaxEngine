@@ -3,7 +3,11 @@
 
 -- Initialization and registering of assets
 
+-- Helper functions for level creation
+
 print("Beginning of Lua level")
+
+--[[
 
 -- Materials
 print("Adding materials")
@@ -161,40 +165,6 @@ function normalize(a)
 	 return {a[1]/length, a[2]/length, a[3]/length}
 end
 
--- Create DOOM Level
---[[
-function create_doom_wall(a, b, c, d)
-	 u1 = {b[1] - a[1], b[2] - a[2], b[3] - a[3]}
-	 u2 = {c[1] - a[1], c[2] - a[2], c[3] - a[3]}
-	 normal = cross(u1, u2);
-
-	 -- Translation
-	 center = {(a[1]+b[1]+c[1]+d[1])/4, (a[2]+b[2]+c[2]+d[2])/4, (a[3]+b[3]+c[3]+d[3])/4}
-	 
-	 -- Rotation
-	 normalXZ = {normal[1],0,normal[3]}
-	 length = math.sqrt(dot(normalXZ,normalXZ))
-	 normalXZ = {normalXZ[1]/length, normalXZ[2]/length, normalXZ[3]/length}
-	 angleY = math.acos(dot(normalXZ, {0,0,-1}));
-
-	 -- Scale
-	 scaleX = math.abs(c[1]-a[1])/2
-	 scaleY = math.abs(b[2]-a[2])/2
-	 scaleZ = math.abs(c[3]-b[3])/2
-	 
-	 table.insert(entities, {
-									 groups = { "ForwardRender" },
-									 Mesh3D = "doomWall",
-									 Material = "material1",
-									 Transform3D = { translation = {0,0,0}, rotation = {0,angleY,0}, scale = {1,1,1}},
-									 LightComponent = {}
-	 })
-end
---create_doom_wall({0,0,0},{0,3,0},{0,3,3},{0,0,3})
-create_doom_wall({0,0,0},{0,3,0},{-2,3,0},{-2,0,0})
-]]--
-
-
 
 
 n = 0
@@ -217,3 +187,5 @@ end
 makeEntities(entitiesValues)
 
 print("Done loading lua level")
+
+--]]

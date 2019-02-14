@@ -104,16 +104,18 @@ void TerrainQueue::asyncLoad(){
 		
 		//std::cout << "Loading terrain LOD" << (previousLOD-1) << " to LOD" << (LOD-1) << std::endl;
 		
-		Time::startTimer();
+		//Time::startTimer();
 		
 	  switch((int)toLoad->LOD){
 		case LOD0:
+			//std::cout << "Loading terrain LOD0" << std::endl;
 			if(toLoad->previousLOD == NONE)
 				toLoad->terrainDesc->generate_async_LOD0(toLoad);
 			else
 				toLoad->terrainDesc->upgrade_to_LOD0(toLoad);
 			break;
 		case LOD1:
+			//std::cout << "Loading terrain LOD1" << std::endl;
 			if(toLoad->previousLOD == NONE)
 				toLoad->terrainDesc->generate_async_LOD1(toLoad);
 			else if(toLoad->previousLOD == LOD0)
@@ -122,14 +124,16 @@ void TerrainQueue::asyncLoad(){
 				toLoad->terrainDesc->upgrade_to_LOD1(toLoad);
 			break;
 		case LOD2:
+			//std::cout << "Loading terrain LOD2" << std::endl;
 			if(toLoad->previousLOD == NONE)
 				toLoad->terrainDesc->generate_async_LOD2(toLoad);
 			else if(toLoad->previousLOD == LOD1)
 				toLoad->terrainDesc->downgrade_to_LOD2(toLoad);
 			else
-				toLoad->terrainDesc->upgrade_to_LOD2(toLoad);
+				toLoad->terrainDesc->upgrade_to_LOD2(toLoad);//, std::cout << "LOAD LOD2 from LOD3" << std::endl;
 			break;
 		case LOD3:
+			//std::cout << "Loading terrain LOD3" << std::endl;
 			if(toLoad->previousLOD == LOD2)
 				toLoad->terrainDesc->downgrade_to_LOD3(toLoad);
 			else
@@ -137,8 +141,8 @@ void TerrainQueue::asyncLoad(){
 			break;
 		}
 		
-		Time::endTimer();
-		std::cout << "time = " << Time::getElapsedTime() << std::endl;
+		//Time::endTimer();
+		//std::cout << "time = " << Time::getElapsedTime() << std::endl;
 		
 		
 		
@@ -172,9 +176,9 @@ void TerrainQueue::asyncLoad(){
 		// Terrain loaded
 		toLoad->flags |= (LOADED);
 		// Terrain no longer loading
-		toLoad->flags &= (~(LOADING));
+		toLoad->flags &= (~LOADING);
 		
-		std::cout << "Loaded a terrain" << std::endl;
+		//std::cout << "Loaded a terrain" << std::endl;
 		
 		// Unlock mutex
 		//mutex.unlock();

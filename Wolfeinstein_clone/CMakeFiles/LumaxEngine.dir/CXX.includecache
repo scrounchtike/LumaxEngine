@@ -23,8 +23,8 @@ functional
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math.hpp
 ../core/ECS.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
-
-/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/Cl/GeometryData.hpp
+../PL/PhysicsPrimitives.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.cpp
 ECS_desc.hpp
@@ -41,8 +41,8 @@ RL/RenderSystems.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderSystems.hpp
 PL/PhysicsPrimitives.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/PL/PhysicsPrimitives.hpp
-Cl/GeometryData.hpp
-/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/Cl/GeometryData.hpp
+CL/GeometryData.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/GeometryData.hpp
 CL/Movement.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/Movement.hpp
 CL/LightComponent.hpp
@@ -61,6 +61,14 @@ math.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/ECS_desc.hpp
 core/ECS.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
+RL/RenderSystems.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/RenderSystems.hpp
+CL/Movement.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/CL/Movement.hpp
+GL/Enemy.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.hpp
+GL/Medkit.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Door.cpp
 Door.hpp
@@ -111,6 +119,14 @@ functional
 -
 chrono
 -
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.cpp
+Game.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.hpp
+../games/GameDemo.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.hpp
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Level.cpp
 Level.hpp
@@ -249,6 +265,8 @@ iostream
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.hpp
 ../lumax.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.hpp
+../utils/StringUtils.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/utils/StringUtils.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.cpp
 MedKit.hpp
@@ -275,6 +293,16 @@ cassert
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/MedKit.hpp
+../math.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math.hpp
+../core/ECS.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
+../lumax.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.hpp
+../RL/Camera.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.hpp
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Medkit.hpp
 ../math.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/math.hpp
 ../core/ECS.hpp
@@ -609,6 +637,16 @@ Shader.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.hpp
 Model2D.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model2D.hpp
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.cpp
+LookAtCamera.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.hpp
+cassert
+-
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.hpp
+Camera.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Camera.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Material.cpp
 Material.hpp
@@ -1359,11 +1397,7 @@ ECS.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/ECS.hpp
-iostream
--
 tuple
--
-vector
 -
 type_traits
 -
@@ -1443,6 +1477,34 @@ windows.h
 -
 chrono
 -
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.cpp
+GameDemo.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.hpp
+../RL/Model3D.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Model3D.hpp
+../lumax.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.hpp
+../RML/ResourceManager.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RML/ResourceManager.hpp
+../RL/Shader.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Shader.hpp
+../RL/LookAtCamera.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/LookAtCamera.hpp
+../RL/Renderer.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Renderer.hpp
+../RL/Texture.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/Texture.hpp
+../GL/Enemy.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Enemy.hpp
+../RL/WaterTile.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.hpp
+../core/Level.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/core/Level.hpp
+../GL/LuaLevelLoader.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/LuaLevelLoader.hpp
+
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/games/GameDemo.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/lumax.cpp
 lumax.hpp
@@ -1561,6 +1623,8 @@ RL/WaterTile.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterTile.hpp
 RL/WaterFramebuffer.hpp
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/RL/WaterFramebuffer.hpp
+GL/Game.hpp
+/Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/GL/Game.hpp
 
 /Users/Marc/Emacs/Wolfeinstein_clone/Wolfeinstein_clone/main.hpp
 

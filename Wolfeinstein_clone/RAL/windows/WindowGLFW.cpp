@@ -66,7 +66,12 @@ bool WindowGLFW::initialize(int style) {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+	window = glfwCreateWindow(width-1, height, title.c_str(), NULL, NULL);
+	// Weird workaround for broken opengl support in mojave 10.14
+	// Resizing the window seems to fix black screen bug..
+	glfwPollEvents();
+	glfwSetWindowSize(window, width, height);
+	
 	if (!window) {
 		// Add log statement
 		glfwTerminate();

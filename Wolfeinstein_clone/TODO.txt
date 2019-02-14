@@ -13,7 +13,7 @@
 6. [ ] Implement getHeadPointer() in matrices another way! Recreating a float* matrix is not efficient..
 7. [ ] Make the level loader respect a specific order for drawing objects: latest added objects should be drawn last
 8. [ ] Make Models 2D and 3D not virtual classes! Adds slowness to engine, use #ifdef to check which model to use
-9. [ ] Make the renderers functions not virtual! Causes slowness we need not.
+9. [ ] Make the renderers functions not virtual! Causes slowness we don't need!
 
 // Less important
 
@@ -99,3 +99,30 @@ ON HOLD [ ] Update each light component/information per mesh
 // Week 5 - 8 october + more weeks
 
 [ ] Create levels!
+
+
+
+
+
+// 1 jan 2019
+// TODO for the month
+
+[ ] Asynchronous asset / level loading
+[ ] Ability to load assets / data from resource manager before having to use it (preloading) same for shaders and all data really
+[ ] Proper logging
+[ ] Proper unit testing to test for regressions
+
+2 jan 2019 TODO List additions
+
+[ ] Fix random crashes in code (there are a lot of them)
+[ ] Proper cleaning at end of main (lots of leaks to find and plug)
+[ ] Move all render code out of the mesh/model classes
+[ ] Rename all mesh classes to mesh and delete everything called model
+    Cuz the model name for mesh stuff is very confusing and wrong.
+[ ] Implement Unity-like lighting
+[ ] Baking lights
+[ ] Spherical harmonics
+
+[ ] Learn how to use Emacs properly. Built-in compiler and debugger
+
+
