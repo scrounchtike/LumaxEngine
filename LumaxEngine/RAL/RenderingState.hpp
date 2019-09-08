@@ -93,7 +93,7 @@ struct RenderingState {
 
 	bool cullingEnabled = true;
 	int cullFace = LMX_CULL_BACK;
-	int frontFace = LMX_CCW;
+	int frontFace = LMX_CW;
 
 	bool depthEnabled = true;
 	bool depthTest = true;

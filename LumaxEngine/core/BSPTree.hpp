@@ -146,7 +146,7 @@ private:
 				backPolygons.push_back(polygons[i]);
 				break;
 			case STRADDLING_PLANE:
-				Polygon* frontPart,* backPart;
+				Polygon* frontPart = nullptr,* backPart = nullptr;
 				splitPolygon(polygons[i], splitingPlane, frontPart, backPart);
 				// Triangulate polygon quad
 				assert(frontPart->numVertices <= 4);
@@ -224,9 +224,10 @@ private:
 		return bestPlane;
 	}
 
-	Plane getPlaneFromPolygon(TrianglePolygon* polygon){
-		// TODO
-	}
+	//Plane getPlaneFromPolygon(TrianglePolygon* polygon){
+	//	// TODO
+	//}
+	
 public:
 	static int testPointWithPlane(Vec3 point, Plane3D plane){
 		float dist = dot(plane.n, point) - plane.d;

@@ -2,11 +2,12 @@
 #include "Player.hpp"
 
 Player::Player(Camera* camera, float speed)
-	: camera(camera), speed(speed)
+	: speed(speed), camera(camera)
 {
 	cameraAxis[FORWARD] = cameraAxis[BACKWARD] = &camera->walk;
 	cameraAxis[RIGHT] = cameraAxis[LEFT] = &camera->right;
-	cameraAxis[UP] = cameraAxis[DOWN] = &camera->up;
+	Vec3* yAxis = new Vec3(0,1,0);
+	cameraAxis[UP] = cameraAxis[DOWN] = yAxis; // y axis
 	cameraAxis[REAL_FORWARD] = cameraAxis[REAL_BACKWARD] = &camera->forward;
 }
 

@@ -12,7 +12,7 @@ public:
 	
 	float getAmount() const { return (float)Input::keyDown(key) * weight; }
 	bool getAction() const { return Input::keyDownOnce(key); }
-private:
+	
 	unsigned int key;
 	float weight;
 };

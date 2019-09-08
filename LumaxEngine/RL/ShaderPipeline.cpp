@@ -3,7 +3,8 @@
 
 #include "Renderer.hpp"
 
-ShaderPipeline::ShaderPipeline(Shader* vertex, Shader* fragment) : ID(genID()), stagedPipeline(true), vertexShader(vertex), fragmentShader(fragment) {
+ShaderPipeline::ShaderPipeline(Shader* vertex, Shader* fragment) : ID(genID()), stagedPipeline(true), vertexShader(vertex), fragmentShader(fragment)
+{
 	glGenProgramPipelines(1, &pipeline);
 	glBindProgramPipeline(pipeline);
 	
@@ -29,15 +30,27 @@ ShaderPipeline::ShaderPipeline(Shader* vertex, Shader* fragment) : ID(genID()), 
 	queryFragmentSubroutines();
 }
 
-ShaderPipeline::ShaderPipeline(Shader* shader) : ID(genID()), shader(shader) {
-	
+ShaderPipeline::ShaderPipeline(Shader* shader) : ID(genID()), shader(shader)
+{	
 }
 
-void ShaderPipeline::bind() const {
+void ShaderPipeline::bind() const
+{
 	if(stagedPipeline)
 		glUseProgram(0), glBindProgramPipeline(pipeline);
 	else
 		shader->bind();
+}
+
+void ShaderPipeline::addUniform(const std::string& name)
+{
+	if(!stagedPipeline)
+	{
+		GLuint location = glGetUniformLocation(shader->getProgram(), name.c_str());
+		std::pair<GLuint, GLuint> uniform = std::pair<GLuint, GLuint>(shader->getProgram(), location);
+		uniforms.insert(std::pair<std::string, std::pair<GLuint, GLuint> >(std::string(name), uniform));
+	}
+	shader->addUniform(name);
 }
 
 void ShaderPipeline::setUniform1i(const std::string& name, int value){

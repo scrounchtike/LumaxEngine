@@ -6,6 +6,9 @@
 class Wall {
 public:
 	Wall();
+	
+	void update();
+	void render();
 };
 
 #endif

@@ -104,6 +104,9 @@ public:
 
 	static float getSquaredDistance(const Line* line1, const Line* line2);
 	static float getSquaredDistance(const Line* line, const Vec3& point);
+
+	// 2D Intersection tests
+	static bool Point_intersects_Rectangle(Vec2 A, Vec2 B, Vec2 C, Vec2 D, Vec2 point);
 };
 
 #endif

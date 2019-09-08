@@ -9,7 +9,9 @@
 #include <type_traits>
 
 namespace smpl {
-	struct type_list_null {};
+	struct type_list_null
+	{
+	};
 	
 	template<typename T, typename U>
 	struct type_list_impl {
@@ -108,30 +110,38 @@ namespace smpl {
 	};
 	template <typename T, typename V>
 	constexpr int getIndexOf() { return type_list_index_of<T, V>::value; }
+
 	
 	// Type list filter
-	template <typename T, template<typename> typename Predicate, typename... Ts>
+	template <typename T, template <typename> typename Predicate, typename... Ts>
 	struct type_list_filter;
 
-	template <bool same, typename T, template<typename> typename Predicate, typename... Ts>
+	template <bool same, typename T, template <typename> typename Predicate, typename... Ts>
 	struct type_list_filter_impl;
-	template <bool same, typename T, typename U, template<typename> typename Predicate, typename... Ts>
+	template <bool same, typename T, typename U, template <typename> typename Predicate, typename... Ts>
 	struct type_list_filter_impl<same, type_list_impl<T, U>, Predicate, Ts...> {
 		using result = typename type_list_filter<U, Predicate, Ts...>::result;
 	};
-	template <typename T, typename U, template<typename> typename Predicate, typename... Ts>
+	template <typename T, typename U, template <typename> typename Predicate, typename... Ts>
 	struct type_list_filter_impl<true, type_list_impl<T, U>, Predicate, Ts...> {
 		using result = typename type_list_filter<U, Predicate, Ts..., T>::result;
 	};
 	
-	template <typename T, typename U, template<typename> typename Predicate, typename... Ts>
+	template <typename T, typename U, template <typename> typename Predicate, typename... Ts>
 	struct type_list_filter<type_list_impl<T, U>, Predicate, Ts...> {
 		using result = typename type_list_filter_impl<Predicate<T>::value, type_list_impl<T, U>, Predicate, Ts...>::result;
 	};
-	template <template<typename> typename Predicate, typename... Ts>
+	template <template <typename> typename Predicate, typename... Ts>
 	struct type_list_filter<type_list_null, Predicate, Ts...> {
 		using result = type_list<Ts...>;
 	};
+	// Entry point for type lists
+	template <template <typename> typename Predicate, typename... S>
+	struct type_list_filter<type_list<S...>, Predicate>
+	{
+		using result = typename type_list_filter<typename type_list<S...>::type, Predicate>::result;
+	};
+	
 
 	// Create tuple from list
 	template <typename T, typename... Ts>

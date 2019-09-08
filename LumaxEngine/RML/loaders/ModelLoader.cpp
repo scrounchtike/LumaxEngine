@@ -372,7 +372,7 @@ Model3D* ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene) {
 	Model3D* model;
 	if(hasIndices){
 		if(hasNormals)
-			model = new Model3D(vertices, indices, texCoords, normals);
+			model = new Model3D(vertices, indices, texCoords, normals); // CRASH
 		else if(hasTexCoords)
 			model = new Model3D(vertices, indices, texCoords);
 		else

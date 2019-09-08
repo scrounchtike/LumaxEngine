@@ -13,6 +13,12 @@ Matrix4f::Matrix4f(float* ptrMatrix){
 	std::memcpy(m, ptrMatrix, 16);
 }
 
+Matrix4f& Matrix4f::initTransform(const rp3d::Transform &transform)
+{
+	transform.getOpenGLMatrix(reinterpret_cast<float*>(m));
+	return transpose();
+}
+
 Matrix4f& Matrix4f::initIdentity() {
 	m[0][0] = 1;    m[0][1] = 0;    m[0][2] = 0;    m[0][3] = 0;
 	m[1][0] = 0;    m[1][1] = 1;    m[1][2] = 0;    m[1][3] = 0;

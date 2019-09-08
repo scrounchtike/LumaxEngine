@@ -2,6 +2,7 @@
 #include "Transform2D.hpp"
 
 #include "../main.hpp"
+#include "../lumax.hpp"
 
 Transform2D::Transform2D(Vec2 position, float rotation, Vec2 scale, Vec2 pivot, float pivot_rotation) {
 	static float ar = lmx::getStaticWindowHeight() / lmx::getStaticWindowWidth();

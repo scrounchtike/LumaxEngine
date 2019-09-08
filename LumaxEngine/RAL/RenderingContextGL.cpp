@@ -189,6 +189,9 @@ void RenderingContextGL::initialize(const RenderingState& state){
 	// Fill Mode
 	setFillMode(state.fillMode);
 
+	// Enable Clip plane 0
+	glEnable(GL_CLIP_DISTANCE0);
+
 	// Last GL calls
 	update();
 }

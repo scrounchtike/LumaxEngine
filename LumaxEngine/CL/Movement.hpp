@@ -4,8 +4,9 @@
 
 #include <functional>
 
+#include "../PL/PhysicsPrimitives.hpp"
+
 #include "../math.hpp"
-#include "../core/ECS.hpp"
 
 struct Func2 {
 	Func2(std::function<float(float)> x, std::function<float(float)> y) : x(x), y(y) {}
@@ -148,6 +149,10 @@ struct Movement3D {
 	std::function<float(float)> sy = function1;
 	std::function<float(float)> sz = function1;
 };
+
+// Forward declaring ECS System
+template <typename ECS, typename... Ts>
+class System;
 
 // Movement2D System
 template <typename ECS>

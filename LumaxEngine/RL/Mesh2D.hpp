@@ -21,6 +21,11 @@ public:
 	Transform2D* getTransform() const {
 		return transform;
 	}
+
+	Material* getMaterial() const {
+		return material;
+	}
+	
 private:
 	Model2D* model2D;
 	Material* material;

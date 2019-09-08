@@ -1,0 +1,108 @@
+
+List of features the engine has (OpenGL only for now)
+
+
+## CORE
+
+[x] Cross platform - OpenGL engine runs on Linux, OSX and Windows
+[x] Entity-Component-System (ECS) built-in using TMP
+[x] Window creation using GLFW or Windows WinAPI
+[x] Input capture using GLFW or DirectInput for Windows
+
+[x] Custom maths linear algebra library for matrices and vector
+		operations
+
+
+## SCRIPTING
+
+[x] Basic support for lua scripting of levels
+		Not all options supported as of now
+		Able to change meshes, locations, materials and shaders of
+		primitives in lua
+
+
+## RENDERING
+
+[x] Material rendering with colors, textures or both
+[x] Support for shader subroutines
+[x] 3D models with texture coordinates, normals, and tangents supported
+[x] Indexed and non-indexed rendering of meshes
+[x] Texturing with 1 or multiple textures
+[x] Use of UBOs for sending uniforms to shaders
+		Each UBO binding has a specific data associated with it
+
+[x] Thanks to ECS, primitives are ordered (sorted) before drawing
+		as to minimize the number of transitions between shaders,
+		textures (materials) and meshes.
+[x] Translucency support in forward renderer
+		Translucent primitives are rendered after opaque ones, and sorted back to front (painter's)
+
+[x] Basic 3D camera for flying
+[ ] Third person camera support
+
+[x] Normal mapping
+[ ] Parallax mapping
+
+[ ] Skybox (cubemaps) support
+		(Skybox has special treatment in engine since it is so common)
+[ ] Water rendering support
+		(with or without reflections)
+		(with or without effects such as refraction or fresnel)
+[ ] Text rendering support
+
+[ ] MSAA support
+
+
+## SHADOWS
+
+No shadow support yet
+
+
+## RENDERING PIPELINES (or systems as my engine calls them)
+
+[x] Forward rendering with or without translucency (transparency)
+[ ] Deferred rendering with unlimited number of lights
+		(obviously its limited, but not bottlenecked by number of
+		pixels deferred fragment shader has to process)
+
+
+## LIGHTING
+
+[x] Support for directional, point and spot lights
+		(Assuming the shader used supports the lighting uniforms)
+[ ] Basic global illumination using Cook-Torrance BRDF (PBR)
+
+
+## TERRAIN GENERATION
+
+[ ] Infinite map generation support using chunks and asynchronous
+		(multi-threading) loading of terrains
+[x] Fractal Brownian motion algorithm (fBm)
+[x] Fault algorithm
+[x] Heightmap loading support
+[x] Mid Point Displacement algorithm
+
+[ ] Marching cubes algorithm for terrain generation
+[ ] Iso-surfaces rendering support using either MC or DC
+		(Marching cubes or Dual contouring)
+[ ] Voxel map rendering (à-la Minecraft)
+
+
+## ANIMATION
+
+No animation support yet
+
+
+## PHYSICS
+
+[x] Dynamic and static collisions detected
+
+
+## Asset loading
+
+[x] OBJ file support for models (using custom OBJ loader or assimp)
+[x] PNG file support for textures
+[ ] JPEG support for textures
+[ ] BMP support for textures
+[ ] TIFF support for textures
+[ ] Collada support for meshes and animations

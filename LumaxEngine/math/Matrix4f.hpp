@@ -5,12 +5,15 @@
 #include "Vector3.hpp"
 #include "Quaternion.hpp"
 
-#define PI 3.1415926535
+#include "reactphysics3d.h"
+using rp3d::PI;
 
 class Matrix4f {
 public:
 	Matrix4f();
 	Matrix4f(float* ptrMatrix);
+
+	Matrix4f& initTransform(const rp3d::Transform& transform);
 	
 	Matrix4f& initIdentity();
 	Matrix4f& initTranslation(float x, float y, float z);
@@ -61,13 +64,13 @@ public:
 	void set(int row, int col, float value) { m[row][col] = value; }
 
 	float* getHeadPointer() const {
-		float* matrix = new float[16];
-		for (int i = 0; i < 4; ++i) {
-			for (int j = 0; j < 4; ++j) {
-				matrix[i * 4 + j] = m[i][j];
-			}
-		}
-		return matrix;
+		//float* matrix = new float[16];
+		//for (int i = 0; i < 4; ++i) {
+		//	for (int j = 0; j < 4; ++j) {
+		//		matrix[i * 4 + j] = m[i][j];
+		//	}
+		//}
+		return (float*)m;
 	}
 
 	Matrix4f operator*(const Matrix4f& other) const;

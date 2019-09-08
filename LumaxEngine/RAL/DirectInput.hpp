@@ -2,7 +2,7 @@
 #ifndef DIRECT_INPUT_HPP
 #define DIRECT_INPUT_HPP
 
-#include "BuildDesc.hpp"
+#include "buildDesc.hpp"
 
 #ifdef _USE_DIRECTINPUT
 

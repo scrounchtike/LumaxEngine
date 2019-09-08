@@ -1,7 +1,7 @@
 
 #include "SpotLight.hpp"
 
-SpotLight::SpotLight(const Vec3& position, const Vec3& color, const Attenuation& attenuation, const Vec3& direction, float cutoff)
+SpotLight::SpotLight(const Vec3& position, const Vec3& color, const Vec3& attenuation, const Vec3& direction, float cutoff)
 	: pointlight(PointLight(position, color, attenuation)), direction(direction), cutoff(cutoff)
 {	
 }

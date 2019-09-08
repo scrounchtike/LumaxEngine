@@ -245,7 +245,6 @@ void Level::update() {
 	}
 
 	// Physics update!
-	/*
 	for (int i = 0; i < physicsPrimitives.size(); ++i) {
 		physicsPrimitives[i]->material->colorIndex = 0;
 	}
@@ -263,12 +262,9 @@ void Level::update() {
 			}
 		}
 	}
-	*/
-/*
 }
 
 void Level::updateLevelTest() {
-	/*
 	std::map<std::string, Mesh2D*>::const_iterator it = mapMeshes2D.find("mesh1");
 	if (it == mapMeshes2D.end())
 		return;
@@ -276,8 +272,7 @@ void Level::updateLevelTest() {
 	DynamicTransform2D* transform = (DynamicTransform2D*)mesh1->getTransform();
 	transform->rotation += 1;
 	transform->updateMatrix();
-	*/
-/*
+
 	//Mesh3D* aabb2 = mapAABBs.find("aabb2")->second;
 	//AABB* aabb = (AABB*)aabb2->getPhysics();
 	//aabb->position -= Vec3(0.01f, 0, 0);

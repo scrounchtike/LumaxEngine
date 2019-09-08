@@ -6,8 +6,10 @@
 
 #include "../GL/Player.hpp"
 
+#include "../lumax.hpp"
+
 Camera::Camera(Vec3 position, Vec3 forward, Vec3 up, float fov, float zNear, float zFar) 
-	: position(position), forward(forward.normalize()), up(up.normalize()), fov(fov), zNear(zNear), zFar(zFar)
+	: forward(forward.normalize()), up(up.normalize()), position(position), fov(fov), zNear(zNear), zFar(zFar)
 {
 	initialize();
 }

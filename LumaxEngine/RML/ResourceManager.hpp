@@ -15,6 +15,7 @@ class Shader;
 class Animation;
 class FullModel3D;
 class Texture;
+class CubemapTexture;
 
 class ResourceManager {
 public:
@@ -25,6 +26,7 @@ public:
 	void addModel3D(const std::string& name, Model3D* model);
 	void addModel3D(const std::string& name, const std::string& filename);
 	void addTexture(const std::string& name, const std::string& filename);
+	void addCubemap(const std::string& name, const std::string filenames[6]);
 	void addMaterial(const std::string& name, Material* material);
 
 	void addShader(const std::string& name, const std::string& filename);
@@ -37,18 +39,27 @@ public:
 	Shader* getShader(const std::string& filename);
 	Shader* getVertexShader(const std::string& filename);
 	Shader* getFragmentShader(const std::string& filename);
-
+	
 	ShaderPipeline* getShaderPipeline(const std::string& name);
 	
-	Model3D* getModel3D(const std::string& filename);
-	Model3D* getAnimatedModel3D(const std::string& filename);
-	Animation* getAnimation(const std::string& filename);
-	FullModel3D* getFullModel3D(const std::string& filename);
-	Model2D* getModel2D(const std::string& filename);
-	Texture* getTexture(const std::string& filename);
-	Material* getMaterial(const std::string& filename);
+	Model3D* getModel3D(const std::string& name,
+											const std::string& filename="");
+	Model3D* getAnimatedModel3D(const std::string& name,
+															const std::string& filename="");
+	Animation* getAnimation(const std::string& name,
+													const std::string& filename="");
+	FullModel3D* getFullModel3D(const std::string& name,
+															const std::string& filename="");
+	Model2D* getModel2D(const std::string& name,
+											const std::string& filename="");
+	Texture* getTexture(const std::string& name,
+											const std::string& filename="");
+	CubemapTexture* getCubemap(const std::string& name,
+														 const std::string filenames[6]);
+	Material* getMaterial(const std::string& name,
+												const std::string& filename="");
 private:
-	std::string getShaderFullName(const std::string& filename);
+	std::string getShaderFullName(const std::string& filename="");
 	
 	std::map<std::string, Shader*> shaders;
 	std::map<std::string, Shader*> vertexShaders;
@@ -60,6 +71,7 @@ private:
 	std::map<std::string, FullModel3D*> fullModels3D;
 	std::map<std::string, Model2D*> models2D;
 	std::map<std::string, Texture*> textures;
+	std::map<std::string, CubemapTexture*> cubemaps;
 	std::map<std::string, Material*> materials;
 
 	std::string resFile;

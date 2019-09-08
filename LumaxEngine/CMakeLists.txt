@@ -16,6 +16,6 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS}")
 # No idea what that does, seems useful
 include_directories(${PROJECT_SOURCE_DIR})
 
-file(GLOB SOURCES "*.cpp" "GL/*.cpp" "PL/*.cpp" "RAL/*.cpp" "RAL/windows/*.cpp" "RL/*.cpp" "RL/animations/*.cpp" "RL/lights/*.cpp" "RL/models3D/*.cpp" "RL/models2D/*.cpp" "RL/shaders/*.cpp" "RL/textures/*.cpp" "RML/*.cpp" "RML/loaders/*.cpp" "core/*.cpp" "levels/*.cpp" "utils/*.cpp" "math/*.cpp" "TL/*.cpp")
+file(GLOB SOURCES "../*.cpp" "../GL/*.cpp" "../PL/*.cpp" "../RAL/*.cpp" "../RAL/windows/*.cpp" "../RL/*.cpp" "../RL/animations/*.cpp" "../RL/lights/*.cpp" "../RL/models3D/*.cpp" "../RL/models2D/*.cpp" "../RL/shaders/*.cpp" "../RL/textures/*.cpp" "../RML/*.cpp" "../RML/loaders/*.cpp" "../core/*.cpp" " "../levels/*.cpp" "../utils/*.cpp" "../math/*.cpp" "../TL/*.cpp" "../core/ECS.tpp")
 
 add_executable(LumaxEngine ${SOURCES})

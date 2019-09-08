@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Marc/Emacs/LumaxEngine/LumaxEngine
+# Install script for directory: /Users/Marc/Emacs/LumaxEngine/LumaxEngine/build
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

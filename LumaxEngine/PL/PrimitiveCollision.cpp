@@ -519,3 +519,20 @@ float PrimitiveCollision::getSquaredDistance(const OBB* obb, const Vec3& point) 
 	}
 	return sqDist;
 }
+
+// The Rectangle cannot be degenerate!!
+bool PrimitiveCollision::Point_intersects_Rectangle(Vec2 A, Vec2 B, Vec2 C, Vec2 D, Vec2 point){
+	float xExtent = B.x - A.x;
+	if(!xExtent)
+		xExtent = C.x - A.x;
+	xExtent = std::abs(xExtent);
+	float yExtent = B.y - A.y;
+	if(!yExtent)
+		yExtent = C.y - A.y;
+	yExtent = std::abs(yExtent);
+	if(point.x < A.x-xExtent) return false;
+	if(point.x > A.x) return false;
+	if(point.y < A.y) return false;
+	if(point.y > A.y+yExtent) return false;
+	return true;
+}

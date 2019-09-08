@@ -26,7 +26,7 @@
 template <typename T>
 struct PipelineGroup2D;
 template <typename T>
-struct PipelineGroup3D;
+class PipelineGroup3D;
 
 struct LightingDescription;
 
@@ -92,7 +92,7 @@ public:
 				if(material->isColored){
 					// Set color UBO
 					glBindBuffer(GL_UNIFORM_BUFFER, uboColor);
-					Vec3 color = material->getColor();
+					Vec3 color = material->getColor().xyz();
 					Vec4 color4 = Vec4(color.x, color.y, color.z, 1.0);
 					glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4, &color4.x, GL_DYNAMIC_DRAW);
 				}
@@ -118,6 +118,7 @@ public:
 			}
 		}
 	}
+	
 	//template <typename Manager, typename... Ts>
 	template <typename ECS>
 	void renderGroups2D(const std::vector<PipelineGroup2D<ECS>*>& groups, std::function<void(const std::vector<uint32>&)> callback) const{
@@ -153,7 +154,7 @@ public:
 				if(material->isColored){
 					// Set color UBO
 					glBindBuffer(GL_UNIFORM_BUFFER, uboColor);
-					Vec3 color = material->getColor();
+					Vec3 color = material->getColor().xyz();
 					Vec4 color4 = Vec4(color.x, color.y, color.z, 1.0);
 					glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*4, &color4.x, GL_DYNAMIC_DRAW);
 				}
@@ -216,6 +217,10 @@ public:
 	static Shader* shader3D;
 	static Shader* shader3Dline;
 
+	// Static Clipping planes for inbetween systems
+	// TODO: Could maybe find a better way to do this..
+	static Vec4 clip_planes[6];
+
 	// UBOs
 	// ONLY for OpenGL right now
 	// TODO: Make abstract class ShaderConstantBuffer for DX11 support
@@ -228,6 +233,11 @@ public:
 	static unsigned int uboInstancedTransforms3D;
 	static unsigned int uboLights;
 	static unsigned int uboBones;
+	static unsigned int uboDirectionalLight;
+	static unsigned int uboPointLight;
+	static unsigned int uboSpotLight;
+	static unsigned int uboLightsVertex;
+	static unsigned int uboClipPlanes;
 	
 	static std::map<std::string, unsigned> mapUBOs;
 private:

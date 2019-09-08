@@ -2,6 +2,8 @@
 #ifndef VECTOR3_HPP
 #define VECTOR3_HPP
 
+#include "reactphysics3d.h"
+
 #include <math.h>
 #include <iostream>
 
@@ -14,6 +16,16 @@ public:
 	Vector3(float x) : x(x), y(x), z(x) { }
 	Vector3(float x, float y, float z) : x(x), y(y), z(z) {
 	}
+
+	// Conversion from and to React Physics 3D math types
+	Vector3(rp3d::Vector3& vec) : x(vec.x), y(vec.y), z(vec.z)
+	{
+	}
+	operator rp3d::Vector3()
+	{
+		return rp3d::Vector3(x, y, z);
+	}
+	
 	void print(){
 		std::cout << x << " " << y << " " << z << std::endl;
 	}
@@ -22,6 +34,9 @@ public:
 	}
 	float getLength() const {
 		return sqrt(x*x + y*y + z*z);
+	}
+	float getSqLength() const {
+		return x*x + y*y + z*z;
 	}
 	Vector3& normalize() {
 		float length = getLength();

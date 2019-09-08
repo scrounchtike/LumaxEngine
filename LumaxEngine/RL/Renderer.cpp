@@ -8,6 +8,7 @@
 #include "../core/ECS.hpp"
 #include "../core/RenderComponentStorage.hpp"
 #include "../main.hpp"
+#include "../lumax.hpp"
 
 Model2D* Renderer::point2D;
 Model2D* Renderer::line2D;
@@ -36,10 +37,17 @@ unsigned int Renderer::uboMVP3D;
 unsigned int Renderer::uboInstancedTransforms3D;
 unsigned int Renderer::uboLights;
 unsigned int Renderer::uboBones;
+unsigned int Renderer::uboDirectionalLight;
+unsigned int Renderer::uboPointLight;
+unsigned int Renderer::uboSpotLight;
+unsigned int Renderer::uboLightsVertex;
+unsigned int Renderer::uboClipPlanes;
+
+Vec4 Renderer::clip_planes[6];
 
 std::map<std::string, unsigned> Renderer::mapUBOs;
 
-Renderer::Renderer(Player* player) : player(player), camera(player->getCamera()) {
+Renderer::Renderer(Player* player) : camera(player->getCamera()), player(player) {
 	// Player control
 	player->registerAxisControl(new InputControl(LMX_KEY_W, 1.0), Player::FORWARD);
 	player->registerAxisControl(new InputControl(LMX_KEY_S, -1.0), Player::FORWARD);
@@ -47,8 +55,9 @@ Renderer::Renderer(Player* player) : player(player), camera(player->getCamera())
 	player->registerAxisControl(new InputControl(LMX_KEY_D, 1.0), Player::RIGHT);
 	player->registerAxisControl(new InputControl(LMX_KEY_SPACE, 1.0), Player::UP);
 	player->registerAxisControl(new InputControl(LMX_KEY_LSHIFT, -1.0), Player::UP);
-	
-	initializeGeometries();
+
+	initializeUBOs();
+	//initializeGeometries();
 	initializeShaders();
 }
 
@@ -336,6 +345,11 @@ void Renderer::initializeUBOs(){
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboInstancedTransforms3D", 6));
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboLights", 7));
 	mapUBOs.insert(std::pair<std::string, unsigned>("uboBones", 8));
+	mapUBOs.insert(std::pair<std::string, unsigned>("uboDirectionalLight", 9));
+	mapUBOs.insert(std::pair<std::string, unsigned>("uboPointLight", 10));
+	mapUBOs.insert(std::pair<std::string, unsigned>("uboSpotLight", 11));
+	mapUBOs.insert(std::pair<std::string, unsigned>("uboLightsVertex", 12));
+	mapUBOs.insert(std::pair<std::string, unsigned>("uboClipPlanes", 13));
 	
 	// Create UBO buffers
 	glGenBuffers(1, &uboTransform2D);
@@ -364,12 +378,17 @@ void Renderer::initializeUBOs(){
 	
 	struct DirectionalLight{
 		Vec3 direction;
+		float padding;
 		Vec3 color;
+		float intensity;
 	};
 	struct PointLight{
 		Vec3 position;
+		float padding1;
 		Vec3 color;
+		float padding2;
 		float constant, linear, exponent;
+		float radius;
 	};
 	struct SpotLight{
 		PointLight pointLight;
@@ -383,6 +402,26 @@ void Renderer::initializeUBOs(){
 	glGenBuffers(1, &uboBones);
 	glBindBuffer(GL_UNIFORM_BUFFER, uboBones);
 	glBufferData(GL_UNIFORM_BUFFER, sizeof(float)*16*64, NULL, GL_DYNAMIC_DRAW); // Assuming maximum of 64 bones (64 mat4 matrices effectively)
+
+	glGenBuffers(1, &uboDirectionalLight);
+	glBindBuffer(GL_UNIFORM_BUFFER, uboDirectionalLight);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(DirectionalLight), NULL, GL_DYNAMIC_DRAW);
+
+	glGenBuffers(1, &uboPointLight);
+	glBindBuffer(GL_UNIFORM_BUFFER, uboPointLight);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(PointLight)*4, NULL, GL_DYNAMIC_DRAW);
+
+	glGenBuffers(1, &uboSpotLight);
+	glBindBuffer(GL_UNIFORM_BUFFER, uboSpotLight);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(SpotLight)*4, NULL, GL_DYNAMIC_DRAW);
+
+	glGenBuffers(1, &uboLightsVertex);
+	glBindBuffer(GL_UNIFORM_BUFFER, uboLightsVertex);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(PointLight)*4 + sizeof(SpotLight)*4, NULL, GL_DYNAMIC_DRAW);
+
+	glGenBuffers(1, &uboClipPlanes);
+	glBindBuffer(GL_UNIFORM_BUFFER, uboClipPlanes);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(Vec4)*6, NULL, GL_DYNAMIC_DRAW);
 	
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
@@ -396,6 +435,11 @@ void Renderer::initializeUBOs(){
 	glBindBufferBase(GL_UNIFORM_BUFFER, 6, uboInstancedTransforms3D);
 	glBindBufferBase(GL_UNIFORM_BUFFER, 7, uboLights);
 	glBindBufferBase(GL_UNIFORM_BUFFER, 8, uboBones);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 9, uboDirectionalLight);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 10, uboPointLight);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 11, uboSpotLight);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 12, uboLightsVertex);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 13, uboClipPlanes);
 }
 
 void Renderer::initializeGeometries(){

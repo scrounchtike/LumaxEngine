@@ -121,7 +121,7 @@ bool WindowGLFW::cleanUpDirectX11() {
 
 // Callbacks
 void WindowGLFW::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-	Input::keyboard[key] = (action == GLFW_PRESS);
+	Input::keyboard[key] = (action == GLFW_PRESS || action == GLFW_REPEAT);
 }
 
 void WindowGLFW::mouse_callback(GLFWwindow* window, double xpos, double ypos) {

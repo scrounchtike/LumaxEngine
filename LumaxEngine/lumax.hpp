@@ -2,16 +2,8 @@
 #ifndef LUMAX_HPP
 #define LUMAX_HPP
 
-
-
-class ResourceManager;
-class Window;
-
-#include "math/types.hpp"
-
-#include "utils/SMPL.hpp"
-#include "core/ECS.hpp"
-
+#include "core/Level.hpp"
+#include "RML/ResourceManager.hpp"
 #include "RAL/buildDesc.hpp"
 
 #ifdef _USE_DIRECTX11
@@ -37,6 +29,10 @@ namespace lmx{
 	// Width and height getters
 	float getStaticWindowWidth();
 	float getStaticWindowHeight();
+	
+	// Level
+	extern LevelType* level;
+	LevelType* getStaticLevel();
 }
 
 

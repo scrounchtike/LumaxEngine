@@ -6,32 +6,60 @@
 #include <vector>
 
 #include "ECS.hpp"
-#include "../main.hpp"
 
-template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+#include "../PL/PhysicsWorld.hpp"
+
+template <typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList, typename TRenderPass2DList, typename TRenderPass3DList>
 class Level{
 private:
-	using ThisType = Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>;
+	using ThisType = Level<TSystemList, TRenderingSystem2DList, TRenderingSystem3DList, TRenderPass2DList, TRenderPass3DList>;
 	
 	using SystemList = typename TSystemList::type;
 	using RenderingSystem2DList = typename TRenderingSystem2DList::type;
 	using RenderingSystem3DList = typename TRenderingSystem3DList::type;
+	using RenderPass2DList = typename TRenderPass2DList::type;
+	using RenderPass3DList = typename TRenderPass3DList::type;
 	
 	// ECS Interface
 	using ComponentMap = typename ECSDesc::ComponentMap;
 	
-	using LevelECS = ECSManager<ECSDesc, TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>;
+	using LevelECS = ECSManager<ECSDesc, TSystemList, TRenderingSystem2DList, TRenderingSystem3DList, TRenderPass2DList, TRenderPass3DList>;
 	using SystemTupleStorage = typename LevelECS::SystemTupleStorage;
 	using RenderSystem2DTupleStorage = typename LevelECS::RenderSystem2DTupleStorage;
 	using RenderSystem3DTupleStorage = typename LevelECS::RenderSystem3DTupleStorage;
 	using ComponentTupleVectors = typename LevelECS::ComponentTupleVectors;
+
 public:
 	Level();
-
+	
+	// Lights interface
+	void setDirectionalLight(const DirectionalLight& light){
+		directionalLight = light;
+	}
+	DirectionalLight& getDirectionalLight() const {
+		return directionalLight;
+	}
+	void addPointLight(const PointLight& light){
+		pointLights.push_back(light);
+	}
+	std::vector<PointLight>& getPointLights() const {
+		return pointLights;
+	}
+	void addSpotLight(const SpotLight& light){
+		spotLights.push_back(light);
+	}
+	std::vector<SpotLight>& getSpotLights() const {
+		return spotLights;
+	}
+	
 	// Entity management
 	uint32 createEntity();
 	void removeEntity(uint32 entity);
 	void registerEntity(uint32 entity);
+	template <typename RenderingSystem>
+	void registerEntityForRender2D(uint32 entity);
+	template <typename RenderingSystem>
+	void registerEntityForRender3D(uint32 entity);
 
 	// Component management
 	template <typename Component>
@@ -39,9 +67,9 @@ public:
 	template <typename Component>
 	void removeComponent(uint32 entity);
 	template <typename Component>
-	Component* getComponent(uint32 entity);
+	Component* getComponent(uint32 entity) const;
 	template <typename Component>
-	bool hasComponent(uint32 entity);
+	bool hasComponent(uint32 entity) const;
 
 	// Group management
 	template <typename Group>
@@ -50,16 +78,36 @@ public:
 	// Flag management
 	template <typename Flag>
 	void setFlag(uint32 entity, bool value = true);
-
+	
 	void input();
 	void update();
 	void render();
+	
+	template <typename Targets>
+	void renderPass();
+	void renderPass(uint32 pass_id);
 
+	// Rendering into FBO support for systems that require it
+	template <typename SystemCaller>
+	void renderIntoFBO(Camera* camera);
+
+	// Physics simulation functions
+	void updatePhysics();
+	
+	PhysicsWorld* getPhysicsWorld() { return &physics_world; }
+	
 	Renderer* getRenderer() const { return renderer; }
-	Camera* getCamera() const { return renderer->getCamera(); }
+	Camera* getCamera() const;
+
+	void doDebugPrint() const;
 private:
 	// Entity Storage
 	std::vector<Entity<ECSDesc>> entities;
+	
+	// Store lights
+	DirectionalLight directionalLight;
+	std::vector<PointLight> pointLights;
+	std::vector<SpotLight> spotLights;
 
 	// Component Storage
 	ComponentTupleVectors components;
@@ -72,8 +120,57 @@ private:
 	RenderSystem3DTupleStorage renderSystems3D;
 
 	Renderer* renderer = nullptr;
+
+	// Physics World abstraction
+	PhysicsWorld physics_world;
+
+	// DOOM Level management
+	std::vector<uint32> floors;
 };
 
+
+
+// Static level definition !
+
+//
+// Render Passes
+//
+using RenderPasses2D = RenderPassList<>;
+
+using RenderPassWater3DComponentList = ComponentList<ShaderPipeline, Material>;
+using TypeRenderPassWater3D = RenderPassWater3D<ECSDesc, RenderPassWater3DComponentList, RenderPass_::OMIT_ONLY, RenderSystemForwardWater3D<ECSDesc>>;
+using RenderPassForward3DComponentList = ComponentList<>;
+using TypeRenderPassForward3D = RenderPassForward3D<
+	ECSDesc,
+	RenderPassForward3DComponentList,
+	RenderPass_::OMIT_ONLY,
+	RenderSystemForwardLight3D<ECSDesc>,
+	RenderSystemForwardTerrainTransform3D<ECSDesc>,
+	RenderSystemForwardTerrainLight3D<ECSDesc>,
+	RenderSystemForwardTransform3D<ECSDesc> >;
+
+using RenderPasses3D = RenderPassList<TypeRenderPassWater3D>;//,
+																			//TypeRenderPassForward3D>;
+
+// ECS Manager
+using ECSManagerLevelTest = ECSManager<ECSDesc, Systems, RenderingSystems2D, RenderingSystems3D, RenderPasses2D, RenderPasses3D>;
+
+
+//
+// The level description is static and cannot change for a given ECS description
+//
+// Meaning that components, groups, flags and systems/renderpasses remain the same
+// after compilation and for all user code (atleast for now)
+//
+using LevelType = Level<Systems, RenderingSystems2D, RenderingSystems3D, RenderPasses2D, RenderPasses3D>;
+
+namespace lmx {
+	extern ECSManagerLevelTest ecs;
+
+	ECSManagerLevelTest& getECSManager();
+}
+
 #include "Level.tpp"
+//#include "ECS.tpp"
 
 #endif

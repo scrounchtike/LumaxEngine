@@ -12,6 +12,7 @@ class Camera {
 	Vec3 right;
 	Vec3 up;
 	Vec3 walk;
+	
 public:
 #ifdef _USE_OPENGL
 	Camera(Vec3 position = Vec3(0,0,0), Vec3 forward = Vec3(0,0,1), Vec3 up = Vec3(0,1,0), float fov = 70.0f, float zNear = 0.1f, float zFar = 1000.0f);

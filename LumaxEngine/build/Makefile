@@ -48,7 +48,7 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Marc/Emacs/LumaxEngine/LumaxEngine
+CMAKE_SOURCE_DIR = /Users/Marc/Emacs/LumaxEngine/LumaxEngine/build
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/Marc/Emacs/LumaxEngine/LumaxEngine/build
@@ -123,1382 +123,1652 @@ LumaxEngine/fast:
 	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/build
 .PHONY : LumaxEngine/fast
 
-GL/Level.o: GL/Level.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.o
 
-.PHONY : GL/Level.o
-
-# target to build an object file
-GL/Level.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Level.cpp.o
-.PHONY : GL/Level.cpp.o
-
-GL/Level.i: GL/Level.cpp.i
-
-.PHONY : GL/Level.i
-
-# target to preprocess a source file
-GL/Level.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Level.cpp.i
-.PHONY : GL/Level.cpp.i
-
-GL/Level.s: GL/Level.cpp.s
-
-.PHONY : GL/Level.s
-
-# target to generate assembly for a file
-GL/Level.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Level.cpp.s
-.PHONY : GL/Level.cpp.s
-
-GL/Player.o: GL/Player.cpp.o
-
-.PHONY : GL/Player.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.o
 
 # target to build an object file
-GL/Player.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Player.cpp.o
-.PHONY : GL/Player.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.o
 
-GL/Player.i: GL/Player.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.i
 
-.PHONY : GL/Player.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.i
 
 # target to preprocess a source file
-GL/Player.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Player.cpp.i
-.PHONY : GL/Player.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.i
 
-GL/Player.s: GL/Player.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.s
 
-.PHONY : GL/Player.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.s
 
 # target to generate assembly for a file
-GL/Player.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/GL/Player.cpp.s
-.PHONY : GL/Player.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.cpp.s
 
-PL/DynamicCollision.o: PL/DynamicCollision.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.o
 
-.PHONY : PL/DynamicCollision.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.o
 
 # target to build an object file
-PL/DynamicCollision.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.o
-.PHONY : PL/DynamicCollision.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.o
 
-PL/DynamicCollision.i: PL/DynamicCollision.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.i
 
-.PHONY : PL/DynamicCollision.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.i
 
 # target to preprocess a source file
-PL/DynamicCollision.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.i
-.PHONY : PL/DynamicCollision.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.i
 
-PL/DynamicCollision.s: PL/DynamicCollision.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.s
 
-.PHONY : PL/DynamicCollision.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.s
 
 # target to generate assembly for a file
-PL/DynamicCollision.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/DynamicCollision.cpp.s
-.PHONY : PL/DynamicCollision.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.cpp.s
 
-PL/PhysicsPrimitives.o: PL/PhysicsPrimitives.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.o
 
-.PHONY : PL/PhysicsPrimitives.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.o
 
 # target to build an object file
-PL/PhysicsPrimitives.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.o
-.PHONY : PL/PhysicsPrimitives.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.o
 
-PL/PhysicsPrimitives.i: PL/PhysicsPrimitives.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.i
 
-.PHONY : PL/PhysicsPrimitives.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.i
 
 # target to preprocess a source file
-PL/PhysicsPrimitives.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.i
-.PHONY : PL/PhysicsPrimitives.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.i
 
-PL/PhysicsPrimitives.s: PL/PhysicsPrimitives.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.s
 
-.PHONY : PL/PhysicsPrimitives.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.s
 
 # target to generate assembly for a file
-PL/PhysicsPrimitives.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/PhysicsPrimitives.cpp.s
-.PHONY : PL/PhysicsPrimitives.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.cpp.s
 
-PL/PrimitiveCollision.o: PL/PrimitiveCollision.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.o
 
-.PHONY : PL/PrimitiveCollision.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.o
 
 # target to build an object file
-PL/PrimitiveCollision.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.o
-.PHONY : PL/PrimitiveCollision.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.o
 
-PL/PrimitiveCollision.i: PL/PrimitiveCollision.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.i
 
-.PHONY : PL/PrimitiveCollision.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.i
 
 # target to preprocess a source file
-PL/PrimitiveCollision.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.i
-.PHONY : PL/PrimitiveCollision.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.i
 
-PL/PrimitiveCollision.s: PL/PrimitiveCollision.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.s
 
-.PHONY : PL/PrimitiveCollision.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.s
 
 # target to generate assembly for a file
-PL/PrimitiveCollision.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/PL/PrimitiveCollision.cpp.s
-.PHONY : PL/PrimitiveCollision.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.cpp.s
 
-RAL/DirectInput.o: RAL/DirectInput.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.o
 
-.PHONY : RAL/DirectInput.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.o
 
 # target to build an object file
-RAL/DirectInput.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.o
-.PHONY : RAL/DirectInput.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.o
 
-RAL/DirectInput.i: RAL/DirectInput.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.i
 
-.PHONY : RAL/DirectInput.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.i
 
 # target to preprocess a source file
-RAL/DirectInput.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.i
-.PHONY : RAL/DirectInput.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.i
 
-RAL/DirectInput.s: RAL/DirectInput.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.s
 
-.PHONY : RAL/DirectInput.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.s
 
 # target to generate assembly for a file
-RAL/DirectInput.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/DirectInput.cpp.s
-.PHONY : RAL/DirectInput.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.cpp.s
 
-RAL/Log.o: RAL/Log.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.o
 
-.PHONY : RAL/Log.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.o
 
 # target to build an object file
-RAL/Log.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.o
-.PHONY : RAL/Log.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.o
 
-RAL/Log.i: RAL/Log.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.i
 
-.PHONY : RAL/Log.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.i
 
 # target to preprocess a source file
-RAL/Log.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.i
-.PHONY : RAL/Log.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.i
 
-RAL/Log.s: RAL/Log.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.s
 
-.PHONY : RAL/Log.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.s
 
 # target to generate assembly for a file
-RAL/Log.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/Log.cpp.s
-.PHONY : RAL/Log.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.cpp.s
 
-RAL/RenderingContext.o: RAL/RenderingContext.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.o
 
-.PHONY : RAL/RenderingContext.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.o
 
 # target to build an object file
-RAL/RenderingContext.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.o
-.PHONY : RAL/RenderingContext.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.o
 
-RAL/RenderingContext.i: RAL/RenderingContext.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.i
 
-.PHONY : RAL/RenderingContext.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.i
 
 # target to preprocess a source file
-RAL/RenderingContext.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.i
-.PHONY : RAL/RenderingContext.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.i
 
-RAL/RenderingContext.s: RAL/RenderingContext.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.s
 
-.PHONY : RAL/RenderingContext.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.s
 
 # target to generate assembly for a file
-RAL/RenderingContext.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContext.cpp.s
-.PHONY : RAL/RenderingContext.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.cpp.s
 
-RAL/RenderingContextDX11.o: RAL/RenderingContextDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.o
 
-.PHONY : RAL/RenderingContextDX11.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.o
 
 # target to build an object file
-RAL/RenderingContextDX11.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.o
-.PHONY : RAL/RenderingContextDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.o
 
-RAL/RenderingContextDX11.i: RAL/RenderingContextDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.i
 
-.PHONY : RAL/RenderingContextDX11.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.i
 
 # target to preprocess a source file
-RAL/RenderingContextDX11.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.i
-.PHONY : RAL/RenderingContextDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.i
 
-RAL/RenderingContextDX11.s: RAL/RenderingContextDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.s
 
-.PHONY : RAL/RenderingContextDX11.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.s
 
 # target to generate assembly for a file
-RAL/RenderingContextDX11.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContextDX11.cpp.s
-.PHONY : RAL/RenderingContextDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.cpp.s
 
-RAL/RenderingContextGL.o: RAL/RenderingContextGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.o
 
-.PHONY : RAL/RenderingContextGL.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.o
 
 # target to build an object file
-RAL/RenderingContextGL.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.o
-.PHONY : RAL/RenderingContextGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.o
 
-RAL/RenderingContextGL.i: RAL/RenderingContextGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.i
 
-.PHONY : RAL/RenderingContextGL.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.i
 
 # target to preprocess a source file
-RAL/RenderingContextGL.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.i
-.PHONY : RAL/RenderingContextGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.i
 
-RAL/RenderingContextGL.s: RAL/RenderingContextGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.s
 
-.PHONY : RAL/RenderingContextGL.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.s
 
 # target to generate assembly for a file
-RAL/RenderingContextGL.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/RenderingContextGL.cpp.s
-.PHONY : RAL/RenderingContextGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.cpp.s
 
-RAL/Window.o: RAL/Window.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.o
 
-.PHONY : RAL/Window.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.o
 
 # target to build an object file
-RAL/Window.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.o
-.PHONY : RAL/Window.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.o
 
-RAL/Window.i: RAL/Window.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.i
 
-.PHONY : RAL/Window.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.i
 
 # target to preprocess a source file
-RAL/Window.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.i
-.PHONY : RAL/Window.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.i
 
-RAL/Window.s: RAL/Window.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.s
 
-.PHONY : RAL/Window.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.s
 
 # target to generate assembly for a file
-RAL/Window.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/Window.cpp.s
-.PHONY : RAL/Window.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.cpp.s
 
-RAL/cpuid.o: RAL/cpuid.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.o
 
-.PHONY : RAL/cpuid.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.o
 
 # target to build an object file
-RAL/cpuid.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.o
-.PHONY : RAL/cpuid.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.o
 
-RAL/cpuid.i: RAL/cpuid.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.i
 
-.PHONY : RAL/cpuid.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.i
 
 # target to preprocess a source file
-RAL/cpuid.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.i
-.PHONY : RAL/cpuid.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.i
 
-RAL/cpuid.s: RAL/cpuid.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.s
 
-.PHONY : RAL/cpuid.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.s
 
 # target to generate assembly for a file
-RAL/cpuid.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/cpuid.cpp.s
-.PHONY : RAL/cpuid.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.cpp.s
 
-RAL/input.o: RAL/input.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.o
 
-.PHONY : RAL/input.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.o
 
 # target to build an object file
-RAL/input.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/input.cpp.o
-.PHONY : RAL/input.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.o
 
-RAL/input.i: RAL/input.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.i
 
-.PHONY : RAL/input.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.i
 
 # target to preprocess a source file
-RAL/input.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/input.cpp.i
-.PHONY : RAL/input.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.i
 
-RAL/input.s: RAL/input.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.s
 
-.PHONY : RAL/input.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.s
 
 # target to generate assembly for a file
-RAL/input.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/input.cpp.s
-.PHONY : RAL/input.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.cpp.s
 
-RAL/windows/WindowGLFW.o: RAL/windows/WindowGLFW.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.o
 
-.PHONY : RAL/windows/WindowGLFW.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.o
 
 # target to build an object file
-RAL/windows/WindowGLFW.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.o
-.PHONY : RAL/windows/WindowGLFW.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.o
 
-RAL/windows/WindowGLFW.i: RAL/windows/WindowGLFW.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.i
 
-.PHONY : RAL/windows/WindowGLFW.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.i
 
 # target to preprocess a source file
-RAL/windows/WindowGLFW.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.i
-.PHONY : RAL/windows/WindowGLFW.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.i
 
-RAL/windows/WindowGLFW.s: RAL/windows/WindowGLFW.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.s
 
-.PHONY : RAL/windows/WindowGLFW.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.s
 
 # target to generate assembly for a file
-RAL/windows/WindowGLFW.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/windows/WindowGLFW.cpp.s
-.PHONY : RAL/windows/WindowGLFW.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.cpp.s
 
-RAL/windows/WindowWinAPI.o: RAL/windows/WindowWinAPI.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.o
 
-.PHONY : RAL/windows/WindowWinAPI.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.o
 
 # target to build an object file
-RAL/windows/WindowWinAPI.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.o
-.PHONY : RAL/windows/WindowWinAPI.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.o
 
-RAL/windows/WindowWinAPI.i: RAL/windows/WindowWinAPI.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.i
 
-.PHONY : RAL/windows/WindowWinAPI.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.i
 
 # target to preprocess a source file
-RAL/windows/WindowWinAPI.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.i
-.PHONY : RAL/windows/WindowWinAPI.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.i
 
-RAL/windows/WindowWinAPI.s: RAL/windows/WindowWinAPI.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.s
 
-.PHONY : RAL/windows/WindowWinAPI.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.s
 
 # target to generate assembly for a file
-RAL/windows/WindowWinAPI.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RAL/windows/WindowWinAPI.cpp.s
-.PHONY : RAL/windows/WindowWinAPI.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.cpp.s
 
-RL/Camera.o: RL/Camera.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.o
 
-.PHONY : RL/Camera.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.o
 
 # target to build an object file
-RL/Camera.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.o
-.PHONY : RL/Camera.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.o
 
-RL/Camera.i: RL/Camera.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.i
 
-.PHONY : RL/Camera.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.i
 
 # target to preprocess a source file
-RL/Camera.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.i
-.PHONY : RL/Camera.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.i
 
-RL/Camera.s: RL/Camera.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.s
 
-.PHONY : RL/Camera.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.s
 
 # target to generate assembly for a file
-RL/Camera.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Camera.cpp.s
-.PHONY : RL/Camera.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.cpp.s
 
-RL/GBuffer.o: RL/GBuffer.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.o
 
-.PHONY : RL/GBuffer.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.o
 
 # target to build an object file
-RL/GBuffer.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.o
-.PHONY : RL/GBuffer.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.o
 
-RL/GBuffer.i: RL/GBuffer.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.i
 
-.PHONY : RL/GBuffer.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.i
 
 # target to preprocess a source file
-RL/GBuffer.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.i
-.PHONY : RL/GBuffer.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.i
 
-RL/GBuffer.s: RL/GBuffer.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.s
 
-.PHONY : RL/GBuffer.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.s
 
 # target to generate assembly for a file
-RL/GBuffer.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/GBuffer.cpp.s
-.PHONY : RL/GBuffer.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.cpp.s
 
-RL/Material.o: RL/Material.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.o
 
-.PHONY : RL/Material.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.o
 
 # target to build an object file
-RL/Material.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Material.cpp.o
-.PHONY : RL/Material.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.o
 
-RL/Material.i: RL/Material.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.i
 
-.PHONY : RL/Material.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.i
 
 # target to preprocess a source file
-RL/Material.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Material.cpp.i
-.PHONY : RL/Material.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.i
 
-RL/Material.s: RL/Material.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.s
 
-.PHONY : RL/Material.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.s
 
 # target to generate assembly for a file
-RL/Material.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Material.cpp.s
-.PHONY : RL/Material.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.cpp.s
 
-RL/Mesh2D.o: RL/Mesh2D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.o
 
-.PHONY : RL/Mesh2D.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.o
 
 # target to build an object file
-RL/Mesh2D.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.o
-.PHONY : RL/Mesh2D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.o
 
-RL/Mesh2D.i: RL/Mesh2D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.i
 
-.PHONY : RL/Mesh2D.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.i
 
 # target to preprocess a source file
-RL/Mesh2D.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.i
-.PHONY : RL/Mesh2D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.i
 
-RL/Mesh2D.s: RL/Mesh2D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.s
 
-.PHONY : RL/Mesh2D.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.s
 
 # target to generate assembly for a file
-RL/Mesh2D.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Mesh2D.cpp.s
-.PHONY : RL/Mesh2D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.cpp.s
 
-RL/Mesh3D.o: RL/Mesh3D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.o
 
-.PHONY : RL/Mesh3D.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.o
 
 # target to build an object file
-RL/Mesh3D.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.o
-.PHONY : RL/Mesh3D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.o
 
-RL/Mesh3D.i: RL/Mesh3D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.i
 
-.PHONY : RL/Mesh3D.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.i
 
 # target to preprocess a source file
-RL/Mesh3D.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.i
-.PHONY : RL/Mesh3D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.i
 
-RL/Mesh3D.s: RL/Mesh3D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.s
 
-.PHONY : RL/Mesh3D.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.s
 
 # target to generate assembly for a file
-RL/Mesh3D.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Mesh3D.cpp.s
-.PHONY : RL/Mesh3D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.cpp.s
 
-RL/Model2D.o: RL/Model2D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.o
 
-.PHONY : RL/Model2D.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.o
 
 # target to build an object file
-RL/Model2D.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.o
-.PHONY : RL/Model2D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.o
 
-RL/Model2D.i: RL/Model2D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.i
 
-.PHONY : RL/Model2D.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.i
 
 # target to preprocess a source file
-RL/Model2D.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.i
-.PHONY : RL/Model2D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.i
 
-RL/Model2D.s: RL/Model2D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.s
 
-.PHONY : RL/Model2D.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.s
 
 # target to generate assembly for a file
-RL/Model2D.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Model2D.cpp.s
-.PHONY : RL/Model2D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.cpp.s
 
-RL/Model3D.o: RL/Model3D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.o
 
-.PHONY : RL/Model3D.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.o
 
 # target to build an object file
-RL/Model3D.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.o
-.PHONY : RL/Model3D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.o
 
-RL/Model3D.i: RL/Model3D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.i
 
-.PHONY : RL/Model3D.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.i
 
 # target to preprocess a source file
-RL/Model3D.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.i
-.PHONY : RL/Model3D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.i
 
-RL/Model3D.s: RL/Model3D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.s
 
-.PHONY : RL/Model3D.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.s
 
 # target to generate assembly for a file
-RL/Model3D.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Model3D.cpp.s
-.PHONY : RL/Model3D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.cpp.s
 
-RL/Renderer.o: RL/Renderer.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.o
 
-.PHONY : RL/Renderer.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.o
 
 # target to build an object file
-RL/Renderer.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.o
-.PHONY : RL/Renderer.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.o
 
-RL/Renderer.i: RL/Renderer.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.i
 
-.PHONY : RL/Renderer.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.i
 
 # target to preprocess a source file
-RL/Renderer.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.i
-.PHONY : RL/Renderer.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.i
 
-RL/Renderer.s: RL/Renderer.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.s
 
-.PHONY : RL/Renderer.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.s
 
 # target to generate assembly for a file
-RL/Renderer.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Renderer.cpp.s
-.PHONY : RL/Renderer.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.cpp.s
 
-RL/Shader.o: RL/Shader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.o
 
-.PHONY : RL/Shader.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.o
 
 # target to build an object file
-RL/Shader.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.o
-.PHONY : RL/Shader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.o
 
-RL/Shader.i: RL/Shader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.i
 
-.PHONY : RL/Shader.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.i
 
 # target to preprocess a source file
-RL/Shader.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.i
-.PHONY : RL/Shader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.i
 
-RL/Shader.s: RL/Shader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.s
 
-.PHONY : RL/Shader.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.s
 
 # target to generate assembly for a file
-RL/Shader.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Shader.cpp.s
-.PHONY : RL/Shader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.cpp.s
 
-RL/ShaderPipeline.o: RL/ShaderPipeline.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.o
 
-.PHONY : RL/ShaderPipeline.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.o
 
 # target to build an object file
-RL/ShaderPipeline.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.o
-.PHONY : RL/ShaderPipeline.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.o
 
-RL/ShaderPipeline.i: RL/ShaderPipeline.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.i
 
-.PHONY : RL/ShaderPipeline.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.i
 
 # target to preprocess a source file
-RL/ShaderPipeline.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.i
-.PHONY : RL/ShaderPipeline.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.i
 
-RL/ShaderPipeline.s: RL/ShaderPipeline.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.s
 
-.PHONY : RL/ShaderPipeline.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.s
 
 # target to generate assembly for a file
-RL/ShaderPipeline.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/ShaderPipeline.cpp.s
-.PHONY : RL/ShaderPipeline.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.cpp.s
 
-RL/Texture.o: RL/Texture.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.o
 
-.PHONY : RL/Texture.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.o
 
 # target to build an object file
-RL/Texture.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.o
-.PHONY : RL/Texture.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.o
 
-RL/Texture.i: RL/Texture.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.i
 
-.PHONY : RL/Texture.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.i
 
 # target to preprocess a source file
-RL/Texture.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.i
-.PHONY : RL/Texture.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.i
 
-RL/Texture.s: RL/Texture.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.s
 
-.PHONY : RL/Texture.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.s
 
 # target to generate assembly for a file
-RL/Texture.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/Texture.cpp.s
-.PHONY : RL/Texture.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.cpp.s
 
-RL/animations/Animation.o: RL/animations/Animation.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.o
 
-.PHONY : RL/animations/Animation.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.o
 
 # target to build an object file
-RL/animations/Animation.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.o
-.PHONY : RL/animations/Animation.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.o
 
-RL/animations/Animation.i: RL/animations/Animation.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.i
 
-.PHONY : RL/animations/Animation.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.i
 
 # target to preprocess a source file
-RL/animations/Animation.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.i
-.PHONY : RL/animations/Animation.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.i
 
-RL/animations/Animation.s: RL/animations/Animation.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.s
 
-.PHONY : RL/animations/Animation.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.s
 
 # target to generate assembly for a file
-RL/animations/Animation.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/animations/Animation.cpp.s
-.PHONY : RL/animations/Animation.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.cpp.s
 
-RL/lights/DirectionalLight.o: RL/lights/DirectionalLight.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.o
 
-.PHONY : RL/lights/DirectionalLight.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.o
 
 # target to build an object file
-RL/lights/DirectionalLight.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.o
-.PHONY : RL/lights/DirectionalLight.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.o
 
-RL/lights/DirectionalLight.i: RL/lights/DirectionalLight.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.i
 
-.PHONY : RL/lights/DirectionalLight.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.i
 
 # target to preprocess a source file
-RL/lights/DirectionalLight.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.i
-.PHONY : RL/lights/DirectionalLight.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.i
 
-RL/lights/DirectionalLight.s: RL/lights/DirectionalLight.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.s
 
-.PHONY : RL/lights/DirectionalLight.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.s
 
 # target to generate assembly for a file
-RL/lights/DirectionalLight.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/DirectionalLight.cpp.s
-.PHONY : RL/lights/DirectionalLight.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.cpp.s
 
-RL/lights/PointLight.o: RL/lights/PointLight.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.o
 
-.PHONY : RL/lights/PointLight.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.o
 
 # target to build an object file
-RL/lights/PointLight.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.o
-.PHONY : RL/lights/PointLight.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.o
 
-RL/lights/PointLight.i: RL/lights/PointLight.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.i
 
-.PHONY : RL/lights/PointLight.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.i
 
 # target to preprocess a source file
-RL/lights/PointLight.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.i
-.PHONY : RL/lights/PointLight.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.i
 
-RL/lights/PointLight.s: RL/lights/PointLight.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.s
 
-.PHONY : RL/lights/PointLight.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.s
 
 # target to generate assembly for a file
-RL/lights/PointLight.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/PointLight.cpp.s
-.PHONY : RL/lights/PointLight.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.cpp.s
 
-RL/lights/SpotLight.o: RL/lights/SpotLight.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.o
 
-.PHONY : RL/lights/SpotLight.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.o
 
 # target to build an object file
-RL/lights/SpotLight.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.o
-.PHONY : RL/lights/SpotLight.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.o
 
-RL/lights/SpotLight.i: RL/lights/SpotLight.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.i
 
-.PHONY : RL/lights/SpotLight.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.i
 
 # target to preprocess a source file
-RL/lights/SpotLight.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.i
-.PHONY : RL/lights/SpotLight.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.i
 
-RL/lights/SpotLight.s: RL/lights/SpotLight.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.s
 
-.PHONY : RL/lights/SpotLight.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.s
 
 # target to generate assembly for a file
-RL/lights/SpotLight.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/lights/SpotLight.cpp.s
-.PHONY : RL/lights/SpotLight.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.cpp.s
 
-RL/models2D/Model2DDX11.o: RL/models2D/Model2DDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.o
 
-.PHONY : RL/models2D/Model2DDX11.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.o
 
 # target to build an object file
-RL/models2D/Model2DDX11.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.o
-.PHONY : RL/models2D/Model2DDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.o
 
-RL/models2D/Model2DDX11.i: RL/models2D/Model2DDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.i
 
-.PHONY : RL/models2D/Model2DDX11.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.i
 
 # target to preprocess a source file
-RL/models2D/Model2DDX11.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.i
-.PHONY : RL/models2D/Model2DDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.i
 
-RL/models2D/Model2DDX11.s: RL/models2D/Model2DDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.s
 
-.PHONY : RL/models2D/Model2DDX11.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.s
 
 # target to generate assembly for a file
-RL/models2D/Model2DDX11.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DDX11.cpp.s
-.PHONY : RL/models2D/Model2DDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.cpp.s
 
-RL/models2D/Model2DGL.o: RL/models2D/Model2DGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.o
 
-.PHONY : RL/models2D/Model2DGL.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.o
 
 # target to build an object file
-RL/models2D/Model2DGL.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.o
-.PHONY : RL/models2D/Model2DGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.o
 
-RL/models2D/Model2DGL.i: RL/models2D/Model2DGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.i
 
-.PHONY : RL/models2D/Model2DGL.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.i
 
 # target to preprocess a source file
-RL/models2D/Model2DGL.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.i
-.PHONY : RL/models2D/Model2DGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.i
 
-RL/models2D/Model2DGL.s: RL/models2D/Model2DGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.s
 
-.PHONY : RL/models2D/Model2DGL.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.s
 
 # target to generate assembly for a file
-RL/models2D/Model2DGL.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models2D/Model2DGL.cpp.s
-.PHONY : RL/models2D/Model2DGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.cpp.s
 
-RL/models3D/Model3DDX11.o: RL/models3D/Model3DDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.o
 
-.PHONY : RL/models3D/Model3DDX11.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.o
 
 # target to build an object file
-RL/models3D/Model3DDX11.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.o
-.PHONY : RL/models3D/Model3DDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.o
 
-RL/models3D/Model3DDX11.i: RL/models3D/Model3DDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.i
 
-.PHONY : RL/models3D/Model3DDX11.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.i
 
 # target to preprocess a source file
-RL/models3D/Model3DDX11.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.i
-.PHONY : RL/models3D/Model3DDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.i
 
-RL/models3D/Model3DDX11.s: RL/models3D/Model3DDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.s
 
-.PHONY : RL/models3D/Model3DDX11.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.s
 
 # target to generate assembly for a file
-RL/models3D/Model3DDX11.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DDX11.cpp.s
-.PHONY : RL/models3D/Model3DDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.cpp.s
 
-RL/models3D/Model3DGL.o: RL/models3D/Model3DGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.o
 
-.PHONY : RL/models3D/Model3DGL.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.o
 
 # target to build an object file
-RL/models3D/Model3DGL.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.o
-.PHONY : RL/models3D/Model3DGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.o
 
-RL/models3D/Model3DGL.i: RL/models3D/Model3DGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.i
 
-.PHONY : RL/models3D/Model3DGL.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.i
 
 # target to preprocess a source file
-RL/models3D/Model3DGL.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.i
-.PHONY : RL/models3D/Model3DGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.i
 
-RL/models3D/Model3DGL.s: RL/models3D/Model3DGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.s
 
-.PHONY : RL/models3D/Model3DGL.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.s
 
 # target to generate assembly for a file
-RL/models3D/Model3DGL.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/models3D/Model3DGL.cpp.s
-.PHONY : RL/models3D/Model3DGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.cpp.s
 
-RL/shaders/ShaderDX11.o: RL/shaders/ShaderDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.o
 
-.PHONY : RL/shaders/ShaderDX11.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.o
 
 # target to build an object file
-RL/shaders/ShaderDX11.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.o
-.PHONY : RL/shaders/ShaderDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.o
 
-RL/shaders/ShaderDX11.i: RL/shaders/ShaderDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.i
 
-.PHONY : RL/shaders/ShaderDX11.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.i
 
 # target to preprocess a source file
-RL/shaders/ShaderDX11.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.i
-.PHONY : RL/shaders/ShaderDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.i
 
-RL/shaders/ShaderDX11.s: RL/shaders/ShaderDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.s
 
-.PHONY : RL/shaders/ShaderDX11.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.s
 
 # target to generate assembly for a file
-RL/shaders/ShaderDX11.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderDX11.cpp.s
-.PHONY : RL/shaders/ShaderDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.cpp.s
 
-RL/shaders/ShaderGL.o: RL/shaders/ShaderGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.o
 
-.PHONY : RL/shaders/ShaderGL.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.o
 
 # target to build an object file
-RL/shaders/ShaderGL.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.o
-.PHONY : RL/shaders/ShaderGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.o
 
-RL/shaders/ShaderGL.i: RL/shaders/ShaderGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.i
 
-.PHONY : RL/shaders/ShaderGL.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.i
 
 # target to preprocess a source file
-RL/shaders/ShaderGL.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.i
-.PHONY : RL/shaders/ShaderGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.i
 
-RL/shaders/ShaderGL.s: RL/shaders/ShaderGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.s
 
-.PHONY : RL/shaders/ShaderGL.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.s
 
 # target to generate assembly for a file
-RL/shaders/ShaderGL.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/shaders/ShaderGL.cpp.s
-.PHONY : RL/shaders/ShaderGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.cpp.s
 
-RL/textures/TextureDX11.o: RL/textures/TextureDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.o
 
-.PHONY : RL/textures/TextureDX11.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.o
 
 # target to build an object file
-RL/textures/TextureDX11.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.o
-.PHONY : RL/textures/TextureDX11.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.o
 
-RL/textures/TextureDX11.i: RL/textures/TextureDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.i
 
-.PHONY : RL/textures/TextureDX11.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.i
 
 # target to preprocess a source file
-RL/textures/TextureDX11.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.i
-.PHONY : RL/textures/TextureDX11.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.i
 
-RL/textures/TextureDX11.s: RL/textures/TextureDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.s
 
-.PHONY : RL/textures/TextureDX11.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.s
 
 # target to generate assembly for a file
-RL/textures/TextureDX11.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/textures/TextureDX11.cpp.s
-.PHONY : RL/textures/TextureDX11.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.cpp.s
 
-RL/textures/TextureGL.o: RL/textures/TextureGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.o
 
-.PHONY : RL/textures/TextureGL.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.o
 
 # target to build an object file
-RL/textures/TextureGL.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.o
-.PHONY : RL/textures/TextureGL.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.o
 
-RL/textures/TextureGL.i: RL/textures/TextureGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.i
 
-.PHONY : RL/textures/TextureGL.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.i
 
 # target to preprocess a source file
-RL/textures/TextureGL.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.i
-.PHONY : RL/textures/TextureGL.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.i
 
-RL/textures/TextureGL.s: RL/textures/TextureGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.s
 
-.PHONY : RL/textures/TextureGL.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.s
 
 # target to generate assembly for a file
-RL/textures/TextureGL.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RL/textures/TextureGL.cpp.s
-.PHONY : RL/textures/TextureGL.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.cpp.s
 
-RML/ResourceManager.o: RML/ResourceManager.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.o
 
-.PHONY : RML/ResourceManager.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.o
 
 # target to build an object file
-RML/ResourceManager.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.o
-.PHONY : RML/ResourceManager.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.o
 
-RML/ResourceManager.i: RML/ResourceManager.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.i
 
-.PHONY : RML/ResourceManager.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.i
 
 # target to preprocess a source file
-RML/ResourceManager.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.i
-.PHONY : RML/ResourceManager.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.i
 
-RML/ResourceManager.s: RML/ResourceManager.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.s
 
-.PHONY : RML/ResourceManager.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.s
 
 # target to generate assembly for a file
-RML/ResourceManager.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/ResourceManager.cpp.s
-.PHONY : RML/ResourceManager.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.cpp.s
 
-RML/loaders/ModelLoader.o: RML/loaders/ModelLoader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.o
 
-.PHONY : RML/loaders/ModelLoader.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.o
 
 # target to build an object file
-RML/loaders/ModelLoader.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.o
-.PHONY : RML/loaders/ModelLoader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.o
 
-RML/loaders/ModelLoader.i: RML/loaders/ModelLoader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.i
 
-.PHONY : RML/loaders/ModelLoader.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.i
 
 # target to preprocess a source file
-RML/loaders/ModelLoader.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.i
-.PHONY : RML/loaders/ModelLoader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.i
 
-RML/loaders/ModelLoader.s: RML/loaders/ModelLoader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.s
 
-.PHONY : RML/loaders/ModelLoader.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.s
 
 # target to generate assembly for a file
-RML/loaders/ModelLoader.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/ModelLoader.cpp.s
-.PHONY : RML/loaders/ModelLoader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.cpp.s
 
-RML/loaders/OBJLoader.o: RML/loaders/OBJLoader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.o
 
-.PHONY : RML/loaders/OBJLoader.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.o
 
 # target to build an object file
-RML/loaders/OBJLoader.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.o
-.PHONY : RML/loaders/OBJLoader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.o
 
-RML/loaders/OBJLoader.i: RML/loaders/OBJLoader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.i
 
-.PHONY : RML/loaders/OBJLoader.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.i
 
 # target to preprocess a source file
-RML/loaders/OBJLoader.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.i
-.PHONY : RML/loaders/OBJLoader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.i
 
-RML/loaders/OBJLoader.s: RML/loaders/OBJLoader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.s
 
-.PHONY : RML/loaders/OBJLoader.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.s
 
 # target to generate assembly for a file
-RML/loaders/OBJLoader.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/OBJLoader.cpp.s
-.PHONY : RML/loaders/OBJLoader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.cpp.s
 
-RML/loaders/TextureLoader.o: RML/loaders/TextureLoader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.o
 
-.PHONY : RML/loaders/TextureLoader.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.o
 
 # target to build an object file
-RML/loaders/TextureLoader.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.o
-.PHONY : RML/loaders/TextureLoader.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.o
 
-RML/loaders/TextureLoader.i: RML/loaders/TextureLoader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.i
 
-.PHONY : RML/loaders/TextureLoader.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.i
 
 # target to preprocess a source file
-RML/loaders/TextureLoader.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.i
-.PHONY : RML/loaders/TextureLoader.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.i
 
-RML/loaders/TextureLoader.s: RML/loaders/TextureLoader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.s
 
-.PHONY : RML/loaders/TextureLoader.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.s
 
 # target to generate assembly for a file
-RML/loaders/TextureLoader.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/RML/loaders/TextureLoader.cpp.s
-.PHONY : RML/loaders/TextureLoader.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.cpp.s
 
-TL/Map.o: TL/Map.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.o
 
-.PHONY : TL/Map.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.o
 
 # target to build an object file
-TL/Map.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/TL/Map.cpp.o
-.PHONY : TL/Map.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.o
 
-TL/Map.i: TL/Map.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.i
 
-.PHONY : TL/Map.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.i
 
 # target to preprocess a source file
-TL/Map.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/TL/Map.cpp.i
-.PHONY : TL/Map.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.i
 
-TL/Map.s: TL/Map.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.s
 
-.PHONY : TL/Map.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.s
 
 # target to generate assembly for a file
-TL/Map.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/TL/Map.cpp.s
-.PHONY : TL/Map.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.cpp.s
 
-TL/Terrain.o: TL/Terrain.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.o
 
-.PHONY : TL/Terrain.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.o
 
 # target to build an object file
-TL/Terrain.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.o
-.PHONY : TL/Terrain.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.o
 
-TL/Terrain.i: TL/Terrain.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.i
 
-.PHONY : TL/Terrain.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.i
 
 # target to preprocess a source file
-TL/Terrain.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.i
-.PHONY : TL/Terrain.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.i
 
-TL/Terrain.s: TL/Terrain.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.s
 
-.PHONY : TL/Terrain.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.s
 
 # target to generate assembly for a file
-TL/Terrain.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/TL/Terrain.cpp.s
-.PHONY : TL/Terrain.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.cpp.s
 
-core/ECS.o: core/ECS.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.o
 
-.PHONY : core/ECS.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.o
 
 # target to build an object file
-core/ECS.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/core/ECS.cpp.o
-.PHONY : core/ECS.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.o
 
-core/ECS.i: core/ECS.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.i
 
-.PHONY : core/ECS.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.i
 
 # target to preprocess a source file
-core/ECS.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/core/ECS.cpp.i
-.PHONY : core/ECS.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.i
 
-core/ECS.s: core/ECS.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.s
 
-.PHONY : core/ECS.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.s
 
 # target to generate assembly for a file
-core/ECS.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/core/ECS.cpp.s
-.PHONY : core/ECS.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.cpp.s
 
-lumax.o: lumax.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.o
 
-.PHONY : lumax.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.o
 
 # target to build an object file
-lumax.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/lumax.cpp.o
-.PHONY : lumax.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.o
 
-lumax.i: lumax.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.i
 
-.PHONY : lumax.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.i
 
 # target to preprocess a source file
-lumax.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/lumax.cpp.i
-.PHONY : lumax.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.i
 
-lumax.s: lumax.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.s
 
-.PHONY : lumax.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.s
 
 # target to generate assembly for a file
-lumax.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/lumax.cpp.s
-.PHONY : lumax.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.cpp.s
 
-main.o: main.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.o
 
-.PHONY : main.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/main.cpp.o
-.PHONY : main.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.o
 
-main.i: main.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.i
 
-.PHONY : main.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/main.cpp.i
-.PHONY : main.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.i
 
-main.s: main.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.s
 
-.PHONY : main.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/main.cpp.s
-.PHONY : main.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.cpp.s
 
-math/Matrix3f.o: math/Matrix3f.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.o
 
-.PHONY : math/Matrix3f.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.o
 
 # target to build an object file
-math/Matrix3f.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.o
-.PHONY : math/Matrix3f.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.o
 
-math/Matrix3f.i: math/Matrix3f.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.i
 
-.PHONY : math/Matrix3f.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.i
 
 # target to preprocess a source file
-math/Matrix3f.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.i
-.PHONY : math/Matrix3f.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.i
 
-math/Matrix3f.s: math/Matrix3f.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.s
 
-.PHONY : math/Matrix3f.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.s
 
 # target to generate assembly for a file
-math/Matrix3f.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Matrix3f.cpp.s
-.PHONY : math/Matrix3f.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.cpp.s
 
-math/Matrix4f.o: math/Matrix4f.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.o
 
-.PHONY : math/Matrix4f.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.o
 
 # target to build an object file
-math/Matrix4f.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.o
-.PHONY : math/Matrix4f.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.o
 
-math/Matrix4f.i: math/Matrix4f.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.i
 
-.PHONY : math/Matrix4f.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.i
 
 # target to preprocess a source file
-math/Matrix4f.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.i
-.PHONY : math/Matrix4f.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.i
 
-math/Matrix4f.s: math/Matrix4f.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.s
 
-.PHONY : math/Matrix4f.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.s
 
 # target to generate assembly for a file
-math/Matrix4f.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Matrix4f.cpp.s
-.PHONY : math/Matrix4f.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.cpp.s
 
-math/Transform2D.o: math/Transform2D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.o
 
-.PHONY : math/Transform2D.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.o
 
 # target to build an object file
-math/Transform2D.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.o
-.PHONY : math/Transform2D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.o
 
-math/Transform2D.i: math/Transform2D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.i
 
-.PHONY : math/Transform2D.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.i
 
 # target to preprocess a source file
-math/Transform2D.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.i
-.PHONY : math/Transform2D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.i
 
-math/Transform2D.s: math/Transform2D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.s
 
-.PHONY : math/Transform2D.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.s
 
 # target to generate assembly for a file
-math/Transform2D.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Transform2D.cpp.s
-.PHONY : math/Transform2D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.cpp.s
 
-math/Transform3D.o: math/Transform3D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.o
 
-.PHONY : math/Transform3D.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.o
 
 # target to build an object file
-math/Transform3D.cpp.o:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.o
-.PHONY : math/Transform3D.cpp.o
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.o
 
-math/Transform3D.i: math/Transform3D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.i
 
-.PHONY : math/Transform3D.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.i
 
 # target to preprocess a source file
-math/Transform3D.cpp.i:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.i
-.PHONY : math/Transform3D.cpp.i
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.i
 
-math/Transform3D.s: math/Transform3D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.s
 
-.PHONY : math/Transform3D.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.s
 
 # target to generate assembly for a file
-math/Transform3D.cpp.s:
-	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/math/Transform3D.cpp.s
-.PHONY : math/Transform3D.cpp.s
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.cpp.s
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.o: Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.o
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.o
+
+# target to build an object file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.o:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.o
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.o
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.i: Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.i
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.i
+
+# target to preprocess a source file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.i:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.i
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.i
+
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.s: Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.s
+
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.s
+
+# target to generate assembly for a file
+Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.s:
+	$(MAKE) -f CMakeFiles/LumaxEngine.dir/build.make CMakeFiles/LumaxEngine.dir/Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.s
+.PHONY : Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.cpp.s
 
 # Help Target
 help:
@@ -1509,159 +1779,189 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LumaxEngine"
-	@echo "... GL/Level.o"
-	@echo "... GL/Level.i"
-	@echo "... GL/Level.s"
-	@echo "... GL/Player.o"
-	@echo "... GL/Player.i"
-	@echo "... GL/Player.s"
-	@echo "... PL/DynamicCollision.o"
-	@echo "... PL/DynamicCollision.i"
-	@echo "... PL/DynamicCollision.s"
-	@echo "... PL/PhysicsPrimitives.o"
-	@echo "... PL/PhysicsPrimitives.i"
-	@echo "... PL/PhysicsPrimitives.s"
-	@echo "... PL/PrimitiveCollision.o"
-	@echo "... PL/PrimitiveCollision.i"
-	@echo "... PL/PrimitiveCollision.s"
-	@echo "... RAL/DirectInput.o"
-	@echo "... RAL/DirectInput.i"
-	@echo "... RAL/DirectInput.s"
-	@echo "... RAL/Log.o"
-	@echo "... RAL/Log.i"
-	@echo "... RAL/Log.s"
-	@echo "... RAL/RenderingContext.o"
-	@echo "... RAL/RenderingContext.i"
-	@echo "... RAL/RenderingContext.s"
-	@echo "... RAL/RenderingContextDX11.o"
-	@echo "... RAL/RenderingContextDX11.i"
-	@echo "... RAL/RenderingContextDX11.s"
-	@echo "... RAL/RenderingContextGL.o"
-	@echo "... RAL/RenderingContextGL.i"
-	@echo "... RAL/RenderingContextGL.s"
-	@echo "... RAL/Window.o"
-	@echo "... RAL/Window.i"
-	@echo "... RAL/Window.s"
-	@echo "... RAL/cpuid.o"
-	@echo "... RAL/cpuid.i"
-	@echo "... RAL/cpuid.s"
-	@echo "... RAL/input.o"
-	@echo "... RAL/input.i"
-	@echo "... RAL/input.s"
-	@echo "... RAL/windows/WindowGLFW.o"
-	@echo "... RAL/windows/WindowGLFW.i"
-	@echo "... RAL/windows/WindowGLFW.s"
-	@echo "... RAL/windows/WindowWinAPI.o"
-	@echo "... RAL/windows/WindowWinAPI.i"
-	@echo "... RAL/windows/WindowWinAPI.s"
-	@echo "... RL/Camera.o"
-	@echo "... RL/Camera.i"
-	@echo "... RL/Camera.s"
-	@echo "... RL/GBuffer.o"
-	@echo "... RL/GBuffer.i"
-	@echo "... RL/GBuffer.s"
-	@echo "... RL/Material.o"
-	@echo "... RL/Material.i"
-	@echo "... RL/Material.s"
-	@echo "... RL/Mesh2D.o"
-	@echo "... RL/Mesh2D.i"
-	@echo "... RL/Mesh2D.s"
-	@echo "... RL/Mesh3D.o"
-	@echo "... RL/Mesh3D.i"
-	@echo "... RL/Mesh3D.s"
-	@echo "... RL/Model2D.o"
-	@echo "... RL/Model2D.i"
-	@echo "... RL/Model2D.s"
-	@echo "... RL/Model3D.o"
-	@echo "... RL/Model3D.i"
-	@echo "... RL/Model3D.s"
-	@echo "... RL/Renderer.o"
-	@echo "... RL/Renderer.i"
-	@echo "... RL/Renderer.s"
-	@echo "... RL/Shader.o"
-	@echo "... RL/Shader.i"
-	@echo "... RL/Shader.s"
-	@echo "... RL/ShaderPipeline.o"
-	@echo "... RL/ShaderPipeline.i"
-	@echo "... RL/ShaderPipeline.s"
-	@echo "... RL/Texture.o"
-	@echo "... RL/Texture.i"
-	@echo "... RL/Texture.s"
-	@echo "... RL/animations/Animation.o"
-	@echo "... RL/animations/Animation.i"
-	@echo "... RL/animations/Animation.s"
-	@echo "... RL/lights/DirectionalLight.o"
-	@echo "... RL/lights/DirectionalLight.i"
-	@echo "... RL/lights/DirectionalLight.s"
-	@echo "... RL/lights/PointLight.o"
-	@echo "... RL/lights/PointLight.i"
-	@echo "... RL/lights/PointLight.s"
-	@echo "... RL/lights/SpotLight.o"
-	@echo "... RL/lights/SpotLight.i"
-	@echo "... RL/lights/SpotLight.s"
-	@echo "... RL/models2D/Model2DDX11.o"
-	@echo "... RL/models2D/Model2DDX11.i"
-	@echo "... RL/models2D/Model2DDX11.s"
-	@echo "... RL/models2D/Model2DGL.o"
-	@echo "... RL/models2D/Model2DGL.i"
-	@echo "... RL/models2D/Model2DGL.s"
-	@echo "... RL/models3D/Model3DDX11.o"
-	@echo "... RL/models3D/Model3DDX11.i"
-	@echo "... RL/models3D/Model3DDX11.s"
-	@echo "... RL/models3D/Model3DGL.o"
-	@echo "... RL/models3D/Model3DGL.i"
-	@echo "... RL/models3D/Model3DGL.s"
-	@echo "... RL/shaders/ShaderDX11.o"
-	@echo "... RL/shaders/ShaderDX11.i"
-	@echo "... RL/shaders/ShaderDX11.s"
-	@echo "... RL/shaders/ShaderGL.o"
-	@echo "... RL/shaders/ShaderGL.i"
-	@echo "... RL/shaders/ShaderGL.s"
-	@echo "... RL/textures/TextureDX11.o"
-	@echo "... RL/textures/TextureDX11.i"
-	@echo "... RL/textures/TextureDX11.s"
-	@echo "... RL/textures/TextureGL.o"
-	@echo "... RL/textures/TextureGL.i"
-	@echo "... RL/textures/TextureGL.s"
-	@echo "... RML/ResourceManager.o"
-	@echo "... RML/ResourceManager.i"
-	@echo "... RML/ResourceManager.s"
-	@echo "... RML/loaders/ModelLoader.o"
-	@echo "... RML/loaders/ModelLoader.i"
-	@echo "... RML/loaders/ModelLoader.s"
-	@echo "... RML/loaders/OBJLoader.o"
-	@echo "... RML/loaders/OBJLoader.i"
-	@echo "... RML/loaders/OBJLoader.s"
-	@echo "... RML/loaders/TextureLoader.o"
-	@echo "... RML/loaders/TextureLoader.i"
-	@echo "... RML/loaders/TextureLoader.s"
-	@echo "... TL/Map.o"
-	@echo "... TL/Map.i"
-	@echo "... TL/Map.s"
-	@echo "... TL/Terrain.o"
-	@echo "... TL/Terrain.i"
-	@echo "... TL/Terrain.s"
-	@echo "... core/ECS.o"
-	@echo "... core/ECS.i"
-	@echo "... core/ECS.s"
-	@echo "... lumax.o"
-	@echo "... lumax.i"
-	@echo "... lumax.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... math/Matrix3f.o"
-	@echo "... math/Matrix3f.i"
-	@echo "... math/Matrix3f.s"
-	@echo "... math/Matrix4f.o"
-	@echo "... math/Matrix4f.i"
-	@echo "... math/Matrix4f.s"
-	@echo "... math/Transform2D.o"
-	@echo "... math/Transform2D.i"
-	@echo "... math/Transform2D.s"
-	@echo "... math/Transform3D.o"
-	@echo "... math/Transform3D.i"
-	@echo "... math/Transform3D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Game1.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Level.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/GL/Player.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/DynamicCollision.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsPrimitives.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PhysicsWorld.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/PL/PrimitiveCollision.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/DirectInput.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Log.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContext.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextDX11.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/RenderingContextGL.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/Window.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/cpuid.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/input.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowGLFW.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RAL/windows/WindowWinAPI.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Camera.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/GBuffer.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Material.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh2D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Mesh3D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model2D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Model3D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/RenderIntoTexture.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Renderer.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Shader.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/ShaderPipeline.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/Texture.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/animations/Animation.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/DirectionalLight.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/PointLight.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/lights/SpotLight.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DDX11.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models2D/Model2DGL.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DDX11.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/models3D/Model3DGL.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderDX11.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/shaders/ShaderGL.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureDX11.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RL/textures/TextureGL.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/ResourceManager.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/ModelLoader.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/OBJLoader.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/RML/loaders/TextureLoader.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/FBmTerrain.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/HeightMapTerrain.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Map.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Simplex.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/Terrain.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainClipmap.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/TL/TerrainQueue.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/ECS.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/core/RenderComponentStorage.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/lumax.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/main.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix3f.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Matrix4f.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform2D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/math/Transform3D.s"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.o"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.i"
+	@echo "... Users/Marc/Emacs/LumaxEngine/LumaxEngine/utils/Timing.s"
 .PHONY : help
 
 

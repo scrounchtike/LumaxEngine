@@ -3,6 +3,7 @@
 #include "../Model3D.hpp"
 
 #include <cassert>
+#include <iostream>
 
 #ifdef _USE_OPENGL
 

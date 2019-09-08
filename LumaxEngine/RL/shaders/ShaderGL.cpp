@@ -188,19 +188,18 @@ bool ShaderGL::compileFragmentShader() {
 }
 
 void ShaderGL::queryUniforms(){
+  GLint size; // size of the variable
+  GLenum type; // type of the variable (float, vec3 or mat4, etc)
+	
+  const GLsizei bufSize = 64; // maximum name length
+  GLchar uniformName[bufSize]; // variable name in GLSL
+  GLsizei length; // name length
+ 
 	GLint numUniforms;
 	glGetProgramiv(program, GL_ACTIVE_UNIFORMS, &numUniforms);
-	GLuint* indices = new GLuint[numUniforms];
-	for(int i = 0; i < numUniforms; ++i)
-		indices[i] = i;
-	GLint* blockIndices = new GLint[numUniforms];
-	glGetActiveUniformsiv(program, numUniforms, indices, GL_UNIFORM_BLOCK_INDEX, blockIndices);
-	for(int i = 0; i < numUniforms; ++i){
-		if(blockIndices[i] < 0)
-			continue;
-		GLchar uniformName[64];
-		GLsizei length;
-		glGetActiveUniformName(program, i, 64, &length, uniformName);
+	for(GLuint i = 0; i < numUniforms; ++i)
+	{
+		glGetActiveUniform(program, i, bufSize, &length, &size, &type, uniformName);
 		addUniform(std::string(uniformName));
 	}
 }

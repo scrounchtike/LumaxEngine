@@ -24,22 +24,38 @@ public:
 #endif
 	Texture(const Texture& lhs);
 	~Texture();
-
-	unsigned getTextureID(){
-#ifdef _USE_OPENGL
+	
+	unsigned getTextureID()
+	{
 		return texture->getTexture();
-#elif defined _USE_DIRECTX11
-		return -1; // TODO: Make DX11 return unique ids
-#endif
 	}
 
-	void bind();
+	void bind() const;
 private:
 	// Graphics API dependent Texture implementation
 #ifdef _USE_OPENGL
 	TextureGL* texture;
 #elif defined _USE_DIRECTX11
 	TextureDX11* texture;
+#endif
+};
+
+class CubemapTexture {
+public:
+#ifdef _USE_OPENGL
+	CubemapTexture(GLuint texID);
+#endif
+	~CubemapTexture();
+
+	unsigned getTextureID()
+	{
+		return cubemap->getTexture();
+	}
+
+	void bind() const;
+private:
+#ifdef _USE_OPENGL
+	CubemapTextureGL* cubemap;
 #endif
 };
 

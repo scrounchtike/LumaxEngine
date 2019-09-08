@@ -9,10 +9,10 @@
 #include "../math/types.hpp"
 #include "../utils/SMPL.hpp"
 
-#include "../RL/ShaderPipeline.hpp"
-#include "../RL/Material.hpp"
-#include "../RL/Model2D.hpp"
-#include "../RL/Model3D.hpp"
+class ShaderPipeline;
+class Model3D;
+class Model2D;
+class Material;
 
 class GeometryGroup3D {
 public:
@@ -20,9 +20,8 @@ public:
 	Model3D* mesh;
 	bool isInstanced = false;
 	
-	unsigned int getGeometryID(){
-		return mesh->getGeometryID();
-	}
+	unsigned int getGeometryID();
+	
 	std::vector<uint32> entities;
 };
 
@@ -41,9 +40,7 @@ struct GeometryGroup2D {
 	Model2D* mesh;
 	bool isInstanced = false;
 	
-	unsigned int getGeometryID(){
-		return mesh->getGeometryID();
-	}
+	unsigned int getGeometryID();
 	
 	std::vector<uint32> entities;
 };
@@ -133,16 +130,6 @@ struct PipelineGroup2D {
 	// Signature
 	using Bitset = typename ECS::Bitset;
 	Bitset signature;
-};
-
-template <typename ECS, typename Signature>
-struct init_pipeline_bitset {
-	static void execute(PipelineGroup2D<ECS>* group) noexcept {
-		init_bitset<ECS, typename ECS::Bitset, typename Signature::type>::execute(group->signature);
-	}
-	static void execute(PipelineGroup3D<ECS>* group) noexcept {
-		init_bitset<ECS, typename ECS::Bitset, typename Signature::type>::execute(group->signature);
-	}
 };
 
 #endif

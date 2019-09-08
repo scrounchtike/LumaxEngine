@@ -2,6 +2,11 @@
 #ifndef MATH_HPP
 #define MATH_HPP
 
+// Do we really have to include all the React Physics 3D library
+// We only need math types !
+// TODO : Investigate alternative
+#include "reactphysics3d.h"
+
 #include "math/Vector2.hpp"
 #include "math/Vector3.hpp"
 #include "math/Matrix4f.hpp"
@@ -10,6 +15,17 @@
 #include "math/Matrix3f.hpp"
 #include "math/Transform2D.hpp"
 #include "math/Transform3D.hpp"
+
+// Rad-deg help functions
+static float toRad(float deg)
+{
+	return deg * PI / 180.0f;
+}
+
+static float toDeg(float rad)
+{
+	return rad * 180.0f / PI;
+}
 
 static Vec3 rotate(Vec3 vector, Vec3 axis, float theta) {
 	float sinTheta = sin(theta / 2.0);
@@ -50,6 +66,12 @@ static Quaternion slerp(Quaternion q1, Quaternion q2, float alpha){
 	qm.y = (q1.y * ratio1 + q2.y * ratio2);
 	qm.z = (q1.z * ratio1 + q2.z * ratio2);
 	return qm;
+}
+
+static float interpolate(float a, float b, float blend){
+	double theta = blend * M_PI;
+	float f = (float)(1.0f - std::cos(theta)) * 0.5f; 
+	return a * (1.0f - f) + b * f;
 }
 
 #endif

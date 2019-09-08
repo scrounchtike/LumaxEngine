@@ -1,7 +1,7 @@
 
 #include "Transform3D.hpp"
 
-Transform3D::Transform3D(Vec3 position, Vec3 rotation, Vec3 scale, Vec3 pivot, Vec3 pivot_rotation) {
+StaticTransform3D::StaticTransform3D(Vec3 position, Vec3 rotation, Vec3 scale, Vec3 pivot, Vec3 pivot_rotation) {
 	matrix = new Mat4();
 	*matrix = Mat4().initTranslation(position) * Mat4().initRotationDegrees(rotation) * Mat4().initScale(scale);
 	//*matrix = Matrix4f::mul(Mat4().initTranslation(position), Mat4().initRotation(rotation));
@@ -10,11 +10,12 @@ Transform3D::Transform3D(Vec3 position, Vec3 rotation, Vec3 scale, Vec3 pivot, V
 	}
 }
 
-Transform3D::~Transform3D() {
+StaticTransform3D::~StaticTransform3D() {
 	delete matrix;
 }
 
 DynamicTransform3D::DynamicTransform3D(Vec3 position, Vec3 rotation, Vec3 scale) : translation(position), rotation(rotation), scale(scale) {
+	matrix = new Mat4();
 	*matrix = Mat4().initTranslation(position) * Mat4().initRotationDegrees(rotation) * Mat4().initScale(scale);
 }
 

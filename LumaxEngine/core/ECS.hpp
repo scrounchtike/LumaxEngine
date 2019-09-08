@@ -15,28 +15,9 @@
 
 #include "RenderComponentStorage.hpp"
 
-#include "../RL/ShaderPipeline.hpp"
-#include "../RL/Material.hpp"
-#include "../RL/Model2D.hpp"
-#include "../RL/Model3D.hpp"
-#include "../RL/Renderer.hpp"
+#include "ECS_Declarations.hpp"
 
-#include "BSPTree.hpp"
-
-// Groups
-struct DeferredRender {};
-struct ForwardRender {};
-
-template <typename... Ts> using ComponentList = typename smpl::type_list<Ts...>;
-template <typename... Ts> using GroupList = typename smpl::type_list<Ts...>;
-template <typename... Ts> using FlagList = typename smpl::type_list<Ts...>;
-template <typename... Ts> using SystemList = typename smpl::type_list<Ts...>;
-
-// Built-in flags
-struct FlagCollided {};
-struct FlagNotCollided {};
-
-using BuiltInFlags = smpl::type_list<FlagCollided, FlagNotCollided>;
+//#include "BSPTree.hpp"
 
 // Forward declarations
 template <typename Manager>
@@ -45,6 +26,16 @@ class Entity;
 //
 // ---------------------------------------- 
 //
+
+template <typename ECS, typename Signature>
+struct init_pipeline_bitset {
+	static void execute(PipelineGroup2D<ECS>* group) noexcept {
+		init_bitset<ECS, typename ECS::Bitset, typename Signature::type>::execute(group->signature);
+	}
+	static void execute(PipelineGroup3D<ECS>* group) noexcept {
+		init_bitset<ECS, typename ECS::Bitset, typename Signature::type>::execute(group->signature);
+	}
+};
 
 // For each type list meta-programming help method
 template <typename T>
@@ -62,6 +53,17 @@ template <>
 struct for_each<smpl::type_list_null>{
 	template <typename Action>
 	static constexpr void execute(Action&& action) { /* End of recursion */ }
+};
+
+// Check if update function exists at compile time
+template<typename T>
+struct has_update
+{
+private:
+	template<typename V> static void impl(decltype(typename V::update(), int()));
+    template<typename V> static bool impl(char);
+public:
+    static const bool value = std::is_same<void, decltype(impl<T>(0))>::value;
 };
 
 // System updating at run-time
@@ -148,12 +150,28 @@ struct SystemCallerImpl<LevelType, ECS, Caller, T, smpl::type_list_null, -1>{
 template <typename LevelType, typename ECS, typename Caller, typename T, typename U>
 struct SystemCaller <LevelType, ECS, Caller, smpl::type_list_impl<T, U>>{
 	template <typename Function, typename... Ts>
-		static void call(LevelType* level, uint32 entity, Function&& function){
+		static void call(LevelType* level, uint32 entity, Function&& function)
+	{
 		SystemCallerImpl<LevelType, ECS, Caller, T, U, ECS::template getComponentID<T>()>::template call<Function, Ts...>(level, entity, function);
 	}
 	template <typename Function, typename... Ts>
-		static void call(LevelType* level, const std::vector<uint32>& entities, Function&& function){
+		static void call(LevelType* level, const std::vector<uint32>& entities, Function&& function)
+	{
 		SystemCallerImpl<LevelType, ECS, Caller, T, U, ECS::template getComponentID<T>()>::template call<Function, Ts...>(level, entities, function);
+	}
+};
+template <typename LevelType, typename ECS, typename Caller>
+struct SystemCaller <LevelType, ECS, Caller, smpl::type_list_null>
+{
+	template <typename Function>
+	static void call(LevelType* level, uint32 entity, Function&& function)
+	{
+			ExpandCall<Caller, LevelType>::template call(level, entity, function);
+	}
+	template <typename Function>
+	static void call(LevelType* level, const std::vector<uint32>& entities, Function&& function)
+	{
+			ExpandCall<Caller, LevelType>::template call(level, entities, function);
 	}
 };
 
@@ -216,88 +234,25 @@ public:
 // ----- ECS Manager
 //
 
-template <typename ECS, typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList>
+template <typename ECS, typename TSystemList, typename TRenderingSystem2DList, typename TRenderingSystem3DList, typename TRenderPass2DList, typename TRenderPass3DList>
 class ECSManager {
 public:
 	
 	using SystemList = typename TSystemList::type;
 	using RenderingSystem2DList = typename TRenderingSystem2DList::type;
 	using RenderingSystem3DList = typename TRenderingSystem3DList::type;
-	using ThisType = ECSManager<ECS, TSystemList, TRenderingSystem2DList, TRenderingSystem3DList>;
+	using RenderPass2DList = typename TRenderPass2DList::type;
+	using RenderPass3DList = typename TRenderPass3DList::type;
+	
+	using ThisType = ECSManager<ECS, TSystemList, TRenderingSystem2DList, TRenderingSystem3DList, TRenderPass2DList, TRenderPass3DList>;
 	
 	// System storage declaration
 	using SystemTupleStorage = typename smpl::create_tuple_from_list<SystemList>::type;
 	using RenderSystem2DTupleStorage = typename smpl::create_tuple_from_list<RenderingSystem2DList>::type;
 	using RenderSystem3DTupleStorage = typename smpl::create_tuple_from_list<RenderingSystem3DList>::type;
 
-	/*
-	template <typename Manager, typename Component>
-	struct AddComponent{
-		static constexpr void execute(Manager& manager, uint32 entity, Component* component){
-			manager.template addComponent<Component>(entity, component);
-		}
-	};
-	template <typename Manager, typename T, typename... Ts>
-	struct ComponentAdder{
-		static constexpr void execute(Manager& manager, uint32 entity, T component, Ts... rest){
-			AddComponent<Manager, typename std::remove_pointer<T>::type>::execute(manager, entity, component);
-			ComponentAdder<Manager, Ts...>::execute(manager, entity, rest...);
-		}
-	};
-	template <typename Manager, typename T>
-	struct ComponentAdder<Manager, T>{
-		static constexpr void execute(Manager& manager, uint32 entity, T component){
-			AddComponent<Manager, typename std::remove_pointer<T>::type>::execute(manager, entity, component);
-		}
-	};
-	// Specialization of components
-	template <typename Manager>
-	struct AddComponent<Manager, Transform3D>{
-		static constexpr void execute(Manager& manager, uint32 entity, Transform3D* transform){
-			manager.template staticEntities.push_back(entity);
-			manager.template addComponent<Transform3D>(entity, transform);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, DynamicTransform3D>{
-		static constexpr void execute(Manager& manager, uint32 entity, DynamicTransform3D* transform){
-			manager.template dynamicEntities.push_back(entity);
-			manager.template addComponent<DynamicTransform3D>(entity, transform);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, PivotTransform3D>{
-		static constexpr void execute(Manager& manager, uint32 entity, PivotTransform3D* transform){
-			manager.template dynamicEntities.push_back(entity);
-			manager.template addComponent<PivotTransform3D>(entity, transform);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, PhysicsPrimitive>{
-		static constexpr void execute(Manager& manager, uint32 entity, PhysicsPrimitive* physics){
-			manager.template physicsEntities.push_back(entity);
-			manager.template addComponent<PhysicsPrimitive>(entity, physics);
-		}
-	};
-	template <typename Manager>
-	struct AddComponent<Manager, MaterialPipeline>{
-		static constexpr void execute(Manager& manager, uint32 entity, MaterialPipeline* material){
-			// TODO: Allow sorting based on material pipeline
-			manager.template addComponent<MaterialPipeline>(entity, material);
-		}
-	};
-	// For polygon soup, adding of individual polygons:
-	template <typename Manager>
-	struct AddComponent<Manager, GeometryDataComponent>{
-		static constexpr void execute(Manager& manager, uint32 entity, GeometryDataComponent* component){
-			// Add Geometry to BSP tree
-			std::cout << "adding polygons to scene" << std::endl;
-			for(int i = 0; i < component->polygons.size(); ++i){
-				manager.template scenePolygons.push_back(component->polygons[i]);
-			}
-		}
-	};
-	*/
+	using System2DBitset = std::bitset<smpl::getSize<RenderingSystem2DList>()>;
+  using System3DBitset = std::bitset<smpl::getSize<RenderingSystem3DList>()>;
 	
 	template <typename Manager, typename G, typename... groups>
 	struct GroupAdder{
@@ -335,7 +290,8 @@ public:
 	
 	// System management methods
 	ECSManager(){ }
-	
+
+	/*
 	void renderBSP(BSPNode* node, Vec3 cameraPos){
 		int index = BSPTree::testPointWithPlane(cameraPos, node->plane);
 		
@@ -358,6 +314,7 @@ public:
 			renderBSP(node->back, cameraPos);
 		
 	}
+	*/
 	
 	template <typename T, typename... Ts>
 	struct create_componentlist_tuple;
@@ -389,6 +346,84 @@ public:
 	// Component hashmap
 	using ComponentMap = typename ECS::ComponentMap;
 	ComponentMap map;
+
+	// Valid flag
+	bool isValid = true;
+};
+
+
+//
+// ---- Render pass
+//
+// The targets are the systems for which we DO or DONT want to render
+// depending on the bool render_systems (0 = omit only, 1 = render only)
+//
+// Render passes can also be Pre-render or Post-render passes
+// depending on the value of level
+//
+
+// Forward declarations
+//struct RenderingSystems2D;
+//struct RenderingSystems3D;
+
+namespace RenderPass_
+{
+struct PRE_RENDER_PASS;
+struct POST_RENDER_PASS;
+struct RENDER_ONLY;
+struct OMIT_ONLY;
+
+template <typename Render3DList, typename Signature, typename F>
+struct ListCreator;
+template <typename Render3DList, typename Signature>
+struct ListCreator<Render3DList, Signature, RENDER_ONLY>
+{
+	template <typename T>
+	struct Contains
+	{
+		static constexpr bool value = !(smpl::contains<typename Signature::type, T>());
+	};
+	using System3DListToRender = Signature;
+	using System3DListToOmit = typename smpl::type_list_filter<Render3DList, Contains>::result;
+};
+template <typename Render3DList, typename Signature>
+struct ListCreator<Render3DList, Signature, OMIT_ONLY>
+{
+	template <typename T>
+	struct Contains
+	{
+		static constexpr bool value = !(smpl::contains<typename Signature::type, T>());
+	};
+	using System3DListToRender = typename smpl::type_list_filter<Render3DList, Contains>::result;
+	using System3DListToOmit = Signature;
+};
+}
+
+template <typename ECS, typename TComponentList, typename Function, typename... Targets> 
+class RenderPass {
+public:
+
+	using ComponentList = typename TComponentList::type;
+	
+	struct PRE_RENDER_PASS{};
+	struct POST_RENDER_PASS{};
+	struct RENDER_ONLY{};
+	struct OMIT_ONLY{};
+	
+	template <typename RS3D, typename S, typename F>
+	using ListCreator = RenderPass_::ListCreator<RS3D, S, F>;
+	
+	using Signature = smpl::type_list<Targets...>;
+	
+	// Constructor
+	RenderPass()
+	{
+	}
+	
+	using System3DListToRender = typename ListCreator<RenderingSystems3D, Signature, Function>::System3DListToRender;
+	using System3DListToOmit = typename ListCreator<RenderingSystems3D, Signature, Function>::System3DListToOmit;
+
+	static void renderScene();
 };
 
 //
@@ -400,7 +435,8 @@ class System {
 public:
 	using Signature = smpl::type_list<Ts...>;
 	
-	System(){
+	System()
+	{
 		// Initialize bitset signature
 		init_bitsets<ECS, Bitset, FlagBitset, typename Signature::type>::execute(bitset, flags);
 	}
@@ -433,6 +469,20 @@ public:
 	Bitset bitset;
 	using FlagBitset = typename ECS::FlagBitset;
 	FlagBitset flags;
+	
+	void addEntity(uint64 hint, uint32 entity)
+	{	
+		// Add the entity to the system list (performs sorting at the same time)
+		entities.insert(std::pair<uint64, uint32>(hint, entity));
+	}
+
+	// Useful for performing processing on the entities (ex. sorting) before rendering
+	// Define this function in a render system and polymorphism will call the derived
+	// one rather than this one !
+	template <typename Level>
+	void updateEntityVector(const Level& level, std::vector<uint32>& entities, const Camera* camera)
+	{
+	}
 	
 	// Maps a key to a value
 	// Key = uint32 sortable bucket
